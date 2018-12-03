@@ -8,6 +8,7 @@ import { MediaQueryConsumer } from '../../components/media-query';
 import Container from '../../components/container';
 import SectionHeader from '../../components/section-header';
 
+import Featured from '../../components/blog/featured';
 import Preview from '../../components/blog/preview';
 import { components } from '../../components/blog/post-components';
 

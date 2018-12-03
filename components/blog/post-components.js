@@ -82,11 +82,25 @@ const P = ({ children }) => {
   );
 };
 
+const Hr = () => (
+  <div>
+    <hr />
+    <style jsx>{`
+      hr {
+        margin: 4rem 0;
+        border: none;
+        border-bottom: 1px solid #eee;
+      }
+    `}</style>
+  </div>
+);
+
 export const components = {
   ...docsComponents,
   h1: H1,
   li: Li,
   ul: Ul,
   code: Code,
-  p: P
+  p: P,
+  hr: Hr
 };

@@ -85,7 +85,7 @@ export default props => {
 
           a:hover {
             color: inherit;
-            text-decoration: underline;
+            border-bottom: 1px dotted;
           }
 
           :global(h1[data-components-heading]) a::before {

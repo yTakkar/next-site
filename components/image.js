@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+
 import IObserver from './intersection-observer';
 
 // This component might look a little complex
@@ -43,12 +45,12 @@ class Image extends Component {
       captionSpacing = null,
       renderImage,
       oversize = true,
+      float,
       lazy,
       ...rest
     } = this.props;
 
     const aspectRatio = `${String((height / width) * 100)}%`;
-    const classes = width > 650 && oversize ? 'oversize' : '';
 
     return (
       <IObserver
@@ -57,7 +59,12 @@ class Image extends Component {
         rootMargin="20%"
         disabled={!lazy}
       >
-        <figure className={classes}>
+        <figure
+          className={classNames({
+            oversize: width > 650,
+            float: float && width < 520
+          })}
+        >
           <main style={{ width }}>
             <div style={{ paddingBottom: aspectRatio }}>
               {this.state.src ? (
@@ -112,6 +119,11 @@ class Image extends Component {
                   width: ${width}px;
                   margin: ${margin}px 0 ${margin}px
                     calc(((${width}px - 650px) / 2) * -1);
+                }
+                figure.float {
+                  float: ${float};
+                  margin: ${margin}px;
+                  margin-${float}: -150px;
                 }
               }
             `}

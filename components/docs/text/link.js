@@ -44,9 +44,8 @@ export const AnchorLink = ({ href, onClick, children }) => (
         }
 
         a:hover {
-          color: unset;
+          color: gray;
           text-decoration: none;
-          border-color: transparent;
         }
       `}
     </style>

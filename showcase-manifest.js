@@ -26,9 +26,9 @@ const frontSortOrder = [
 ];
 
 const sortOrder = [
-  'invision',
   'marvel',
-  'coinbase',
+  'uber',
+  'invision',
   'magic-leap',
   'nike',
   'mozilla-vr',
@@ -42,9 +42,10 @@ const sortOrder = [
   'open-collective',
   'styled-components',
   'auth0-careers',
+  'coinbase',
   'iota-data-market',
   'h1pl',
-  'square-enix-games',
+  'twitch',
   'eaze',
   'zeit',
   'a24',
@@ -63,6 +64,7 @@ const sortOrder = [
   'satoshis.place',
   'givecrypto',
   'fontbase',
+  'square-enix-games',
   'midrive',
   'stv',
   'hyper',
@@ -73,15 +75,17 @@ const sortOrder = [
   'whowhatwear',
   'nteract',
   'institchu',
+  'lego',
   'syntax.fm',
   'design-better',
   'nimiqscan',
   'pusher',
   'staples',
-  'underbelly',
   'worldpopulationreview',
   'usopen',
   'bitscreener',
+  'starbucksreserve',
+  'underbelly',
   'heramerica',
   'lightningdesignsystem',
   'piesync',
@@ -89,14 +93,51 @@ const sortOrder = [
   'inflect',
   'eurostar',
   'plotly',
+  'ebay',
   'garticio',
   'trip',
   'material-ui',
-  'framer',
-  'starbucksreserve'
+  'framer'
 ];
 
 const mapping = {
+  twitch: {
+    title: 'Twitch',
+    link: 'https://m.twitch.tv',
+    src: '/static/images/showcases/twitch.jpg',
+    width: 3836,
+    height: 2200,
+    highlighted: 1,
+    internalUrl: 'twitch',
+    tags: ['entertainment']
+  },
+  ebay: {
+    title: 'Ebay Haitao',
+    link: 'https://haitao.ebay.com',
+    src: '/static/images/showcases/ebay-haitao.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'ebay',
+    tags: ['e-commerce']
+  },
+  lego: {
+    title: 'LEGO for Kids',
+    link: 'https://www.lego.com/en-us/kids',
+    src: '/static/images/showcases/lego.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'lego',
+    tags: ['entertainment', 'creative']
+  },
+  uber: {
+    title: 'Uber Marketplace',
+    link: 'https://marketplace.uber.com',
+    src: '/static/images/showcases/uber.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'uber',
+    tags: []
+  },
   starbucksreserve: {
     title: 'Starbucks Reserve',
     link: 'https://starbucksreserve.com',
@@ -422,7 +463,6 @@ const mapping = {
     width: 3836,
     height: 2200,
     internalUrl: 'fontbase',
-    highlighted: 2,
     tags: ['creative']
   },
   givecrypto: {
@@ -564,7 +604,7 @@ const mapping = {
   },
   scale: {
     title: 'Scale',
-    link: 'https://scaleapi.com',
+    link: 'https://scale.ai',
     src: '/static/images/showcases/showcases-04.jpg',
     width: 3836,
     height: 2198,

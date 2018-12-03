@@ -29,9 +29,9 @@ export default withRouter(
 
     handleIntersect = entry => {
       if (entry.isIntersecting) {
-        const { siteData, isTablet } = this.props;
+        const { highlighted, siteData, isTablet } = this.props;
 
-        let useLargeThumbnail = siteData.highlighted && !isTablet;
+        let useLargeThumbnail = highlighted && !isTablet;
         let src = siteData.src.replace('/showcases/', '/showcase-thumbnails/');
 
         if (useLargeThumbnail) {
@@ -43,14 +43,14 @@ export default withRouter(
     };
 
     render() {
-      const { siteData, flex, isTablet } = this.props;
+      const { highlighted, siteData, flex, isTablet } = this.props;
       const { src } = this.state;
 
       return (
         <IObserver once onIntersect={this.handleIntersect} rootMargin="20%">
           <div
             className={`no-tap-callout site-container${
-              siteData.highlighted && !isTablet ? ' highlighed' : ''
+              highlighted && !isTablet ? ' highlighed' : ''
             }`}
             key={`site-${siteData.internalUrl}`}
           >
@@ -58,11 +58,7 @@ export default withRouter(
               <div className="preview" onClick={this.loadDetail}>
                 <div className="shadow">
                   <div className="info">
-                    <h3
-                      className={
-                        siteData.highlighted && !isTablet ? 'f2' : 'f4'
-                      }
-                    >
+                    <h3 className={highlighted && !isTablet ? 'f2' : 'f4'}>
                       {siteData.title}
                     </h3>
                     <Link href={siteData.link}>

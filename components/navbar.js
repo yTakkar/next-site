@@ -12,7 +12,7 @@ import SpectrumLogo from './icons/spectrum';
 
 import { links } from '../site-manifest';
 
-export default withRouter(({ isMobile, router }) => {
+export default withRouter(({ isMobile, router, hideLogo = false }) => {
   const { route } = router;
 
   return (
@@ -232,12 +232,12 @@ export default withRouter(({ isMobile, router }) => {
                     transition: all 0.2s ease;
                     // visibility: hidden;
                     pointer-events: none;
-                    transform: translate3d(0, 30%, 0);
+                    // transform: translate3d(0, 30%, 0);
                     opacity: 0;
                   }
                   :global(.active) nav .logo {
                     pointer-events: unset;
-                    transform: translate3d(0, 0, 0);
+                    // transform: translate3d(0, 0, 0);
                     opacity: 1;
                   }
                   nav .logo a {
@@ -309,13 +309,15 @@ export default withRouter(({ isMobile, router }) => {
                   </a>
                 </Link>
               </div>
-              <div className="logo">
-                <Link href="/" prefetch>
-                  <a aria-label="Next.js">
-                    <NextLogo />
-                  </a>
-                </Link>
-              </div>
+              {!hideLogo && (
+                <div className="logo">
+                  <Link href="/" prefetch>
+                    <a aria-label="Next.js">
+                      <NextLogo />
+                    </a>
+                  </Link>
+                </div>
+              )}
               <div className="links">
                 <Link href="/blog" prefetch>
                   <a

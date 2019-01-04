@@ -98,10 +98,31 @@ const sortOrder = [
   'trip',
   'material-ui',
   'framer',
-  'friday-digital'
+  'friday-digital',
+  'supervielle',
+  'theculturetrip'
 ];
 
 const mapping = {
+  theculturetrip: {
+    title: 'Culture Trip',
+    link: 'https://theculturetrip.com',
+    src: '/static/images/showcases/theculturetrip.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'theculturetrip',
+    tags: ['e-commerce']
+  },
+  supervielle: {
+    title: 'Supervielle',
+    link:
+      'https://www.supervielle.com.ar/personas/tarjetas/credito/mastercard-black',
+    src: '/static/images/showcases/supervielle.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'supervielle',
+    tags: []
+  },
   twitch: {
     title: 'Twitch',
     link: 'https://m.twitch.tv',

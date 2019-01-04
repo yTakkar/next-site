@@ -22,6 +22,7 @@ import Hulu from '../icons/companies/hulu';
 import Pling from '../icons/companies/pling';
 import Starbucks from '../icons/companies/starbucks';
 import Uber from '../icons/companies/uber';
+import Trovit from '../icons/companies/trovit';
 
 export default () => (
   <div className="company-slider">
@@ -90,10 +91,10 @@ export default () => (
           <Invision />
         </div>
         <div>
-          <Binance />
+          <Trovit />
         </div>
         <div>
-          <Hulu />
+          <Binance />
         </div>
         <div>
           <Pling />

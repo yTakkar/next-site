@@ -74,7 +74,7 @@ export default withRouter(
               .site-container {
                 position: relative;
                 flex: ${flex || 1};
-                height: ${isTablet ? 'unset' : '100%'};
+                height: unset;
               }
               .content {
                 position: relative;

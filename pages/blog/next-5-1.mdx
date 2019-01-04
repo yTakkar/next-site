@@ -62,7 +62,7 @@ module.exports = {
 ```
 <Caption>Both <Caption.Code>serverRuntimeConfig</Caption.Code> and <Caption.Code>publicRuntimeConfig</Caption.Code> are defined in <Caption.Code>next.config.js</Caption.Code></Caption>
 
-```js
+```jsx
 // pages/index.js
 import getConfig from 'next/config'
 const {serverRuntimeConfig, publicRuntimeConfig} = getConfig()
@@ -94,7 +94,7 @@ Some [next-plugins](https://github.com/zeit/next-plugins) like [`@zeit/next-css`
 
 You can now export a function that returns the configuration object instead of immediately exporting the object.
 
-```
+```js
 module.exports = (phase, {defaultConfig}) => config
 ```
 <Caption><Caption.Code>next.config.js</Caption.Code> exporting a function that returns the user configuration</Caption>

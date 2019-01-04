@@ -129,13 +129,13 @@ With webpack 4, a new way of extracting CSS from bundles was introduced, called 
 
 The new version of these Next.js plugins **solves 20 existing issues related to CSS imports**; As an example,  importing CSS in dynamic `import()`s is now supported:
 
-```js
+```jsx
 // components/my-dynamic-component.js
 import './my-dynamic-component.css'
 export default () => <h1>My dynamic component</h1>
 ```
 
-```js
+```jsx
 // pages/index.js
 import dynamic from 'next/dynamic'
 const MyDynamicComponent = dynamic(import('../components/my-dynamic-component'))
@@ -181,7 +181,7 @@ Starting with Next.js 7 we no longer touch the default `import()` behavior. This
 
 This change is fully backwards-compatible as well. Making use of a dynamic component remains as simple as:
 
-```javascript
+```jsx
 import dynamic from 'next/dynamic'
 const MyComponent = dynamic(import('../components/my-component'))
 export default () => {
@@ -324,7 +324,7 @@ We are excited to introduce styled-jsx 3, the by default included CSS-in-JS solu
 
 One thing that was often unclear was how to style a child component if that component is not part of the current component scope, for example, if you included a child component that needed specific styles only when used inside the parent component:
 
-```javascript
+```jsx
 const ChildComponent = () => <div>
   <p>some text</p>
 </div>
@@ -342,7 +342,7 @@ The above code tries to select the `p` tag does not work because styled-jsx styl
 In styled-jsx 3 this issue has been solved by introducing a new API, `css.resolve`, which will generate the `className` and `<style>`
  tags (the `styles` property) for the given styled-jsx string:
 
-```javascript
+```jsx
 import css from 'styled-jsx/css'
 
 const ChildComponent = ({className}) => <div>

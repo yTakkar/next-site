@@ -105,7 +105,7 @@ We have upgraded Babel to its latest version: 7. With it comes some great new fe
 
 React 16.2 introduced the `Fragment` API, which allows you to express a list of elements without having to wrap them in an arbitrary HTML element like `<div>`:
 
-```javascript
+```jsx
 render() {
   return <React.Fragment>
     <A />,
@@ -116,7 +116,7 @@ render() {
 
 Writing this can be tedious, with Next.js 6 you can use the new JSX fragment syntax to facilitate creating fragments:
 
-```javascript
+```jsx
 render() {
   return <>
     <A />,
@@ -131,7 +131,7 @@ If you have a directory nested in your Next.js applications that require a diffe
 
 ```
 src/
-	.babelrc      # General .babelrc
+  .babelrc      # General .babelrc
   components/
     i18n/
       .babelrc  # This .babelrc only applies to this directory

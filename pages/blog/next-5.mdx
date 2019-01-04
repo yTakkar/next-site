@@ -364,7 +364,7 @@ Next.js build a top-level `<Document>` component that gets server-rendered with 
 
 Part of that initial markup is the list of scripts that Next.js needs to evaluate on the client side. A custom `_document` looks like this:
 
-```js
+```jsx
 import Document, { Head, Main, NextScript } from 'next/document'
 export default class extends Document {
   render() {
@@ -376,7 +376,7 @@ export default class extends Document {
           <NextScript />
         </body>
       </html>
-   )
+    )
   }
 }
 ```

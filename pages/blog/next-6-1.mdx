@@ -69,7 +69,7 @@ When Next.js 6.0 was released the magically injected `url` property on page comp
 
 The recommended way to get the same properties the `url` property had is using `withRouter`:
 
-```js
+```jsx
 // old
 class Page extends React.Component {
   render() {
@@ -81,7 +81,7 @@ export default Page
 ```
 <Caption>How the pathname was accessed in versions before Next.js 6 using <Caption.Code>url</Caption.Code></Caption>
 
-```js
+```jsx
 // new
 import { withRouter } from 'next/router'
 class Page extends React.Component {

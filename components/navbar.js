@@ -138,7 +138,6 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                         selected: route.startsWith('/docs')
                       })}
                       title="Documentation"
-                      role="button"
                     >
                       Docs
                     </a>
@@ -149,7 +148,6 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                         selected: route.startsWith('/learn')
                       })}
                       title="Learn"
-                      role="button"
                     >
                       Learn
                     </a>
@@ -160,7 +158,6 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                         selected: route.startsWith('/showcase')
                       })}
                       title="Showcase"
-                      role="button"
                     >
                       Showcase
                     </a>
@@ -171,13 +168,12 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                         selected: route.startsWith('/blog')
                       })}
                       title="Blog"
-                      role="button"
                     >
                       Blog
                     </a>
                   </Link>
                   {
-                    // <Link href="/enterprise" prefetch><a className={classNames({ selected: route.startsWith('/enterprise') })} title='Enterprise' role='button'>Enterprise</a></Link>
+                    // <Link href="/enterprise" prefetch><a className={classNames({ selected: route.startsWith('/enterprise') })} title='Enterprise'>Enterprise</a></Link>
                   }
                 </div>
               </nav>
@@ -281,7 +277,6 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                       selected: route.startsWith('/docs')
                     })}
                     title="Documentation"
-                    role="button"
                   >
                     Docs
                   </a>
@@ -292,7 +287,6 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                       selected: route.startsWith('/learn')
                     })}
                     title="Learn"
-                    role="button"
                   >
                     Learn
                   </a>
@@ -303,7 +297,6 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                       selected: route.startsWith('/showcase')
                     })}
                     title="Showcase"
-                    role="button"
                   >
                     Showcase
                   </a>
@@ -324,13 +317,12 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                     className={classNames('mute', {
                       selected: route.startsWith('/blog')
                     })}
-                    role="button"
                   >
                     Blog
                   </a>
                 </Link>
                 {
-                  // <Link href="/enterprise" prefetch><a className={classNames('mute', { selected: route.startsWith('/enterprise') })} role='button'>Enterprise</a></Link>
+                  // <Link href="/enterprise" prefetch><a className={classNames('mute', { selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
                 }
                 <div className="icons">
                   <Link href="https://github.com/zeit/next.js">

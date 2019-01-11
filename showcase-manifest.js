@@ -100,7 +100,8 @@ const sortOrder = [
   'framer',
   'friday-digital',
   'supervielle',
-  'theculturetrip'
+  'theculturetrip',
+  'carbon'
 ];
 
 const mapping = {
@@ -785,6 +786,15 @@ const mapping = {
     height: 2200,
     internalUrl: 'friday-digital',
     tags: ['news', 'entertainment']
+  },
+  carbon: {
+    title: 'Carbon',
+    link: 'https://carbon.now.sh',
+    src: '/static/images/showcases/carbon.jpg',
+    width: 2880,
+    height: 1800,
+    internalUrl: 'carbon',
+    tags: ['dev', 'creative']
   }
 };
 

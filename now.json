@@ -1,27 +1,14 @@
 {
   "version": 2,
-  "alias": "nextjsorg.now.sh",
   "builds": [
-    { "src": "package.json", "use": "@now/static-build" }
+    { "src": "www/package.json", "use": "@now/static-build" },
+    { "src": "learn/package.json", "use": "@now/next" }
   ],
   "routes": [
-    {
-      "src": "/_next/static/(chunks|runtime|commons)/.*",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      }
-    },
-    {
-      "src": "/static/(favicon|images)/.*",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      }
-    },
-    {
-      "src": "/_next/static/.*/pages/.*\\.js",
-      "headers": {
-        "cache-control": "public, max-age=31536000, immutable"
-      }
-    }
+    {"src": "/learn/_next(.*)", "dest": "/learn/_next$1"},
+    {"src": "/learn/?", "dest": "/learn/learn/content?course=basics&lesson=getting-started"},
+    {"src": "/learn/(?:([^/]+?))/(?:([^/]+?))/?$", "dest": "/learn/learn/content?course=$1&lesson=$2"},
+    {"src": "/learn/(?:([^/]+?))/(?:([^/]+?))/(?:([^/]+?))/?$", "dest": "/learn/learn/content?course=$1&lesson=$2&step=$3"},
+    {"src": "(.*)", "dest": "/www$1"}
   ]
 }

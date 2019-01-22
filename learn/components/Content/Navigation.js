@@ -25,7 +25,7 @@ class Navigation extends React.Component {
     this.setState({ dropdown: !this.state.dropdown })
   }
 
-  renderLesson (course, lesson, index) {
+  renderLesson (course, lesson) {
     const { courseId, lessonId } = this.props
     const selected = (course.id === courseId && lesson.id === lessonId)
     const totalSteps = (lesson.steps || []).length

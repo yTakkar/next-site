@@ -28,7 +28,7 @@ class Step extends React.Component {
       <Button
         className={classNames('step-btn', { 'step-selected': selected })}
         onClick={() => this.changeRoute()}
-        href={href ? '/learn' + href : undefined}
+        href={href ? href : undefined}
         as={as}
         disabled={disabled}
         invert={selected}

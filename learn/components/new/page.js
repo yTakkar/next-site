@@ -190,6 +190,13 @@ export default withMediaQuery(({ isMobile, title, children }) => (
         overflow: hidden;
         position: absolute;
       }
+      svg {
+        shape-rendering: crispEdges;
+      }
+      svg path,
+      svg circle {
+        shape-rendering: geometricprecision;
+      }
     `}</style>
     {children}
   </div>

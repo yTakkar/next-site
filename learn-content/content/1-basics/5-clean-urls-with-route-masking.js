@@ -86,7 +86,7 @@ export default () => (
 )
 ~~~
 
-Have look at the following code block:
+Have a look at the following code block:
 
 ~~~js
 const PostLink = (props) => (

@@ -19,7 +19,7 @@ import ArrowUpIcon from '../icons/arrow-up';
 import HeartIcon from '../icons/heart';
 
 import { sortOrder, mapping } from '../../showcase-manifest';
-import { submitShowcase } from '../../site-manifest';
+import { links } from '../../site-manifest';
 
 const GAP_X = 48;
 const GAP_Y = 48;
@@ -287,7 +287,7 @@ export default class extends Component {
                 </div>
               </Button>
               <div className="spacer" />
-              <Button href={submitShowcase} invert>
+              <Button href={links.submitShowcase} invert>
                 <span className="icon-label">Share Your Website</span>
                 <HeartIcon color="white" />
               </Button>

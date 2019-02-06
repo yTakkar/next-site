@@ -42,6 +42,7 @@ export default class extends PureComponent {
       distance,
       background,
       defaultActive,
+      dotBackground,
       children
     } = this.props;
 
@@ -51,7 +52,8 @@ export default class extends PureComponent {
           className={classNames('fixed-container', {
             scrolled,
             fixed,
-            active: active || defaultActive
+            active: active || defaultActive,
+            'show-logo': dotBackground
           })}
         >
           {children}
@@ -72,9 +74,14 @@ export default class extends PureComponent {
               align-items: center;
               width: 100%;
               left: 0;
-              background: rgba(255, 255, 255, 0);
               z-index: ${zIndex || 1000};
               transition: box-shadow 0.5s ease, background 0.2s ease;
+              ${dotBackground
+                ? `
+                background-image: radial-gradient(circle, #D7D7D7, #D7D7D7 1px, #FFF 1px, #FFF);
+                background-size: 28px 28px;
+              `
+                : `background: rgba(255, 255, 255, 0);`};
             }
             .fixed {
               position: fixed;

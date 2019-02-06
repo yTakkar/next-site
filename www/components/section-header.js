@@ -6,6 +6,7 @@ export default withPure(({ anchor, id, title, description }) => (
       {`
         h2 {
           margin-bottom: 1rem;
+          line-height: 1.3;
         }
         div {
           position: relative;

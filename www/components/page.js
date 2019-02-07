@@ -12,7 +12,7 @@ RouterEvents.on('routeChangeComplete', url => {
 export default withMediaQuery(({ title, description, children }) => (
   <div>
     <Head>
-      <title>{title || 'Next.js'}</title>
+      <title>{title || 'Next.js - The React Framework'}</title>
       <meta
         name="description"
         content={

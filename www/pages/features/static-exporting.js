@@ -51,5 +51,15 @@ export default () => (
     <Docs />
     <Customers />
     <Footer />
+    <style jsx>
+      {`
+        :global(html) {
+          scroll-behavior: smooth;
+        }
+        :global(body) {
+          scroll-behavior: unset;
+        }
+      `}
+    </style>
   </Page>
 );

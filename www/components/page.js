@@ -35,7 +35,6 @@ export default withMediaQuery(({ title, description, children }) => (
           -webkit-text-size-adjust: 100%;
           height: 100%;
           box-sizing: border-box;
-          scroll-behavior: smooth;
         }
         *,
         *:before,
@@ -57,6 +56,7 @@ export default withMediaQuery(({ title, description, children }) => (
           text-rendering: optimizeLegibility;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
+          scroll-behavior: smooth;
         }
         html,
         body {
@@ -246,7 +246,8 @@ export default withMediaQuery(({ title, description, children }) => (
         .token.namespace {
           opacity: 0.7;
         }
-        .token.string, .token.attr-value {
+        .token.string,
+        .token.attr-value {
           color: #028265;
         }
         .token.punctuation,

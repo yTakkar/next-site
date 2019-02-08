@@ -246,10 +246,9 @@ export default withMediaQuery(({ title, description, children }) => (
         .token.namespace {
           opacity: 0.7;
         }
-        .token.string {
+        .token.string, .token.attr-value {
           color: #028265;
         }
-        .token.attr-value,
         .token.punctuation,
         .token.operator {
           color: #000;
@@ -258,8 +257,7 @@ export default withMediaQuery(({ title, description, children }) => (
         .token.symbol,
         .token.boolean,
         .token.variable,
-        .token.constant,
-        .token.inserted {
+        .token.constant {
           color: #36acaa;
         }
         .token.atrule,
@@ -278,10 +276,10 @@ export default withMediaQuery(({ title, description, children }) => (
         .token.function,
         .token.tag,
         .token.class-name,
-        .token.number {
+        .token.number,
+        .token.tag .token.punctuation {
           color: #0076ff;
         }
-        .token.deleted,
         .language-autohotkey .token.tag {
           color: #9a050f;
         }
@@ -295,6 +293,14 @@ export default withMediaQuery(({ title, description, children }) => (
         }
         .token.italic {
           font-style: italic;
+        }
+        .token.deleted {
+          color: red;
+          font-weight: bolder;
+        }
+        .token.inserted {
+          color: #0076ff;
+          font-weight: bolder;
         }
         .language-json .token.property,
         .language-markdown .token.title {

@@ -37,7 +37,7 @@ export default () => (
     />
     <MediaQueryConsumer>
       {({ isMobile }) => (
-        <Header height={64 + (isMobile ? 32 : 0)} shadow={!isMobile} dotBackground active={64}>
+        <Header height={64 + (isMobile ? 32 : 0)} shadow dotBackground active={64}>
           <Navbar />
         </Header>
       )}

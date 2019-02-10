@@ -114,14 +114,16 @@ export default class Carousel extends React.PureComponent {
           .arrow {
             display: flex;
             position: absolute;
+            padding: .5rem;
+            margin: -.5rem;
             top: 8rem;
             transform: scale(2.5);
             cursor: pointer;
             user-select: none;
           }
 
-          .arrow:hover > svg * {
-            stroke: #fff;
+          .arrow:hover :global(> svg *) {
+            stroke: #000;
           }
 
           .next {

@@ -98,15 +98,11 @@ export default () => (
           margin-top: -2rem;
           cursor: pointer;
           border-radius: 7px;
-          box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1),
-            0px 10px 20px rgba(0, 0, 0, 0.08);
-          opacity: 0.95;
+          box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.08);
         }
 
         img:hover {
-          opacity: 1;
-          box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1),
-            0px 10px 10px rgba(0, 0, 0, 0.08);
+          box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1), 0px 10px 10px rgba(0, 0, 0, 0.08);
         }
 
         .divider {

@@ -18,22 +18,12 @@ export default () => (
       image="/static/twitter-cards/home.jpg"
       title="Next.js - The React Framework"
       url="https://nextjs.org"
-      description="Next.js is a lightweight framework for static and server-rendered applications"
+      description="Next.js is the React framework for production"
     />
     <MediaQueryConsumer>
       {({ isMobile }) => (
-        <Header
-          height={32}
-          offset={-32}
-          distance={32}
-          shadow
-          active={isMobile ? 32 : 160}
-        >
-          <Notification
-            href="/blog/next-8"
-            title="Next 8 is out!"
-            titleMobile="Next 8 is out!"
-          >
+        <Header height={32} offset={-32} distance={32} shadow active={isMobile ? 32 : 160}>
+          <Notification href="/blog/next-8" title="Next 8 is out!" titleMobile="Next 8 is out!">
             Next 8 is out! — Serverless mode, performance and security improvements and more.
             Monday, February 11th 2019
           </Notification>

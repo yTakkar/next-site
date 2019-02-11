@@ -159,7 +159,7 @@ export default class extends React.PureComponent {
                   <Logo size={80} />
                 </a>
               </Link>
-              <Link href="/blog/next-7">
+              <Link href="/blog/next-8">
                 <a
                   className="version no-tap-highlight no-drag"
                   style={{
@@ -170,12 +170,12 @@ export default class extends React.PureComponent {
                   <Popover
                     content={
                       <span className="f5 fw4 tip">
-                        What’s new in <strong className="fw7">7</strong>?
+                        What’s new in <strong className="fw7">8</strong>?
                       </span>
                     }
                     top={65}
                   >
-                    7
+                    8
                   </Popover>
                 </a>
               </Link>

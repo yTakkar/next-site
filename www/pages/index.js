@@ -15,7 +15,7 @@ import SocialMeta from '../components/social-meta';
 export default () => (
   <Page title="Next.js - The React Framework">
     <SocialMeta
-      image={'/static/twitter-cards/home.jpg'}
+      image="/static/twitter-cards/home.jpg"
       title="Next.js - The React Framework"
       url="https://nextjs.org"
       description="Next.js is a lightweight framework for static and server-rendered applications"
@@ -30,12 +30,12 @@ export default () => (
           active={isMobile ? 32 : 160}
         >
           <Notification
-            href="/blog/next-7"
-            title="Next 7 is out!"
-            titleMobile="Next 7 is out!"
+            href="/blog/next-8"
+            title="Next 8 is out!"
+            titleMobile="Next 8 is out!"
           >
-            Next 7 is out! — DX improvements, better error reporting, upgraded
-            compilation pipeline Wednesday, September 19th 2018
+            Next 8 is out! — Serverless mode, performance and security improvements and more.
+            Monday, February 11th 2019
           </Notification>
           <Navbar hideLogo={!isMobile} />
         </Header>

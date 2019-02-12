@@ -2,9 +2,20 @@ import NProgress from 'nprogress'
 
 import RouterEvents from '../lib/router-events'
 
-RouterEvents.on('routeChangeStart', NProgress.start)
-RouterEvents.on('routeChangeComplete', NProgress.done)
-RouterEvents.on('routeChangeError', NProgress.done)
+let timeout;
+
+const start = () => {
+  timeout = setTimeout(NProgress.start, 100)
+}
+
+const done = () => {
+  clearTimeout(timeout)
+  NProgress.done()
+}
+
+RouterEvents.on('routeChangeStart', start)
+RouterEvents.on('routeChangeComplete', done)
+RouterEvents.on('routeChangeError', done)
 
 export default () => (
   <style jsx global>

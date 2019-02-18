@@ -17,7 +17,7 @@ export default withMediaQuery(({ title, description, children }) => (
         name="description"
         content={
           description ||
-          'Production grade React applications that scale. The world’s leading companies have used Next.js to build server-rendered applications, static websites, and more.'
+          'Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more.'
         }
       />
     </Head>

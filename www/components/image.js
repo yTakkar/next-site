@@ -65,7 +65,7 @@ class Image extends Component {
             float: float && width < 520
           })}
         >
-          <main style={{ width }}>
+          <div className="container" style={{ width }}>
             <div style={{ paddingBottom: aspectRatio }}>
               {this.state.src ? (
                 videoSrc || video ? (
@@ -79,11 +79,13 @@ class Image extends Component {
             </div>
 
             {caption && (
-              <p style={captionSpacing ? { marginTop: captionSpacing } : {}}>
+              <figcaption
+                style={captionSpacing ? { marginTop: captionSpacing } : {}}
+              >
                 {caption}
-              </p>
+              </figcaption>
             )}
-          </main>
+          </div>
 
           <style jsx>
             {`
@@ -92,7 +94,7 @@ class Image extends Component {
                 text-align: center;
                 margin: ${margin}px 0;
               }
-              main {
+              .container {
                 margin: 0 auto;
                 max-width: 100%;
               }
@@ -107,7 +109,7 @@ class Image extends Component {
                 top: 0;
                 width: 100%;
               }
-              p {
+              figcaption {
                 color: #999;
                 font-size: 12px;
                 margin: 0;

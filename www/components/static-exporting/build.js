@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Container from '../container';
+import IObserver from '../intersection-observer';
 import Checkmark from '../icons/checkmark';
 
 import Animation from './terminal/animation';
@@ -11,47 +12,7 @@ export default class Build extends React.PureComponent {
     demoInView: true
   };
 
-  demo = React.createRef();
-
-  componentDidMount() {
-    const { scrollY } = window;
-    const demoInView = scrollY <= this.demo.current.offsetTop + this.demo.current.clientHeight;
-    if (demoInView !== this.state.demoInView) {
-      this.setState({ demoInView });
-    }
-    this.scrollspy();
-  }
-
-  componentWillUnmount() {
-    window.cancelAnimationFrame(this.scrollSpyID);
-  }
-
-  scrollspy = () => {
-    this.scrollSpyID = requestAnimationFrame(() => {
-      const { scrollY } = window;
-
-      if (scrollY === this.lastFrameScroll) {
-        this.lastFrameScroll = scrollY;
-        return this.scrollspy();
-      }
-
-      this.lastFrameScroll = scrollY;
-
-      // Section animation triggers
-      const demoInView = scrollY <= this.demo.current.offsetTop + this.demo.current.clientHeight;
-
-      if (demoInView !== this.state.demoInView) {
-        this.setState(
-          {
-            demoInView
-          },
-          this.scrollspy
-        );
-      } else {
-        this.scrollspy();
-      }
-    });
-  };
+  handleIntersect = entry => this.setState({ demoInView: entry.isIntersecting });
 
   render() {
     return (
@@ -77,9 +38,15 @@ export default class Build extends React.PureComponent {
               </li>
             </ul>
           </div>
-          <Animation innerRef={this.demo} inView={this.state.demoInView}>
-            <Result />
-          </Animation>
+          <IObserver
+            onIntersect={this.handleIntersect}
+            rootMargin="10% 0% 0% 20%"
+            render={({ innerRef }) => (
+              <Animation innerRef={innerRef} inView={this.state.demoInView}>
+                <Result />
+              </Animation>
+            )}
+          />
         </div>
         <style jsx>
           {`

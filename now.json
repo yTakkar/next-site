@@ -6,11 +6,27 @@
     { "src": "learn/package.json", "use": "@now/next" }
   ],
   "routes": [
-    {"src": "/learn/_next(.*)", "dest": "/learn/_next$1"},
-    {"src": "/learn/?", "dest": "/learn/learn/content?course=basics&lesson=getting-started"},
-    {"src": "/learn/(?:([^/]+?))/(?:([^/]+?))/?$", "dest": "/learn/learn/content?course=$1&lesson=$2"},
-    {"src": "/learn/(?:([^/]+?))/(?:([^/]+?))/(?:([^/]+?))/?$", "dest": "/learn/learn/content?course=$1&lesson=$2&step=$3"},
-    {"src": "/google79eca80c0e444114.html", "dest": "/google79eca80c0e444114.html"},
-    {"src": "(.*)", "dest": "/www$1"}
+    { "src": "/learn/_next(.*)", "dest": "/learn/_next$1" },
+    { "src": "/learn/?", "dest": "/learn/learn/content?course=basics&lesson=getting-started" },
+    {
+      "src": "/learn/(?:([^/]+?))/(?:([^/]+?))/?$",
+      "dest": "/learn/learn/content?course=$1&lesson=$2"
+    },
+    {
+      "src": "/learn/(?:([^/]+?))/(?:([^/]+?))/(?:([^/]+?))/?$",
+      "dest": "/learn/learn/content?course=$1&lesson=$2&step=$3"
+    },
+    { "src": "/google79eca80c0e444114.html", "dest": "/google79eca80c0e444114.html" },
+    {
+      "src": "/features/?",
+      "status": 301,
+      "headers": { "Location": "/features/static-exporting" }
+    },
+    {
+      "src": "/features/ssr/?",
+      "status": 301,
+      "headers": { "Location": "/features/server-side-rendering" }
+    },
+    { "src": "(.*)", "dest": "/www$1" }
   ]
 }

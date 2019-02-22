@@ -73,7 +73,7 @@ class Image extends Component {
                 ) : renderImage ? (
                   renderImage(rest)
                 ) : (
-                  <img src={this.state.src || null} />
+                  <img src={this.state.src || null} alt={rest.alt} />
                 )
               ) : null}
             </div>
@@ -99,6 +99,7 @@ class Image extends Component {
                 max-width: 100%;
               }
               div {
+                transform: translate3d(0, 0, 0); /* Work around for Chrome bug */
                 position: relative;
               }
               figure :global(img),

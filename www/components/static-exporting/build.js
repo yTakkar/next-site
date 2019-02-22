@@ -5,7 +5,7 @@ import IObserver from '../intersection-observer';
 import Checkmark from '../icons/checkmark';
 
 import Animation from './terminal/animation';
-import Result from './svg/ServerlessResult';
+import Result from './svg/Result';
 
 export default class Build extends React.PureComponent {
   state = {

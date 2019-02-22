@@ -45,7 +45,6 @@ export default () => (
         }
       ]}
     />
-    )} }
     <style jsx>
       {`
         h4 {

@@ -101,20 +101,18 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                   `}
                 </style>
                 <div className="logo">
-                  <Link href="/">
-                    <a aria-label="Next.js">
-                      <NextLogo />
-                    </a>
-                  </Link>
+                  {!hideLogo && (
+                    <Link href="/">
+                      <a aria-label="Next.js">
+                        <NextLogo />
+                      </a>
+                    </Link>
+                  )}
                 </div>
                 <div className="links">
                   <div className="icons">
                     <Link href="https://github.com/zeit/next.js">
-                      <a
-                        aria-label="Next.js on GitHub"
-                        rel="noreferrer"
-                        target="_blank"
-                      >
+                      <a aria-label="Next.js on GitHub" rel="noreferrer" target="_blank">
                         <GitHubLogo />
                       </a>
                     </Link>
@@ -327,11 +325,7 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                 }
                 <div className="icons">
                   <Link href="https://github.com/zeit/next.js">
-                    <a
-                      aria-label="Next.js on GitHub"
-                      rel="noreferrer"
-                      target="_blank"
-                    >
+                    <a aria-label="Next.js on GitHub" rel="noreferrer" target="_blank">
                       <GitHubLogo />
                     </a>
                   </Link>

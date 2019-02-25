@@ -27,7 +27,7 @@ export default () => (
             Next 8 is out! — Serverless mode, performance and security improvements and more.
             Monday, February 11th 2019
           </Notification>
-          <Navbar hideLogo={!isMobile} />
+          <Navbar hideLogo={true} />
         </Header>
       )}
     </MediaQueryConsumer>

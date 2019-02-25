@@ -86,7 +86,7 @@ export default class extends PureComponent {
             .fixed {
               position: fixed;
               top: ${offset || 0}px;
-              pointer-events: none;
+              pointer-events: auto;
             }
             .scrolled {
               position: fixed;
@@ -94,9 +94,7 @@ export default class extends PureComponent {
             }
             .active {
               background: ${background || 'rgba(255, 255, 255, 0.98)'};
-              ${shadow
-                ? 'box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);'
-                : ''} pointer-events: auto;
+              ${shadow ? 'box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);' : ''} pointer-events: auto;
             }
           `}
         </style>

@@ -21,16 +21,11 @@ export default () => (
       description="Take the pain out of creating Universal React apps with Next.js"
       image="/static/twitter-cards/server-side-rendering.png"
       url="https://nexts.org/features/server-side-rendering"
-      keywords="Server side rendering, Server rendering, SSR, Next, JavaScript, Web Framework"
+      keywords="Server side rendering, Server rendering, SSR, Serverless, JavaScript, Web Framework"
     />
     <MediaQueryConsumer>
       {({ isMobile }) => (
-        <Header
-          height={64 + (isMobile ? 32 : 0)}
-          shadow
-          dotBackground
-          active={64}
-        >
+        <Header height={64 + (isMobile ? 32 : 0)} shadow dotBackground active={64}>
           <Navbar />
         </Header>
       )}

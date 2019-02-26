@@ -54,8 +54,8 @@ class LogoContainer extends React.PureComponent {
                 display: mounted ? 'flex' : 'none'
               }}
             >
-              <Link href={scroll >= LOGO_TOP ? '/' : undefined}>
-                <a aria-label="Next.js">
+              <Link href="/">
+                <a className={scroll >= LOGO_TOP ? null : 'disable'} aria-label="Next.js">
                   <Logo size={80} />
                 </a>
               </Link>
@@ -80,6 +80,9 @@ class LogoContainer extends React.PureComponent {
                 </a>
               </Link>
               <style jsx>{`
+                .disable {
+                  pointer-events: none;
+                }
                 .logo-main {
                   position: fixed;
                   justify-content: center;

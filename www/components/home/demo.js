@@ -1,17 +1,14 @@
-import Logo from '../logo';
 import Container from '../container';
 import Tabs from '../tabs';
 import Editor from './editor';
 import Browser from '../browser';
 import { MediaQueryConsumer } from '../media-query';
-
+import Link from 'next/link'
 import TabButton from './tab-button';
 
 const DEMO_DATA = {
   'File-System Routing': require('./demos/file-system-routing').default,
   'Automatic Code Splitting': require('./demos/code-splitting').default,
-  'Server Side Rendering': require('./demos/ssr').default,
-  'Static Exporting': require('./demos/static-exporting').default,
   'More...': require('./demos/more').default
 };
 
@@ -22,7 +19,7 @@ export default () => {
         <Container center dark wide role="region">
           <Container center>
             <Tabs data={Object.keys(DEMO_DATA)} anchor>
-              {(onSelect, selectedId, selectedIndex) => (
+              {(onSelect, selectedId) => (
                 <div>
                   <style jsx>{`
                     .demo-header {
@@ -61,7 +58,7 @@ export default () => {
                     }
                   `}</style>
                   <div className="demo-header">
-                    {Object.keys(DEMO_DATA).map(id => (
+                    {Object.keys(DEMO_DATA).map(id => (id === 'More...' ? null :
                       <TabButton
                         invert
                         className="tab"
@@ -73,6 +70,27 @@ export default () => {
                         {id}
                       </TabButton>
                     ))}
+                    <Link href="/features/server-side-rendering" prefetch>
+                    <a><TabButton invert className="tab" isMobile={isMobile}>
+                      Server Side Rendering
+                    </TabButton></a>
+                    </Link>
+                    <Link href="/features/static-exporting" prefetch>
+                      <a>
+                      <TabButton invert className="tab" isMobile={isMobile}>
+                        Static Exporting
+                      </TabButton>
+                      </a>
+                    </Link>
+                    <TabButton
+                        invert
+                        className="tab"
+                        isMobile={isMobile}
+                        selected={selectedId === 'More...'}
+                        onClick={() => onSelect('More...')}
+                      >
+                      {'More...'}
+                    </TabButton>
                   </div>
                   <div className="demo-body row">
                     {isTablet &&

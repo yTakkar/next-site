@@ -14,6 +14,7 @@ import SiteDetail from '../components/showcase/site-detail';
 import SocialMeta from '../components/social-meta';
 
 import { categories, mapping } from '../showcase-manifest';
+import { SkipNavContent } from '@reach/skip-nav';
 
 const HEADER_HEIGHT = 16 * 12;
 
@@ -32,6 +33,7 @@ function Showcase({ router }) {
         <Navbar />
       </Header>
       <SiteDetail siteData={mapping[item]} from={from} />
+      <SkipNavContent />
       <MediaQueryConsumer>
         {({ isMobile }) => (
           <Tabs data={categories} anchor>

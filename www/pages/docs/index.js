@@ -7,6 +7,7 @@ import withPure from '../../components/hoc/pure';
 
 import Markdown, { headings } from '../../components/docs/docs.mdx';
 import Documentation, { components } from '../../components/docs/documentation';
+import { SkipNavContent } from '@reach/skip-nav';
 
 const Content = withPure(() => <Markdown components={components} />);
 
@@ -25,6 +26,7 @@ export default () => (
     </MediaQueryConsumer>
     <Container>
       <Documentation headings={headings}>
+        <SkipNavContent />
         <Content />
       </Documentation>
     </Container>

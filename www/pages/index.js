@@ -11,6 +11,7 @@ import Features from '../components/home/features';
 import Customers from '../components/home/customers';
 import Learn from '../components/home/learn';
 import SocialMeta from '../components/social-meta';
+import { SkipNavContent } from '@reach/skip-nav';
 
 export default () => (
   <Page title="Next.js - The React Framework">
@@ -31,6 +32,7 @@ export default () => (
         </Header>
       )}
     </MediaQueryConsumer>
+    <SkipNavContent/>
     <Intro />
     <Demo />
     <Features />

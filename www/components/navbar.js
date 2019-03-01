@@ -11,6 +11,7 @@ import GitHubLogo from './icons/github';
 import SpectrumLogo from './icons/spectrum';
 
 import { links } from '../site-manifest';
+import { SkipNavLink } from '@reach/skip-nav';
 
 export default withRouter(({ isMobile, router, hideLogo = false }) => {
   const { route } = router;
@@ -181,6 +182,7 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
 
         return (
           <Container center>
+            <SkipNavLink tabIndex="1" />
             <h1 className="visually-hidden" aria-hidden="true">
               Next.js
             </h1>

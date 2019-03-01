@@ -13,6 +13,7 @@ import Learn from '../../components/static-exporting/learn';
 import Features from '../../components/static-exporting/features';
 import Docs from '../../components/static-exporting/docs';
 import Customers from '../../components/static-exporting/customers';
+import { SkipNavContent } from '@reach/skip-nav';
 
 const title = 'Features - Static Exporting | Next.js';
 export default () => (
@@ -31,6 +32,7 @@ export default () => (
         </Header>
       )}
     </MediaQueryConsumer>
+    <SkipNavContent />
     <Hero />
     <Build />
     <UseCases />

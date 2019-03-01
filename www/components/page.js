@@ -9,27 +9,25 @@ RouterEvents.on('routeChangeComplete', url => {
   trackPageview(url);
 });
 
-export default withMediaQuery(({ title, description, children }) => (
-  <div>
-    <Head>
-      <title>{title || 'Next.js - The React Framework'}</title>
-      <meta
-        name="description"
-        content={
-          description ||
-          'Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more.'
-        }
-      />
-    </Head>
-    <style jsx>
-      {`
+function Page({ title, description, children }) {
+  return (
+    <div>
+      <Head>
+        <title>{title || 'Next.js - The React Framework'}</title>
+        <meta
+          name="description"
+          content={description || 'Next.js is the React framework for production'}
+        />
+      </Head>
+      <style jsx>
+        {`
          {
           overflow-x: hidden;
         }
       `}
-    </style>
-    <style jsx global>
-      {`
+      </style>
+      <style jsx global>
+        {`
         html {
           line-height: 1.15;
           -webkit-text-size-adjust: 100%;
@@ -345,7 +343,10 @@ export default withMediaQuery(({ title, description, children }) => (
           shape-rendering: geometricprecision;
         }
       `}
-    </style>
-    {children}
-  </div>
-));
+      </style>
+      {children}
+    </div>
+  );
+}
+
+export default withMediaQuery(Page);

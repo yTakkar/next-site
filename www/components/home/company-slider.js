@@ -24,8 +24,8 @@ import Starbucks from '../icons/companies/starbucks';
 import Uber from '../icons/companies/uber';
 import Trovit from '../icons/companies/trovit';
 
-export default () => (
-  <div className="company-slider">
+export default function CompanySlider() {
+  return <div className="company-slider">
     <BackgroundSlider duration={40}>
       <div className="company-logos-container">
         <div>
@@ -125,4 +125,4 @@ export default () => (
       }
     `}</style>
   </div>
-);
+};

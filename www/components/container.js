@@ -1,4 +1,4 @@
-export default ({
+export default function Container({
   center,
   vCenter,
   dark,
@@ -12,8 +12,8 @@ export default ({
   children,
   mobileStyle,
   ...props
-}) => (
-  <div {...props}>
+}) {
+  return <div {...props}>
     <style jsx>
       {`
       {
@@ -66,4 +66,4 @@ export default ({
     </style>
     {children}
   </div>
-);
+}

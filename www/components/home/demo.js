@@ -12,7 +12,7 @@ const DEMO_DATA = {
   'More...': require('./demos/more').default
 };
 
-export default () => {
+export default function Demo() {
   return (
     <MediaQueryConsumer>
       {({ isMobile, isTablet }) => (

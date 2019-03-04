@@ -85,27 +85,18 @@ export default class Carousel extends React.PureComponent {
                     {newSlides.map(({ image, alt, href, logo }, i) => (
                       <Item
                         style={{
-                          visibility:
-                            i < pivot - 1 || i > pivot + 1
-                              ? 'hidden'
-                              : 'visible'
+                          visibility: i < pivot - 1 || i > pivot + 1 ? 'hidden' : 'visible'
                         }}
                         pose={i === pivot ? 'selected' : 'unselected'}
                         key={href}
                         onClick={
-                          i === pivot - 1
-                            ? this.prev
-                            : i === pivot + 1
-                              ? this.next
-                              : undefined
+                          i === pivot - 1 ? this.prev : i === pivot + 1 ? this.next : undefined
                         }
                       >
                         <div className="slide-content">
                           <a
                             href={href}
-                            className={`slide ${
-                              i === pivot ? 'selected' : 'unselected'
-                            }`}
+                            className={`slide ${i === pivot ? 'selected' : 'unselected'}`}
                           >
                             <Image src={image} alt={alt} {...size} />
                           </a>
@@ -137,18 +128,13 @@ export default class Carousel extends React.PureComponent {
             height: 100%;
             width: 100%;
           }
-
           .slides {
             display: flex;
             position: absolute;
             top: 0;
             left: 100%;
             transition: transform ease-out 400ms;
-            transform: translate3d(
-              calc(-50vw - ${slideWidth / 2 + slideWidth * pivot}rem),
-              0,
-              0
-            );
+            transform: translate3d(calc(-50vw - ${slideWidth / 2 + slideWidth * pivot}rem), 0, 0);
           }
 
           .logo {
@@ -184,13 +170,11 @@ export default class Carousel extends React.PureComponent {
             background-position: center top;
             cursor: pointer;
             border-radius: 7px;
-            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1),
-              0px 10px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.08);
           }
 
           .slide-content :global(img:hover) {
-            box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1),
-              0px 10px 10px rgba(0, 0, 0, 0.08);
+            box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1), 0px 10px 10px rgba(0, 0, 0, 0.08);
           }
 
           .slide-content :global(figure) {
@@ -231,9 +215,7 @@ export default class Carousel extends React.PureComponent {
             }
             .slides {
               transform: translateX(
-                calc(
-                  -50vw - ${tabletSlideWidth / 2 + tabletSlideWidth * pivot}rem
-                )
+                calc(-50vw - ${tabletSlideWidth / 2 + tabletSlideWidth * pivot}rem)
               );
             }
             .slide {
@@ -257,9 +239,7 @@ export default class Carousel extends React.PureComponent {
             }
             .slides {
               transform: translateX(
-                calc(
-                  -50vw - ${mobileSlideWidth / 2 + mobileSlideWidth * pivot}rem
-                )
+                calc(-50vw - ${mobileSlideWidth / 2 + mobileSlideWidth * pivot}rem)
               );
             }
             .slide {

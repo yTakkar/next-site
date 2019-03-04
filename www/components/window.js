@@ -6,6 +6,7 @@ export default class Window extends React.PureComponent {
       titleColor,
       backgroundColor,
       borderColor,
+      boxShadow,
       titleBg,
       height: propHeight,
       scroll,
@@ -19,12 +20,18 @@ export default class Window extends React.PureComponent {
     const classes = ['window'];
 
     return (
-      <div className={classes.join(' ')} style={{ backgroundColor, borderColor, height }}>
+      <div
+        className={classes.join(' ')}
+        style={{ backgroundColor, borderColor, height, boxShadow }}
+      >
         <div className="header">
           <span className="icon close" />
           <span className="icon minimize" />
           <span className="icon fullScreen" />
-          <div className={`title ${titleBg ? 'title-bg' : ''}`} style={{ color: titleColor }}>
+          <div
+            className={`title ${titleBg ? 'title-bg' : ''}`}
+            style={{ color: titleColor }}
+          >
             {title}
           </div>
         </div>
@@ -81,8 +88,9 @@ export default class Window extends React.PureComponent {
             .title {
               color: #999;
               font-size: 12px;
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+                'Droid Sans', 'Helvetica Neue', sans-serif;
               position: absolute;
               top: 3px;
               left: 0;

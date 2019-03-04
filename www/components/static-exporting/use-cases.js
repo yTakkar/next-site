@@ -72,7 +72,6 @@ export default () => (
               }
 
               li span {
-                height: 1.8rem;
                 margin-left: 0.5rem;
               }
 

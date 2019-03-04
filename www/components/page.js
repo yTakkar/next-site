@@ -160,7 +160,7 @@ function Page({ title, description, children }) {
           font-weight: 900;
         }
         .subtitle {
-          color: #949494;
+          color: #737373;
         }
         .mute {
           color: #757575;

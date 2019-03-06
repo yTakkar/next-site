@@ -69,10 +69,14 @@ export default class Header extends PureComponent {
               height: ${defaultHeight}px;
             }
             @media screen and (max-width: 640px) {
-              height: ${height.mobile || defaultHeight}px;
+              header {
+                height: ${height.mobile || defaultHeight}px;
+              }
             }
             @media screen and (max-width: 960px) {
-              height: ${height.tablet || defaultHeight}px;
+              header {
+                height: ${height.tablet || defaultHeight}px;
+              }
             }
             .fixed-container {
               position: relative;

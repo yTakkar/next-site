@@ -746,7 +746,7 @@ You can add `prefetch` prop to any `<Link>` and Next.js will prefetch those page
 ```jsx
 import Link from 'next/link'
 
-function Header() { 
+function Header() {
   return (
     <nav>
       <ul>
@@ -780,7 +780,7 @@ Most prefetching needs are addressed by `<Link />`, but we also expose an impera
 ```jsx
 import { withRouter } from 'next/router'
 
-function MyLink({ router }) { 
+function MyLink({ router }) {
   return (
     <div>
       <a onClick={() => setTimeout(() => router.push('/dynamic'), 100)}>
@@ -992,7 +992,7 @@ function Home() {
       <p>HOME PAGE is here!</p>
     </div>
   )
-} 
+}
 
 export default Home
 ```
@@ -1145,7 +1145,7 @@ Pages in `Next.js` skip the definition of the surrounding document's markup. For
 // Event handlers like onClick can't be added to this file
 
 // ./pages/_document.js
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -1155,7 +1155,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <html>
+      <Html>
         <Head>
           <style>{`body { margin: 0 } /* custom! */`}</style>
         </Head>
@@ -1163,7 +1163,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     )
   }
 }
@@ -1594,10 +1594,10 @@ export default Index
 
 > :warning: Note that this option is not available when using `target: 'serverless'`
 
-> :warning: Generally you want to use build-time configuration to provide your configuration. 
+> :warning: Generally you want to use build-time configuration to provide your configuration.
 The reason for this is that runtime configuration adds a small rendering / initialization overhead.
 
-The `next/config` module gives your app access to the `publicRuntimeConfig` and `serverRuntimeConfig` stored in your `next.config.js`. 
+The `next/config` module gives your app access to the `publicRuntimeConfig` and `serverRuntimeConfig` stored in your `next.config.js`.
 
 Place any server-only runtime config under a `serverRuntimeConfig` property.
 

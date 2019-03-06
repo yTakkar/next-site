@@ -1,12 +1,12 @@
 /* eslint-disable react/no-danger */
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 import { GA_TRACKING_ID } from '../lib/analytics';
 
 export default class NextSite extends Document {
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
           <meta
             name="viewport"
@@ -63,7 +63,7 @@ export default class NextSite extends Document {
             }}
           />
         </body>
-      </html>
+      </Html>
     );
   }
 }

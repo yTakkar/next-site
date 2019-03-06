@@ -112,7 +112,7 @@ export default class Documentation extends Component {
 
     return (
       <MediaQueryConsumer>
-        {({ isMobile, isTablet }) => {
+        {({ isMobile }) => {
           return (
             <>
               <Head title="Getting Started" />
@@ -136,7 +136,12 @@ export default class Documentation extends Component {
 
                 <style jsx>{`
                   .documentation {
-                    display: ${isMobile ? 'block' : 'flex'};
+                    display: flex;
+                  }
+                  @media screen and (max-width: 640px) {
+                    .documentation {
+                      display: block;
+                    }
                   }
 
                   .documentation__sidebar {
@@ -157,13 +162,6 @@ export default class Documentation extends Component {
                   .documentation__content {
                     width: 100%;
                     max-width: 600px;
-                  }
-
-                  // CSS only media query for mobile + SSR
-                  @media screen and (max-width: 640px) {
-                    .documentation {
-                      ${isMobile ? `` : `flex-direction: column;`};
-                    }
                   }
                 `}</style>
               </div>

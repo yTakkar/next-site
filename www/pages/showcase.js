@@ -40,7 +40,10 @@ function Showcase({ router }) {
             {(onSelect, selectedId) => (
               <>
                 <Header
-                  height={HEADER_HEIGHT + 64 + 32 + (isMobile ? 32 : 0)}
+                  height={{
+                    desktop: HEADER_HEIGHT + 64 + 32,
+                    mobile: HEADER_HEIGHT + 64 + 32 + 32
+                  }}
                   distance={HEADER_HEIGHT}
                   offset={-HEADER_HEIGHT}
                   shadow

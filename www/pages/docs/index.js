@@ -16,7 +16,7 @@ export default () => (
     <MediaQueryConsumer>
       {({ isMobile }) => (
         <Header
-          height={64 + (isMobile ? 32 : 0)}
+          height={{ desktop: 64, mobile: 64 + 32 }}
           shadow={!isMobile}
           defaultActive
         >

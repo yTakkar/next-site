@@ -2,7 +2,6 @@ import Page from '../../components/page';
 import Header from '../../components/header';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
-import { MediaQueryConsumer } from '../../components/media-query';
 import SocialMeta from '../../components/social-meta';
 
 import Hero from '../../components/static-exporting/hero';
@@ -25,13 +24,14 @@ export default () => (
       url="https://nexts.org/features/static-exporting"
       keywords="Static site generation, Static exporting, Static exports, Next, JavaScript, Web Framework"
     />
-    <MediaQueryConsumer>
-      {({ isMobile }) => (
-        <Header height={64 + (isMobile ? 32 : 0)} shadow dotBackground active={64}>
-          <Navbar />
-        </Header>
-      )}
-    </MediaQueryConsumer>
+    <Header
+      height={{ desktop: 64, mobile: 64 + 32 }}
+      shadow
+      dotBackground
+      active={64}
+    >
+      <Navbar />
+    </Header>
     <SkipNavContent />
     <Hero />
     <Build />

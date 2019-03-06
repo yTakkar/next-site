@@ -3,15 +3,13 @@ import Footer from '../../components/footer';
 import Navbar from '../../components/navbar';
 import Screen from '../../components/screen';
 import Page from '../../components/page';
-import { MediaQueryConsumer } from '../../components/media-query';
 
 import Container from '../../components/container';
 import SectionHeader from '../../components/section-header';
 
 import Preview from '../../components/blog/preview';
 import { components } from '../../components/blog/post-components';
-import { SkipNavContent } from '@reach/skip-nav'
-
+import { SkipNavContent } from '@reach/skip-nav';
 
 function importAll(r) {
   return r.keys().map(r);
@@ -46,13 +44,9 @@ const items = previewItems
 
 export default () => (
   <Page title="Blog | Next.js">
-    <MediaQueryConsumer>
-      {({ isMobile }) => (
-        <Header height={64 + (isMobile ? 32 : 0)} shadow defaultActive>
-          <Navbar />
-        </Header>
-      )}
-    </MediaQueryConsumer>
+    <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow defaultActive>
+      <Navbar />
+    </Header>
     <Screen offset={64 + 400}>
       <Container padding wide>
         <SectionHeader title="Blog" />

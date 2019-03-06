@@ -1,15 +1,25 @@
+/* global window */
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
-export default class extends PureComponent {
+export default class Header extends PureComponent {
   state = {
     scrolled: false,
     fixed: false,
     active: false
   };
 
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll);
+    this.onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
   onScroll = () => {
-    const scroll = window.scrollY || document.body.scrollTop;
+    const scroll = window.scrollY || window.document.body.scrollTop;
     const scrolled = scroll > (this.props.distance || 0);
     const fixed = scroll >= (this.props.distance || 0);
     const active = scroll >= (this.props.active || 0);
@@ -23,15 +33,6 @@ export default class extends PureComponent {
     }
   };
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.onScroll);
-    this.onScroll();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll);
-  }
-
   render() {
     const { scrolled, fixed, active } = this.state;
     const {
@@ -39,13 +40,14 @@ export default class extends PureComponent {
       offset,
       shadow,
       zIndex,
-      distance,
       background,
       defaultActive,
       dotBackground,
       children
     } = this.props;
 
+    const defaultHeight =
+      height.desktop || height.tablet || height.mobile || height;
     return (
       <header>
         <div
@@ -64,7 +66,13 @@ export default class extends PureComponent {
               left: 0;
               top: 0;
               width: 100%;
-              height: ${height}px;
+              height: ${defaultHeight}px;
+            }
+            @media screen and (max-width: 640px) {
+              height: ${height.mobile || defaultHeight}px;
+            }
+            @media screen and (max-width: 960px) {
+              height: ${height.tablet || defaultHeight}px;
             }
             .fixed-container {
               position: relative;
@@ -81,7 +89,7 @@ export default class extends PureComponent {
                 background-image: radial-gradient(circle, #D7D7D7, #D7D7D7 1px, #FFF 1px, #FFF);
                 background-size: 28px 28px;
               `
-                : `background: rgba(255, 255, 255, 0);`};
+                : 'background: rgba(255, 255, 255, 0);'};
             }
             .fixed {
               position: fixed;
@@ -94,7 +102,9 @@ export default class extends PureComponent {
             }
             .active {
               background: ${background || 'rgba(255, 255, 255, 0.98)'};
-              ${shadow ? 'box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);' : ''} pointer-events: auto;
+              ${shadow
+                ? 'box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);'
+                : ''} pointer-events: auto;
             }
           `}
         </style>

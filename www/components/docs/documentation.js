@@ -1,3 +1,4 @@
+/* global window */
 import { Component } from 'react';
 import Router from 'next/router';
 import { format, parse } from 'url';

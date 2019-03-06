@@ -1,3 +1,4 @@
+/* global window */
 import React from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
@@ -12,17 +13,13 @@ import { MediaQueryConsumer } from '../media-query';
 import { links } from '../../site-manifest';
 
 function easing(t) {
+  // eslint-disable-next-line
   return 1 + --t * t * t * t * t;
 }
 
 class LogoContainer extends React.PureComponent {
   state = {
     scroll: 0
-  };
-
-  onScroll = () => {
-    const scroll = window.scrollY || document.body.scrollTop;
-    this.setState({ scroll });
   };
 
   componentDidMount() {
@@ -34,6 +31,11 @@ class LogoContainer extends React.PureComponent {
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll);
   }
+
+  onScroll = () => {
+    const scroll = window.scrollY || window.document.body.scrollTop;
+    this.setState({ scroll });
+  };
 
   render() {
     const { scroll, mounted } = this.state;
@@ -48,14 +50,18 @@ class LogoContainer extends React.PureComponent {
               style={{
                 top: Math.max(LOGO_TOP - scroll, 7),
                 willChange: `transform`,
-                transform: `scale(${Math.max(easing(1 - scroll / LOGO_TOP), 0) * 0.325 +
+                transform: `scale(${Math.max(easing(1 - scroll / LOGO_TOP), 0) *
+                  0.325 +
                   0.625}) translate3d(0, 0, 0)`,
                 transformOrigin: 'top',
                 display: mounted ? 'flex' : 'none'
               }}
             >
               <Link href="/">
-                <a className={scroll >= LOGO_TOP ? null : 'disable'} aria-label="Next.js">
+                <a
+                  className={scroll >= LOGO_TOP ? null : 'disable'}
+                  aria-label="Next.js"
+                >
                   <Logo size={80} />
                 </a>
               </Link>
@@ -214,7 +220,9 @@ export default class extends React.PureComponent {
             `}</style>
             <LogoContainer />
             <div className="campaign no-drag no-tap-highlight">
-              <h1 className={classNames('title-1', 'fw6')}>The React Framework for</h1>
+              <h1 className={classNames('title-1', 'fw6')}>
+                The React Framework for
+              </h1>
               <h2 className={classNames('title-2', 'fw7')}>
                 <Campaign />
               </h2>

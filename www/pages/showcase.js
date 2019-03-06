@@ -1,11 +1,11 @@
 import { withRouter } from 'next/router';
+import { SkipNavContent } from '@reach/skip-nav';
 
 import Page from '../components/page';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar';
 import Tabs from '../components/tabs';
-import { MediaQueryConsumer } from '../components/media-query';
 
 import Title from '../components/showcase/title';
 import List from '../components/showcase/list';
@@ -14,7 +14,6 @@ import SiteDetail from '../components/showcase/site-detail';
 import SocialMeta from '../components/social-meta';
 
 import { categories, mapping } from '../showcase-manifest';
-import { SkipNavContent } from '@reach/skip-nav';
 
 const HEADER_HEIGHT = 16 * 12;
 
@@ -24,7 +23,7 @@ function Showcase({ router }) {
   return (
     <Page title="Showcase | Next.js">
       <SocialMeta
-        image={'/static/twitter-cards/showcase.png'}
+        image="/static/twitter-cards/showcase.png"
         title="Showcase | Next.js"
         url="https://nextjs.org/showcase"
         description="Meet hundreds of beautiful websites powered by Next.js"
@@ -34,29 +33,30 @@ function Showcase({ router }) {
       </Header>
       <SiteDetail siteData={mapping[item]} from={from} />
       <SkipNavContent />
-      <MediaQueryConsumer>
-        {({ isMobile }) => (
-          <Tabs data={categories} anchor>
-            {(onSelect, selectedId) => (
-              <>
-                <Header
-                  height={{
-                    desktop: HEADER_HEIGHT + 64 + 32,
-                    mobile: HEADER_HEIGHT + 64 + 32 + 32
-                  }}
-                  distance={HEADER_HEIGHT}
-                  offset={-HEADER_HEIGHT}
-                  shadow
-                >
-                  <Title height={HEADER_HEIGHT + 64 + (isMobile ? 32 : 0)} />
-                  <Filter onSelect={onSelect} selectedId={selectedId} />
-                </Header>
-                <List category={selectedId} />
-              </>
-            )}
-          </Tabs>
+      <Tabs data={categories} anchor>
+        {(onSelect, selectedId) => (
+          <>
+            <Header
+              height={{
+                desktop: HEADER_HEIGHT + 64 + 32,
+                mobile: HEADER_HEIGHT + 64 + 32 + 32
+              }}
+              distance={HEADER_HEIGHT}
+              offset={-HEADER_HEIGHT}
+              shadow
+            >
+              <Title
+                height={{
+                  desktop: HEADER_HEIGHT + 64,
+                  mobile: HEADER_HEIGHT + 64 + 32
+                }}
+              />
+              <Filter onSelect={onSelect} selectedId={selectedId} />
+            </Header>
+            <List category={selectedId} />
+          </>
         )}
-      </MediaQueryConsumer>
+      </Tabs>
       <Footer />
     </Page>
   );

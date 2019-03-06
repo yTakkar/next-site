@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { withRouter } from 'next/router';
 import classNames from 'classnames';
+import { SkipNavLink } from '@reach/skip-nav';
 
 import { MediaQueryConsumer } from './media-query';
 import NextLogo from './logo';
@@ -11,9 +12,8 @@ import GitHubLogo from './icons/github';
 import SpectrumLogo from './icons/spectrum';
 
 import { links } from '../site-manifest';
-import { SkipNavLink } from '@reach/skip-nav';
 
-export default withRouter(({ isMobile, router, hideLogo = false }) => {
+export default withRouter(({ router, hideLogo = false }) => {
   const { route } = router;
 
   return (
@@ -113,7 +113,11 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                 <div className="links">
                   <div className="icons">
                     <Link href="https://github.com/zeit/next.js">
-                      <a aria-label="Next.js on GitHub" rel="noreferrer" target="_blank">
+                      <a
+                        aria-label="Next.js on GitHub"
+                        rel="noreferrer"
+                        target="_blank"
+                      >
                         <GitHubLogo />
                       </a>
                     </Link>
@@ -327,7 +331,11 @@ export default withRouter(({ isMobile, router, hideLogo = false }) => {
                 }
                 <div className="icons">
                   <Link href="https://github.com/zeit/next.js">
-                    <a aria-label="Next.js on GitHub" rel="noreferrer" target="_blank">
+                    <a
+                      aria-label="Next.js on GitHub"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
                       <GitHubLogo />
                     </a>
                   </Link>

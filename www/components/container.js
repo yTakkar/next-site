@@ -13,9 +13,10 @@ export default function Container({
   mobileStyle,
   ...props
 }) {
-  return <div {...props}>
-    <style jsx>
-      {`
+  return (
+    <div {...props}>
+      <style jsx>
+        {`
       {
         width: 100%;
         margin: 0 auto;
@@ -48,7 +49,7 @@ export default function Container({
         display: table;
         clear: both;
       }
-      
+
       // CSS only media query for tablet
       @media screen and (max-width: 960px) {
         div {
@@ -63,7 +64,8 @@ export default function Container({
         }
       }
     `}
-    </style>
-    {children}
-  </div>
+      </style>
+      {children}
+    </div>
+  );
 }

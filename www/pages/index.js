@@ -23,16 +23,26 @@ export default () => (
     />
     <MediaQueryConsumer>
       {({ isMobile }) => (
-        <Header height={32} offset={-32} distance={32} shadow active={isMobile ? 32 : 160}>
-          <Notification href="/blog/next-8" title="Next 8 is out!" titleMobile="Next 8 is out!">
-            Next 8 is out! — Serverless mode, performance and security improvements and more.
-            Monday, February 11th 2019
+        <Header
+          height={32}
+          offset={-32}
+          distance={32}
+          shadow
+          active={isMobile ? 32 : 160}
+        >
+          <Notification
+            href="/blog/next-8"
+            title="Next 8 is out!"
+            titleMobile="Next 8 is out!"
+          >
+            Next 8 is out! — Serverless mode, performance and security
+            improvements and more. Monday, February 11th 2019
           </Notification>
           <Navbar hideLogo={true} />
         </Header>
       )}
     </MediaQueryConsumer>
-    <SkipNavContent/>
+    <SkipNavContent />
     <Intro />
     <Demo />
     <Features />

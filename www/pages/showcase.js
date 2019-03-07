@@ -2,7 +2,7 @@ import { withRouter } from 'next/router';
 import { SkipNavContent } from '@reach/skip-nav';
 
 import Page from '../components/page';
-import Header from '../components/header';
+import HeaderLegacy from '../components/header-legacy';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar';
 import Tabs from '../components/tabs';
@@ -28,15 +28,15 @@ function Showcase({ router }) {
         url="https://nextjs.org/showcase"
         description="Meet hundreds of beautiful websites powered by Next.js"
       />
-      <Header height={0} zIndex={1001} background="white" defaultActive>
+      <HeaderLegacy height={0} zIndex={1001} background="white" defaultActive>
         <Navbar />
-      </Header>
+      </HeaderLegacy>
       <SiteDetail siteData={mapping[item]} from={from} />
       <SkipNavContent />
       <Tabs data={categories} anchor>
         {(onSelect, selectedId) => (
           <>
-            <Header
+            <HeaderLegacy
               height={{
                 desktop: HEADER_HEIGHT + 64 + 32,
                 mobile: HEADER_HEIGHT + 64 + 32 + 32
@@ -52,7 +52,7 @@ function Showcase({ router }) {
                 }}
               />
               <Filter onSelect={onSelect} selectedId={selectedId} />
-            </Header>
+            </HeaderLegacy>
             <List category={selectedId} />
           </>
         )}

@@ -65,15 +65,15 @@ export default () => (
           justify-content: space-between;
           list-style-type: none;
         }
+        @media screen and (max-width: 960px) {
+          ul {
+            margin: 0 0 0 0.5rem;
+          }
+        }
         @media screen and (max-width: 640px) {
           ul {
             padding: 0 0 0 0.5rem;
             justify-content: flex-start;
-          }
-        }
-        @media screen and (max-width: 960px) {
-          ul {
-            margin: 0 0 0 0.5rem;
           }
         }
 

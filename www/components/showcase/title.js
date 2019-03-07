@@ -17,14 +17,14 @@ export default ({ height }) => {
             align-items: center;
             justify-content: flex-end;
           }
-          @media screen and (max-width: 640px) {
-            .showcase-title {
-              height: ${height.mobile || defaultHeight}px;
-            }
-          }
           @media screen and (max-width: 960px) {
             .showcase-title {
               height: ${height.tablet || defaultHeight}px;
+            }
+          }
+          @media screen and (max-width: 640px) {
+            .showcase-title {
+              height: ${height.mobile || defaultHeight}px;
             }
           }
         `}</style>

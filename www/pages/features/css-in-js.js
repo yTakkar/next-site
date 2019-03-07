@@ -26,12 +26,7 @@ export default () => (
       url="https://nexts.org/features/css-in-js"
       keywords="CSS-in-JS, CSS, JS, Next, JavaScript, Web Framework"
     />
-    <Header
-      height={{ desktop: 64, mobile: 64 + 32 }}
-      shadow
-      dotBackground
-      active={64}
-    >
+    <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow dotBackground>
       <Navbar />
     </Header>
     <Hero />

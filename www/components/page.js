@@ -184,10 +184,14 @@ function Page({ title, description, children }) {
           .display-mobile {
             display: none;
           }
-          // CSS only media query for mobile
           @media screen and (max-width: 640px) {
             .display-mobile {
               display: unset;
+            }
+          }
+          @media screen and (max-width: 640px) {
+            .hide-mobile {
+              display: none;
             }
           }
           a[role='button'] {

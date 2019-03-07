@@ -24,12 +24,7 @@ export default () => (
       url="https://nexts.org/features/static-exporting"
       keywords="Static site generation, Static exporting, Static exports, Next, JavaScript, Web Framework"
     />
-    <Header
-      height={{ desktop: 64, mobile: 64 + 32 }}
-      shadow
-      dotBackground
-      active={64}
-    >
+    <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow dotBackground>
       <Navbar />
     </Header>
     <SkipNavContent />

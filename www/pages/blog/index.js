@@ -42,11 +42,11 @@ const items = previewItems
     );
   });
 
-export default () => (
+export default () => (<>
+  <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow defaultActive>
+    <Navbar />
+  </Header>
   <Page title="Blog | Next.js">
-    <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow defaultActive>
-      <Navbar />
-    </Header>
     <Screen offset={64 + 400}>
       <Container padding wide>
         <SectionHeader title="Blog" />
@@ -56,4 +56,4 @@ export default () => (
     </Screen>
     <Footer />
   </Page>
-);
+</>);

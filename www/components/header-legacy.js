@@ -1,10 +1,43 @@
+/* global window */
 import React, { PureComponent } from 'react';
 import classNames from 'classnames';
 
-export default class Header extends PureComponent {
+export default class HeaderLegacy extends PureComponent {
+  state = {
+    scrolled: false,
+    fixed: false,
+    active: false
+  };
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll);
+    this.onScroll();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  onScroll = () => {
+    const scroll = window.scrollY || window.document.body.scrollTop;
+    const scrolled = scroll > (this.props.distance || 0);
+    const fixed = scroll >= (this.props.distance || 0);
+    const active = scroll >= (this.props.active || 0);
+
+    if (
+      scrolled !== this.state.scrolled ||
+      fixed !== this.state.fixed ||
+      active !== this.state.active
+    ) {
+      this.setState({ scrolled, fixed, active });
+    }
+  };
+
   render() {
+    const { scrolled, fixed, active } = this.state;
     const {
       height,
+      offset,
       shadow,
       zIndex,
       background,
@@ -17,17 +50,13 @@ export default class Header extends PureComponent {
     const mobileHeight = height.mobile || desktopHeight;
     const tabletHeight = height.tablet || desktopHeight;
 
-    const desktopShadow =
-      shadow.desktop || (typeof shadow === 'boolean' ? shadow : false);
-    const tabletShadow =
-      shadow.tablet || (typeof shadow === 'boolean' ? shadow : false);
-    const mobileShadow =
-      shadow.mobile || (typeof shadow === 'boolean' ? shadow : false);
-
     return (
       <header>
         <div
-          className={classNames('fixed-container active', {
+          className={classNames('fixed-container', {
+            scrolled,
+            fixed,
+            active: active || defaultActive,
             'show-logo': dotBackground
           })}
         >
@@ -37,23 +66,18 @@ export default class Header extends PureComponent {
           {`
             header {
               left: 0;
+              top: 0;
               width: 100%;
               height: ${desktopHeight}px;
-              position: -webkit-sticky;
-              position: sticky;
-              top: ${defaultActive ? 0 : -desktopHeight}px;
-              z-index: 1000;
             }
             @media screen and (max-width: 960px) {
               header {
                 height: ${tabletHeight}px;
-                top: ${defaultActive ? 0 : -tabletHeight}px;
               }
             }
             @media screen and (max-width: 640px) {
               header {
                 height: ${mobileHeight}px;
-                top: ${defaultActive ? 0 : -mobileHeight}px;
               }
             }
             .fixed-container {
@@ -73,26 +97,20 @@ export default class Header extends PureComponent {
               `
                 : 'background: rgba(255, 255, 255, 0);'};
             }
-            .active {
-              background: ${background || 'rgba(255, 255, 255, 0.98)'};
-              box-shadow: ${desktopShadow
-                ? '0px 6px 20px rgba(0, 0, 0, 0.06)'
-                : 'unset'};
+            .fixed {
+              position: fixed;
+              top: ${offset || 0}px;
               pointer-events: auto;
             }
-            @media screen and (max-width: 960px) {
-              .active {
-                box-shadow: ${tabletShadow
-                  ? '0px 6px 20px rgba(0, 0, 0, 0.06)'
-                  : 'unset'};
-              }
+            .scrolled {
+              position: fixed;
+              top: ${offset || 0}px;
             }
-            @media screen and (max-width: 640px) {
-              .active {
-                box-shadow: ${mobileShadow
-                  ? '0px 6px 20px rgba(0, 0, 0, 0.06)'
-                  : 'unset'};
-              }
+            .active {
+              background: ${background || 'rgba(255, 255, 255, 0.98)'};
+              ${shadow
+                ? 'box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.06);'
+                : ''} pointer-events: auto;
             }
           `}
         </style>

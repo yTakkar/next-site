@@ -46,7 +46,7 @@ export default function Demo() {
                     .note :global(p):last-of-type {
                       margin-bottom: 0;
                     }
-                    // CSS only media query for mobile
+                    // CSS only media query for tablet
                     @media screen and (max-width: 960px) {
                       .demo-header {
                         flex-wrap: wrap;

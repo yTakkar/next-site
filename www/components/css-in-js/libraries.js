@@ -10,9 +10,11 @@ export default () => (
 
       <div className="content">
         <p>
-          Next.js provides <code>styled-jsx</code> out-of-the-box, with zero setup required, so you
-          can stop endlessly configuring your tools and get back to building beautiful pages. Have
-          another library of choice? Next.js also works great with every popular CSS-in-JS solution.
+          Next.js provides <code>styled-jsx</code> out-of-the-box, with zero
+          setup required, so you can stop endlessly configuring your tools and
+          get back to building beautiful pages. Have another library of choice?
+          Next.js also works great with every popular CSS-in-JS solution, like{' '}
+          <em>Styled Components</em> and <em>Emotion</em>.
         </p>
       </div>
 

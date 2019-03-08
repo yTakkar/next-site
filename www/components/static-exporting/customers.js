@@ -16,7 +16,7 @@ import Motiv from '../icons/companies/motiv';
 const slides = [
   {
     href: 'https://blockstack.org/',
-    image: '/static/images/showcases/blockstack.png',
+    image: '/static/images/showcases/blockstack.jpg',
     alt: 'Blockstack',
     logo: <Blockstack />
   },
@@ -70,7 +70,7 @@ const slides = [
   },
   {
     href: 'https://blockchain.com/',
-    image: '/static/images/showcases/blockchain.png',
+    image: '/static/images/showcases/blockchain.jpg',
     alt: 'Blockchain',
     logo: <Blockchain />
   }

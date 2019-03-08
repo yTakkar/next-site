@@ -12,6 +12,20 @@ import Checkmark from '../icons/checkmark';
 
 const files = [
   {
+    name: 'Avatar.js',
+    content: `export default function Avatar({ src }) {
+  return (
+    <>
+      <img src={ src } />
+
+      <style jsx>{\`
+        img { border-radius: 50%; width: 24px; height: 24px; }
+      \`}</style>
+    </>
+  )
+}`
+  },
+  {
     name: 'TitleBlock.js',
     content: `export default function TitleBlock({ title, description }) {
   return (
@@ -24,20 +38,6 @@ const files = [
         p { font-size: 16px; }
       \`}</style>
     </div>
-  )
-}`
-  },
-  {
-    name: 'Avatar.js',
-    content: `export default function Avatar({ src }) {
-  return (
-    <>
-      <img src={ src } />
-
-      <style jsx>{\`
-        img { border-radius: 50%; width: 24px; height: 24px; }
-      \`}</style>
-    </>
   )
 }`
   },
@@ -73,9 +73,7 @@ export default () => {
   const { name } = files[selected];
 
   React.useEffect(() => {
-    if (window.innerWidth < 640) {
-      select(1);
-    } else {
+    if (window.innerWidth > 1023) {
       const interval = setInterval(() => {
         select(current => ++current % 3);
       }, 3000);
@@ -110,7 +108,6 @@ export default () => {
             <Window
               title={name}
               height={297}
-              mobileHeight={275}
               backgroundColor="black"
             >
               <PoseGroup>
@@ -145,12 +142,13 @@ export default () => {
               <PoseGroup>
                 {selected === 0 && (
                   <Anim key={0}>
-                    <TitleOverlay />
+                    <AvatarOverlay />
+
                   </Anim>
                 )}
                 {selected === 1 && (
                   <Anim key={1}>
-                    <AvatarOverlay />
+                    <TitleOverlay />
                   </Anim>
                 )}
                 {selected === 2 && (
@@ -194,7 +192,8 @@ export default () => {
             margin: 2.5rem 1rem 3rem;
           }
           .terminal-container {
-            width: 29.5rem;
+            width: 100%;
+            max-width: 29.5rem;
           }
           .terminal-container :global(pre) {
             margin: 0;
@@ -231,7 +230,7 @@ export default () => {
             font-weight: 600;
           }
 
-          @media screen and (max-width: 1024px) {
+          @media screen and (max-width: 1023px) {
             ul {
               align-self: initial;
               flex-direction: column;
@@ -246,17 +245,14 @@ export default () => {
               flex-direction: column-reverse;
             }
             .flex {
-              align-self: initial;
+              padding: 0 1rem;
               margin: 4rem 0 3rem;
+            }
+            .terminal-container {
+              margin: 0 auto;
             }
             .site-container {
               display: none;
-            }
-          }
-
-          @media screen and (max-width: 540px) {
-            .terminal-container {
-              width: 22rem;
             }
           }
         `}

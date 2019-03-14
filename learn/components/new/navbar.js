@@ -129,7 +129,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
             </div>
           </div>
           <div className="links mute dropdown">
-            <Link href="/features" prefetch>
+            <Link href="/#features" prefetch>
               <a
                 className={classNames({
                   selected: route.startsWith('/features')
@@ -280,7 +280,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
           `}
         </style>
         <div className="links">
-          <Link href="/features" prefetch>
+          <Link href="/#features" prefetch>
             <a
               className={classNames('mute', {
                 selected: route.startsWith('/features')

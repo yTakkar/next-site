@@ -1,21 +1,23 @@
 import Head from 'next/head'
+import Router from 'next/router'
 
-import RouterEvents from '../../lib/router-events'
-import {trackPageview} from '../../lib/analytics'
+import { trackPageview } from '../../lib/analytics'
 
 import { withMediaQuery } from './media-query'
 
-RouterEvents.on('routeChangeComplete', (url) => {
+Router.events.on('routeChangeComplete', url => {
   trackPageview(url)
 })
 
 export default withMediaQuery(({ isMobile, title, children }) => (
   <div className={isMobile ? 'is-mobile' : ''}>
-    {title && <Head>
-      <title>{title}</title>
-    </Head>}
+    {title && (
+      <Head>
+        <title>{title}</title>
+      </Head>
+    )}
     <style jsx>{`
-      {
+       {
         overflow-x: hidden;
       }
     `}</style>
@@ -36,7 +38,8 @@ export default withMediaQuery(({ isMobile, title, children }) => (
         min-height: 100%;
         margin: 0;
         line-height: 1.65;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+          'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
         font-size: 16px;
         font-weight: 400;
         min-width: 320px;
@@ -47,21 +50,24 @@ export default withMediaQuery(({ isMobile, title, children }) => (
         -moz-osx-font-smoothing: grayscale;
         scroll-behavior: smooth;
       }
-      html, body {
-        background-color: #FFF;
+      html,
+      body {
+        background-color: #fff;
         color: #111;
       }
       ::selection {
         background-color: #0076ff;
-        color: #FFF;
+        color: #fff;
       }
-      [role="grid"]:focus {
+      [role='grid']:focus {
         outline: none;
       }
       svg {
         text-rendering: optimizeLegibility;
       }
-      h1, h2, h3 {
+      h1,
+      h2,
+      h3 {
         margin: 0;
       }
       a {
@@ -72,8 +78,9 @@ export default withMediaQuery(({ isMobile, title, children }) => (
         color: #68b5fb;
       }
       code {
-        font-size: .9em;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+        font-size: 0.9em;
+        font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+          Bitstream Vera Sans Mono, Courier New, monospace, serif;
       }
       iframe {
         width: 100%;
@@ -160,12 +167,13 @@ export default withMediaQuery(({ isMobile, title, children }) => (
       .is-mobile .display-mobile {
         display: unset;
       }
-      .no-tap-highlight, a {
+      .no-tap-highlight,
+      a {
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-    
+
         -webkit-touch-callout: none;
         -khtml-user-select: none;
         -ms-touch-action: pan-y;
@@ -173,7 +181,7 @@ export default withMediaQuery(({ isMobile, title, children }) => (
         -webkit-tap-highlight-color: transparent;
       }
       .no-drag {
-        user-drag: none; 
+        user-drag: none;
         user-select: none;
         -moz-user-select: none;
         -webkit-user-drag: none;

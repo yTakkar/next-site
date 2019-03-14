@@ -194,4 +194,4 @@ export default withPure(() => (
       </footer>
     </Container>
   </Container>
-));
+))

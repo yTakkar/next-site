@@ -11,7 +11,7 @@ Even still, there's a high learning curve before you can build a proper applicat
 
 Think about how webapps are created with PHP. You create some files, write PHP code, then simply deploy it. We don't have to worry about routing much, and the app is rendered on the server by default.
 
-<img width="112" alt="Next.js Logo" src="https://cloud.githubusercontent.com/assets/50838/24116055/7076ba9c-0dcb-11e7-93d0-ba8f9ac8f6e4.png">
+<img width="112" alt="Next.js Logo" src="https://cloud.githubusercontent.com/assets/50838/24116055/7076ba9c-0dcb-11e7-93d0-ba8f9ac8f6e4.png" />
 
 That's exactly what we do with [Next.js](https://github.com/zeit/next.js). Instead of PHP, we build the app with JavaScript and React. Here are some other cool features Next.js brings to the table:
 
@@ -85,7 +85,6 @@ What's the output you see on the screen?
 `
     },
 
-
     {
       id: '404-page',
       type: 'text',
@@ -105,11 +104,11 @@ You'll see a 404 page like this:
       points: 20,
       answers: [
         'Nothing happened',
-        'There\'s an error with page not found',
-        'There\'s an error showing the syntax error',
-        'There\'s an error with 500 - Internal Error'
+        "There's an error with page not found",
+        "There's an error showing the syntax error",
+        "There's an error with 500 - Internal Error"
       ],
-      correctAnswer: 'There\'s an error showing the syntax error',
+      correctAnswer: "There's an error showing the syntax error",
       text: `
 ## Creating Our First Page
 
@@ -149,7 +148,7 @@ export default Index
 ~~~
 
 What will happen to the app loaded at [http://localhost:3000](http://localhost:3000/)?
-      `,
+      `
     },
 
     {

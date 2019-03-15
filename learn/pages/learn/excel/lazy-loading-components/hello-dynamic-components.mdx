@@ -19,7 +19,7 @@ export const meta = {
 
 ## Hello Dynamic Components
 
-In this app, we've isolated markdown rendering into a React [Higher Order Component](https://facebook.github.io/react/docs/higher-order-components.html) (HOC).
+In this app, we've isolated markdown rendering into a React [Higher Order Component](https://reactjs.org/docs/higher-order-components.html) (HOC).
 It's located at `lib/with-post.js`. Here's the content of that file:
 
 ```js
@@ -54,11 +54,11 @@ You can visit `pages/p/hello-nextjs.js` and see how we are using this HOC.
 
 ---
 
-Now we are trying to convert the above `Highlight` component into a **dynamic component**. Dynamic components are powered by the [dynamic imports](https://github.com/zeit/next.js#dynamic-import) in Next.js.
+Now we are trying to convert the above `Highlight` component into a **dynamic component**. Dynamic components are powered by the [dynamic imports](https://nextjs.org/docs/#dynamic-import) in Next.js.
 
 Most importantly, these components will be loaded only when they are about to be rendered in your app.
 
-Creating a dynamic component is simple. You can use the [`next/dynamic`](https://github.com/zeit/next.js#dynamic-import) utility. Here's how you can convert `Highlight` into a dynamic component.
+Creating a dynamic component is simple. You can use the [`next/dynamic`](https://nextjs.org/docs/#dynamic-import) utility. Here's how you can convert `Highlight` into a dynamic component.
 
 ```js
 //import Highlight from 'react-highlight'

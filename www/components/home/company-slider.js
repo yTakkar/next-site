@@ -4,7 +4,6 @@ import OpenCollective from '../icons/companies/opencollective';
 import Eaze from '../icons/companies/eaze';
 import MagicLeap from '../icons/companies/magic-leap';
 import Trulia from '../icons/companies/trulia';
-import MozillaVR from '../icons/companies/mozilla-vr';
 import Netflix from '../icons/companies/netflix';
 import GitHub from '../icons/companies/github';
 import Scale from '../icons/companies/scale';
@@ -39,9 +38,6 @@ export default function CompanySlider() {
         </div>
         <div>
           <Trulia />
-        </div>
-        <div>
-          <MozillaVR />
         </div>
         <div>
           <Netflix />

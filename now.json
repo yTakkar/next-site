@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "scope": "next-js",
   "builds": [
     { "src": "google79eca80c0e444114.html", "use": "@now/static" },
     { "src": "www/package.json", "use": "@now/static-build" },

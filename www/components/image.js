@@ -135,19 +135,19 @@ class Image extends Component {
                 transform: translate3d(0, 0, 0); /* Work around for Chrome bug */
                 position: relative;
               }
-              ${
-                isAmp
-                  ? ''
-                  : `
-                    figure :global(img),
-                    figure :global(video) {
+              figure :global(img),
+              figure :global(video) {
+                ${
+                  isAmp
+                    ? ''
+                    : `
                       height: 100%;
                       left: 0;
                       position: absolute;
                       top: 0;
                       width: 100%;
-                    }
-                    `
+                      `
+                };
               }
               figcaption {
                 color: #999;

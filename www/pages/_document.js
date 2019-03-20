@@ -5,14 +5,16 @@ import { GA_TRACKING_ID } from '../lib/analytics';
 
 export default class NextSite extends Document {
   render() {
+    const { amphtml } = this.props;
     return (
       <Html lang="en">
         <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
-
+          {!amphtml && (
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1.0"
+            />
+          )}
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -44,24 +46,52 @@ export default class NextSite extends Document {
           />
           <meta name="theme-color" content="#000" />
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+
+          {amphtml && (
+            <script
+              async
+              custom-element="amp-analytics"
+              src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
+            />
+          )}
         </Head>
         <body>
           <Main />
           <NextScript />
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_TRACKING_ID}');
-              `
-            }}
-          />
+          {amphtml ? (
+            <amp-analytics type="gtag" data-credentials="include">
+              <script
+                type="application/json"
+                dangerouslySetInnerHTML={{
+                  __html: JSON.stringify({
+                    vars: {
+                      gtag_id: GA_TRACKING_ID,
+                      config: {
+                        GA_TRACKING_ID: { groups: 'default' }
+                      }
+                    }
+                  })
+                }}
+              />
+            </amp-analytics>
+          ) : (
+            <>
+              <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+              />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${GA_TRACKING_ID}');
+                  `
+                }}
+              />
+            </>
+          )}
         </body>
       </Html>
     );

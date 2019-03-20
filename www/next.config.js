@@ -35,6 +35,7 @@ const { mapping: showcaseMapping } = require('./showcase-manifest');
 const webpack = require('webpack');
 
 var config = {
+  experimental: { amp: true },
   pageExtensions: ['jsx', 'js', 'mdx'],
   webpack: (config, { dev, isServer }) => {
     config.plugins = config.plugins || [];

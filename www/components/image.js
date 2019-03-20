@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
+import { useAmp } from 'next/amp';
+import Head from 'next/head';
 import IObserver from './intersection-observer';
 
 // This component might look a little complex
@@ -21,7 +22,8 @@ class Image extends Component {
   static propTypes = {
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
-    lazy: PropTypes.bool
+    lazy: PropTypes.bool,
+    isAmp: PropTypes.bool.isRequired
   };
 
   state = {
@@ -39,6 +41,7 @@ class Image extends Component {
       caption,
       width,
       height,
+      isAmp,
       margin = 40,
       video = false,
       videoSrc,
@@ -66,8 +69,38 @@ class Image extends Component {
           })}
         >
           <div className="container" style={{ width }}>
-            <div style={{ paddingBottom: aspectRatio }}>
-              {this.state.src ? (
+            <div style={isAmp ? undefined : { paddingBottom: aspectRatio }}>
+              {isAmp ? (
+                videoSrc || video ? (
+                  <>
+                    <Head>
+                      <script
+                        key="amp-video"
+                        async
+                        custom-element="amp-video"
+                        src="https://cdn.ampproject.org/v0/amp-video-0.1.js"
+                      />
+                    </Head>
+                    <amp-video
+                      layout="responsive"
+                      src={rest.videoSrc || rest.src}
+                      width={width}
+                      height={height}
+                      muted="muted"
+                      autoPlay="autoplay"
+                      loop="loop"
+                    />
+                  </>
+                ) : (
+                  <amp-img
+                    layout="responsive"
+                    src={rest.src}
+                    width={width}
+                    height={height}
+                    alt={rest.alt}
+                  />
+                )
+              ) : this.state.src ? (
                 videoSrc || video ? (
                   <video src={this.state.src} muted autoPlay loop playsInline />
                 ) : renderImage ? (
@@ -102,13 +135,19 @@ class Image extends Component {
                 transform: translate3d(0, 0, 0); /* Work around for Chrome bug */
                 position: relative;
               }
-              figure :global(img),
-              figure :global(video) {
-                height: 100%;
-                left: 0;
-                position: absolute;
-                top: 0;
-                width: 100%;
+              ${
+                isAmp
+                  ? ''
+                  : `
+                    figure :global(img),
+                    figure :global(video) {
+                      height: 100%;
+                      left: 0;
+                      position: absolute;
+                      top: 0;
+                      width: 100%;
+                    }
+                    `
               }
               figcaption {
                 color: #999;
@@ -137,6 +176,12 @@ class Image extends Component {
   }
 }
 
-export const Video = props => <Image {...props} video />;
+export const Video = props => {
+  const isAmp = useAmp();
+  return <Image {...props} video isAmp={isAmp} />;
+};
 
-export default Image;
+export default props => {
+  const isAmp = useAmp();
+  return <Image {...props} isAmp={isAmp} />;
+};

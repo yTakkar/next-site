@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { MDXProvider } from '@mdx-js/tag';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import formatDate from 'date-fns/format';
+import { useAmp } from 'next/amp';
 
 import Header from '../header';
 import Footer from '../footer';
@@ -13,72 +14,87 @@ import { components } from './post-components';
 import SocialMeta from '../social-meta';
 import ArrowLeftLong from '../icons/arrow-left-long';
 
-const Author = meta => (
-  <div className="author">
-    <img src={meta.avatar} alt={meta.name} />
-    <span className="name f5">
-      <span className="real-name">{meta.name}</span>
-      <Link href={`https://twitter.com/${meta.twitter}`}>
-        <a className="twitter" target="_blank">
-          @{meta.twitter}
-        </a>
-      </Link>
-      <span className="twitter-mobile">
-        (
+const Author = meta => {
+  const isAmp = useAmp();
+  return (
+    <div className="author">
+      {isAmp ? (
+        <amp-img
+          width={1}
+          height={1}
+          layout="responsive"
+          src={meta.avatar}
+          alt={meta.name}
+        />
+      ) : (
+        <img src={meta.avatar} alt={meta.name} />
+      )}
+      <span className="name f5">
+        <span className="real-name">{meta.name}</span>
         <Link href={`https://twitter.com/${meta.twitter}`}>
-          <a target="_blank">@{meta.twitter}</a>
+          <a className="twitter" target="_blank">
+            @{meta.twitter}
+          </a>
         </Link>
-        )
+        <span className="twitter-mobile">
+          (
+          <Link href={`https://twitter.com/${meta.twitter}`}>
+            <a target="_blank">@{meta.twitter}</a>
+          </Link>
+          )
+        </span>
       </span>
-    </span>
-    <style jsx>{`
-      .author {
-        display: inline-flex;
-        align-items: center;
-        padding: 0 1rem;
-        margin-bottom: 0.5rem;
-        white-space: nowrap;
-      }
-      img {
-        width: 2rem;
-        height: 2rem;
-        margin-right: 0.5rem;
-        border-radius: 50%;
-        background: #efefef;
-      }
-      .name {
-        line-height: 1.1rem;
-        text-align: left;
-      }
-      .real-name {
-        display: block;
-      }
-      .twitter {
-        font-size: 12px;
-      }
-      .twitter-mobile {
-        display: none;
-        margin-left: 0.25rem;
-      }
-      // CSS only media query for mobile
-      @media screen and (max-width: 640px) {
-        img {
-          width: 1.5rem;
-          height: 1.5rem;
+      <style jsx>{`
+        .author {
+          display: inline-flex;
+          align-items: center;
+          padding: 0 1rem;
+          margin-bottom: 0.5rem;
+          white-space: nowrap;
+        }
+        img,
+        amp-img {
+          width: 2rem;
+          height: 2rem;
+          margin-right: 0.5rem;
+          border-radius: 50%;
+          background: #efefef;
+        }
+        .name {
+          line-height: 1.1rem;
+          text-align: left;
         }
         .real-name {
-          display: inline;
+          display: block;
         }
         .twitter {
-          display: none;
+          font-size: 12px;
         }
         .twitter-mobile {
-          display: initial;
+          display: none;
+          margin-left: 0.25rem;
         }
-      }
-    `}</style>
-  </div>
-);
+        // CSS only media query for mobile
+        @media screen and (max-width: 640px) {
+          img,
+          amp-img {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+          .real-name {
+            display: inline;
+          }
+          .twitter {
+            display: none;
+          }
+          .twitter-mobile {
+            display: initial;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
 
 const HeaderImage = meta => {
   if (meta.headerImage) {
@@ -129,7 +145,7 @@ export default meta => ({ children }) => {
             ))}
           </div>
           <Container small wide overflow>
-            <content>{children}</content>
+            <main>{children}</main>
             <div className="back-button">
               <Button href="/blog" invert prefetch>
                 <span className="icon">

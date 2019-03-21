@@ -1,162 +1,62 @@
-/* global window */
-import { Component } from 'react';
 import Head from './head';
-import Sidebar from './sidebar';
 import { H1, H2, H3, H4, H5 } from './text/headings';
 import { Blockquote } from './text/quotes';
 import { InlineCode, Code } from './text/code';
 import { GenericLink } from './text/link';
 import Heading from './heading';
+import Sidebar from './sidebar';
 
-import { MediaQueryConsumer } from '../media-query';
+export default function Documentation({ children, headings }) {
+  return (
+    <>
+      <Head title="Getting Started" />
+      
+      <div className="documentation">
+        <Sidebar headings={headings} desktop />
+        <div className="documentation__container">
+          <div
+            className="documentation__content"
+            // eslint-disable-next-line no-return-assign
+            ref={ref => (this.contentNode = ref)}
+          >
+            {children}
+          </div>
+        </div>
 
-if (typeof window !== 'undefined') {
-  // eslint-disable-next-line global-require
-  require('intersection-observer');
-}
+        <style jsx>{`
+          .documentation {
+            display: flex;
+            padding-top: 50px;
+          }
+          @media screen and (max-width: 640px) {
+            .documentation {
+              display: block;
+              padding-top: 25px;
+            }
+          }
+          .documentation__sidebar {
+            display: flex;
+            flex-direction: column;
+          }
 
-export default class Documentation extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentSelection: null
-    };
-    this.contentNode = null;
-    this.observer = null;
-    this.preventScrollObserverUpdate = false;
-  }
+          .documentation__container {
+            flex: 1;
+            padding-bottom: 5rem;
+            overflow: hidden;
+          }
 
-  componentDidMount() {
-    window.addEventListener('hashchange', this.onHashChange);
+          .documentation__header h1 {
+            margin-top: 0;
+          }
 
-    const nodes = [...this.contentNode.querySelectorAll('h3 [id], h4 [id]')];
-    const intersectingTargets = new Set();
-
-    this.observer = new window.IntersectionObserver(entries => {
-      entries.forEach(({ isIntersecting, target }) => {
-        if (isIntersecting) {
-          intersectingTargets.add(target);
-        } else {
-          intersectingTargets.delete(target);
-        }
-      });
-
-      if (this.preventScrollObserverUpdate) {
-        this.preventScrollObserverUpdate = false;
-        return;
-      }
-      if (!intersectingTargets.size) return;
-
-      let minIndex = Infinity;
-      let id = '';
-
-      // eslint-disable-next-line no-restricted-syntax
-      for (const target of intersectingTargets.values()) {
-        const index = nodes.indexOf(target);
-        if (index < minIndex) {
-          minIndex = index;
-          // eslint-disable-next-line prefer-destructuring
-          id = target.id;
-        }
-      }
-
-      const hash = `#${id || ''}`;
-      this.updateSelected(hash);
-    });
-
-    nodes.forEach(node => this.observer.observe(node));
-
-    const { hash } = window.location;
-    this.setState({ currentSelection: hash });
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('hashchange', this.onHashChange);
-
-    this.observer.disconnect();
-    this.observer = null;
-  }
-
-  updateSelected = hash => {
-    const { currentSelection } = this.state;
-    if (currentSelection !== hash) {
-      this.setState({
-        currentSelection: hash
-      });
-    }
-  };
-
-  onHashChange = () => {
-    this.preventScrollObserverUpdate = true;
-    this.updateSelected(window.location.hash);
-  };
-
-  render() {
-    const { headings, children } = this.props;
-    const { currentSelection } = this.state;
-
-    return (
-      <MediaQueryConsumer>
-        {({ isMobile }) => {
-          return (
-            <>
-              <Head title="Getting Started" />
-
-              <div className="documentation">
-                <Sidebar
-                  updateSelected={this.updateSelected}
-                  currentSelection={currentSelection}
-                  isMobile={isMobile}
-                  headings={headings}
-                />
-
-                <div className="documentation__container">
-                  <div
-                    className="documentation__content"
-                    // eslint-disable-next-line no-return-assign
-                    ref={ref => (this.contentNode = ref)}
-                  >
-                    {children}
-                  </div>
-                </div>
-
-                <style jsx>{`
-                  .documentation {
-                    display: flex;
-                  }
-                  @media screen and (max-width: 640px) {
-                    .documentation {
-                      display: block;
-                    }
-                  }
-
-                  .documentation__sidebar {
-                    display: flex;
-                    flex-direction: column;
-                  }
-
-                  .documentation__container {
-                    flex: 1;
-                    padding-bottom: 5rem;
-                    overflow: hidden;
-                  }
-
-                  .documentation__header h1 {
-                    margin-top: 0;
-                  }
-
-                  .documentation__content {
-                    width: 100%;
-                    max-width: 600px;
-                  }
-                `}</style>
-              </div>
-            </>
-          );
-        }}
-      </MediaQueryConsumer>
-    );
-  }
+          .documentation__content {
+            width: 100%;
+            max-width: 600px;
+          }
+        `}</style>
+      </div>
+    </>
+  );
 }
 
 const DocH2 = ({ children, id }) => (

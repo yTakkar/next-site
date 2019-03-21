@@ -33,6 +33,7 @@ const sortOrder = [
   'nike',
   'netflix-jobs',
   'hulu',
+  'audible',
   'boosted-boards',
   'elton-john',
   'binance',
@@ -41,24 +42,27 @@ const sortOrder = [
   'open-collective',
   'styled-components',
   'auth0-careers',
-  'coinbase',
-  'iota-data-market',
-  'h1pl',
+  'iota',
   'twitch',
   'eaze',
   'zeit',
   'a24',
   'avocode',
   'expo',
+  'att',
   'sumup',
   'hashnode',
   'jet',
   'weedmaps',
+  'ticketswap',
+  'ignmovies',
+  'dicefm',
+  'giveindia',
+  'allvoices',
   'sanity',
   'aenetworks',
   'tencent-news',
   'idean',
-  'prisma',
   'repl.it',
   'satoshis.place',
   'givecrypto',
@@ -69,30 +73,32 @@ const sortOrder = [
   'hyper',
   'deliveroo',
   'colorbox',
+  'hollar',
+  'suburbia',
   'docker',
   'verge',
-  'whowhatwear',
   'nteract',
   'institchu',
   'lego',
   'syntax.fm',
   'design-better',
-  'nimiqscan',
   'pusher',
   'staples',
   'worldpopulationreview',
-  'usopen',
   'bitscreener',
   'starbucksreserve',
   'underbelly',
   'heramerica',
   'lightningdesignsystem',
+  'nilefmonline',
+  'yicaiglobal',
+  'tvpublica',
   'piesync',
-  'shadowtech',
   'inflect',
   'eurostar',
   'plotly',
-  'ebay',
+  'artsmia',
+  'onuniverse',
   'garticio',
   'trip',
   'material-ui',
@@ -104,6 +110,132 @@ const sortOrder = [
 ];
 
 const mapping = {
+  hollar: {
+    title: 'Hollar',
+    link: 'https://www.hollar.com',
+    src: '/static/images/showcases/holar.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'hollar',
+    tags: ['e-commerce']
+  },
+  yicaiglobal: {
+    title: 'Yicai Global',
+    link: 'https://yicaiglobal.com',
+    src: '/static/images/showcases/yicaiglobal.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'yicaiglobal',
+    tags: ['news']
+  },
+  artsmia: {
+    title: 'Minneapolis Institute of Art',
+    link: 'https://new.artsmia.org',
+    src: '/static/images/showcases/artsmia.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'artsmia',
+    tags: []
+  },
+  tvpublica: {
+    title: 'Televisión Pública Argentina',
+    link: 'https://www.tvpublica.com.ar',
+    src: '/static/images/showcases/tvpublica.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'tvpublica',
+    tags: ['news']
+  },
+  suburbia: {
+    title: 'Suburbia',
+    link: 'https://www.suburbia.com.mx',
+    src: '/static/images/showcases/suburbia.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'suburbia',
+    tags: ['e-commerce']
+  },
+  att: {
+    title: 'AT&T',
+    link: 'https://www.att.com',
+    src: '/static/images/showcases/att.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'att',
+    tags: []
+  },
+  ticketswap: {
+    title: 'AT&T',
+    link: 'https://www.ticketswap.uk',
+    src: '/static/images/showcases/ticketswap.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'ticketswap',
+    tags: ['e-commerce']
+  },
+  ignmovies: {
+    title: 'IGN Movies',
+    link: 'https://www.ign.com/movies',
+    src: '/static/images/showcases/ignmovies.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'ignmovies',
+    tags: ['entertainment']
+  },
+  audible: {
+    title: 'Audible',
+    link: 'https://www.audible.com/about/',
+    src: '/static/images/showcases/audible.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'audible',
+    tags: ['entertainment']
+  },
+  dicefm: {
+    title: 'DICE',
+    link: 'https://dice.fm',
+    src: '/static/images/showcases/dicefm.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'dicefm',
+    tags: ['e-commerce']
+  },
+  nilefmonline: {
+    title: 'NileFM',
+    link: 'http://nilefmonline.com',
+    src: '/static/images/showcases/nilefmonline.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'nilefmonline',
+    tags: ['entertainment']
+  },
+  giveindia: {
+    title: 'GiveIndia',
+    link: 'https://www.giveindia.org',
+    src: '/static/images/showcases/giveindia.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'giveindia',
+    tags: []
+  },
+  allvoices: {
+    title: 'AllVoices',
+    link: 'https://allvoices.co',
+    src: '/static/images/showcases/allvoices.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'allvoices',
+    tags: []
+  },
+  onuniverse: {
+    title: 'Universe',
+    link: 'https://onuniverse.com',
+    src: '/static/images/showcases/onuniverse.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'onuniverse',
+    tags: ['creative']
+  },
   theculturetrip: {
     title: 'Culture Trip',
     link: 'https://theculturetrip.com',
@@ -132,15 +264,6 @@ const mapping = {
     highlighted: 1,
     internalUrl: 'twitch',
     tags: ['entertainment']
-  },
-  ebay: {
-    title: 'Ebay Haitao',
-    link: 'https://haitao.ebay.com',
-    src: '/static/images/showcases/ebay-haitao.jpg',
-    width: 3836,
-    height: 2200,
-    internalUrl: 'ebay',
-    tags: ['e-commerce']
   },
   lego: {
     title: 'LEGO for Kids',
@@ -249,16 +372,6 @@ const mapping = {
     height: 2200,
     internalUrl: 'heramerica'
   },
-  shadowtech: {
-    title: 'Shadow',
-    link: 'https://shadow.tech/usen',
-    src: '/static/images/showcases/shadowtech.jpg',
-    width: 3836,
-    height: 2200,
-    internalUrl: 'shadowtech',
-    highlighted: 1,
-    tags: ['e-commerce']
-  },
   bitscreener: {
     title: 'Bitscreener',
     link: 'https://bitscreener.com',
@@ -267,14 +380,6 @@ const mapping = {
     height: 2200,
     internalUrl: 'bitscreener',
     tags: ['finance']
-  },
-  usopen: {
-    title: '2018 US Open Tennis Championships',
-    link: 'https://bracketchallenge.usopen.org',
-    src: '/static/images/showcases/usopen.jpg',
-    width: 3836,
-    height: 2200,
-    internalUrl: 'usopen'
   },
   staples: {
     title: 'Staples',
@@ -295,24 +400,6 @@ const mapping = {
     internalUrl: 'ticketmaster',
     tags: ['e-commerce']
   },
-  h1pl: {
-    title: 'H1Z1 Pro League',
-    link: 'https://h1pl.com',
-    src: '/static/images/showcases/h1pl.jpg',
-    width: 3836,
-    height: 2200,
-    internalUrl: 'h1pl',
-    tags: ['entertainment']
-  },
-  nimiqscan: {
-    title: 'NimiqScan',
-    link: 'https://nimiqscan.com',
-    src: '/static/images/showcases/nimiqscan.jpg',
-    width: 3836,
-    height: 2200,
-    internalUrl: 'nimiqscan',
-    tags: ['finance']
-  },
   verge: {
     title: 'Verge',
     link: 'https://vergecurrency.com',
@@ -320,15 +407,6 @@ const mapping = {
     width: 3836,
     height: 2200,
     internalUrl: 'verge',
-    tags: ['finance']
-  },
-  coinbase: {
-    title: 'Coinbase',
-    link: 'https://coinbase.engineering',
-    src: '/static/images/showcases/coinbase.jpg',
-    width: 3836,
-    height: 2200,
-    internalUrl: 'coinbase',
     tags: ['finance']
   },
   binance: {
@@ -403,16 +481,6 @@ const mapping = {
     height: 2200,
     internalUrl: 'nteract',
     tags: ['creative']
-  },
-  whowhatwear: {
-    title: 'Who What Wear UK',
-    link: 'https://www.whowhatwear.co.uk',
-    src: '/static/images/showcases/whowhatwear.jpg',
-    width: 3836,
-    height: 2200,
-    internalUrl: 'whowhatwear',
-    highlighted: 1,
-    tags: ['news']
   },
   'square-enix-games': {
     title: 'Square Enix',
@@ -552,15 +620,6 @@ const mapping = {
     internalUrl: 'idean',
     tags: ['creative']
   },
-  prisma: {
-    title: 'Prisma',
-    link: 'https://www.prisma.io',
-    src: '/static/images/showcases/prisma.jpg',
-    width: 3836,
-    height: 2200,
-    internalUrl: 'prisma',
-    tags: ['dev']
-  },
   'magic-leap': {
     title: 'Magic Leap',
     link: 'https://magicleap.com',
@@ -687,13 +746,13 @@ const mapping = {
     internalUrl: 'avocode',
     tags: ['creative']
   },
-  'iota-data-market': {
-    title: 'IOTA Data Market',
-    link: 'https://data.iota.org',
-    src: '/static/images/showcases/showcases-12.jpg',
+  iota: {
+    title: 'IOTA',
+    link: 'https://www.iota.org',
+    src: '/static/images/showcases/iota.jpg',
     width: 3832,
     height: 2200,
-    internalUrl: 'iota-data-market',
+    internalUrl: 'iota',
     tags: ['dev', 'finance']
   },
   expo: {

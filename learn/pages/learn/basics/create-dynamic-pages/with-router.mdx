@@ -11,7 +11,7 @@ export const meta = {
 
 As you can see, that code will throw an error like this:
 
-![](/learn/static/images/withrouter-error.jpg)
+![](/learn/static/images/withrouter-error.png)
 
 That's because we're injecting the `router` property into the `Page` component by calling `withRouter` on it.
 `withRouter` can be used on any component in your Next.js application. So in this case we can move the `withRouter` call to the `Content` component:

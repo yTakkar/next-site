@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 export default function TabButton({
-  isMobile,
+  small,
   light,
   invert,
   selected,
@@ -12,7 +12,7 @@ export default function TabButton({
     <button
       className={classNames('fw4 no-drag no-tap-highlight', {
         selected,
-        f5: isMobile
+        f5: small
       })}
       onClick={onClick}
     >
@@ -23,14 +23,21 @@ export default function TabButton({
           cursor: pointer;
           text-decoration: none;
           padding: 0.25rem 0.5rem;
-          margin: ${isMobile ? '.25rem' : '0 1rem'};
+          margin: ${small ? '.25rem' : '0 1rem'};
           color: ${invert ? '#8D8D8D' : '#999'};
           transition: all 0.2s ease;
           background-color: transparent;
           font-size: inherit;
           border: none;
           line-height: inherit;
-          flex: ${isMobile ? '0 0 100%' : 'initial'};
+          flex: ${small ? '0 0 100%' : 'initial'};
+        }
+        @media screen and (max-width: 960px) {
+          button {
+            margin: 0.25rem;
+            flex: 0 0 100%;
+            font-size: 0.8888888888888888em;
+          }
         }
         button:hover {
           // color;

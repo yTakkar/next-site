@@ -1,9 +1,9 @@
+import Link from 'next/link';
 import Container from '../container';
 import Tabs from '../tabs';
 import Editor from './editor';
 import Browser from '../browser';
 import { MediaQueryConsumer } from '../media-query';
-import Link from 'next/link';
 import TabButton from './tab-button';
 
 const DEMO_DATA = {
@@ -64,7 +64,6 @@ export default function Demo() {
                           invert
                           className="tab"
                           key={`tab-${id}`}
-                          isMobile={isMobile}
                           selected={selectedId === id}
                           onClick={() => onSelect(id)}
                         >
@@ -74,14 +73,14 @@ export default function Demo() {
                     )}
                     <Link href="/features/server-side-rendering" prefetch>
                       <a>
-                        <TabButton invert className="tab" isMobile={isMobile}>
+                        <TabButton invert className="tab">
                           Server Side Rendering
                         </TabButton>
                       </a>
                     </Link>
                     <Link href="/features/static-exporting" prefetch>
                       <a>
-                        <TabButton invert className="tab" isMobile={isMobile}>
+                        <TabButton invert className="tab">
                           Static Exporting
                         </TabButton>
                       </a>
@@ -89,7 +88,6 @@ export default function Demo() {
                     <TabButton
                       invert
                       className="tab"
-                      isMobile={isMobile}
                       selected={selectedId === 'More...'}
                       onClick={() => onSelect('More...')}
                     >
@@ -99,17 +97,19 @@ export default function Demo() {
                   <div className="demo-body row">
                     {isTablet &&
                       (() => {
-                        let data = DEMO_DATA[selectedId];
-                        if (!data.type.length) {
-                          return data.getBody({ isTablet, isMobile }) || null;
+                        const dataShort = DEMO_DATA[selectedId];
+                        if (!dataShort.type.length) {
+                          return (
+                            dataShort.getBody({ isTablet, isMobile }) || null
+                          );
                         }
 
                         return (
                           <div className="column">
-                            <Tabs data={data.tabs}>
+                            <Tabs data={dataShort.tabs}>
                               {(onSelect, _selectedId, selectedIndex) => {
                                 let content = null;
-                                let data = DEMO_DATA[selectedId];
+                                const data = DEMO_DATA[selectedId];
                                 if (_selectedId === data.tabs[0]) {
                                   content =
                                     data.type[0] === 'editor' ? (
@@ -132,7 +132,6 @@ export default function Demo() {
                                     <TabButton
                                       invert
                                       light
-                                      isMobile={true}
                                       selected={_selectedId === data.tabs[0]}
                                       onClick={() => onSelect(data.tabs[0])}
                                     >
@@ -141,7 +140,6 @@ export default function Demo() {
                                     <TabButton
                                       invert
                                       light
-                                      isMobile={true}
                                       selected={_selectedId === data.tabs[1]}
                                       onClick={() => onSelect(data.tabs[1])}
                                     >
@@ -156,18 +154,18 @@ export default function Demo() {
                       })()}
                     {!isTablet &&
                       (() => {
-                        let data = DEMO_DATA[selectedId];
+                        const data = DEMO_DATA[selectedId];
                         if (!data.type.length) {
                           return data.getBody({}) || null;
                         }
 
-                        let content1 =
+                        const content1 =
                           data.type[0] === 'editor' ? (
                             <Editor data={data.editor1} />
                           ) : (
                             <Browser data={data.browser1} />
                           );
-                        let content2 =
+                        const content2 =
                           data.type[1] === 'editor' ? (
                             <Editor data={data.editor2} />
                           ) : (

@@ -169,7 +169,7 @@ export default () => (
             <div style={{ display: 'inline-block ' }}>
               {['React', 'Vue', 'Angular'].map(t => (
                 <TabButton
-                  isMobile
+                  small
                   selected={t === tab}
                   onClick={() => onSelect(t)}
                   key={t}
@@ -195,7 +195,7 @@ export default () => (
               {['React', 'Vue', 'Angular'].map(t => (
                 <TabButton
                   light
-                  isMobile
+                  small
                   selected={t === tab}
                   onClick={() => onSelect(t)}
                   key={t}

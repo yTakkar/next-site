@@ -181,6 +181,9 @@ function Page({ title, description, children }) {
             flex: 1;
             padding: 0 1.5rem;
           }
+          .display-none {
+            display: none;
+          }
           .display-mobile {
             display: none;
           }

@@ -15,7 +15,7 @@ const DEMO_DATA = {
 export default function Demo() {
   return (
     <MediaQueryConsumer>
-      {({ isMobile, isTablet }) => (
+      {({ isTablet }) => (
         <Container center dark wide role="region">
           <Container center>
             <Tabs data={Object.keys(DEMO_DATA)} anchor>
@@ -99,9 +99,7 @@ export default function Demo() {
                       (() => {
                         const dataShort = DEMO_DATA[selectedId];
                         if (!dataShort.type.length) {
-                          return (
-                            dataShort.getBody({ isTablet, isMobile }) || null
-                          );
+                          return dataShort.body || null;
                         }
 
                         return (
@@ -156,7 +154,7 @@ export default function Demo() {
                       (() => {
                         const data = DEMO_DATA[selectedId];
                         if (!data.type.length) {
-                          return data.getBody({}) || null;
+                          return data.body || null;
                         }
 
                         const content1 =

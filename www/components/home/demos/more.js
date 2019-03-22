@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import classNames from 'classnames';
 import withPure from '../../hoc/pure';
-
 import ArrowRightLong from '../../icons/arrow-right-long';
 
 const EXAMPLES = [
@@ -139,15 +139,16 @@ const ExampleCard = withPure(({ name, href, description }) => (
 export default {
   type: [],
   tabs: [],
-  getBody: ({ isTablet, isMobile }) => (
+  body: (
     <div className="example-row">
-      {(isMobile
-        ? EXAMPLES.slice(0, 5)
-        : isTablet
-        ? EXAMPLES.slice(0, 8)
-        : EXAMPLES
-      ).map((example, index) => (
-        <div className="example-col" key={index}>
+      {EXAMPLES.map((example, index) => (
+        <div
+          className={classNames('example-col', {
+            'hide-mobile': index >= 5,
+            'hide-tablet': index >= 8
+          })}
+          key={index}
+        >
           <ExampleCard {...example} />
         </div>
       ))}

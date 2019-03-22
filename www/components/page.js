@@ -194,6 +194,11 @@ function Page({ title, description, children }) {
               display: none;
             }
           }
+          @media screen and (max-width: 960px) {
+            .hide-tablet {
+              display: none;
+            }
+          }
           a[role='button'] {
             -webkit-user-select: none;
             -moz-user-select: none;

@@ -69,6 +69,9 @@ Now update your npm dev script to:
 }
 ```
 
+> On Windows, `NODE_ENV=production` will not work by default. One solution is to install the npm module [`cross-env`](https://www.npmjs.com/package/cross-env) into your app.
+> Then update the `start` script like this: `"start": "cross-env NODE_ENV=production node server.js"`
+
 Now try to run your app again with `npm run dev`.
 
 What's the experience you will get?

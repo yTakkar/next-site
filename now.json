@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "alias": "nextjs.org",
   "scope": "next-js",
   "builds": [
     { "src": "google79eca80c0e444114.html", "use": "@now/static" },

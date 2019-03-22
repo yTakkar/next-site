@@ -1,7 +1,5 @@
-import Link from 'next/link';
-
 import Code from './code';
-import withFrame from './frame';
+import withSlot from './slot';
 
 const IndexFile = () => (
   <Code>{`import Link from 'next/link'
@@ -20,7 +18,7 @@ const AboutFile = () => (
   <Code>{`import Link from 'next/link'
 
 // only being loaded on \`/cowsay\`
-import cowsay from 'cowsay-browser' 
+import cowsay from 'cowsay-browser'
 
 export default () => <div>
   <p>This page costs 29.8 KB after gzipped!</p>
@@ -32,7 +30,7 @@ export default () => <div>
 `}</Code>
 );
 
-const IndexPage = withFrame(({ A }) => (
+const IndexPage = withSlot(({ A }) => (
   <div>
     <h1>Hello, this is the homepage</h1>
     <p>{`I'm only 0.59 KB after gzipped.`}</p>
@@ -40,7 +38,7 @@ const IndexPage = withFrame(({ A }) => (
   </div>
 ));
 
-const AboutPage = withFrame(({ A }) => (
+const AboutPage = withSlot(({ A }) => (
   <div>
     <p>This page costs 29.8 KB after gzipped!</p>
     <pre>{` _____________________

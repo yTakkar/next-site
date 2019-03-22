@@ -1,5 +1,5 @@
 import Code from './code';
-import withFrame from './frame';
+import withSlot from './slot';
 
 const IndexFile = () => (
   <Code>{`import Link from 'next/link'
@@ -46,14 +46,19 @@ const PackageFile = () => (
 `}</Code>
 );
 
-const IndexPage = withFrame(({ A }) => (
+const IndexPage = withSlot(({ A }) => (
   <div>
-    <h1>Hello Next.js 👋</h1>
+    <h1>
+      Hello Next.js{' '}
+      <span role="img" aria-label="Waving Hand">
+        👋
+      </span>
+    </h1>
     <A tab="http://localhost:3000/about">About</A>
   </div>
 ));
 
-const AboutPage = withFrame(({ A }) => (
+const AboutPage = withSlot(({ A }) => (
   <div>
     <p>This is the about page</p>
     <A tab="http://localhost:3000">Go home</A>

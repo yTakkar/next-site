@@ -1,5 +1,3 @@
-import Frame from 'react-frame-component';
-
 const makeLink = onSelect => ({ tab, children }) => (
   <a href="javascript:;" onClick={() => onSelect(tab)}>
     {children}
@@ -7,7 +5,9 @@ const makeLink = onSelect => ({ tab, children }) => (
 );
 
 export default Comp => ({ onSelect }) => (
-  <Frame title="Next.js Demo">
-    <Comp A={makeLink(onSelect)} />
-  </Frame>
+  <div style={{ margin: 8 }}>
+    <div style={{ all: 'initial' }}>
+      <Comp A={makeLink(onSelect)} />
+    </div>
+  </div>
 );

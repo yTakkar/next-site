@@ -184,17 +184,21 @@ function Page({ title, description, children }) {
           .display-mobile {
             display: none;
           }
+          .display-tablet {
+            display: none;
+          }
           @media screen and (max-width: 640px) {
             .display-mobile {
               display: unset;
             }
-          }
-          @media screen and (max-width: 640px) {
             .hide-mobile {
               display: none;
             }
           }
           @media screen and (max-width: 960px) {
+            .display-tablet {
+              display: unset;
+            }
             .hide-tablet {
               display: none;
             }

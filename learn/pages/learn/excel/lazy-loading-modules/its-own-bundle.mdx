@@ -7,16 +7,16 @@ export const meta = {
   stepId: 'its-own-bundle'
 }
 
-## Its own bundle
+## Their own bundle
 
-As you can see, it has its own bundle and its name looks like:
+As you can see, firebase modules have their own bundle and its name looks like:
 
 ```
-chunks/firebase-[a-random-string].js
+static/chunks/[a-random-string].js
 ```
 
-![](https://user-images.githubusercontent.com/50838/28233928-308214b0-6918-11e7-9dac-d7cfc5ee2299.png)
+![](/learn/static/images/llm-analyzer2.jpg)
 
-This bundle is loaded when you try to import `firebase`.
+This bundle is loaded when you try to import `firebase/app` and `firebase/database` modules.
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

@@ -2,19 +2,19 @@ import Layout from '~/components/Layout'
 import AnswerBox from '~/components/AnswerBox'
 
 export const meta = {
-  title: 'Lazy Loading Modules',
-  courseId: 'excel',
-  lessonId: 'lazy-loading-modules',
-  stepId: 'lets-test-it',
-  question: {
-    answers: [
-      '“firebase” bundle loads every time',
-      '“firebase” bundle loads only in the first time',
-      '“firebase” bundle loads only in the second time',
-      '“firebase” bundle never loads'
-    ],
-    correctAnswer: '“firebase” bundle loads only in the first time'
-  }
+title: 'Lazy Loading Modules',
+courseId: 'excel',
+lessonId: 'lazy-loading-modules',
+stepId: 'lets-test-it',
+question: {
+answers: [
+'“firebase” bundle loads every time',
+'“firebase” bundle loads only in the first time',
+'“firebase” bundle loads only in the second time',
+'“firebase” bundle never loads'
+],
+correctAnswer: '“firebase” bundle loads only in the first time'
+}
 }
 
 ## Let's test it
@@ -33,7 +33,7 @@ Then, start the app in the browser which has a decent Network inspect debugger.
 
 Now, load <http://localhost:3000> in Chrome and open the Network inspector.
 
-![](https://user-images.githubusercontent.com/50838/28233927-307dc752-6918-11e7-8976-e30b9fc843cf.png)
+![](/learn/static/images/llm-network.jpg)
 
 Then, clear the current data in the Network inspector.
 

@@ -8,12 +8,12 @@ export const meta = {
   stepId: 'analyze',
   question: {
     answers: [
-      'inside commons.js bundle',
-      'inside main.js bundle',
-      'inside pages/index.js bundle',
+      'inside commons[a-random-string].js bundle',
+      'inside main[a-random-string].js bundle',
+      'inside pages/index.js and pages/post.js bundles',
       'in all pages'
     ],
-    correctAnswer: 'inside commons.js bundle'
+    correctAnswer: 'inside pages/index.js and pages/post.js bundles'
   }
 }
 
@@ -28,11 +28,11 @@ Now, let's try to understand what is inside our app bundle.
 For that, simply run the following command:
 
 ```bash
-npm run analyze
+npm run analyze:browser
 ```
 
-Then, it will start a [webpack bundle analyzer](https://github.com/th0r/webpack-bundle-analyzer) and you will be able to inspect what is inside each of the JavaScript bundles.
+Then, it will start a [webpack bundle analyzer](https://github.com/zeit/next-plugins/tree/master/packages/next-bundle-analyzer) and you will be able to inspect what is inside each of the JavaScript bundles.
 
-So, the `firebase` module is contained:
+So, the firebase modules are contained:
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

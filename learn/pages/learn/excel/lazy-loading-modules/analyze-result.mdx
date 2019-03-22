@@ -9,10 +9,12 @@ export const meta = {
 
 ## Analyze Result
 
-As you have seen, the firebase module stays inside the `commons.js` bundle.
+As you have seen, the firebase modules are contained inside the `pages/index.js` and `pages/post.js` bundles.
 
-![](https://user-images.githubusercontent.com/50838/28233926-30504a3e-6918-11e7-96fc-473b9f7a4a29.png)
+![](/learn/static/images/llm-analyzer.jpg)
 
-That is simply happening because it is used in all of the pages in our app.
+That is happening because they are loaded by importing the `/lib/load-db.js` file only in those two pages.
+
+If the modules were imported in all pages of our app, they would have been contained inside the `commons[a-random-string].js` bundle.
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

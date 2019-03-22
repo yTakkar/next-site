@@ -11,7 +11,13 @@ export default () => (
       className="lambda-svg"
     >
       <defs>
-        <linearGradient x1="50%" y1="54.6961%" x2="50%" y2="100%" id="lambda-gradient-1">
+        <linearGradient
+          x1="50%"
+          y1="54.6961%"
+          x2="50%"
+          y2="100%"
+          id="lambda-gradient-1"
+        >
           <stop stopColor="#F6F5F6" offset="0%" />
           <stop stopColor="#F6F5F6" stopOpacity="0" offset="100%" />
         </linearGradient>
@@ -23,8 +29,17 @@ export default () => (
           filterUnits="objectBoundingBox"
           id="lambda-filter-1"
         >
-          <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1" />
-          <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+          <feOffset
+            dx="0"
+            dy="4"
+            in="SourceAlpha"
+            result="shadowOffsetOuter1"
+          />
+          <feGaussianBlur
+            stdDeviation="2"
+            in="shadowOffsetOuter1"
+            result="shadowBlurOuter1"
+          />
           <feColorMatrix
             values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0"
             type="matrix"
@@ -44,8 +59,17 @@ export default () => (
           filterUnits="objectBoundingBox"
           id="lambda-filter-2"
         >
-          <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1" />
-          <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+          <feOffset
+            dx="0"
+            dy="4"
+            in="SourceAlpha"
+            result="shadowOffsetOuter1"
+          />
+          <feGaussianBlur
+            stdDeviation="2"
+            in="shadowOffsetOuter1"
+            result="shadowBlurOuter1"
+          />
           <feColorMatrix
             values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0"
             type="matrix"
@@ -65,8 +89,17 @@ export default () => (
           filterUnits="objectBoundingBox"
           id="lambda-filter-3"
         >
-          <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1" />
-          <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1" />
+          <feOffset
+            dx="0"
+            dy="4"
+            in="SourceAlpha"
+            result="shadowOffsetOuter1"
+          />
+          <feGaussianBlur
+            stdDeviation="2"
+            in="shadowOffsetOuter1"
+            result="shadowBlurOuter1"
+          />
           <feColorMatrix
             values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0"
             type="matrix"
@@ -127,7 +160,11 @@ export default () => (
             transform="scale(-1, 1) rotate(-180)"
           />
         </g>
-        <g id="aws" filter="url(#lambda-filter-1)" transform="translate(811, 360)">
+        <g
+          id="aws"
+          filter="url(#lambda-filter-1)"
+          transform="translate(811, 360)"
+        >
           <circle fill="#FFFFFF" cx="35.533" cy="35.533" r="35.533" />
           <g transform="translate(15, 24)" fill="#000000">
             <path
@@ -138,7 +175,11 @@ export default () => (
             <path d="M39.229,18.516 C38.643,17.815 35.354,18.179 33.863,18.347 C33.417,18.399 33.347,18.036 33.751,17.764 C36.371,16.051 40.678,16.544 41.18,17.115 C41.682,17.699 41.041,21.707 38.588,23.626 C38.211,23.925 37.849,23.769 38.016,23.38 C38.574,22.096 39.814,19.203 39.229,18.516 Z" />
           </g>
         </g>
-        <g id="gcp" filter="url(#lambda-filter-2)" transform="translate(625, 267)">
+        <g
+          id="gcp"
+          filter="url(#lambda-filter-2)"
+          transform="translate(625, 267)"
+        >
           <circle fill="#FFFFFF" cx="35.533" cy="35.533" r="35.533" />
           <g transform="translate(18, 22)" fill="#000000">
             <path d="M22.921,7.558 L25.831,4.679 L26.025,3.467 C20.721,-1.303 12.29,-0.762 7.509,4.596 C6.181,6.084 5.196,7.939 4.67,9.855 L5.713,9.71 L11.534,8.76 L11.983,8.306 C14.572,5.493 18.951,5.115 21.94,7.508 L22.921,7.558 Z" />
@@ -147,14 +188,22 @@ export default () => (
             <path d="M10.053,8.154 C4.83,8.185 0.622,12.398 0.653,17.563 C0.67,20.448 2.032,23.163 4.344,24.922 L8.562,20.75 C6.732,19.932 5.919,17.802 6.746,15.993 C7.572,14.183 9.726,13.378 11.556,14.196 C12.362,14.556 13.008,15.195 13.372,15.993 L17.59,11.821 C15.795,9.5 13.007,8.144 10.053,8.154 Z" />
           </g>
         </g>
-        <g id="lambda" filter="url(#lambda-filter-2)" transform="translate(583, 396)">
+        <g
+          id="lambda"
+          filter="url(#lambda-filter-2)"
+          transform="translate(583, 396)"
+        >
           <circle fill="#FFFFFF" cx="55.964" cy="56.964" r="55.9645" />
           <path
             d="M42.447,74.731 L49.389,74.731 L55.521,58.819 L55.95,58.819 L59.695,69.817 C60.984,73.682 62.749,74.97 66.661,74.97 C67.926,74.97 69.071,74.803 69.811,74.564 L69.811,69.292 C69.477,69.364 69.023,69.483 68.642,69.483 C66.852,69.483 66.137,68.886 65.349,66.715 L58.431,47.654 C55.592,39.805 53.135,37.802 48.077,37.802 C47.052,37.802 46.36,37.969 45.382,38.231 L45.382,43.479 C46.097,43.36 46.479,43.312 46.861,43.312 C49.771,43.312 50.702,44.123 52.181,47.917 L52.944,49.944 L42.447,74.731 Z"
             fill="#000"
           />
         </g>
-        <g id="azure" filter="url(#lambda-filter-3)" transform="translate(764, 553)">
+        <g
+          id="azure"
+          filter="url(#lambda-filter-3)"
+          transform="translate(764, 553)"
+        >
           <circle fill="#FFFFFF" cx="35.533" cy="35.533" r="35.533" />
           <path
             d="M34.648,45.658 C39.09,44.877 42.759,44.231 42.801,44.222 L42.877,44.206 L38.684,39.242 C36.378,36.512 34.49,34.267 34.49,34.254 C34.49,34.23 38.821,22.363 38.845,22.321 C38.853,22.307 41.8,27.37 45.988,34.594 C49.909,41.357 53.142,46.934 53.172,46.986 L53.227,47.081 L39.899,47.079 L26.572,47.078 L34.648,45.658 Z M18.654,44.144 C18.654,44.137 20.63,40.724 23.045,36.558 L27.436,28.985 L32.553,24.712 C35.368,22.361 37.678,20.435 37.687,20.431 C37.697,20.428 37.66,20.521 37.605,20.638 C37.55,20.754 35.05,26.092 32.048,32.498 L26.591,44.147 L22.623,44.152 C20.44,44.155 18.654,44.151 18.654,44.144 Z"
@@ -184,23 +233,28 @@ export default () => (
         #azure,
         #lambda {
           opacity: 0;
-          animation: fade-in 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s forwards;
+          animation: fade-in 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s
+            forwards;
         }
         #pulse1 {
           animation: rotate 45s linear infinite forwards,
-            fade-in-70 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.2s forwards;
+            fade-in-70 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.2s
+              forwards;
         }
         #pulse2 {
           animation: rotate 45s linear infinite forwards,
-            fade-in-50 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.4s forwards;
+            fade-in-50 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.4s
+              forwards;
         }
         #pulse3 {
           animation: rotate 45s linear infinite forwards,
-            fade-in-30 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.6s forwards;
+            fade-in-30 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.6s
+              forwards;
         }
         #pulse4 {
           animation: rotate 45s linear infinite forwards,
-            fade-in-15 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.8s forwards;
+            fade-in-15 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.8s
+              forwards;
         }
 
         @keyframes rotate {

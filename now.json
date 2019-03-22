@@ -7,10 +7,17 @@
     { "src": "learn/next.config.js", "use": "@now/next@canary" }
   ],
   "routes": [
-    { "src": "/learn/?", "status": 301, "headers": { "Location": "/learn/basics/getting-started" } },
+    {
+      "src": "/learn/?",
+      "status": 301,
+      "headers": { "Location": "/learn/basics/getting-started" }
+    },
     { "src": "/learn/_next(.*)", "dest": "/learn/_next$1" },
     { "src": "/learn(.*)", "dest": "/learn/learn$1" },
-    { "src": "/google79eca80c0e444114.html", "dest": "/google79eca80c0e444114.html" },
+    {
+      "src": "/google79eca80c0e444114.html",
+      "dest": "/google79eca80c0e444114.html"
+    },
     {
       "src": "/features/?",
       "status": 301,
@@ -21,6 +28,6 @@
       "status": 301,
       "headers": { "Location": "/features/server-side-rendering" }
     },
-    {"src": "(.*)", "dest": "/www$1"}
+    { "src": "(.*)", "dest": "/www$1" }
   ]
 }

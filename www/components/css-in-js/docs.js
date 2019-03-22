@@ -1,6 +1,6 @@
-import Container from '../container'
-import Button from '../button'
-import Hammer from './svg/hammer'
+import Container from '../container';
+import Button from '../button';
+import Hammer from './svg/hammer';
 
 export default () => (
   <Container wide padding gray>
@@ -9,9 +9,10 @@ export default () => (
       <h2 className="f0 fw6">Great Developer Tooling</h2>
       <div className="content">
         <p>
-          Developing with <code>styled-jsx</code> is easier than ever with syntax highlighting for major editors like
-          WebStorm and VSCode. With a simple plugin system, it's easy to use your favorite preprocessors such as
-          Sass, PostCSS, and Stylus.
+          Developing with <code>styled-jsx</code> is easier than ever with
+          syntax highlighting for major editors like WebStorm and VSCode. With a
+          simple plugin system, it's easy to use your favorite preprocessors
+          such as Sass, PostCSS, and Stylus.
         </p>
       </div>
       <div>
@@ -65,4 +66,4 @@ export default () => (
       `}
     </style>
   </Container>
-)
+);

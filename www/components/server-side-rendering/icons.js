@@ -1,7 +1,7 @@
-import DiscoverySvg from './svg/discovery'
-import PerformanceSvg from './svg/performance'
-import LightningSvg from './svg/lightning'
-import IntegrateSvg from './svg/integrate'
+import DiscoverySvg from './svg/discovery';
+import PerformanceSvg from './svg/performance';
+import LightningSvg from './svg/lightning';
+import IntegrateSvg from './svg/integrate';
 
 const Circle = ({ children }) => (
   <div className="circle">
@@ -22,9 +22,25 @@ const Circle = ({ children }) => (
       `}
     </style>
   </div>
-)
+);
 
-export const Discovery = () => <Circle><DiscoverySvg /></Circle>
-export const Lightning = () => <Circle><LightningSvg /></Circle>
-export const Integrate = () => <Circle><IntegrateSvg /></Circle>
-export const Performance = () => <Circle><PerformanceSvg /></Circle>
+export const Discovery = () => (
+  <Circle>
+    <DiscoverySvg />
+  </Circle>
+);
+export const Lightning = () => (
+  <Circle>
+    <LightningSvg />
+  </Circle>
+);
+export const Integrate = () => (
+  <Circle>
+    <IntegrateSvg />
+  </Circle>
+);
+export const Performance = () => (
+  <Circle>
+    <PerformanceSvg />
+  </Circle>
+);

@@ -3,7 +3,7 @@ import Tabs from '../tabs';
 import Editor from './editor';
 import Browser from '../browser';
 import { MediaQueryConsumer } from '../media-query';
-import Link from 'next/link'
+import Link from 'next/link';
 import TabButton from './tab-button';
 
 const DEMO_DATA = {
@@ -58,37 +58,41 @@ export default function Demo() {
                     }
                   `}</style>
                   <div className="demo-header">
-                    {Object.keys(DEMO_DATA).map(id => (id === 'More...' ? null :
-                      <TabButton
-                        invert
-                        className="tab"
-                        key={`tab-${id}`}
-                        isMobile={isMobile}
-                        selected={selectedId === id}
-                        onClick={() => onSelect(id)}
-                      >
-                        {id}
-                      </TabButton>
-                    ))}
+                    {Object.keys(DEMO_DATA).map(id =>
+                      id === 'More...' ? null : (
+                        <TabButton
+                          invert
+                          className="tab"
+                          key={`tab-${id}`}
+                          isMobile={isMobile}
+                          selected={selectedId === id}
+                          onClick={() => onSelect(id)}
+                        >
+                          {id}
+                        </TabButton>
+                      )
+                    )}
                     <Link href="/features/server-side-rendering" prefetch>
-                    <a><TabButton invert className="tab" isMobile={isMobile}>
-                      Server Side Rendering
-                    </TabButton></a>
+                      <a>
+                        <TabButton invert className="tab" isMobile={isMobile}>
+                          Server Side Rendering
+                        </TabButton>
+                      </a>
                     </Link>
                     <Link href="/features/static-exporting" prefetch>
                       <a>
-                      <TabButton invert className="tab" isMobile={isMobile}>
-                        Static Exporting
-                      </TabButton>
+                        <TabButton invert className="tab" isMobile={isMobile}>
+                          Static Exporting
+                        </TabButton>
                       </a>
                     </Link>
                     <TabButton
-                        invert
-                        className="tab"
-                        isMobile={isMobile}
-                        selected={selectedId === 'More...'}
-                        onClick={() => onSelect('More...')}
-                      >
+                      invert
+                      className="tab"
+                      isMobile={isMobile}
+                      selected={selectedId === 'More...'}
+                      onClick={() => onSelect('More...')}
+                    >
                       {'More...'}
                     </TabButton>
                   </div>
@@ -189,4 +193,4 @@ export default function Demo() {
       )}
     </MediaQueryConsumer>
   );
-};
+}

@@ -1,4 +1,4 @@
-import {Fragment} from 'react'
+import { Fragment } from 'react'
 import { TerminalInput } from '../../components/text/terminal'
 import Caption from '../../components/text/caption'
 import Image from '../../components/image'
@@ -7,23 +7,29 @@ import withPost from '../../components/blog/with-post'
 
 export const meta = {
   title: 'Next.js 5.1: Faster Page Resolution, Environment Config & More',
-  description: 'Next.js 5.1 features support for environment configuration, phases, source maps, and new Next.js plugins.',
+  description:
+    'Next.js 5.1 features support for environment configuration, phases, source maps, and new Next.js plugins.',
   date: '2018-03-26T17:29:45.995Z',
-  authors: [{
-    name: 'Tim Neutkens',
-    avatar: '/static/team/tim.jpg',
-    twitter: 'timneutkens'
-  }, {
-    name: 'Arunoda Susiripala',
-    avatar: '/static/team/arunoda.jpg',
-    twitter: 'arunoda'
-  }],
+  authors: [
+    {
+      name: 'Tim Neutkens',
+      avatar: '/static/team/tim.jpg',
+      twitter: 'timneutkens'
+    },
+    {
+      name: 'Arunoda Susiripala',
+      avatar: '/static/team/arunoda.jpg',
+      twitter: 'arunoda'
+    }
+  ],
   url: 'https://nextjs.org/blog/next-5-1',
   link: '/blog/next-5-1',
-  twitterCard: 'https://assets.zeit.co/image/upload/front' + '/blog/next5-1/twitter-card.png'
+  twitterCard:
+    'https://assets.zeit.co/image/upload/front' +
+    '/blog/next5-1/twitter-card.png'
 }
 
-export default withPost({...meta})
+export default withPost({ ...meta })
 
 We are happy to introduce Next.js 5.1, which features support for environment configuration, phases, source maps, and new Next.js plugins.
 
@@ -34,14 +40,22 @@ To upgrade or install, run:
 <TerminalInput prefix>{`npm i next@latest react@latest react-dom@latest`}</TerminalInput>
 <Caption>In addition to bumping Next.js, we upgrade the peer dependencies <Caption.Code>react</Caption.Code> and <Caption.Code>react-dom</Caption.Code></Caption>
 
-Be sure to upgrade [next-plugins](https://github.com/zeit/next-plugins)  like `@zeit/next-css`, `@zeit/next-sass`, `@zeit/next-less` or `@zeit/next-typescript` as well.
+Be sure to upgrade [next-plugins](https://github.com/zeit/next-plugins) like `@zeit/next-css`, `@zeit/next-sass`, `@zeit/next-less` or `@zeit/next-typescript` as well.
 
 ## Faster page resolution
 
 Thanks to the architectural changes in Next.js 5.0, we were able to [simplify the logic](https://github.com/zeit/next.js/pull/3776) that resolves pages based on url path. These changes were based on [research](https://github.com/zeit/next.js/issues/3682) from [@oliviertassinari](https://github.com/oliviertassinari).
 Previously resolving a page took an average of **2.347ms**. With the new logic resolving the same page takes on average **0.023ms**. That's a **102x** speedup for one of the most commonly invoked methods in Next.js applications.
 
-<Image src={'https://assets.zeit.co/image/upload/front' + '/blog/next5-1/faster-resolution.png'} width={1756 / 2.5} height={1038 / 2.5} caption="Page resolution shown per request. Left is Next.js 5.0, right is Next.js 5.1" />
+<Image
+  src={
+    'https://assets.zeit.co/image/upload/front' +
+    '/blog/next5-1/faster-resolution.png'
+  }
+  width={1756 / 2.5}
+  height={1038 / 2.5}
+  caption="Page resolution shown per request. Left is Next.js 5.0, right is Next.js 5.1"
+/>
 
 ## Environment configuration
 
@@ -52,20 +66,27 @@ With universal rendering `process.env` is not available on the client side. So w
 ```js
 // next.config.js
 module.exports = {
-  serverRuntimeConfig: { // Will only be available on the server side
+  serverRuntimeConfig: {
+    // Will only be available on the server side
     mySecret: 'secret'
   },
-  publicRuntimeConfig: { // Will be available on both server and client
+  publicRuntimeConfig: {
+    // Will be available on both server and client
     staticFolder: '/static'
   }
 }
 ```
-<Caption>Both <Caption.Code>serverRuntimeConfig</Caption.Code> and <Caption.Code>publicRuntimeConfig</Caption.Code> are defined in <Caption.Code>next.config.js</Caption.Code></Caption>
+
+<Caption>
+  Both <Caption.Code>serverRuntimeConfig</Caption.Code> and{' '}
+  <Caption.Code>publicRuntimeConfig</Caption.Code> are defined in{' '}
+  <Caption.Code>next.config.js</Caption.Code>
+</Caption>
 
 ```jsx
 // pages/index.js
 import getConfig from 'next/config'
-const {serverRuntimeConfig, publicRuntimeConfig} = getConfig()
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig()
 
 console.log(serverRuntimeConfig.mySecret) // Will only be available on the server side
 console.log(publicRuntimeConfig.staticFolder) // Will be available on both server and client
@@ -78,7 +99,12 @@ export default function Index() {
   )
 }
 ```
-<Caption>The <Caption.Code>getConfig</Caption.Code> method from the <Caption.Code>next/config</Caption.Code> module is used to get configuration values</Caption>
+
+<Caption>
+  The <Caption.Code>getConfig</Caption.Code> method from the{' '}
+  <Caption.Code>next/config</Caption.Code> module is used to get configuration
+  values
+</Caption>
 
 ## Improved Error Handling
 
@@ -99,9 +125,13 @@ Some [next-plugins](https://github.com/zeit/next-plugins) like [`@zeit/next-css`
 You can now export a function that returns the configuration object instead of immediately exporting the object.
 
 ```js
-module.exports = (phase, {defaultConfig}) => config
+module.exports = (phase, { defaultConfig }) => config
 ```
-<Caption><Caption.Code>next.config.js</Caption.Code> exporting a function that returns the user configuration</Caption>
+
+<Caption>
+  <Caption.Code>next.config.js</Caption.Code> exporting a function that returns
+  the user configuration
+</Caption>
 
 Exporting a function will give you access to the `phase` in which Next.js is running, for example development, production, building, export. This allows plugins to be loaded only when needed, but also gives access to the default configuration.
 
@@ -117,7 +147,11 @@ module.exports = (phase, {defaultConfig}){
   return { /* config options for all phases except development here */ }
 }
 ```
-<Caption>A <Caption.Code>next.config.js</Caption.Code> that checks for the development phase</Caption>
+
+<Caption>
+  A <Caption.Code>next.config.js</Caption.Code> that checks for the development
+  phase
+</Caption>
 
 ## Improved production source map generation
 
@@ -125,13 +159,13 @@ With the introduction of universal webpack in [Next.js 5](/blog/next5) adding so
 
 ```js
 module.exports = {
-  webpack(config, {dev}) {
+  webpack(config, { dev }) {
     if (!dev) {
-      config.devtool = 'source-map';
+      config.devtool = 'source-map'
       for (const plugin of config.plugins) {
         if (plugin['constructor']['name'] === 'UglifyJsPlugin') {
-          plugin.options.sourceMap = true;
-          break;
+          plugin.options.sourceMap = true
+          break
         }
       }
     }
@@ -139,7 +173,10 @@ module.exports = {
   }
 }
 ```
-<Caption>Manually enable source maps in <Caption.Code>next.config.js</Caption.Code></Caption>
+
+<Caption>
+  Manually enable source maps in <Caption.Code>next.config.js</Caption.Code>
+</Caption>
 
 [@zeit/next-source-maps](https://github.com/zeit/next-plugins/tree/master/packages/next-source-maps) can be added to a project to automatically enable production source maps for you, add the following to `next.config.js`:
 
@@ -147,7 +184,11 @@ module.exports = {
 const withSourceMaps = require('@zeit/next-source-maps')
 module.exports = withSourceMaps()
 ```
-<Caption>Using <Caption.Code>@zeit/next-source-maps</Caption.Code> to enable source maps in <Caption.Code>next.config.js</Caption.Code></Caption>
+
+<Caption>
+  Using <Caption.Code>@zeit/next-source-maps</Caption.Code> to enable source
+  maps in <Caption.Code>next.config.js</Caption.Code>
+</Caption>
 
 This enabled outputting of source maps for all but one file, `app.js`, the reason for this was that `app.js` consisted of multiple files (`manifest.js` and `commons.js`) combined with a webpack plugin. A side effect of this was that webpack couldn't generate source maps for the combined file.
 
@@ -158,7 +199,7 @@ Thanks to a [pull request](https://github.com/zeit/next.js/pull/3793) from [@pto
 
 ## New plugins / improvements to existing ones
 
-We've introduced two new official plugins. [@zeit/next-bundle-analyzer](https://github.com/zeit/next-plugins/tree/master/packages/next-bundle-analyzer)  allows for easily setting up `webpack-bundle-analyzer` to analyze the server side and client side bundles separately.
+We've introduced two new official plugins. [@zeit/next-bundle-analyzer](https://github.com/zeit/next-plugins/tree/master/packages/next-bundle-analyzer) allows for easily setting up `webpack-bundle-analyzer` to analyze the server side and client side bundles separately.
 
 Additionally there were a lot of improvements to the official [`css`](https://github.com/zeit/next-plugins/tree/master/packages/next-css), [`less`](https://github.com/zeit/next-plugins/tree/master/packages/next-less), and [`sass`](https://github.com/zeit/next-plugins/tree/master/packages/next-sass) plugins regarding hot reloading and bundling. For example there is no longer a flash of unstyled content in development mode. And styles in subcomponents get picked up as well.
 

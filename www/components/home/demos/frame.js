@@ -1,9 +1,13 @@
-import Frame from 'react-frame-component'
+import Frame from 'react-frame-component';
 
-const makeLink = onSelect => ({tab, children}) =>
-  <a href='javascript:;' onClick={() => onSelect(tab)}>{children}</a>
+const makeLink = onSelect => ({ tab, children }) => (
+  <a href="javascript:;" onClick={() => onSelect(tab)}>
+    {children}
+  </a>
+);
 
-export default Comp => ({ onSelect }) => 
+export default Comp => ({ onSelect }) => (
   <Frame title="Next.js Demo">
-    <Comp A={makeLink(onSelect)}/>
+    <Comp A={makeLink(onSelect)} />
   </Frame>
+);

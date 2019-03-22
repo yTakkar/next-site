@@ -10,7 +10,7 @@ export default function Documentation({ children, headings }) {
   return (
     <>
       <Head title="Getting Started" />
-      
+
       <div className="documentation">
         <Sidebar headings={headings} desktop />
         <div className="documentation__container">

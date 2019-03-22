@@ -66,7 +66,9 @@ export default class Animation extends React.Component {
         <div className="terminal-wrapper">
           <Terminal showResult={() => this.setState({ showResult: true })} />
         </div>
-        <ResultRow showResult={this.state.showResult}>{this.props.children}</ResultRow>
+        <ResultRow showResult={this.state.showResult}>
+          {this.props.children}
+        </ResultRow>
         <style jsx>
           {`
             @keyframes shift {
@@ -98,7 +100,8 @@ export default class Animation extends React.Component {
               z-index: 1;
               /* tune position of terminal with respect to input and output */
               margin-top: -36px;
-              box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.48), 0px 14px 50px rgba(0, 0, 0, 0.38);
+              box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.48),
+                0px 14px 50px rgba(0, 0, 0, 0.38);
             }
 
             .input {

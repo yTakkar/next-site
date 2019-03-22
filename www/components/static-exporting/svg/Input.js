@@ -1,7 +1,15 @@
 export default () => (
   <>
     <svg width={272} height={340} fill="none">
-      <rect x={50} y={36} width={172} height="239.643" rx={7} fill="#fff" filter="url(#a)" />
+      <rect
+        x={50}
+        y={36}
+        width={172}
+        height="239.643"
+        rx={7}
+        fill="#fff"
+        filter="url(#a)"
+      />
       <path
         d="M213 156h60"
         stroke="#C7C7C7"
@@ -69,8 +77,15 @@ export default () => (
           />
           <feOffset dy={2} />
           <feGaussianBlur stdDeviation={5} />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.48 0" />
-          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.48 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow"
+          />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -78,9 +93,21 @@ export default () => (
           />
           <feOffset dy={14} />
           <feGaussianBlur stdDeviation={25} />
-          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.38 0" />
-          <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow" />
-          <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.38 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="effect1_dropShadow"
+            result="effect2_dropShadow"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect2_dropShadow"
+            result="shape"
+          />
         </filter>
       </defs>
     </svg>

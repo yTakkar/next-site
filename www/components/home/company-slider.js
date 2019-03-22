@@ -24,101 +24,103 @@ import Uber from '../icons/companies/uber';
 import Trovit from '../icons/companies/trovit';
 
 export default function CompanySlider() {
-  return <div className="company-slider">
-    <BackgroundSlider duration={40}>
-      <div className="company-logos-container">
-        <div>
-          <OpenCollective />
+  return (
+    <div className="company-slider">
+      <BackgroundSlider duration={40}>
+        <div className="company-logos-container">
+          <div>
+            <OpenCollective />
+          </div>
+          <div>
+            <Eaze />
+          </div>
+          <div>
+            <MagicLeap />
+          </div>
+          <div>
+            <Trulia />
+          </div>
+          <div>
+            <Netflix />
+          </div>
+          <div>
+            <GitHub />
+          </div>
+          <div>
+            <Scale />
+          </div>
+          <div>
+            <Ticketmaster />
+          </div>
+          <div>
+            <Twitch />
+          </div>
         </div>
-        <div>
-          <Eaze />
+      </BackgroundSlider>
+      <div style={{ marginBottom: '1rem' }} />
+      <BackgroundSlider duration={50}>
+        <div className="company-logos-container">
+          <div>
+            <Auth0 />
+          </div>
+          <div>
+            <Tencent />
+          </div>
+          <div>
+            <Jet />
+          </div>
+          <div>
+            <Starbucks />
+          </div>
+          <div>
+            <Docker />
+          </div>
+          <div>
+            <Hulu />
+          </div>
+          <div>
+            <Coinbase />
+          </div>
+          <div>
+            <Uber />
+          </div>
+          <div>
+            <Invision />
+          </div>
+          <div>
+            <Trovit />
+          </div>
+          <div>
+            <Binance />
+          </div>
+          <div>
+            <Pling />
+          </div>
         </div>
-        <div>
-          <MagicLeap />
-        </div>
-        <div>
-          <Trulia />
-        </div>
-        <div>
-          <Netflix />
-        </div>
-        <div>
-          <GitHub />
-        </div>
-        <div>
-          <Scale />
-        </div>
-        <div>
-          <Ticketmaster />
-        </div>
-        <div>
-          <Twitch />
-        </div>
-      </div>
-    </BackgroundSlider>
-    <div style={{ marginBottom: '1rem' }} />
-    <BackgroundSlider duration={50}>
-      <div className="company-logos-container">
-        <div>
-          <Auth0 />
-        </div>
-        <div>
-          <Tencent />
-        </div>
-        <div>
-          <Jet />
-        </div>
-        <div>
-          <Starbucks />
-        </div>
-        <div>
-          <Docker />
-        </div>
-        <div>
-          <Hulu />
-        </div>
-        <div>
-          <Coinbase />
-        </div>
-        <div>
-          <Uber />
-        </div>
-        <div>
-          <Invision />
-        </div>
-        <div>
-          <Trovit />
-        </div>
-        <div>
-          <Binance />
-        </div>
-        <div>
-          <Pling />
-        </div>
-      </div>
-    </BackgroundSlider>
+      </BackgroundSlider>
 
-    <style jsx>{`
-      .company-slider {
-        margin-top: 2rem;
-        margin-bottom: 3rem;
-      }
-      .company-logos-container {
-        white-space: nowrap;
-        overflow: hidden;
-      }
-      .company-logos-container > div {
-        display: inline-block;
-        padding: 0 2.2rem;
-        vertical-align: middle;
-        opacity: 0.25;
-        outline: none;
-        cursor: default;
-        transition: opacity 0.2s ease;
-      }
-      .company-logos-container > div:hover {
-        opacity: 0.8;
-      }
-    `}</style>
-  </div>
-};
+      <style jsx>{`
+        .company-slider {
+          margin-top: 2rem;
+          margin-bottom: 3rem;
+        }
+        .company-logos-container {
+          white-space: nowrap;
+          overflow: hidden;
+        }
+        .company-logos-container > div {
+          display: inline-block;
+          padding: 0 2.2rem;
+          vertical-align: middle;
+          opacity: 0.25;
+          outline: none;
+          cursor: default;
+          transition: opacity 0.2s ease;
+        }
+        .company-logos-container > div:hover {
+          opacity: 0.8;
+        }
+      `}</style>
+    </div>
+  );
+}

@@ -4,7 +4,6 @@ import Checkmark from '../icons/checkmark';
 export default () => (
   <div className="container">
     <div className="content">
-
       <div className="col">
         <h3 className="f3 fw6">Maintainable at Scale</h3>
         <p>

@@ -1,7 +1,21 @@
 export default () => (
-  <svg width="512" height="757" viewBox="0 0 512 757" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="512"
+    height="757"
+    viewBox="0 0 512 757"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <g filter="url(#abs-filter-1)">
-      <mask id="abs-mask-1" masktype="alpha" maskUnits="userSpaceOnUse" x="20" y="402" width="472" height="325">
+      <mask
+        id="abs-mask-1"
+        masktype="alpha"
+        maskUnits="userSpaceOnUse"
+        x="20"
+        y="402"
+        width="472"
+        height="325"
+      >
         <rect x="20" y="402" width="472" height="325" rx="7" fill="white" />
       </mask>
       <g mask="url(#abs-mask-1)">
@@ -10,46 +24,165 @@ export default () => (
           <rect x="20" y="435" width="92" height="293" fill="white" />
         </g>
         <rect x="20" y="435" width="472" height="32" fill="#007AFF" />
-        <rect x="128.5" y="483.5" width="104" height="127" rx="2.5" fill="white" stroke="#EAEAEA" />
+        <rect
+          x="128.5"
+          y="483.5"
+          width="104"
+          height="127"
+          rx="2.5"
+          fill="white"
+          stroke="#EAEAEA"
+        />
         <path
           d="M129.083 486.143C129.083 485.038 129.978 484.143 131.083 484.143H229.918C231.022 484.143 231.918 485.038 231.918 486.143V569.857H129.083V486.143Z"
           fill="#EAEAEA"
         />
-        <rect x="137.742" y="580.143" width="62.7835" height="8" rx="1" fill="#CFCFCF" />
-        <rect x="137.742" y="592.714" width="36.8041" height="8" rx="1" fill="#CFCFCF" />
-        <rect x="249.5" y="483.5" width="104" height="127" rx="2.5" fill="white" stroke="#EAEAEA" />
+        <rect
+          x="137.742"
+          y="580.143"
+          width="62.7835"
+          height="8"
+          rx="1"
+          fill="#CFCFCF"
+        />
+        <rect
+          x="137.742"
+          y="592.714"
+          width="36.8041"
+          height="8"
+          rx="1"
+          fill="#CFCFCF"
+        />
+        <rect
+          x="249.5"
+          y="483.5"
+          width="104"
+          height="127"
+          rx="2.5"
+          fill="white"
+          stroke="#EAEAEA"
+        />
         <path
           d="M250.083 486.143C250.083 485.038 250.978 484.143 252.083 484.143H350.918C352.022 484.143 352.918 485.038 352.918 486.143V569.857H250.083V486.143Z"
           fill="#EAEAEA"
         />
-        <rect x="258.742" y="580.143" width="62.7835" height="8" rx="1" fill="#CFCFCF" />
-        <rect x="258.742" y="592.714" width="36.8041" height="8" rx="1" fill="#CFCFCF" />
-        <rect x="370.5" y="483.5" width="104" height="127" rx="2.5" fill="white" stroke="#EAEAEA" />
+        <rect
+          x="258.742"
+          y="580.143"
+          width="62.7835"
+          height="8"
+          rx="1"
+          fill="#CFCFCF"
+        />
+        <rect
+          x="258.742"
+          y="592.714"
+          width="36.8041"
+          height="8"
+          rx="1"
+          fill="#CFCFCF"
+        />
+        <rect
+          x="370.5"
+          y="483.5"
+          width="104"
+          height="127"
+          rx="2.5"
+          fill="white"
+          stroke="#EAEAEA"
+        />
         <path
           d="M371.083 486.143C371.083 485.038 371.978 484.143 373.083 484.143H471.918C473.022 484.143 473.918 485.038 473.918 486.143V569.857H371.083V486.143Z"
           fill="#EAEAEA"
         />
-        <rect x="379.742" y="580.143" width="62.7835" height="8" rx="1" fill="#CFCFCF" />
-        <rect x="379.742" y="592.714" width="36.8041" height="8" rx="1" fill="#CFCFCF" />
-        <rect x="128.5" y="627.5" width="104" height="127" rx="2.5" fill="white" stroke="#EAEAEA" />
+        <rect
+          x="379.742"
+          y="580.143"
+          width="62.7835"
+          height="8"
+          rx="1"
+          fill="#CFCFCF"
+        />
+        <rect
+          x="379.742"
+          y="592.714"
+          width="36.8041"
+          height="8"
+          rx="1"
+          fill="#CFCFCF"
+        />
+        <rect
+          x="128.5"
+          y="627.5"
+          width="104"
+          height="127"
+          rx="2.5"
+          fill="white"
+          stroke="#EAEAEA"
+        />
         <path
           d="M129.083 630.143C129.083 629.038 129.978 628.143 131.083 628.143H229.918C231.022 628.143 231.918 629.038 231.918 630.143V713.857H129.083V630.143Z"
           fill="#EAEAEA"
         />
-        <rect x="137.742" y="724.143" width="62.7835" height="8" rx="1" fill="#CFCFCF" />
-        <rect x="249.5" y="627.5" width="104" height="127" rx="2.5" fill="white" stroke="#EAEAEA" />
+        <rect
+          x="137.742"
+          y="724.143"
+          width="62.7835"
+          height="8"
+          rx="1"
+          fill="#CFCFCF"
+        />
+        <rect
+          x="249.5"
+          y="627.5"
+          width="104"
+          height="127"
+          rx="2.5"
+          fill="white"
+          stroke="#EAEAEA"
+        />
         <path
           d="M250.083 630.143C250.083 629.038 250.978 628.143 252.083 628.143H350.918C352.022 628.143 352.918 629.038 352.918 630.143V713.857H250.083V630.143Z"
           fill="#EAEAEA"
         />
-        <rect x="258.742" y="724.143" width="62.7835" height="8" rx="1" fill="#CFCFCF" />
-        <rect x="370.5" y="627.5" width="104" height="127" rx="2.5" fill="white" stroke="#EAEAEA" />
+        <rect
+          x="258.742"
+          y="724.143"
+          width="62.7835"
+          height="8"
+          rx="1"
+          fill="#CFCFCF"
+        />
+        <rect
+          x="370.5"
+          y="627.5"
+          width="104"
+          height="127"
+          rx="2.5"
+          fill="white"
+          stroke="#EAEAEA"
+        />
         <path
           d="M371.083 630.143C371.083 629.038 371.978 628.143 373.083 628.143H471.918C473.022 628.143 473.918 629.038 473.918 630.143V713.857H371.083V630.143Z"
           fill="#EAEAEA"
         />
-        <rect x="379.742" y="724.143" width="62.7835" height="8" rx="1" fill="#CFCFCF" />
-        <rect opacity="0.3" x="32" y="443" width="60" height="16" rx="3" fill="white" />
+        <rect
+          x="379.742"
+          y="724.143"
+          width="62.7835"
+          height="8"
+          rx="1"
+          fill="#CFCFCF"
+        />
+        <rect
+          opacity="0.3"
+          x="32"
+          y="443"
+          width="60"
+          height="16"
+          rx="3"
+          fill="white"
+        />
         <rect x="32" y="495" width="68" height="10" rx="1" fill="#CFCFCF" />
         <rect x="32" y="481" width="28" height="6" rx="1" fill="#EAEAEA" />
         <rect x="32" y="601" width="28" height="6" rx="1" fill="#EAEAEA" />
@@ -70,11 +203,33 @@ export default () => (
         <circle cx="41" cy="418" r="5" fill="#C4C4C4" />
         <circle cx="56" cy="418" r="5" fill="#C4C4C4" />
         <circle cx="71" cy="418" r="5" fill="#C4C4C4" />
-        <rect x="156" y="406" width="200" height="24" rx="5" fill="white" fillOpacity="0.65" />
-        <rect x="20.5" y="402.5" width="471" height="324" rx="6.5" stroke="#E8E8E8" />
+        <rect
+          x="156"
+          y="406"
+          width="200"
+          height="24"
+          rx="5"
+          fill="white"
+          fillOpacity="0.65"
+        />
+        <rect
+          x="20.5"
+          y="402.5"
+          width="471"
+          height="324"
+          rx="6.5"
+          stroke="#E8E8E8"
+        />
       </g>
     </g>
-    <mask maskUnits="userSpaceOnUse" x="0" y="0" width="0" height="0" fill="black">
+    <mask
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="0"
+      height="0"
+      fill="black"
+    >
       <rect fill="white" width="0" height="0" />
     </mask>
     <path
@@ -82,7 +237,14 @@ export default () => (
       fill="#3A3A3A"
       mask="url(#)"
     />
-    <mask maskUnits="userSpaceOnUse" x="0" y="0" width="0" height="0" fill="black">
+    <mask
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="0"
+      height="0"
+      fill="black"
+    >
       <rect fill="white" width="0" height="0" />
     </mask>
     <path
@@ -90,7 +252,14 @@ export default () => (
       fill="#3A3A3A"
       mask="url(#)"
     />
-    <mask maskUnits="userSpaceOnUse" x="0" y="0" width="0" height="0" fill="black">
+    <mask
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="0"
+      height="0"
+      fill="black"
+    >
       <rect fill="white" width="0" height="0" />
     </mask>
     <path
@@ -98,7 +267,14 @@ export default () => (
       fill="#3A3A3A"
       mask="url(#)"
     />
-    <mask maskUnits="userSpaceOnUse" x="0" y="0" width="0" height="0" fill="black">
+    <mask
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="0"
+      height="0"
+      fill="black"
+    >
       <rect fill="white" width="0" height="0" />
     </mask>
     <path
@@ -106,7 +282,14 @@ export default () => (
       fill="#3A3A3A"
       mask="url(#)"
     />
-    <mask maskUnits="userSpaceOnUse" x="0" y="0" width="0" height="0" fill="black">
+    <mask
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="0"
+      height="0"
+      fill="black"
+    >
       <rect fill="white" width="0" height="0" />
     </mask>
     <path
@@ -114,7 +297,14 @@ export default () => (
       fill="#3A3A3A"
       mask="url(#)"
     />
-    <mask maskUnits="userSpaceOnUse" x="0" y="0" width="0" height="0" fill="black">
+    <mask
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="0"
+      height="0"
+      fill="black"
+    >
       <rect fill="white" width="0" height="0" />
     </mask>
     <path
@@ -122,7 +312,14 @@ export default () => (
       fill="#3A3A3A"
       mask="url(#)"
     />
-    <mask maskUnits="userSpaceOnUse" x="0" y="0" width="0" height="0" fill="black">
+    <mask
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="0"
+      height="0"
+      fill="black"
+    >
       <rect fill="white" width="0" height="0" />
     </mask>
     <path
@@ -130,7 +327,14 @@ export default () => (
       fill="#3A3A3A"
       mask="url(#)"
     />
-    <mask maskUnits="userSpaceOnUse" x="0" y="0" width="0" height="0" fill="black">
+    <mask
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="0"
+      height="0"
+      fill="black"
+    >
       <rect fill="white" width="0" height="0" />
     </mask>
     <path
@@ -149,17 +353,44 @@ export default () => (
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
-        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+        />
         <feOffset dy="5" />
         <feGaussianBlur stdDeviation="6" />
-        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
-        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow"
+        />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+        />
         <feOffset dy="10" />
         <feGaussianBlur stdDeviation="10" />
-        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0" />
-        <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow" />
-        <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="effect1_dropShadow"
+          result="effect2_dropShadow"
+        />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect2_dropShadow"
+          result="shape"
+        />
       </filter>
       <filter
         id="abs-filter-2"
@@ -171,11 +402,27 @@ export default () => (
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
-        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+        />
         <feOffset dx="1" />
-        <feColorMatrix type="matrix" values="0 0 0 0 0.921397 0 0 0 0 0.921397 0 0 0 0 0.921397 0 0 0 1 0" />
-        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0.921397 0 0 0 0 0.921397 0 0 0 0 0.921397 0 0 0 1 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow"
+        />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect1_dropShadow"
+          result="shape"
+        />
       </filter>
       <filter
         id="abs-filter-3"
@@ -187,16 +434,39 @@ export default () => (
         colorInterpolationFilters="sRGB"
       >
         <feFlood floodOpacity="0" result="BackgroundImageFix" />
-        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+        />
         <feOffset dy="1" />
-        <feColorMatrix type="matrix" values="0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 1 0" />
-        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 1 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow"
+        />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect1_dropShadow"
+          result="shape"
+        />
       </filter>
-      <linearGradient id="abs-gradient-1" x1="256" y1="402" x2="256" y2="434" gradientUnits="userSpaceOnUse">
+      <linearGradient
+        id="abs-gradient-1"
+        x1="256"
+        y1="402"
+        x2="256"
+        y2="434"
+        gradientUnits="userSpaceOnUse"
+      >
         <stop offset="0.121547" stopColor="#F5F5F5" />
         <stop offset="1" stopColor="#E8E8E8" />
       </linearGradient>
     </defs>
   </svg>
-)
+);

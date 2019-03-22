@@ -7,7 +7,8 @@ export default () => (
 
     <div className="content">
       <p>
-        Take the pain out of creating Universal <br /> React apps with <b>Next.js</b>
+        Take the pain out of creating Universal <br /> React apps with{' '}
+        <b>Next.js</b>
       </p>
     </div>
 

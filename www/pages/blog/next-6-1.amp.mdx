@@ -1,6 +1,6 @@
 import withPost from '../../components/blog/with-post'
 import Image from '../../components/image'
-import {Fragment} from 'react'
+import { Fragment } from 'react'
 import { TerminalInput } from '../../components/text/terminal'
 import Caption from '../../components/text/caption'
 import Container from '../../components/container'
@@ -8,19 +8,24 @@ import { GenericLink } from '../../components/text/link'
 
 export const meta = {
   title: 'Next.js 6.1',
-  description: 'Next.js 6.1 features improved reliability and consistency in development',
+  description:
+    'Next.js 6.1 features improved reliability and consistency in development',
   date: '2018-06-27T19:50:15.699Z',
   url: 'https://nextjs.org/blog/next-6-1',
   link: '/blog/next-6-1',
-  authors: [{
-    name: 'Tim Neutkens',
-    avatar: '/static/team/tim.jpg',
-    twitter: 'timneutkens'
-  }],
-  twitterCard: 'https://assets.zeit.co/image/upload/front' + '/blog/next6-1/twitter-card.png'
+  authors: [
+    {
+      name: 'Tim Neutkens',
+      avatar: '/static/team/tim.jpg',
+      twitter: 'timneutkens'
+    }
+  ],
+  twitterCard:
+    'https://assets.zeit.co/image/upload/front' +
+    '/blog/next6-1/twitter-card.png'
 }
 
-export default withPost({...meta})
+export default withPost({ ...meta })
 
 We are proud today to introduce the production-ready **Next.js 6.1**, featuring:
 
@@ -40,7 +45,7 @@ To make sure Next.js is as close to default React as possible we have removed `r
 
 ## Hot reloading Typescript and other custom extensions
 
-By default, Next.js automatically looks for any `.js` or `.jsx` file inside the `pages` directory to define routes. 
+By default, Next.js automatically looks for any `.js` or `.jsx` file inside the `pages` directory to define routes.
 
 With the introduction of universal webpack in Next.js 5 came the possibility to have compile-to-js top-level pages. A good example is Typescript, which uses `.ts` and `.tsx`.
 
@@ -73,30 +78,39 @@ The recommended way to get the same properties the `url` property had is using `
 // old
 class Page extends React.Component {
   render() {
-    const {url} = this.props
+    const { url } = this.props
     return <div>{url.pathname}</div>
   }
 }
 export default Page
 ```
-<Caption>How the pathname was accessed in versions before Next.js 6 using <Caption.Code>url</Caption.Code></Caption>
+
+<Caption>
+  How the pathname was accessed in versions before Next.js 6 using{' '}
+  <Caption.Code>url</Caption.Code>
+</Caption>
 
 ```jsx
 // new
 import { withRouter } from 'next/router'
 class Page extends React.Component {
   render() {
-    const {router} = this.props
+    const { router } = this.props
     return <div>{router.pathname}</div>
   }
 }
 export default withRouter(Page)
 ```
-<Caption>How the pathname should be accessed in versions after Next.js 6 using <Caption.Code>router</Caption.Code> injected by <Caption.Code>withRouter</Caption.Code></Caption>
 
-As we are committed to keeping the upgrade path for Next.js applications simple, so we set out to create an easy way of upgrading usages of `url` to `withRouter`. 
+<Caption>
+  How the pathname should be accessed in versions after Next.js 6 using{' '}
+  <Caption.Code>router</Caption.Code> injected by{' '}
+  <Caption.Code>withRouter</Caption.Code>
+</Caption>
 
-The result of this effort is [next&#8209;codemod](https://github.com/zeit/next-codemod), a library of codemods that make upgrading specific deprecated features to their new usage as easy as running one command. 
+As we are committed to keeping the upgrade path for Next.js applications simple, so we set out to create an easy way of upgrading usages of `url` to `withRouter`.
+
+The result of this effort is [next&#8209;codemod](https://github.com/zeit/next-codemod), a library of codemods that make upgrading specific deprecated features to their new usage as easy as running one command.
 
 The first codemod we're providing is `url-to-withrouter` which automatically transforms many cases where `url` was used to `withRouter`.
 

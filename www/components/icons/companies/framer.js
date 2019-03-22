@@ -5,4 +5,4 @@ export default () => (
       fill="hsl(0, 0%, 0%)"
     />
   </svg>
-)
+);

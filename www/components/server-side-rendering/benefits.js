@@ -41,8 +41,17 @@ const Graph = ({ viewable, innerRef }) => (
       <Bar pose={viewable && 'nonSsr'} style={nonSsrStyle} />
       <span>Non-SSR</span>
     </div>
-    <svg width="431" height="6" viewBox="0 0 431 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M431 3L426 0.113249V5.88675L431 3ZM0 3.5L426.5 3.5V2.5L0 2.5V3.5Z" fill="black" />
+    <svg
+      width="431"
+      height="6"
+      viewBox="0 0 431 6"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M431 3L426 0.113249V5.88675L431 3ZM0 3.5L426.5 3.5V2.5L0 2.5V3.5Z"
+        fill="black"
+      />
     </svg>
     <div className="title subtitle" ref={innerRef}>
       Time to First Meaningful Paint
@@ -118,15 +127,18 @@ export default class Benefits extends React.PureComponent {
               <Performance />
               <h3 className="f3 fw6">Superior Performance</h3>
               <p>
-                On slower devices, rendering an initial page can take a long time and lead to a
-                degraded experience. By offloading the computation to a more powerful server, you
-                minimize the time users spend waiting and ensure your conversion rate does not
+                On slower devices, rendering an initial page can take a long
+                time and lead to a degraded experience. By offloading the
+                computation to a more powerful server, you minimize the time
+                users spend waiting and ensure your conversion rate does not
                 suffer.
               </p>
             </div>
             <IObserver
               onIntersect={this.setViewable}
-              render={({ innerRef }) => <Graph viewable={viewable} innerRef={innerRef} />}
+              render={({ innerRef }) => (
+                <Graph viewable={viewable} innerRef={innerRef} />
+              )}
             />
           </div>
         </div>
@@ -138,10 +150,11 @@ export default class Benefits extends React.PureComponent {
             <Discovery />
             <h3 className="f3 fw6">Optimized for Discovery</h3>
             <p>
-              SSR guarantees your pages are easily indexable by search engines and previewable on
-              social media platforms. Client-side routing solutions can delay web crawling and in
-              turn, tarnish discoverability. Take your SEO to the next level and sidestep the issue
-              entirely with Next.js.
+              SSR guarantees your pages are easily indexable by search engines
+              and previewable on social media platforms. Client-side routing
+              solutions can delay web crawling and in turn, tarnish
+              discoverability. Take your SEO to the next level and sidestep the
+              issue entirely with Next.js.
             </p>
           </div>
 
@@ -151,9 +164,10 @@ export default class Benefits extends React.PureComponent {
             <Lightning />
             <h3 className="f3 fw6">Lightning Fast Delivery</h3>
             <p>
-              Prefetching initial data and building pages on the server drastically reduces the
-              number of round trips required to view your site. This translates to lower latency and
-              reduced bandwidth consumption. Both of which are essential for strong mobile
+              Prefetching initial data and building pages on the server
+              drastically reduces the number of round trips required to view
+              your site. This translates to lower latency and reduced bandwidth
+              consumption. Both of which are essential for strong mobile
               experiences.
             </p>
           </div>

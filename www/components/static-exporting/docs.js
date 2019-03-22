@@ -15,9 +15,10 @@ export default () => (
         <div className="content">
           <p>
             With the flexibility to target any frontend environment, choosing
-            Next.js means your team can handle static site generation without needing to
-            learn a new framework. If your requirements change down the road,
-            Next.js makes the transition to a dynamic application a breeze.
+            Next.js means your team can handle static site generation without
+            needing to learn a new framework. If your requirements change down
+            the road, Next.js makes the transition to a dynamic application a
+            breeze.
           </p>
         </div>
         <div>

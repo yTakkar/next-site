@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-import classNames from 'classnames';
+import React, { PureComponent } from 'react'
+import classNames from 'classnames'
 
 export default class Header extends PureComponent {
   render() {
@@ -11,18 +11,15 @@ export default class Header extends PureComponent {
       defaultActive,
       dotBackground,
       children
-    } = this.props;
+    } = this.props
 
-    const desktopHeight = height.desktop || Number(height) || 0;
-    const mobileHeight = height.mobile || desktopHeight;
-    const tabletHeight = height.tablet || desktopHeight;
+    const desktopHeight = height.desktop || Number(height) || 0
+    const mobileHeight = height.mobile || desktopHeight
+    const tabletHeight = height.tablet || desktopHeight
 
-    const desktopShadow =
-      shadow.desktop || (typeof shadow === 'boolean' ? shadow : false);
-    const tabletShadow =
-      shadow.tablet || (typeof shadow === 'boolean' ? shadow : false);
-    const mobileShadow =
-      shadow.mobile || (typeof shadow === 'boolean' ? shadow : false);
+    const desktopShadow = shadow.desktop || (typeof shadow === 'boolean' ? shadow : false)
+    const tabletShadow = shadow.tablet || (typeof shadow === 'boolean' ? shadow : false)
+    const mobileShadow = shadow.mobile || (typeof shadow === 'boolean' ? shadow : false)
 
     return (
       <header>
@@ -75,28 +72,22 @@ export default class Header extends PureComponent {
             }
             .active {
               background: ${background || 'rgba(255, 255, 255, 0.98)'};
-              box-shadow: ${desktopShadow
-                ? '0px 6px 20px rgba(0, 0, 0, 0.06)'
-                : 'unset'};
+              box-shadow: ${desktopShadow ? '0px 6px 20px rgba(0, 0, 0, 0.06)' : 'unset'};
               pointer-events: auto;
             }
             @media screen and (max-width: 960px) {
               .active {
-                box-shadow: ${tabletShadow
-                  ? '0px 6px 20px rgba(0, 0, 0, 0.06)'
-                  : 'unset'};
+                box-shadow: ${tabletShadow ? '0px 6px 20px rgba(0, 0, 0, 0.06)' : 'unset'};
               }
             }
             @media screen and (max-width: 640px) {
               .active {
-                box-shadow: ${mobileShadow
-                  ? '0px 6px 20px rgba(0, 0, 0, 0.06)'
-                  : 'unset'};
+                box-shadow: ${mobileShadow ? '0px 6px 20px rgba(0, 0, 0, 0.06)' : 'unset'};
               }
             }
           `}
         </style>
       </header>
-    );
+    )
   }
 }

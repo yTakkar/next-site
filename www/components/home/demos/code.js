@@ -30,7 +30,10 @@ export default ({ lang, children, style = {} }) => (
         <code>{children}</code>
       </pre>
     ) : (
-      <Highlight className={lang || 'javascript'} languages={['json', 'xml', 'javascript']}>
+      <Highlight
+        className={lang || 'javascript'}
+        languages={['json', 'xml', 'javascript']}
+      >
         {children}
       </Highlight>
     )}

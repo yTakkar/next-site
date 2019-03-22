@@ -387,14 +387,14 @@ export default withRouter(({ router, hideLogo = false }) => {
     typeof hideLogo.desktop === 'boolean'
       ? hideLogo.desktop
       : typeof hideLogo === 'boolean'
-        ? hideLogo
-        : false;
+      ? hideLogo
+      : false;
   const hideLogoMobile =
     typeof hideLogo.mobile === 'boolean'
       ? hideLogo.mobile
       : typeof hideLogo === 'boolean'
-        ? hideLogo
-        : false;
+      ? hideLogo
+      : false;
 
   return (
     <>

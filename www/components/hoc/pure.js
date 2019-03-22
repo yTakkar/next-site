@@ -1,9 +1,9 @@
-import { PureComponent } from 'react'
+import { PureComponent } from 'react';
 
-export default function (Comp) {
+export default function(Comp) {
   return class extends PureComponent {
-    render () {
-      return <Comp {...this.props} />
+    render() {
+      return <Comp {...this.props} />;
     }
-  }
+  };
 }

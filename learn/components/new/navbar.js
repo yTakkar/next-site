@@ -1,16 +1,16 @@
-import Link from 'next/link';
-import { withRouter } from 'next/router';
-import classNames from 'classnames';
-import { SkipNavLink } from '@reach/skip-nav';
+import Link from 'next/link'
+import { withRouter } from 'next/router'
+import classNames from 'classnames'
+import { SkipNavLink } from '@reach/skip-nav'
 
-import NextLogo from './logo';
-import Container from './container';
-import Popover from './popover';
+import NextLogo from './logo'
+import Container from './container'
+import Popover from './popover'
 
-import GitHubLogo from '../icons/github';
-import SpectrumLogo from '../icons/spectrum';
+import GitHubLogo from '../icons/github'
+import SpectrumLogo from '../icons/spectrum'
 
-import { links } from '../site-manifest';
+import { links } from '../site-manifest'
 
 function Navbar({ className, hideLogo, route, isMobile }) {
   if (isMobile) {
@@ -107,11 +107,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
           <div className="links">
             <div className="icons">
               <Link href="https://github.com/zeit/next.js">
-                <a
-                  aria-label="Next.js on GitHub"
-                  rel="noreferrer"
-                  target="_blank"
-                >
+                <a aria-label="Next.js on GitHub" rel="noreferrer" target="_blank">
                   <GitHubLogo />
                 </a>
               </Link>
@@ -185,7 +181,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
           </div>
         </nav>
       </Container>
-    );
+    )
   }
 
   return (
@@ -345,11 +341,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
           }
           <div className="icons">
             <Link href="https://github.com/zeit/next.js">
-              <a
-                aria-label="Next.js on GitHub"
-                rel="noreferrer"
-                target="_blank"
-              >
+              <a aria-label="Next.js on GitHub" rel="noreferrer" target="_blank">
                 <GitHubLogo />
               </a>
             </Link>
@@ -377,24 +369,24 @@ function Navbar({ className, hideLogo, route, isMobile }) {
         </div>
       </nav>
     </Container>
-  );
+  )
 }
 
 export default withRouter(({ router, hideLogo = false }) => {
-  const { route } = router;
+  const { route } = router
 
   const hideLogoDesktop =
     typeof hideLogo.desktop === 'boolean'
       ? hideLogo.desktop
       : typeof hideLogo === 'boolean'
-        ? hideLogo
-        : false;
+      ? hideLogo
+      : false
   const hideLogoMobile =
     typeof hideLogo.mobile === 'boolean'
       ? hideLogo.mobile
       : typeof hideLogo === 'boolean'
-        ? hideLogo
-        : false;
+      ? hideLogo
+      : false
 
   return (
     <>
@@ -404,12 +396,7 @@ export default withRouter(({ router, hideLogo = false }) => {
         hideLogo={hideLogoDesktop}
         isMobile={false}
       />
-      <Navbar
-        className="navbar-mobile"
-        route={route}
-        hideLogo={hideLogoMobile}
-        isMobile
-      />
+      <Navbar className="navbar-mobile" route={route} hideLogo={hideLogoMobile} isMobile />
       <style jsx global>
         {`
           @media screen and (max-width: 640px) {
@@ -425,5 +412,5 @@ export default withRouter(({ router, hideLogo = false }) => {
         `}
       </style>
     </>
-  );
-});
+  )
+})

@@ -12,7 +12,8 @@ export default class Build extends React.PureComponent {
     demoInView: true
   };
 
-  handleIntersect = entry => this.setState({ demoInView: entry.isIntersecting });
+  handleIntersect = entry =>
+    this.setState({ demoInView: entry.isIntersecting });
 
   render() {
     return (

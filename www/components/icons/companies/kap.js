@@ -1,6 +1,18 @@
 export default () => (
-  <svg width="100" height="45" viewBox="0 0 75 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" transform="translate(-256.000000, -32.000000)">
+  <svg
+    width="100"
+    height="45"
+    viewBox="0 0 75 32"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g
+      stroke="none"
+      strokeWidth="1"
+      fill="none"
+      fillRule="evenodd"
+      transform="translate(-256.000000, -32.000000)"
+    >
       <g transform="translate(256.000000, 32.000000)">
         <path
           fill="#777"
@@ -13,4 +25,4 @@ export default () => (
       </g>
     </g>
   </svg>
-)
+);

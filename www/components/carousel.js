@@ -100,8 +100,8 @@ export default class Carousel extends React.PureComponent {
                           i === pivot - 1
                             ? this.prev
                             : i === pivot + 1
-                              ? this.next
-                              : undefined
+                            ? this.next
+                            : undefined
                         }
                       >
                         <div className="slide-content">

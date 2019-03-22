@@ -14,10 +14,10 @@ export default () => (
 
       <h2 className="f0 fw6">Incrementally Adopt</h2>
       <p>
-        Need a path for incremental adoption? No problem. With the ability to use Next.js
-        programmatically, it’s simple to incorporate it into any existing application. Next.js also
-        provides complete multi-zone support for exposing multiple deployments under a single
-        domain.
+        Need a path for incremental adoption? No problem. With the ability to
+        use Next.js programmatically, it’s simple to incorporate it into any
+        existing application. Next.js also provides complete multi-zone support
+        for exposing multiple deployments under a single domain.
       </p>
 
       <hr />
@@ -25,8 +25,9 @@ export default () => (
       <h2 className="f0 fw6">Integrate Anywhere</h2>
       <div className="integrate-content">
         <p>
-          With over 170 examples to follow, server-side rendering with Next.js can be easily
-          integrated with your current Node.js backend, such as Express, Koa, or even Electron.
+          With over 170 examples to follow, server-side rendering with Next.js
+          can be easily integrated with your current Node.js backend, such as
+          Express, Koa, or even Electron.
         </p>
       </div>
 

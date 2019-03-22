@@ -1,5 +1,11 @@
 export default () => (
-  <svg width={64} height={64} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width={64}
+    height={64}
+    viewBox="0 0 64 64"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M8.3125 41.835H9.46897L12.7805 46.9796C12.8959 47.16 13.0013 47.3467 13.0962 47.5387V41.835H14.1935V49.2145H13.0331L9.7321 44.0699C9.61667 43.8895 9.51126 43.7028 9.41634 43.5108V49.2145H8.3125V41.835Z"
       fill="#1E65F3"

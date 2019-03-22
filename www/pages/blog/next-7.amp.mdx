@@ -3,26 +3,31 @@ import Image from '../../components/image'
 
 export const meta = {
   title: 'Next.js 7',
-  description: 'After 26 canary releases and 3.4 million downloads, we are proud to introduce the production-ready Next.js 7',
+  description:
+    'After 26 canary releases and 3.4 million downloads, we are proud to introduce the production-ready Next.js 7',
   date: '2018-09-19T16:05:55.907Z',
   url: 'https://nextjs.org/blog/next-7',
   link: '/blog/next-7',
-  authors: [{
-    name: 'Tim Neutkens',
-    avatar: '/static/team/tim.jpg',
-    twitter: 'timneutkens'
-  }, {
-    name: 'Shu Ding',
-    twitter: 'quietshu',
-    avatar: '/static/team/shu.png'
-  }, {
-    name: 'Giuseppe Gurgone',
-    twitter: 'giuseppegurgone',
-    avatar: '/static/collaborators/giuseppe.jpg'
-  }]
+  authors: [
+    {
+      name: 'Tim Neutkens',
+      avatar: '/static/team/tim.jpg',
+      twitter: 'timneutkens'
+    },
+    {
+      name: 'Shu Ding',
+      twitter: 'quietshu',
+      avatar: '/static/team/shu.png'
+    },
+    {
+      name: 'Giuseppe Gurgone',
+      twitter: 'giuseppegurgone',
+      avatar: '/static/collaborators/giuseppe.jpg'
+    }
+  ]
 }
 
-export default withPost({...meta})
+export default withPost({ ...meta })
 
 After 26 canary releases and 3.4 million downloads, we are proud to introduce the production-ready Next.js 7, featuring:
 
@@ -44,7 +49,7 @@ One of Next.js's primary goals is to provide the best production performance wit
 
 Thanks to webpack 4, Babel 7 and many improvements and optimizations on our codebase, Next.js now boots up to 57% faster during development.
 
-Thanks to our new incremental compilation cache, changes you make to the code will now *build 40% faster*.
+Thanks to our new incremental compilation cache, changes you make to the code will now _build 40% faster_.
 
 These are some example figures we have collected:
 
@@ -91,7 +96,11 @@ These are some example figures we have collected:
 
 As a bonus, when developing and building you will now see better realtime feedback thanks to [webpackbar](https://github.com/nuxt/webpackbar):
 
-<Image src="/static/blog/next-7/webpackbar.gif" width={1734/2} height={880/2} />
+<Image
+  src="/static/blog/next-7/webpackbar.gif"
+  width={1734 / 2}
+  height={880 / 2}
+/>
 
 ### Better error reporting with React Error Overlay
 
@@ -103,7 +112,12 @@ Rendering accurate and help errors is critical to a great development and debugg
 
 This is a comparison of the before and after of our errors:
 
-<Image src="/static/blog/next-7/errors.png" width={2304/2.2} height={931/2.2} caption="The previous overlay left, react-error-overlay right" />
+<Image
+  src="/static/blog/next-7/errors.png"
+  width={2304 / 2.2}
+  height={931 / 2.2}
+  caption="The previous overlay left, react-error-overlay right"
+/>
 
 As a bonus, `react-error-overlay` makes it easy to open your text editor by just clicking on a specific code block.
 
@@ -127,7 +141,7 @@ With webpack 4, a new way of extracting CSS from bundles was introduced, called 
 
 [`@zeit/next-css`](https://github.com/zeit/next-plugins/tree/master/packages/next-css), [`@zeit/next-less`](https://github.com/zeit/next-plugins/tree/master/packages/next-less), [`@zeit/next-sass`](https://github.com/zeit/next-plugins/tree/master/packages/next-sass), and [`@zeit/next-stylus`](https://github.com/zeit/next-plugins/tree/master/packages/next-stylus) are now powered by `mini-extract-css-plugin`.
 
-The new version of these Next.js plugins **solves 20 existing issues related to CSS imports**; As an example,  importing CSS in dynamic `import()`s is now supported:
+The new version of these Next.js plugins **solves 20 existing issues related to CSS imports**; As an example, importing CSS in dynamic `import()`s is now supported:
 
 ```jsx
 // components/my-dynamic-component.js
@@ -165,7 +179,9 @@ In short, all you have to do to support importing `.css` files in your Next.js p
 
 ```javascript
 const withCSS = require('@zeit/next-css')
-module.exports = withCSS({/* my next config */})
+module.exports = withCSS({
+  /* my next config */
+})
 ```
 
 ### Standardized Dynamic Imports
@@ -305,6 +321,7 @@ The main ways we have reduced size are:
 ## Static CDN Support
 
 In Next.js 5 we introduced `assetPrefix` support, a way to make Next.js automatically load assets from a certain location, usually a CDN. This option works great if your CDN supports proxying, you request an URL like
+
 ```
 https://cdn.example.com/_next/static/<buildid>/pages/index.js
 ```
@@ -338,16 +355,20 @@ We are excited to introduce styled-jsx 3, the by default included CSS-in-JS solu
 One thing that was often unclear was how to style a child component if that component is not part of the current component scope, for example, if you included a child component that needed specific styles only when used inside the parent component:
 
 ```jsx
-const ChildComponent = () => <div>
-  <p>some text</p>
-</div>
+const ChildComponent = () => (
+  <div>
+    <p>some text</p>
+  </div>
+)
 
 export default function Index() {
   return (
     <div>
       <ChildComponent />
       <style jsx>{`
-        p { color: black }
+        p {
+          color: black;
+        }
       `}</style>
     </div>
   )
@@ -357,14 +378,16 @@ export default function Index() {
 The above code tries to select the `p` tag does not work because styled-jsx styles are scoped to the current component, they do not leak into child components. One way to get around this was using the `:global` method, removing the prefix from the `p` tag. However, this introduces a new issue, which is that styles do leak across the page.
 
 In styled-jsx 3 this issue has been solved by introducing a new API, `css.resolve`, which will generate the `className` and `<style>`
- tags (the `styles` property) for the given styled-jsx string:
+tags (the `styles` property) for the given styled-jsx string:
 
 ```jsx
 import css from 'styled-jsx/css'
 
-const ChildComponent = ({className}) => <div>
-  <p className={className}>some text</p>
-</div>
+const ChildComponent = ({ className }) => (
+  <div>
+    <p className={className}>some text</p>
+  </div>
+)
 
 const { className, styles } = css.resolve`p { color: black }`
 
@@ -431,13 +454,23 @@ Together with the Next.js 7 release, we are launching a completely redesigned [n
 
 The blog post you are currently reading is already part of the new blog section on [nextjs.org](https://nextjs.org). This blog will be the new home for communication related to Next.js, for example, new version announcements.
 
-<Image src="/static/blog/next-7/homepage.png" width={2466/2.5} height={1698/2.5} caption="The new nextjs.org" />
+<Image
+  src="/static/blog/next-7/homepage.png"
+  width={2466 / 2.5}
+  height={1698 / 2.5}
+  caption="The new nextjs.org"
+/>
 
 ### Get Inspired
 
 As the amount of apps using Next.js is continuously growing, we needed a way to show all these beautiful apps in one overview. Meet the new [`/showcase`](/showcase) page:
 
-<Image src="/static/blog/next-7/showcase.png" width={2466/2.5} height={1698/2.5} caption="Get inspired on nextjs.org/showcase" />
+<Image
+  src="/static/blog/next-7/showcase.png"
+  width={2466 / 2.5}
+  height={1698 / 2.5}
+  caption="Get inspired on nextjs.org/showcase"
+/>
 
 This new showcase allows us to add new apps built with Next.js continuously.
 
@@ -455,44 +488,44 @@ Ever since it's first release Next.js has been used in everything from fortune 5
 The Next.js community on [spectrum.chat/next-js](https://spectrum.chat/next-js) has nearly 2000 members. [Join us!](https://spectrum.chat/next-js)
 
 <style jsx>{`
-table {
-  margin: 0 auto 30px;
-}
-table td,
-table th {
-  padding: 10px 20px;
-}
-table th {
-  font-weight: normal;
-  font-size: 12px;
-  color: #9b9b9b;
-  padding-bottom: 0px;
-}
-table td:first-child {
-  width: 55%;
-}
-table td {
-  font-size: 14px;
-  vertical-align: middle;
-}
-table td:last-child {
-  color: #067df7;
-}
-table td:not(:first-child) {
-  text-align: center;
-}
-table td em {
-  font-weight: normal;
-  font-size: 10px;
-  text-transform: uppercase;
-  font-style: normal;
-  display: block;
-}
-// CSS only media query for mobile
-@media screen and (max-width: 640px) {
+  table {
+    margin: 0 auto 30px;
+  }
   table td,
   table th {
-    padding: 10px 10px;
+    padding: 10px 20px;
   }
-}
+  table th {
+    font-weight: normal;
+    font-size: 12px;
+    color: #9b9b9b;
+    padding-bottom: 0px;
+  }
+  table td:first-child {
+    width: 55%;
+  }
+  table td {
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  table td:last-child {
+    color: #067df7;
+  }
+  table td:not(:first-child) {
+    text-align: center;
+  }
+  table td em {
+    font-weight: normal;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-style: normal;
+    display: block;
+  }
+  // CSS only media query for mobile
+  @media screen and (max-width: 640px) {
+    table td,
+    table th {
+      padding: 10px 10px;
+    }
+  }
 `}</style>

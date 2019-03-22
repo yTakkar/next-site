@@ -10,29 +10,38 @@ import Container from '../../components/container'
 
 export const meta = {
   title: 'Next.js 5: Universal Webpack, CSS Imports, Plugins and Zones',
-  description: 'Next.js 5 focuses on greater extensibility, composability for large applications and performance',
+  description:
+    'Next.js 5 focuses on greater extensibility, composability for large applications and performance',
   date: '2018-02-05T19:10:43.056Z',
-  authors: [{
-    name: 'Tim Neutkens',
-    avatar: '/static/team/tim.jpg',
-    twitter: 'timneutkens'
-  }, {
-    name: 'Arunoda Susiripala',
-    avatar: '/static/team/arunoda.jpg',
-    twitter: 'arunoda'
-  }],
+  authors: [
+    {
+      name: 'Tim Neutkens',
+      avatar: '/static/team/tim.jpg',
+      twitter: 'timneutkens'
+    },
+    {
+      name: 'Arunoda Susiripala',
+      avatar: '/static/team/arunoda.jpg',
+      twitter: 'arunoda'
+    }
+  ],
   url: 'https://nextjs.org/blog/next-5',
   link: '/blog/next-5',
   twitterCard: `https://assets.zeit.co/image/upload/front/blog/next5/twitter-card.png`
 }
 
-export default withPost({...meta})
+export default withPost({ ...meta })
 
 We are very happy to introduce Next.js 5.0 to the world. It’s available on npm effective immediately. To upgrade, run:
 
-<TerminalInput prefix>{`npm i next@latest react@latest react-dom@latest`}</TerminalInput>
+<TerminalInput
+  prefix
+>{`npm i next@latest react@latest react-dom@latest`}</TerminalInput>
 
-<Caption>In addition to bumping Next.js, we upgrade the peer dependencies <Caption.Code>react</Caption.Code> and <Caption.Code>react-dom</Caption.Code></Caption>
+<Caption>
+  In addition to bumping Next.js, we upgrade the peer dependencies{' '}
+  <Caption.Code>react</Caption.Code> and <Caption.Code>react-dom</Caption.Code>
+</Caption>
 
 Next.js is a toolkit for universal, server-rendered (or [statically
 pre-rendered](/blog/next3)) React.js applications. Getting started developing an
@@ -68,11 +77,14 @@ our default webpack config:
 module.exports = {
   webpack(config, { dev }) {
     // modify it!
-    return config;
+    return config
   }
 }
 ```
-<Caption>An example of the optional <Caption.Code>next.config.js</Caption.Code> file</Caption>
+
+<Caption>
+  An example of the optional <Caption.Code>next.config.js</Caption.Code> file
+</Caption>
 
 However, Webpack would only execute on the client (browser) bundles,
 and you would miss out on the possibility of using this great toolchain
@@ -102,8 +114,11 @@ export default function Index() {
   )
 }
 ```
-<Caption>An example page (<Caption.Code>pages/index.js</Caption.Code>) using CSS imports thanks to Universal Webpack</Caption>
 
+<Caption>
+  An example page (<Caption.Code>pages/index.js</Caption.Code>) using CSS
+  imports thanks to Universal Webpack
+</Caption>
 
 To make this work, you can bring the loaders you need as peer dependencies:
 
@@ -132,7 +147,10 @@ module.exports = {
   }
 }
 ```
-<Caption>Extending the raw webpack config gives you great flexibility and control</Caption>
+
+<Caption>
+  Extending the raw webpack config gives you great flexibility and control
+</Caption>
 
 While our general recommendation is to use component-local styling solutions,
 like the [included `styled-jsx` babel plugin](https://github.com/zeit/next.js#built-in-css-support), we believe
@@ -146,27 +164,50 @@ that decorate your configuration_. Instead of manually extending the
 configuration to set up the loaders like we did above, you can just do:
 
 ```js
-const withCss = require('next-css');
-module.exports = withCss({ /* extra optional config */ })
+const withCss = require('next-css')
+module.exports = withCss({
+  /* extra optional config */
+})
 ```
-<Caption>All it takes to enable importing <Caption.Code>.css</Caption.Code> files is to bring in <Caption.Code>next-css</Caption.Code></Caption>
 
+<Caption>
+  All it takes to enable importing <Caption.Code>.css</Caption.Code> files is to
+  bring in <Caption.Code>next-css</Caption.Code>
+</Caption>
 
 Read more on [CSS Loaders](https://github.com/zeit/next-plugins/tree/master/packages/next-css) usage with Next.JS, or refer to some of the packages
 we have already created for you:
 
 <Table>
   <Row>
-    <Cell><b>CSS</b></Cell>
-    <Cell><GenericLink href="https://github.com/zeit/next-plugins/tree/master/packages/next-css">next-css</GenericLink></Cell>
+    <Cell>
+      <b>CSS</b>
+    </Cell>
+    <Cell>
+      <GenericLink href="https://github.com/zeit/next-plugins/tree/master/packages/next-css">
+        next-css
+      </GenericLink>
+    </Cell>
   </Row>
   <Row>
-    <Cell><b>LESS</b></Cell>
-    <Cell><GenericLink href="https://github.com/zeit/next-plugins/tree/master/packages/next-less">next-less</GenericLink></Cell>
+    <Cell>
+      <b>LESS</b>
+    </Cell>
+    <Cell>
+      <GenericLink href="https://github.com/zeit/next-plugins/tree/master/packages/next-less">
+        next-less
+      </GenericLink>
+    </Cell>
   </Row>
   <Row>
-    <Cell><b>SASS</b></Cell>
-    <Cell><GenericLink href="https://github.com/zeit/next-plugins/tree/master/packages/next-sass">next-sass</GenericLink></Cell>
+    <Cell>
+      <b>SASS</b>
+    </Cell>
+    <Cell>
+      <GenericLink href="https://github.com/zeit/next-plugins/tree/master/packages/next-sass">
+        next-sass
+      </GenericLink>
+    </Cell>
   </Row>
 </Table>
 
@@ -181,7 +222,7 @@ that it is becoming [officially supported by Babel 7](https://github.com/babel/b
 be supported by Next.js by just [customizing your .babelrc](https://github.com/zeit/next.js#customizing-babel-config).
 
 In the mean time, thanks to our new Universal Webpack support, you can
-already get full TypeScript support *today*!
+already get full TypeScript support _today_!
 
 You can extend your webpack config like this:
 
@@ -203,14 +244,20 @@ module.exports = {
   }
 }
 ```
-<Caption>All we have to do is enable the <Caption.Code>ts-loader</Caption.Code></Caption>
+
+<Caption>
+  All we have to do is enable the <Caption.Code>ts-loader</Caption.Code>
+</Caption>
 
 Like CSS loaders and pre-processors, TypeScript has been one of the most requested features. To make incorporating it into projects just as easily as any other loader, we now have a [`next-typescript` plugin](/) you can include in your `next.config.js` file:
 
 ```js
-const withTs = require('next-typescript');
-module.exports = withTs({ /* additional config*/ })
+const withTs = require('next-typescript')
+module.exports = withTs({
+  /* additional config*/
+})
 ```
+
 <Caption>Plugins can be trivially composed: they are just functions</Caption>
 
 ### Better Support for React Altlibs & Module Overloading
@@ -230,10 +277,13 @@ this is all you have to do to use Next.js with preact:
 <Caption>We install the preact plugin and necessary peer dependencies</Caption>
 
 ```js
-const withPreact = require('@zeit/next-preact');
-module.exports = withPreact();
+const withPreact = require('@zeit/next-preact')
+module.exports = withPreact()
 ```
-<Caption>Our new <Caption.Code>next.config.js</Caption.Code> ready for preact</Caption>
+
+<Caption>
+  Our new <Caption.Code>next.config.js</Caption.Code> ready for preact
+</Caption>
 
 Check out the very simple [@zeit/next-preact](https://github.com/zeit/next-plugins/tree/master/packages/next-preact) module or create your own!
 
@@ -249,14 +299,18 @@ it differently for production:
 ```js
 module.exports = {
   webpack(config, { dev }) {
-    if(!dev) {
+    if (!dev) {
       config.devtool = 'source-map'
     }
-    return config;
+    return config
   }
 }
 ```
-<Caption>We simply configure the <Caption.Code>devtool</Caption.Code> option differently when not in development</Caption>
+
+<Caption>
+  We simply configure the <Caption.Code>devtool</Caption.Code> option
+  differently when not in development
+</Caption>
 
 ## Zones
 
@@ -287,8 +341,8 @@ As an example, consider these two independent Next.js applications [deployed to 
 
 <Image
   src={`${'https://assets.zeit.co/image/upload/front'}/blog/next5/zones.png`}
-  width={4354/4}
-  height={1456/4}
+  width={4354 / 4}
+  height={1456 / 4}
   caption="Both of our pages have a seamless experience, but they belong to separate apps"
 />
 
@@ -298,12 +352,19 @@ we wanted to make accepting a community contribution as easy as possible.
 We decided to split out the documentation "mini-website" into its [own repository](https://github.com/zeit/docs). Additionally,
 whenever a pull-request is submitted and a change is proposed, we deploy it automatically, in isolation:
 
-<GenericLink href="https://github.com/zeit/docs/pull/113"><Image
-  src={`${'https://assets.zeit.co/image/upload/front'}/blog/next5/github.png`}
-  width={1632/2.5}
-  height={610/2.5}
-  caption={<Fragment><br />Every time a change happens inside a PR our bot automatically deploys it</Fragment>}
-/></GenericLink>
+<GenericLink href="https://github.com/zeit/docs/pull/113">
+  <Image
+    src={`${'https://assets.zeit.co/image/upload/front'}/blog/next5/github.png`}
+    width={1632 / 2.5}
+    height={610 / 2.5}
+    caption={
+      <Fragment>
+        <br />
+        Every time a change happens inside a PR our bot automatically deploys it
+      </Fragment>
+    }
+  />
+</GenericLink>
 
 What we ended up is _two zones_, that are brought together into the
 parent domain `https://zeit.co` using our [path alias feature](/docs/features/path-aliases). It looks something like this:
@@ -317,6 +378,7 @@ parent domain `https://zeit.co` using our [path alias feature](/docs/features/pa
   ]
 }
 ```
+
 <Caption>These simple rules allow you to compose microservices and zones together</Caption>}
 
 All that's left is to invoke a `now alias` command:
@@ -328,6 +390,7 @@ Our mission is to make deployment as universal and open as possible. To aid with
 You are similarly able to join zones together with other solutions like Nginx, HAProxy or API Gateway.
 
 ## Faster Production Build Times
+
 We think developer experience and user experience go hand in hand. The more efficiently changes can be written, tested and deployed, the faster new features are added, bugs are squashed and overall user experience improves.
 
 Consequently, we remain focused on continuously iterating on the performance profile of the most basic building blocks of the system.
@@ -338,12 +401,18 @@ We are happy to report that for zeit.co, a React app made up of thousands of com
 
 <Image
   src={`${'https://assets.zeit.co/image/upload/front'}/blog/next5/build.png`}
-  width={2956/2.68}
-  height={896/2.68}
-  caption={<Fragment>Our main application production build now takes <strong>38 fewer seconds</strong> to complete</Fragment>}
+  width={2956 / 2.68}
+  height={896 / 2.68}
+  caption={
+    <Fragment>
+      Our main application production build now takes{' '}
+      <strong>38 fewer seconds</strong> to complete
+    </Fragment>
+  }
 />
 
 ## Improved Caching for Dynamic Imports
+
 Whenever you use dynamic `import()`, this signals to WebPack that a new code-splitting entry-point exists.
 
 At build time, this means generating a specific bundle for the corresponding subtree of modules.
@@ -363,6 +432,7 @@ Now, we have turned dynamic imports into content-addressable hashes of the conte
 This means that across deployments, your users and customers won’t have to needlessly re-download the code they’ve already used.
 
 ## Fragments
+
 Next.js build a top-level `<Document>` component that gets server-rendered with each page. [Overloading this component](/) puts you in complete control over your markup, enabling many [advanced use cases](https://github.com/zeit/next.js/tree/canary/examples).
 
 Part of that initial markup is the list of scripts that Next.js needs to evaluate on the client side. A custom `_document` looks like this:
@@ -373,7 +443,7 @@ export default class extends Document {
   render() {
     return (
       <html>
-        <Head/>
+        <Head />
         <body>
           <Main />
           <NextScript />
@@ -383,7 +453,11 @@ export default class extends Document {
   }
 }
 ```
-<Caption><Caption.Code>Document</Caption.Code> allows you to customize the entire server-rendered output of a page</Caption>
+
+<Caption>
+  <Caption.Code>Document</Caption.Code> allows you to customize the entire
+  server-rendered output of a page
+</Caption>
 
 Until recently, we were forced to wrap our scripts inside a `<div>`.
 
@@ -399,8 +473,8 @@ With Next 5 we’ve improved source map support on the server side. Errors that 
 
 <Image
   src={`${'https://assets.zeit.co/image/upload/front'}/blog/next5/errors.png`}
-  width={4354/4}
-  height={1056/4}
+  width={4354 / 4}
+  height={1056 / 4}
   caption="Errors now show the correct line, file and function name"
 />
 

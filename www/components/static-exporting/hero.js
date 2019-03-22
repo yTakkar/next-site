@@ -9,8 +9,8 @@ export default () => (
 
     <div className="content">
       <p>
-        Leverage the speed and simplicity of static sites<br /> with the full
-        power of <b>Next.js</b>
+        Leverage the speed and simplicity of static sites
+        <br /> with the full power of <b>Next.js</b>
       </p>
     </div>
 

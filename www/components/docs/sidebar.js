@@ -22,16 +22,13 @@ function slugifyHeadings(headings) {
   });
 }
 
-export function SidebarNavItem ({ item }) {
-  const href = `#${item.id}`
-  const ampOn = `tap:AMP.navigateTo(url='${href}', target=_top)`
+export function SidebarNavItem({ item }) {
+  const href = `#${item.id}`;
+  const ampOn = `tap:AMP.navigateTo(url='${href}', target=_top)`;
   if (item.level === 2) {
     return (
       <li>
-        <a 
-          on={ampOn}
-          className="documentation__sidebar-heading f5"
-        >
+        <a on={ampOn} className="documentation__sidebar-heading f5">
           {item.title}
         </a>
         <style jsx>{`
@@ -76,7 +73,7 @@ export function SidebarNavItem ({ item }) {
 
   return (
     <li>
-      <a on={ampOn} className='f-reset'>
+      <a on={ampOn} className="f-reset">
         {item.title}
       </a>
       <style jsx>{`
@@ -103,15 +100,12 @@ export function SidebarNavItem ({ item }) {
   );
 }
 
-export function SidebarNavItemContainer ({ headings }) {
+export function SidebarNavItemContainer({ headings }) {
   if (Array.isArray(headings)) {
     return (
       <ul>
         {headings.map((item, i) => (
-          <SidebarNavItemContainer
-            headings={item}
-            key={i}
-          />
+          <SidebarNavItemContainer headings={item} key={i} />
         ))}
         <style jsx>{`
           ul {
@@ -123,17 +117,17 @@ export function SidebarNavItemContainer ({ headings }) {
     );
   }
 
-  return <SidebarNavItem item={headings} />
+  return <SidebarNavItem item={headings} />;
 }
 
-export default function Sidebar ({ headings, mobile, desktop }) {
-  slugifyHeadings(flattenHeadings(headings))
-  
+export default function Sidebar({ headings, mobile, desktop }) {
+  slugifyHeadings(flattenHeadings(headings));
+
   return (
     <>
       {mobile && (
         <>
-          <Header 
+          <Header
             shadow
             zIndex={999}
             offset={64 + 32}
@@ -142,31 +136,31 @@ export default function Sidebar ({ headings, mobile, desktop }) {
               mobile: 96
             }}
           >
-          <Navbar />
-            <label htmlFor='dropdown-input' className='dropdown-toggle'>
-                <input id='dropdown-input' type='checkbox' />
-                <div className="docs-select f5 fw6">
-                  <Container>
-                    <span
-                      style={{
-                        verticalAlign: 'middle',
-                        marginRight: '0.2rem',
-                        display: 'inline-block',
-                        lineHeight: '1rem'
-                      }}
-                    >
-                      <ArrowRight />
-                    </span>
-                    Menu
-                  </Container>
-                </div>
-                <div className='documentation__sidebar docs-dropdown'>
-                  <Container>
-                    <nav>
-                      <SidebarNavItemContainer headings={headings} />
-                    </nav>
-                  </Container>
-                </div>
+            <Navbar />
+            <label htmlFor="dropdown-input" className="dropdown-toggle">
+              <input id="dropdown-input" type="checkbox" />
+              <div className="docs-select f5 fw6">
+                <Container>
+                  <span
+                    style={{
+                      verticalAlign: 'middle',
+                      marginRight: '0.2rem',
+                      display: 'inline-block',
+                      lineHeight: '1rem'
+                    }}
+                  >
+                    <ArrowRight />
+                  </span>
+                  Menu
+                </Container>
+              </div>
+              <div className="documentation__sidebar docs-dropdown">
+                <Container>
+                  <nav>
+                    <SidebarNavItemContainer headings={headings} />
+                  </nav>
+                </Container>
+              </div>
             </label>
           </Header>
         </>

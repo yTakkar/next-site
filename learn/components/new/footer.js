@@ -1,11 +1,11 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-import Container from './container';
-import withPure from './pure';
+import Container from './container'
+import withPure from './pure'
 
-import { links } from '../site-manifest';
+import { links } from '../site-manifest'
 
-import ZEITLogo from '../icons/zeit-white-full-logo';
+import ZEITLogo from '../icons/zeit-white-full-logo'
 
 export default withPure(() => (
   <Container wide dark>
@@ -212,4 +212,4 @@ export default withPure(() => (
       </footer>
     </Container>
   </Container>
-));
+))

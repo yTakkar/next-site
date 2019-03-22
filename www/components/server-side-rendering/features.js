@@ -23,7 +23,13 @@ const BrowserContent = () => (
           text-align: center;
           display: flex;
           justify-content: center;
-          background-image: radial-gradient(circle, #d7d7d7, #d7d7d7 1px, #fff 1px, #fff);
+          background-image: radial-gradient(
+            circle,
+            #d7d7d7,
+            #d7d7d7 1px,
+            #fff 1px,
+            #fff
+          );
           background-size: 28px 28px;
         }
 
@@ -174,7 +180,8 @@ export default () => (
           position: relative;
           border-radius: 5px;
           width: 352px;
-          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.48), 0px 14px 50px rgba(0, 0, 0, 0.38);
+          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.48),
+            0px 14px 50px rgba(0, 0, 0, 0.38);
         }
 
         .terminal-container .line {

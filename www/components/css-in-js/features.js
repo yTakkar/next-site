@@ -105,11 +105,7 @@ export default () => {
 
         <div className="flex">
           <div className="terminal-container">
-            <Window
-              title={name}
-              height={297}
-              backgroundColor="black"
-            >
+            <Window title={name} height={297} backgroundColor="black">
               <PoseGroup>
                 {selected === 0 && (
                   <Anim key={0}>
@@ -143,7 +139,6 @@ export default () => {
                 {selected === 0 && (
                   <Anim key={0}>
                     <AvatarOverlay />
-
                   </Anim>
                 )}
                 {selected === 1 && (
@@ -206,8 +201,10 @@ export default () => {
             display: flex;
             position: relative;
           }
-          .terminal-container, .site-container {
-            box-shadow: rgba(0, 0, 0, 0.48) 0px 2px 10px, rgba(0, 0, 0, 0.38) 0px 14px 50px;
+          .terminal-container,
+          .site-container {
+            box-shadow: rgba(0, 0, 0, 0.48) 0px 2px 10px,
+              rgba(0, 0, 0, 0.38) 0px 14px 50px;
             border-radius: 4px;
           }
           .overlay-container {

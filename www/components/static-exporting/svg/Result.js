@@ -9,7 +9,15 @@ export default props => (
     <g filter="url(#filter0_dd)">
       <rect x={50} y={36} width={188} height="161.071" rx={7} fill="white" />
     </g>
-    <rect x={58} y="43.8572" width={172} height="145.357" rx={5} stroke="#C7C7C7" strokeWidth={2} />
+    <rect
+      x={58}
+      y="43.8572"
+      width={172}
+      height="145.357"
+      rx={5}
+      stroke="#C7C7C7"
+      strokeWidth={2}
+    />
     <rect
       x={58}
       y="43.8572"
@@ -86,8 +94,15 @@ export default props => (
         />
         <feOffset dy={2} />
         <feGaussianBlur stdDeviation={5} />
-        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.48 0" />
-        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.48 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow"
+        />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -95,9 +110,21 @@ export default props => (
         />
         <feOffset dy={14} />
         <feGaussianBlur stdDeviation={25} />
-        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.38 0" />
-        <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow" />
-        <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.38 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="effect1_dropShadow"
+          result="effect2_dropShadow"
+        />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect2_dropShadow"
+          result="shape"
+        />
       </filter>
     </defs>
   </svg>

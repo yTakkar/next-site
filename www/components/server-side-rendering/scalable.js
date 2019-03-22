@@ -9,7 +9,8 @@ export default class Scalable extends React.PureComponent {
     viewable: false
   };
 
-  setViewable = ({ isIntersecting: viewable }) => viewable && this.setState({ viewable });
+  setViewable = ({ isIntersecting: viewable }) =>
+    viewable && this.setState({ viewable });
 
   render() {
     const { viewable } = this.state;
@@ -36,10 +37,11 @@ export default class Scalable extends React.PureComponent {
 
             <div className="content">
               <p>
-                When it comes to dynamic applications, scalability is often a concern. Fortunately,
-                Next.js supports serverless builds out of the box. Simply set the target and Next.js
-                will output an SSR-equipped lambda for each page which can be instantly deployed to
-                platforms like{' '}
+                When it comes to dynamic applications, scalability is often a
+                concern. Fortunately, Next.js supports serverless builds out of
+                the box. Simply set the target and Next.js will output an
+                SSR-equipped lambda for each page which can be instantly
+                deployed to platforms like{' '}
                 <ExternalLink href="https://zeit.co/guides/deploying-nextjs-with-now/">
                   Now 2.0
                 </ExternalLink>

@@ -22,7 +22,14 @@ export default class Customers extends React.PureComponent {
         rootMargin="50%"
         onIntersect={this.handleIntersect}
         render={({ innerRef }) => (
-          <Container gray wide center padding role="region" aria-labelledby="customers">
+          <Container
+            gray
+            wide
+            center
+            padding
+            role="region"
+            aria-labelledby="customers"
+          >
             <SectionHeader
               innerRef={innerRef}
               anchor="showcases"

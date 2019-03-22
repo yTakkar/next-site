@@ -9,7 +9,6 @@ export default () => (
     <g filter="url(#site-filter-1)">
       <mask
         id="mask0"
-        masktype="alpha"
         maskUnits="userSpaceOnUse"
         x="20"
         y="10"

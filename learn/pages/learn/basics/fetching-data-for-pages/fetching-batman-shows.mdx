@@ -42,7 +42,7 @@ const Index = (props) => (
   <Layout>
     <h1>Batman TV Shows</h1>
     <ul>
-      {props.shows.map(({show}) => (
+      {props.shows.map(show => (
         <li key={show.id}>
           <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
             <a>{show.name}</a>
@@ -60,7 +60,7 @@ Index.getInitialProps = async function() {
   console.log(`Show data fetched. Count: ${data.length}`)
 
   return {
-    shows: data
+    shows: data.map(entry => entry.show)
   }
 }
 
@@ -91,9 +91,9 @@ As you can see, now we are fetching Batman TV shows and passing them into our pa
 ---
 
 As you can see in the above `getInitialProps` function, it prints the number of data fetched to the console.
-Now, have a look at both the browser console and server console.
+Now, have a look at both the browser console (in the DevTools) and server console (in the Terminal where you ran the app).
 Then reload the page.
 
-Where did you see the above message printed _after_ page reload?
+Where did you see the message that displays the data count, printed _after_ page reload?
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

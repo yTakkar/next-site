@@ -9,8 +9,9 @@ export const meta = {
 
 ## Fetch Data in Client Side
 
-Here we can only see the message on the browser console.
-That's because we navigated to the post page via the client side. Then fetching data from the client side is the best way to do it.
+Here we can only see the message on the browser console. That's because we navigated to the post page via the client side.
+
+When we click on a link wrapped with the Next.js `<Link>` component, the page transition takes place in the browser, without making a request to the server.
 
 If you just visit a post page directly (eg:- http://localhost:3000/p/975) you'll be able to see the message printed on the server but not in the client.
 

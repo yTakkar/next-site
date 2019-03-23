@@ -1,3 +1,4 @@
+import { useAmp } from 'next/amp';
 import Container from '../container';
 import SectionHeader from '../section-header';
 import Carousel from '../carousel';
@@ -62,71 +63,14 @@ const slides = [
   }
 ];
 
-export default () => (
-  <Container padding wide>
-    <div className="first col">
-      <SectionHeader id="customers" title="Who's Using CSS-in-JS" />
-
-      <Carousel slides={slides} />
-    </div>
-    <style jsx>
-      {`
-        h4 {
-          margin: 0;
-        }
-        img {
-          display: flex;
-          flex: 1;
-          flex-basis: 20.5rem;
-          width: 36.5rem;
-          user-select: none;
-          user-drag: none;
-          background-position: center top;
-          background-size: cover;
-          background-repeat: no-repeat;
-          margin-top: -2rem;
-          cursor: pointer;
-          border-radius: 7px;
-          box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1),
-            0px 10px 20px rgba(0, 0, 0, 0.08);
-        }
-        img:hover {
-          box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.1),
-            0px 10px 10px rgba(0, 0, 0, 0.08);
-        }
-        .first.col {
-          margin-bottom: 2rem;
-        }
-
-        .col {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        .left-container {
-          text-align: center;
-          align-items: center;
-        }
-        .logo {
-          display: flex;
-          justify-content: center;
-          margin-top: 2rem;
-          width: 12.5rem;
-        }
-
-        @media screen and (max-width: 960px) {
-          img {
-            flex-basis: 10rem;
-            width: 19rem;
-          }
-        }
-        @media screen and (max-width: 640px) {
-          img {
-            flex-basis: 8rem;
-            width: 14rem;
-          }
-        }
-      `}
-    </style>
-  </Container>
-);
+export default () => {
+  const isAmp = useAmp();
+  return (
+    <Container padding wide>
+      <div className="first col">
+        <SectionHeader id="customers" title="Who's Using CSS-in-JS" />
+        <Carousel slides={slides} isAmp={isAmp} />
+      </div>
+    </Container>
+  );
+};

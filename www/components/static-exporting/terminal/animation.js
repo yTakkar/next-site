@@ -1,8 +1,6 @@
 import React from 'react';
-
 import Terminal from './terminal';
 import Input from '../svg/Input';
-import Result from '../svg/Result';
 
 function ResultRow({ children, showResult }) {
   return (
@@ -52,7 +50,7 @@ export default class Animation extends React.Component {
   };
 
   state = {
-    showResult: false
+    showResult: this.props.showResult
   };
 
   render() {

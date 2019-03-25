@@ -1,6 +1,6 @@
+import React from 'react';
 import Container from '../container';
 import Button from '../button';
-
 import BoxOfFeatures from './svg/BoxOfFeatures';
 
 export default () => (
@@ -63,6 +63,12 @@ export default () => (
         position: relative;
         width: 400px;
         height: 240px;
+      }
+      .box-of-features {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%, -50%, 0);
       }
 
       @media screen and (max-width: 960px) {

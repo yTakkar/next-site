@@ -241,27 +241,6 @@ export default class Console extends React.PureComponent {
           {this.props.children || (
             <Keyframes component="pre">{generateFrames(showResult)}</Keyframes>
           )}
-          <style>
-            {`
-            pre {
-              font-size: 13px;
-              font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-              DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-              line-height: 17px;
-              margin: 0;
-              white-space: pre;
-            }
-            .highlight {
-              color: #00FFFF;
-            }
-            .bold {
-              font-weight: 600;
-            }
-            .dim {
-              opacity: 0.5;
-            }
-          `}
-          </style>
         </div>
         <style jsx>
           {`
@@ -279,6 +258,26 @@ export default class Console extends React.PureComponent {
             }
           `}
         </style>
+        <style jsx global>{`
+          pre {
+            font-size: 13px;
+            font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+              DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
+              serif;
+            line-height: 17px;
+            margin: 0;
+            white-space: pre;
+          }
+          .highlight {
+            color: #00ffff;
+          }
+          .bold {
+            font-weight: 600;
+          }
+          .dim {
+            opacity: 0.5;
+          }
+        `}</style>
       </Window>
     );
   }

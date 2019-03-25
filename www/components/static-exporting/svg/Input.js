@@ -1,15 +1,7 @@
 export default () => (
   <>
     <svg width={272} height={340} fill="none">
-      <rect
-        x={50}
-        y={36}
-        width={172}
-        height="239.643"
-        rx={7}
-        fill="#fff"
-        filter="url(#a)"
-      />
+      <rect x={50} y={36} width={172} height="239.643" rx={7} fill="#fff" />
       <path
         d="M213 156h60"
         stroke="#C7C7C7"
@@ -59,57 +51,6 @@ export default () => (
           fill="#000"
         />
       </g>
-      <defs>
-        <filter
-          id="a"
-          x={0}
-          y={0}
-          width={272}
-          height="339.643"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feFlood floodOpacity={0} result="BackgroundImageFix" />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-          />
-          <feOffset dy={2} />
-          <feGaussianBlur stdDeviation={5} />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.48 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="BackgroundImageFix"
-            result="effect1_dropShadow"
-          />
-          <feColorMatrix
-            in="SourceAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-          />
-          <feOffset dy={14} />
-          <feGaussianBlur stdDeviation={25} />
-          <feColorMatrix
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.38 0"
-          />
-          <feBlend
-            mode="normal"
-            in2="effect1_dropShadow"
-            result="effect2_dropShadow"
-          />
-          <feBlend
-            mode="normal"
-            in="SourceGraphic"
-            in2="effect2_dropShadow"
-            result="shape"
-          />
-        </filter>
-      </defs>
     </svg>
     <style jsx>
       {`

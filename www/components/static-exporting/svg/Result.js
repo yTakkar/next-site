@@ -1,4 +1,4 @@
-export default props => (
+export default () => (
   <svg
     width={288}
     height={262}
@@ -6,7 +6,7 @@ export default props => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g filter="url(#filter0_dd)">
+    <g>
       <rect x={50} y={36} width={188} height="161.071" rx={7} fill="white" />
     </g>
     <rect
@@ -98,11 +98,6 @@ export default props => (
           type="matrix"
           values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.48 0"
         />
-        <feBlend
-          mode="normal"
-          in2="BackgroundImageFix"
-          result="effect1_dropShadow"
-        />
         <feColorMatrix
           in="SourceAlpha"
           type="matrix"
@@ -113,17 +108,6 @@ export default props => (
         <feColorMatrix
           type="matrix"
           values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.38 0"
-        />
-        <feBlend
-          mode="normal"
-          in2="effect1_dropShadow"
-          result="effect2_dropShadow"
-        />
-        <feBlend
-          mode="normal"
-          in="SourceGraphic"
-          in2="effect2_dropShadow"
-          result="shape"
         />
       </filter>
     </defs>

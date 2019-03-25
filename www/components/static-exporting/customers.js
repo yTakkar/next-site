@@ -76,38 +76,9 @@ const slides = [
   }
 ];
 
-export default () => (
+export default ({ isAmp }) => (
   <Container padding wide>
     <SectionHeader id="customers" title="Who's Using Static Exports" />
-    <Carousel slides={slides} />
-    <style jsx>
-      {`
-        h4 {
-          margin: 0;
-        }
-
-        .left-container {
-          text-align: center;
-          align-items: center;
-        }
-
-        .plotly-logo {
-          width: 7rem;
-        }
-
-        .divider {
-          width: calc(100% - 2rem);
-          max-width: 62rem;
-          border-bottom: 1px solid #eaeaea;
-          margin: 6rem 0 3rem 0;
-        }
-
-        @media screen and (max-width: 960px) {
-          .divider {
-            display: none;
-          }
-        }
-      `}
-    </style>
+    <Carousel slides={slides} isAmp={isAmp} />
   </Container>
 );

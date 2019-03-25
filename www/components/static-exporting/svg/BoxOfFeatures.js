@@ -1,8 +1,7 @@
 export default function BoxOfFeatures() {
   return (
-    <>
+    <div className="box-of-features">
       <svg
-        className="box-of-features"
         width="538"
         height="464"
         viewBox="0 0 538 464"
@@ -59,14 +58,14 @@ export default function BoxOfFeatures() {
           stroke="black"
           strokeDasharray="3 3"
         />
-        <g filter="url(#circle_filter_1)">
+        <g>
           <circle cx="221.486" cy="279.486" r="41.4856" fill="white" />
         </g>
         <path
           d="M231.224 276.893H222.457L226.703 261.749C226.776 261.385 226.33 261.174 226.12 261.474L211.235 280.993C210.927 281.447 211.219 282.079 211.745 282.079H220.513L216.267 297.223C216.194 297.587 216.639 297.798 216.85 297.498L231.735 277.987C232.035 277.525 231.751 276.893 231.224 276.893V276.893Z"
           fill="black"
         />
-        <g filter="url(#filter1_d)">
+        <g>
           <circle cx="316.457" cy="279.486" r="41.4856" fill="white" />
         </g>
         <path
@@ -85,7 +84,7 @@ export default function BoxOfFeatures() {
           d="M323.385 281.891C324.713 281.891 325.79 280.814 325.79 279.486C325.79 278.157 324.713 277.081 323.385 277.081C322.057 277.081 320.98 278.157 320.98 279.486C320.98 280.814 322.057 281.891 323.385 281.891Z"
           fill="black"
         />
-        <g filter="url(#filter2_d)">
+        <g>
           <circle cx="316.457" cy="184.486" r="41.4856" fill="white" />
         </g>
         <g clipPath="url(#clip0)">
@@ -94,7 +93,7 @@ export default function BoxOfFeatures() {
             fill="black"
           />
         </g>
-        <g filter="url(#filter3_d)">
+        <g>
           <circle cx="221.486" cy="184.486" r="41.4856" fill="white" />
         </g>
         <path
@@ -104,138 +103,6 @@ export default function BoxOfFeatures() {
         <rect width="538" height="464" fill="url(#paint0_linear)" />
         <rect width="538" height="464" fill="url(#paint1_linear)" />
         <defs>
-          <filter
-            id="circle_filter_1"
-            x={175}
-            y={234}
-            width="92.9713"
-            height="92.9713"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            />
-            <feOffset dy={1} />
-            <feGaussianBlur stdDeviation="2.5" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.24 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow"
-              result="shape"
-            />
-          </filter>
-          <filter
-            id="filter1_d"
-            x="269.971"
-            y="234"
-            width="92.9713"
-            height="92.9713"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            />
-            <feOffset dy="1" />
-            <feGaussianBlur stdDeviation="2.5" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.24 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow"
-              result="shape"
-            />
-          </filter>
-          <filter
-            id="filter2_d"
-            x="269.971"
-            y="139"
-            width="92.9713"
-            height="92.9713"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            />
-            <feOffset dy="1" />
-            <feGaussianBlur stdDeviation="2.5" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.24 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow"
-              result="shape"
-            />
-          </filter>
-          <filter
-            id="filter3_d"
-            x="175"
-            y="139"
-            width="92.9713"
-            height="92.9713"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            />
-            <feOffset dy="1" />
-            <feGaussianBlur stdDeviation="2.5" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.24 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow"
-              result="shape"
-            />
-          </filter>
           <linearGradient
             id="paint0_linear"
             x1="196.153"
@@ -268,6 +135,9 @@ export default function BoxOfFeatures() {
           </clipPath>
         </defs>
       </svg>
+      {[1, 2, 3, 4].map(idx => (
+        <div className={`shadow shadow-${idx}`} />
+      ))}
       <style jsx>
         {`
           .box-of-features {
@@ -281,8 +151,33 @@ export default function BoxOfFeatures() {
           svg circle {
             shape-rendering: unset;
           }
+
+          .shadow {
+            position: absolute;
+            border-radius: 100%;
+            background: transparent;
+            box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+            height: 82.97px;
+            width: 82.97px;
+          }
+          .shadow-1,
+          .shadow-2 {
+            top: 143px;
+          }
+          .shadow-3,
+          .shadow-4 {
+            top: 238px;
+          }
+          .shadow-1,
+          .shadow-3 {
+            left: 180px;
+          }
+          .shadow-2,
+          .shadow-4 {
+            left: 275px;
+          }
         `}
       </style>
-    </>
+    </div>
   );
 }

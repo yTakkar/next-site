@@ -1,6 +1,6 @@
+import React from 'react';
 import Container from '../container';
 import IObserver from '../intersection-observer';
-import { MediaQueryConsumer } from '../media-query';
 import Lambda from './svg/lambda';
 import { ExternalLink } from '../text/link';
 
@@ -18,19 +18,15 @@ export default class Scalable extends React.PureComponent {
     return (
       <Container wide padding gray>
         <div className="flex">
-          <MediaQueryConsumer>
-            {({ isMobile }) => (
-              <IObserver
-                onIntersect={this.setViewable}
-                rootMargin={`0px 0px -${isMobile ? 75 : 150}px 0px`}
-                render={({ innerRef }) => (
-                  <div className="lambda" ref={innerRef}>
-                    {viewable && <Lambda />}
-                  </div>
-                )}
-              />
+          <IObserver
+            onIntersect={this.setViewable}
+            rootMargin="0px 0px -112px 0px"
+            render={({ innerRef }) => (
+              <div className="lambda" ref={innerRef}>
+                {viewable && <Lambda />}
+              </div>
             )}
-          </MediaQueryConsumer>
+          />
 
           <div className="col">
             <h2 className="f0 fw6">Infinitely Scalable</h2>

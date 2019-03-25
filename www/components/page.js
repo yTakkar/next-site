@@ -1,7 +1,6 @@
 import Head from 'next/head';
 
 import '../lib/polyfill';
-import { withMediaQuery } from './media-query';
 import RouterEvents from '../lib/router-events';
 import { trackPageview } from '../lib/analytics';
 
@@ -390,4 +389,4 @@ function Page({ title, description, children }) {
   );
 }
 
-export default withMediaQuery(Page);
+export default Page;

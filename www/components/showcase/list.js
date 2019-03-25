@@ -1,18 +1,9 @@
-import { Component, PureComponent } from 'react';
-import Link from 'next/link';
-import Router, { withRouter } from 'next/router';
-import classNames from 'classnames';
-import { format, parse } from 'url';
-import {
-  List,
-  WindowScroller,
-  defaultCellRangeRenderer
-} from 'react-virtualized';
+import { Component } from 'react';
+import { List, WindowScroller } from 'react-virtualized';
 import { directionalProperty } from 'polished';
 
 import Button from '../button';
 import Container from '../container';
-import { MediaQueryConsumer } from '../media-query';
 import SitePreview from './site-preview';
 
 import ArrowUpIcon from '../icons/arrow-up';
@@ -169,6 +160,7 @@ export default class extends Component {
       width: Math.min(window.innerWidth, 1440)
     });
   };
+
   updateCategory(category) {
     if (category !== dataCategory) {
       dataCategory = category;
@@ -178,17 +170,21 @@ export default class extends Component {
       }
     }
   }
+
   componentDidMount() {
     this.updateCategory(this.props.category);
     window.addEventListener('resize', this.resize);
     this.resize();
   }
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.resize);
   }
+
   componentWillReceiveProps(newProps) {
     this.updateCategory(newProps.category);
   }
+
   overscanIndicesGetter = (
     { cellCount, overscanCellsCount, startIndex, stopIndex },
     isTablet
@@ -218,82 +214,81 @@ export default class extends Component {
       overscanStopIndex
     };
   };
+
   render() {
+    const { width } = this.state;
+    const isTablet = width < 960;
+    const isMobile = width < 640;
+
     return (
       <Container wide gray center>
-        <MediaQueryConsumer>
-          {({ isMobile, isTablet }) => (
-            <div className="container">
-              <style jsx>{`
-                .container {
-                  margin: 1rem 0 6rem;
-                }
-                .spacer {
-                  margin-top: 2rem;
-                }
-                .icon-label {
-                  margin-right: 0.625rem;
-                }
-                .flex-center {
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                }
-              `}</style>
-              <WindowScroller serverHeight={800}>
-                {({ height, isScrolling, onChildScroll, scrollTop }) => (
-                  <List
-                    autoHeight
-                    height={height}
-                    isScrolling={isScrolling}
-                    onScroll={onChildScroll}
-                    scrollTop={scrollTop}
-                    width={this.state.width}
-                    rowCount={Math.ceil(
-                      dataSource.length / (isMobile ? 1 : isTablet ? 2 : 3)
-                    )}
-                    estimatedRowSize={500}
-                    rowHeight={args =>
-                      getRowHeight(args, isMobile ? 1 : isTablet ? 2 : 3) *
-                      ROW_HEIGHT
-                    }
-                    rowRenderer={
-                      isMobile ? MobileRow : isTablet ? TabletRow : Row
-                    }
-                    overscanRowCount={5}
-                    overscanIndicesGetter={args =>
-                      this.overscanIndicesGetter(args, isTablet)
-                    }
-                    style={{
-                      willChange: '',
-                      margin: 'auto'
-                    }}
-                    ref={list => {
-                      let columnCount = isMobile ? 1 : isTablet ? 2 : 3;
-                      if (columnCount !== this.lastColumnCount) {
-                        // reset row height for responsive width
-                        this.lastColumnCount = columnCount;
-                        list.recomputeRowHeights();
-                      }
-                    }}
-                  />
+        <div className="container">
+          <style jsx>{`
+            .container {
+              margin: 1rem 0 6rem;
+            }
+            .spacer {
+              margin-top: 2rem;
+            }
+            .icon-label {
+              margin-right: 0.625rem;
+            }
+            .flex-center {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          `}</style>
+          <WindowScroller serverHeight={800}>
+            {({ height, isScrolling, onChildScroll, scrollTop }) => (
+              <List
+                autoHeight
+                height={height}
+                isScrolling={isScrolling}
+                onScroll={onChildScroll}
+                scrollTop={scrollTop}
+                width={width}
+                rowCount={Math.ceil(
+                  dataSource.length / (isMobile ? 1 : isTablet ? 2 : 3)
                 )}
-              </WindowScroller>
-              <div className="spacer" />
-              <Button onClick={() => scrollTo(0)}>
-                <div className="flex-center">
-                  <span className="icon-label">Back to Top</span>
-                  <ArrowUpIcon color="#0076ff" />
-                </div>
-              </Button>
-              <div className="spacer" />
-              <Button href={links.submitShowcase} invert>
-                <span className="icon-label">Share Your Website</span>
-                <HeartIcon color="white" />
-              </Button>
+                estimatedRowSize={500}
+                rowHeight={args =>
+                  getRowHeight(args, isMobile ? 1 : isTablet ? 2 : 3) *
+                  ROW_HEIGHT
+                }
+                rowRenderer={isMobile ? MobileRow : isTablet ? TabletRow : Row}
+                overscanRowCount={5}
+                overscanIndicesGetter={args =>
+                  this.overscanIndicesGetter(args, isTablet)
+                }
+                style={{
+                  willChange: '',
+                  margin: 'auto'
+                }}
+                ref={list => {
+                  let columnCount = isMobile ? 1 : isTablet ? 2 : 3;
+                  if (columnCount !== this.lastColumnCount) {
+                    // reset row height for responsive width
+                    this.lastColumnCount = columnCount;
+                    list.recomputeRowHeights();
+                  }
+                }}
+              />
+            )}
+          </WindowScroller>
+          <div className="spacer" />
+          <Button onClick={() => scrollTo(0)}>
+            <div className="flex-center">
+              <span className="icon-label">Back to Top</span>
+              <ArrowUpIcon color="#0076ff" />
             </div>
-          )}
-        </MediaQueryConsumer>
+          </Button>
+          <div className="spacer" />
+          <Button href={links.submitShowcase} invert>
+            <span className="icon-label">Share Your Website</span>
+            <HeartIcon color="white" />
+          </Button>
+        </div>
       </Container>
     );
   }

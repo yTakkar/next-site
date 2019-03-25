@@ -3733,10 +3733,10 @@ neo-async@^2.5.0:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
 
-next-server@8.0.4-canary.18:
-  version "8.0.4-canary.18"
-  resolved "https://registry.yarnpkg.com/next-server/-/next-server-8.0.4-canary.18.tgz#776469a19811f4f6de94db463ab3a6b157514488"
-  integrity sha512-BTTpNBE2h21QnVHav8A1MMtKZjS7gPS/XshA4ysDBWEilrj+cmeOPXBUHMxehqIjqOkUAtbByP+8Ay/ZpOnJgw==
+next-server@8.0.4-canary.19:
+  version "8.0.4-canary.19"
+  resolved "https://registry.yarnpkg.com/next-server/-/next-server-8.0.4-canary.19.tgz#8f600ff28c867ef90d41d25e1a78263559c3b0a0"
+  integrity sha512-tsYpf5M4wPRSJ9ETWO9UipDF41ITNMe/9OLq3vyp0e12PIWbRfIqrHeJSNMbEJfVy2vti0yHkPnOgpVwAIkQHA==
   dependencies:
     etag "1.8.1"
     find-up "3.0.0"
@@ -3746,10 +3746,10 @@ next-server@8.0.4-canary.18:
     send "0.16.1"
     url "0.11.0"
 
-next@8.0.4-canary.18:
-  version "8.0.4-canary.18"
-  resolved "https://registry.yarnpkg.com/next/-/next-8.0.4-canary.18.tgz#b45f3a3cd4481f737ff6d8f1a28835be7512721f"
-  integrity sha512-9C3hbhrBMzrLZJi7i3wOpCp9eCB4bNaNuvCSsnboB8urfyR1e6bjjM8Pm6wdXpfLSFJ3qq0WvyCtrgKJ8RKR1A==
+next@8.0.4-canary.19:
+  version "8.0.4-canary.19"
+  resolved "https://registry.yarnpkg.com/next/-/next-8.0.4-canary.19.tgz#e6a06c1f30bb4c3bff26392f37ae8a953f1b7ee9"
+  integrity sha512-wXlQZ+e9eqeiIgNYIRxFWvXVj61UgfYC8vYxHfakzprWAikTmM84gxElOdwUolQx25wsfwagggeHgn7ZXL51OA==
   dependencies:
     "@babel/core" "7.1.2"
     "@babel/plugin-proposal-class-properties" "7.1.0"
@@ -3781,7 +3781,7 @@ next@8.0.4-canary.18:
     magic-string "0.25.2"
     mkdirp "0.5.1"
     nanoid "1.2.1"
-    next-server "8.0.4-canary.18"
+    next-server "8.0.4-canary.19"
     prop-types "15.6.2"
     prop-types-exact "1.2.0"
     react-error-overlay "5.1.4"

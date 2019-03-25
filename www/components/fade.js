@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 import { Transition, animated, config as cfg } from 'react-spring';
 
 const wrap = (child, styles) => {
-  styles = { willChange: Object.keys(styles).join(','), ...styles };
+  styles = { ...styles };
   if (!child || !animated[child.type]) {
     // Wrap components into animated divs
     return <animated.div style={{ ...styles }}>{child}</animated.div>;

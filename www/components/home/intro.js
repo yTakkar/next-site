@@ -46,7 +46,6 @@ class LogoContainer extends React.PureComponent {
         className={classNames('logo-main f4 fw6', { unmounted: !mounted })}
         style={{
           top: Math.max(LOGO_TOP - scroll, 7),
-          willChange: `transform`,
           transform: `scale(${Math.max(easing(1 - scroll / LOGO_TOP), 0) *
             0.325 +
             0.625}) translate3d(0, 0, 0)`,
@@ -129,6 +128,7 @@ class LogoContainer extends React.PureComponent {
 
 export default class extends React.PureComponent {
   render() {
+    const { isAmp } = this.props;
     return (
       <Container
         role="main"
@@ -215,7 +215,7 @@ export default class extends React.PureComponent {
                 }
               }
             `}</style>
-            <LogoContainer />
+            {!isAmp && <LogoContainer />}
             <div className="campaign no-drag no-tap-highlight">
               <h1 className={classNames('title-1', 'fw6')}>
                 The React Framework for

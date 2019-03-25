@@ -38,7 +38,7 @@ export default () => {
           description="Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more."
         />
         <SkipNavContent />
-        <Intro />
+        <Intro isAmp={isAmp} />
         <Demo />
         <Features />
         <Customers />

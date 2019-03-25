@@ -192,7 +192,6 @@ export default function Sidebar({ headings, mobile, desktop }) {
           top: 100%;
           bottom: 100%;
           background: white;
-          will-change: bottom;
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
           transition: bottom 0.5s ease;
           overflow-y: auto;

@@ -61,6 +61,7 @@ const sortOrder = [
   'allvoices',
   'sanity',
   'aenetworks',
+  'blendle',
   'tencent-news',
   'idean',
   'repl.it',
@@ -71,6 +72,7 @@ const sortOrder = [
   'midrive',
   'stv',
   'hyper',
+  'typeform-connect',
   'deliveroo',
   'colorbox',
   'hollar',
@@ -110,10 +112,28 @@ const sortOrder = [
 ];
 
 const mapping = {
+  'typeform-connect': {
+    title: 'Typeform Connect',
+    link: 'https://www.typeform.com/connect/',
+    src: '/static/images/showcases/typeform-connect.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'typeform-connect',
+    tags: ['creative']
+  },
+  blendle: {
+    title: 'Blendle',
+    link: 'https://blendle.com',
+    src: '/static/images/showcases/blendle.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'blendle',
+    tags: ['news']
+  },
   hollar: {
     title: 'Hollar',
     link: 'https://www.hollar.com',
-    src: '/static/images/showcases/holar.jpg',
+    src: '/static/images/showcases/hollar.jpg',
     width: 3836,
     height: 2200,
     internalUrl: 'hollar',

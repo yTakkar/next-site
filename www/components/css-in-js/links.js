@@ -79,8 +79,10 @@ export default () => (
       {`
         h4 {
           text-transform: uppercase;
-          font-size: 12.6px;
+          font-size: 0.790125rem;
           font-weight: 600;
+          letter-spacing: .1rem;
+          line-height: 1.5625rem;
           margin: 0.5rem 0 2rem 0;
           color: #999999;
         }

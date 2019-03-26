@@ -1,5 +1,6 @@
 import Container from '../container';
-import { Integrate } from './icons';
+import Icon from '../icon-circle'
+import Integrate from './svg/integrate'
 import Express from './svg/frameworks/express';
 import Koa from './svg/frameworks/koa';
 import Electron from './svg/frameworks/electron';
@@ -9,7 +10,7 @@ export default () => (
   <Container wide padding gray center>
     <div className="col">
       <div className="icon">
-        <Integrate />
+        <Icon><Integrate /></Icon>
       </div>
 
       <h2 className="f0 fw6">Incrementally Adopt</h2>
@@ -59,7 +60,7 @@ export default () => (
         }
 
         h2 {
-          margin-bottom: 1.5rem;
+          margin: 1rem 0 1.5rem 0;
           line-height: 1.3;
         }
 
@@ -82,7 +83,6 @@ export default () => (
           display: flex;
           justify-content: center;
           transform: scale(1.25);
-          margin: 1rem 0 0.5rem;
         }
 
         .frameworks {

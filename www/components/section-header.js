@@ -1,6 +1,6 @@
 import withPure from './hoc/pure';
 
-export default withPure(({ anchor, id, title, description, innerRef }) => (
+export default withPure(({ anchor, id, title, description, margin = '0 0 3rem 0', innerRef }) => (
   <div ref={innerRef}>
     <style jsx>
       {`
@@ -11,7 +11,7 @@ export default withPure(({ anchor, id, title, description, innerRef }) => (
         div {
           position: relative;
           text-align: center;
-          margin-bottom: 3rem;
+          margin: ${margin};
         }
         .anchor {
           position: absolute;

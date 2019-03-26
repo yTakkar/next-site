@@ -114,6 +114,11 @@ export default withPure(() => (
                 <a>CSS-in-JS</a>
               </Link>
             </p>
+            <p>
+              <Link href="/features/progressive-web-apps">
+                <a>PWA</a>
+              </Link>
+            </p>
           </div>
           <div className="column">
             <h4 className="fw5">

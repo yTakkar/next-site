@@ -11,6 +11,7 @@ export default function Container({
   dotBackground,
   children,
   mobileStyle,
+  divider,
   ...props
 }) {
   return (
@@ -41,6 +42,9 @@ export default function Container({
           background-size: 28px 28px;
         `
             : ''
+        }
+        ${
+          divider ? `border-top: 1px solid rgba(0,0,0,0.1);` : ''
         }
       }
       :after {

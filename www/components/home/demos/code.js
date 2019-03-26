@@ -11,13 +11,13 @@ export default ({ lang, children, style = {} }) => (
       .editor .hljs {
         color: #c3c3c3;
       }
-      .editor .hljs .hljs-keyword,
-      .editor .hljs .hljs-tag,
-      .editor .hljs .hljs-attr {
+      .editor .hljs-keyword,
+      .editor .hljs-tag,
+      .editor .hljs-attr {
         color: #f1f1f1;
         font-weight: 600;
       }
-      .editor .hljs .hljs-comment {
+      .editor .hljs-comment {
         color: #525252;
       }
       .editor .hljs-string {
@@ -30,12 +30,7 @@ export default ({ lang, children, style = {} }) => (
         <code>{children}</code>
       </pre>
     ) : (
-      <Highlight
-        className={lang || 'javascript'}
-        languages={['json', 'xml', 'javascript']}
-      >
-        {children}
-      </Highlight>
+      <Highlight className={lang || 'javascript'}>{children}</Highlight>
     )}
   </div>
 );

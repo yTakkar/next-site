@@ -1,21 +1,5 @@
-import posed from 'react-pose';
-
 import IObserver from '../intersection-observer';
-import SectionHeader from '../section-header';
 import { Lightning, Performance, Discovery } from './icons';
-
-const Bar = posed.div({
-  ssr: {
-    width: '14.5rem',
-    flip: true,
-    transition: { duration: 500 }
-  },
-  nonSsr: {
-    width: '24rem',
-    flip: true,
-    transition: { duration: 2500 }
-  }
-});
 
 const barStyle = {
   width: '6rem',
@@ -34,11 +18,11 @@ const nonSsrStyle = {
 const Graph = ({ viewable, innerRef }) => (
   <div className="container">
     <div className="bar-container ssr">
-      <Bar pose={viewable && 'ssr'} style={ssrStyle} />
+      <div className={viewable && 'ssrBar'} style={ssrStyle} />
       <span>SSR</span>
     </div>
     <div className="bar-container non-ssr">
-      <Bar pose={viewable && 'nonSsr'} style={nonSsrStyle} />
+      <div className={viewable && 'nonSsrBar'} style={nonSsrStyle} />
       <span>Non-SSR</span>
     </div>
     <svg
@@ -56,56 +40,71 @@ const Graph = ({ viewable, innerRef }) => (
     <div className="title subtitle" ref={innerRef}>
       Time to First Meaningful Paint
     </div>
-    <style jsx>
-      {`
-        .title {
-          text-align: center;
-          margin-top: 1rem;
-          font-size: 0.875rem;
-          color
-        }
+    <style jsx>{`
+      .title {
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 0.875rem;
+      }
 
+      .container {
+        padding-top: 1rem;
+        margin-bottom: -1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      .bar-container {
+        display: flex;
+        position: relative;
+      }
+
+      .bar-container > span {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+      }
+
+      .ssr {
+        color: #fff;
+      }
+
+      .non-ssr {
+        margin: 1.5rem 0 2rem 0;
+        color: #999;
+      }
+
+      .ssrBar {
+        animation: growSSR 500ms linear forwards;
+      }
+      .nonSsrBar {
+        animation: growNonSSR 2500ms linear forwards;
+      }
+      @keyframes growSSR {
+        to {
+          width: 14.5rem;
+        }
+      }
+
+      @keyframes growNonSSR {
+        to {
+          width: 24rem;
+        }
+      }
+
+      @media screen and (max-width: 960px) {
         .container {
-          padding-top: 1rem;
-          margin-bottom: -1rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
+          margin: 3rem 0;
         }
+      }
 
-        .bar-container {
-          display: flex;
-          position: relative;
+      @media screen and (max-width: 640px) {
+        .container {
+          display: none;
         }
-
-        .bar-container > span {
-          position: absolute;
-          top: 1rem;
-          left: 1rem;
-        }
-
-        .ssr {
-          color: #fff;
-        }
-
-        .non-ssr {
-          margin: 1.5rem 0 2rem 0;
-          color: #999;
-        }
-
-        @media screen and (max-width: 960px) {
-          .container {
-            margin: 3rem 0;
-          }
-        }
-
-        @media screen and (max-width: 640px) {
-          .container {
-            display: none;
-          }
-        }
-      `}
-    </style>
+      }
+    `}</style>
   </div>
 );
 
@@ -117,6 +116,7 @@ export default class Benefits extends React.PureComponent {
   setViewable = ({ isIntersecting: viewable }) => this.setState({ viewable });
 
   render() {
+    const { isAmp } = this.props;
     const { viewable } = this.state;
 
     return (
@@ -134,12 +134,16 @@ export default class Benefits extends React.PureComponent {
                 suffer.
               </p>
             </div>
-            <IObserver
-              onIntersect={this.setViewable}
-              render={({ innerRef }) => (
-                <Graph viewable={viewable} innerRef={innerRef} />
-              )}
-            />
+            {!isAmp ? (
+              <IObserver
+                onIntersect={this.setViewable}
+                render={({ innerRef }) => (
+                  <Graph viewable={viewable} innerRef={innerRef} />
+                )}
+              />
+            ) : (
+              <Graph viewable />
+            )}
           </div>
         </div>
 

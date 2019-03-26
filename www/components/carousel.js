@@ -277,39 +277,39 @@ export default class Carousel extends React.PureComponent {
           :global(#slides.focus-12) {
             transform: translateX(calc(-50vw - 543.75rem));
           }
-          :global(#slides.focus-13) {
-            transform: translateX(calc(-50vw - 587.25rem));
-          }
-          :global(#slides.focus-14) {
-            transform: translateX(calc(-50vw - 630.75rem));
-          }
-          :global(#slides.focus-15) {
-            transform: translateX(calc(-50vw - 674.25rem));
-          }
-          :global(#slides.focus-16) {
-            transform: translateX(calc(-50vw - 717.75rem));
-          }
-          :global(#slides.focus-17) {
-            transform: translateX(calc(-50vw - 761.25rem));
-          }
-          :global(#slides.focus-18) {
-            transform: translateX(calc(-50vw - 804.75rem));
-          }
-          :global(#slides.focus-19) {
-            transform: translateX(calc(-50vw - 848.25rem));
-          }
-          :global(#slides.focus-20) {
-            transform: translateX(calc(-50vw - 891.75rem));
-          }
-          :global(#slides.focus-21) {
-            transform: translateX(calc(-50vw - 935.25rem));
-          }
-          :global(#slides.focus-22) {
-            transform: translateX(calc(-50vw - 978.75rem));
-          }
-          :global(#slides.focus-23) {
-            transform: translateX(calc(-50vw - 1022.25rem));
-          }
+          //:global(#slides.focus-13) {
+          //  transform: translateX(calc(-50vw - 587.25rem));
+          //}
+          //:global(#slides.focus-14) {
+          //  transform: translateX(calc(-50vw - 630.75rem));
+          //}
+          //:global(#slides.focus-15) {
+          //  transform: translateX(calc(-50vw - 674.25rem));
+          //}
+          //:global(#slides.focus-16) {
+          //  transform: translateX(calc(-50vw - 717.75rem));
+          //}
+          //:global(#slides.focus-17) {
+          //  transform: translateX(calc(-50vw - 761.25rem));
+          //}
+          //:global(#slides.focus-18) {
+          //  transform: translateX(calc(-50vw - 804.75rem));
+          //}
+          //:global(#slides.focus-19) {
+          //  transform: translateX(calc(-50vw - 848.25rem));
+          //}
+          //:global(#slides.focus-20) {
+          //  transform: translateX(calc(-50vw - 891.75rem));
+          //}
+          //:global(#slides.focus-21) {
+          //  transform: translateX(calc(-50vw - 935.25rem));
+          //}
+          //:global(#slides.focus-22) {
+          //  transform: translateX(calc(-50vw - 978.75rem));
+          //}
+          //:global(#slides.focus-23) {
+          //  transform: translateX(calc(-50vw - 1022.25rem));
+          //}
 
           @media screen and (max-width: 960px) {
             .container {
@@ -373,39 +373,39 @@ export default class Carousel extends React.PureComponent {
             :global(#slides.focus-12) {
               transform: translateX(calc(-50vw - 287.5rem));
             }
-            :global(#slides.focus-13) {
-              transform: translateX(calc(-50vw - 310.5rem));
-            }
-            :global(#slides.focus-14) {
-              transform: translateX(calc(-50vw - 333.5rem));
-            }
-            :global(#slides.focus-15) {
-              transform: translateX(calc(-50vw - 356.5rem));
-            }
-            :global(#slides.focus-16) {
-              transform: translateX(calc(-50vw - 379.5rem));
-            }
-            :global(#slides.focus-17) {
-              transform: translateX(calc(-50vw - 402.5rem));
-            }
-            :global(#slides.focus-18) {
-              transform: translateX(calc(-50vw - 425.5rem));
-            }
-            :global(#slides.focus-19) {
-              transform: translateX(calc(-50vw - 448.5rem));
-            }
-            :global(#slides.focus-20) {
-              transform: translateX(calc(-50vw - 471.5rem));
-            }
-            :global(#slides.focus-21) {
-              transform: translateX(calc(-50vw - 494.5rem));
-            }
-            :global(#slides.focus-22) {
-              transform: translateX(calc(-50vw - 517.5rem));
-            }
-            :global(#slides.focus-23) {
-              transform: translateX(calc(-50vw - 540.5rem));
-            }
+            //:global(#slides.focus-13) {
+            //  transform: translateX(calc(-50vw - 310.5rem));
+            //}
+            //:global(#slides.focus-14) {
+            //  transform: translateX(calc(-50vw - 333.5rem));
+            //}
+            //:global(#slides.focus-15) {
+            //  transform: translateX(calc(-50vw - 356.5rem));
+            //}
+            //:global(#slides.focus-16) {
+            //  transform: translateX(calc(-50vw - 379.5rem));
+            //}
+            //:global(#slides.focus-17) {
+            //  transform: translateX(calc(-50vw - 402.5rem));
+            //}
+            //:global(#slides.focus-18) {
+            //  transform: translateX(calc(-50vw - 425.5rem));
+            //}
+            //:global(#slides.focus-19) {
+            //  transform: translateX(calc(-50vw - 448.5rem));
+            //}
+            //:global(#slides.focus-20) {
+            //  transform: translateX(calc(-50vw - 471.5rem));
+            //}
+            //:global(#slides.focus-21) {
+            //  transform: translateX(calc(-50vw - 494.5rem));
+            //}
+            //:global(#slides.focus-22) {
+            //  transform: translateX(calc(-50vw - 517.5rem));
+            //}
+            //:global(#slides.focus-23) {
+            //  transform: translateX(calc(-50vw - 540.5rem));
+            //}
           }
 
           @media screen and (max-width: 640px) {
@@ -470,39 +470,39 @@ export default class Carousel extends React.PureComponent {
             :global(#slides.focus-12) {
               transform: translateX(calc(-50vw - 225rem));
             }
-            :global(#slides.focus-13) {
-              transform: translateX(calc(-50vw - 243rem));
-            }
-            :global(#slides.focus-14) {
-              transform: translateX(calc(-50vw - 261rem));
-            }
-            :global(#slides.focus-15) {
-              transform: translateX(calc(-50vw - 279rem));
-            }
-            :global(#slides.focus-16) {
-              transform: translateX(calc(-50vw - 297rem));
-            }
-            :global(#slides.focus-17) {
-              transform: translateX(calc(-50vw - 315rem));
-            }
-            :global(#slides.focus-18) {
-              transform: translateX(calc(-50vw - 333rem));
-            }
-            :global(#slides.focus-19) {
-              transform: translateX(calc(-50vw - 351rem));
-            }
-            :global(#slides.focus-20) {
-              transform: translateX(calc(-50vw - 369rem));
-            }
-            :global(#slides.focus-21) {
-              transform: translateX(calc(-50vw - 387rem));
-            }
-            :global(#slides.focus-22) {
-              transform: translateX(calc(-50vw - 405rem));
-            }
-            :global(#slides.focus-23) {
-              transform: translateX(calc(-50vw - 423rem));
-            }
+            //:global(#slides.focus-13) {
+            //  transform: translateX(calc(-50vw - 243rem));
+            //}
+            //:global(#slides.focus-14) {
+            //  transform: translateX(calc(-50vw - 261rem));
+            //}
+            //:global(#slides.focus-15) {
+            //  transform: translateX(calc(-50vw - 279rem));
+            //}
+            //:global(#slides.focus-16) {
+            //  transform: translateX(calc(-50vw - 297rem));
+            //}
+            //:global(#slides.focus-17) {
+            //  transform: translateX(calc(-50vw - 315rem));
+            //}
+            //:global(#slides.focus-18) {
+            //  transform: translateX(calc(-50vw - 333rem));
+            //}
+            //:global(#slides.focus-19) {
+            //  transform: translateX(calc(-50vw - 351rem));
+            //}
+            //:global(#slides.focus-20) {
+            //  transform: translateX(calc(-50vw - 369rem));
+            //}
+            //:global(#slides.focus-21) {
+            //  transform: translateX(calc(-50vw - 387rem));
+            //}
+            //:global(#slides.focus-22) {
+            //  transform: translateX(calc(-50vw - 405rem));
+            //}
+            //:global(#slides.focus-23) {
+            //  transform: translateX(calc(-50vw - 423rem));
+            //}
           }
         `}</style>
       </div>

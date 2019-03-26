@@ -1,6 +1,4 @@
 import React from 'react';
-import { Keyframes, Frame } from 'react-keyframes';
-
 import Window from '../../window';
 import Prompt from './prompt';
 import Caret from './caret';
@@ -202,6 +200,7 @@ function generateFrames(onRender) {
   ];
 
   let showResult;
+  let delay = 0;
 
   for (let i = 0; i < data.length; ++i) {
     for (const line in data[i]) {
@@ -215,10 +214,20 @@ function generateFrames(onRender) {
     }
 
     frames.push(
-      <Frame duration={duration} key={i} onRender={showResult && onRender}>
+      <div
+        key={i}
+        style={{
+          height: 0,
+          overflow: 'hidden',
+          animation: `${
+            i === data.length - 1 ? 'lastFrame' : 'showFrame'
+          } ${duration}ms ${delay}ms forwards`
+        }}
+      >
         {[...current]}
-      </Frame>
+      </div>
     );
+    delay += duration;
   }
 
   return frames;
@@ -238,9 +247,7 @@ export default class Console extends React.PureComponent {
         backgroundColor="black"
       >
         <div className={classes.join(' ')}>
-          {this.props.children || (
-            <Keyframes component="pre">{generateFrames(showResult)}</Keyframes>
-          )}
+          {this.props.children || <pre>{generateFrames(showResult)}</pre>}
         </div>
         <style jsx>
           {`
@@ -276,6 +283,29 @@ export default class Console extends React.PureComponent {
           }
           .dim {
             opacity: 0.5;
+          }
+          @keyframes showFrame {
+            0% {
+              height: unset;
+              overflow: unset;
+            }
+            99% {
+              height: unset;
+              overflow: unset;
+            }
+            100% {
+              height: 0;
+            }
+          }
+          @keyframes lastFrame {
+            0% {
+              height: unset;
+              overflow: unset;
+            }
+            100% {
+              height: unset;
+              overflow: unset;
+            }
           }
         `}</style>
       </Window>

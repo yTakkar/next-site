@@ -15,34 +15,32 @@ const BrowserContent = () => (
       </p>
     </div>
 
-    <style jsx>
-      {`
-        .browser-content {
-          width: 100%;
-          height: 100%;
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          background-image: radial-gradient(
-            circle,
-            #d7d7d7,
-            #d7d7d7 1px,
-            #fff 1px,
-            #fff
-          );
-          background-size: 28px 28px;
-        }
+    <style jsx>{`
+      .browser-content {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        background-image: radial-gradient(
+          circle,
+          #d7d7d7,
+          #d7d7d7 1px,
+          #fff 1px,
+          #fff
+        );
+        background-size: 28px 28px;
+      }
 
-        .toast {
-          background: white;
-          margin-top: 1rem;
-          position: absolute;
-          border-radius: 0.5rem;
-          width: 80%;
-          box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.12);
-        }
-      `}
-    </style>
+      .toast {
+        background: white;
+        margin-top: 1rem;
+        position: absolute;
+        border-radius: 0.5rem;
+        width: 80%;
+        box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.12);
+      }
+    `}</style>
   </div>
 );
 
@@ -123,121 +121,119 @@ export default () => (
       </div>
     </div>
 
-    <style jsx>
-      {`
-        ul {
-          padding: 0 1rem;
-          margin: 2.5rem 0 0 0;
-          display: flex;
-          list-style-type: none;
-          align-items: center;
-          justify-content: space-between;
-          width: 100%;
-          max-width: 64rem;
-        }
+    <style jsx>{`
+      ul {
+        padding: 0 1rem;
+        margin: 2.5rem 0 0 0;
+        display: flex;
+        list-style-type: none;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 64rem;
+      }
 
-        li {
-          display: flex;
-          align-items: center;
-        }
+      li {
+        display: flex;
+        align-items: center;
+      }
 
-        h4 {
-          margin: 0 0 0 0.5rem;
-        }
+      h4 {
+        margin: 0 0 0 0.5rem;
+      }
 
-        .col {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
+      .col {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
+      .animation-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2.25em 0 3rem;
+      }
+
+      .browser-container {
+        position: relative;
+        width: 22rem;
+      }
+
+      .line {
+        position: absolute;
+        left: -5rem;
+        animation: 7.5s shift linear forwards infinite;
+      }
+
+      .servers-container {
+        margin: 0 0.5rem;
+        z-index: 1;
+      }
+
+      .terminal-container {
+        position: relative;
+        border-radius: 5px;
+        width: 352px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.48),
+          0px 14px 50px rgba(0, 0, 0, 0.38);
+      }
+
+      .terminal-container .line {
+        left: unset;
+        right: -18.7rem;
+      }
+
+      @keyframes shift {
+        from {
+          stroke-dashoffset: 0%;
+        }
+        to {
+          stroke-dashoffset: -100%;
+        }
+      }
+
+      @media screen and (max-width: 1024px) {
         .animation-row {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 2.25em 0 3rem;
+          margin: 4.5rem 0 3rem;
         }
-
-        .browser-container {
-          position: relative;
-          width: 22rem;
-        }
-
-        .line {
-          position: absolute;
-          left: -5rem;
-          animation: 7.5s shift linear forwards infinite;
-        }
-
-        .servers-container {
-          margin: 0 0.5rem;
-          z-index: 1;
-        }
-
         .terminal-container {
-          position: relative;
-          border-radius: 5px;
-          width: 352px;
-          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.48),
-            0px 14px 50px rgba(0, 0, 0, 0.38);
+          display: none;
         }
+        .servers-container {
+          margin-left: -3rem;
+        }
+        ul {
+          width: auto;
+          flex-direction: column;
+          align-items: flex-start;
+          margin: 0 1rem 2.5rem 1rem;
+        }
+        li {
+          margin: 1rem 0;
+        }
+        .col {
+          flex-direction: column-reverse;
+        }
+      }
 
-        .terminal-container .line {
-          left: unset;
-          right: -18.7rem;
+      @media screen and (max-width: 700px) {
+        ul {
+          margin: -1rem 1rem 2.5rem 1rem;
         }
-
-        @keyframes shift {
-          from {
-            stroke-dashoffset: 0%;
-          }
-          to {
-            stroke-dashoffset: -100%;
-          }
+        .animation-row {
+          margin: 0;
         }
-
-        @media screen and (max-width: 1024px) {
-          .animation-row {
-            margin: 4.5rem 0 3rem;
-          }
-          .terminal-container {
-            display: none;
-          }
-          .servers-container {
-            margin-left: -3rem;
-          }
-          ul {
-            width: auto;
-            flex-direction: column;
-            align-items: flex-start;
-            margin: 0 1rem 2.5rem 1rem;
-          }
-          li {
-            margin: 1rem 0;
-          }
-          .col {
-            flex-direction: column-reverse;
-          }
+        .browser-container,
+        .terminal-container {
+          display: none;
         }
-
-        @media screen and (max-width: 700px) {
-          ul {
-            margin: -1rem 1rem 2.5rem 1rem;
-          }
-          .animation-row {
-            margin: 0;
-          }
-          .browser-container,
-          .terminal-container {
-            display: none;
-          }
-          .servers-container {
-            margin: 0.8rem 0 0 0;
-          }
+        .servers-container {
+          margin: 0.8rem 0 0 0;
         }
-      `}
-    </style>
+      }
+    `}</style>
   </Container>
 );

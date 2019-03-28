@@ -1,3 +1,5 @@
+import 'core-js/features/array/find'
+import 'core-js/features/array/find-index'
 import React from 'react'
 import App, { Container } from 'next/app'
 import url from 'url'

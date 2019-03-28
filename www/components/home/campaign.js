@@ -39,6 +39,7 @@ export default () => {
           margin-bottom: -1rem;
           line-height: 1.4em;
           white-space: nowrap;
+          position: relative;
         }
 
         .words {

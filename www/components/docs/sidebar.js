@@ -104,9 +104,16 @@ export function SidebarNavItemContainer({ headings }) {
   if (Array.isArray(headings)) {
     return (
       <ul>
-        {headings.map((item, i) => (
-          <SidebarNavItemContainer headings={item} key={i} />
-        ))}
+        {headings.map((item, i) => {
+          if (Array.isArray(item)) {
+            return (
+              <li>
+                <SidebarNavItemContainer headings={item} key={i} />
+              </li>
+            );
+          }
+          return <SidebarNavItemContainer headings={item} key={i} />;
+        })}
         <style jsx>{`
           ul {
             margin: 0 0 0.5rem 0;

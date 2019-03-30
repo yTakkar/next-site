@@ -50,6 +50,7 @@ export default class NextSite extends Document {
           {amphtml && (
             <script
               async
+              key="amp-analytics"
               custom-element="amp-analytics"
               src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
             />
@@ -59,15 +60,26 @@ export default class NextSite extends Document {
           <Main />
           <NextScript />
           {amphtml ? (
-            <amp-analytics type="gtag" data-credentials="include">
+            <amp-analytics
+              type="googleanalytics"
+              id="analytics1"
+              data-credentials="include"
+            >
               <script
                 type="application/json"
                 dangerouslySetInnerHTML={{
                   __html: JSON.stringify({
                     vars: {
+                      account: GA_TRACKING_ID,
                       gtag_id: GA_TRACKING_ID,
                       config: {
                         GA_TRACKING_ID: { groups: 'default' }
+                      }
+                    },
+                    triggers: {
+                      trackPageview: {
+                        on: 'visible',
+                        request: 'pageview'
                       }
                     }
                   })

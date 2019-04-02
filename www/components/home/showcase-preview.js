@@ -154,13 +154,14 @@ export default () => {
           .slide:hover {
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
           }
-          .slide:hover :global(img),
-          .slide:hover :global(amp-img) {
+          .desktop .slide:hover > :global(img),
+          .desktop .slide:hover :global(amp-img) {
             opacity: 1;
           }
-          .desktop :global(img),
+          .desktop .slide > :global(img),
           .desktop :global(amp-img) {
             width: 100%;
+            opacity: 0.8;
             transition: opacity 0.5s ease;
           }
           @media screen and (min-width: 960px) {
@@ -194,10 +195,10 @@ export default () => {
                       '/showcases/',
                       '/showcase-thumbnails/'
                     )}
-                    alt={item.title}
                     style={{
-                      opacity: z === 0 ? 1 : 0.8
+                      opacity: z === 0 ? 1 : undefined
                     }}
+                    alt={item.title}
                     height={imgHeight}
                     width={imgWidth}
                   />

@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import formatDate from 'date-fns/format';
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
 import Container from '../container';
 import Button from '../button';
@@ -41,6 +41,9 @@ export default ({
         .date {
           margin-top: 0.4rem;
           margin-bottom: 1rem;
+        }
+        amp-timeago {
+          display: inline;
         }
         .icon {
           line-height: 0;
@@ -85,6 +88,14 @@ export default ({
           }
         }
       `}</style>
+      <Head>
+        <script
+          async
+          key="amp-timeago"
+          custom-element="amp-timeago"
+          src="https://cdn.ampproject.org/v0/amp-timeago-0.1.js"
+        />
+      </Head>
       <Container small>
         <div className="preview-layout">
           <div className="preview-content">
@@ -96,9 +107,14 @@ export default ({
             </h3>
             <p className="f6 date mute">
               {formatDate(date, 'dddd, MMMM Do YYYY')} (
-              {distanceInWordsToNow(date, {
-                addSuffix: true
-              })}
+              <amp-timeago
+                width="160"
+                height="20"
+                datetime={date}
+                layout="responsive"
+              >
+                {date}
+              </amp-timeago>
               )
             </p>
             {detail && <section className="description f5">{children}</section>}

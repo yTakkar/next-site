@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import { MDXProvider } from '@mdx-js/tag';
-import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import formatDate from 'date-fns/format';
 import { useAmp } from 'next/amp';
 
@@ -127,15 +127,28 @@ export default meta => ({ children }) => {
           <Navbar />
         </Header>
         <HeaderImage {...meta} />
+        <Head>
+          <script
+            async
+            key="amp-timeago"
+            custom-element="amp-timeago"
+            src="https://cdn.ampproject.org/v0/amp-timeago-0.1.js"
+          />
+        </Head>
         <Container padding>
           <h1 className="title fw6 f0">{meta.title}</h1>
           {meta.type && <span className="post-type mute fw7">{meta.type}</span>}
           <div className="date mute f6">
             <time dateTime={meta.date}>
               {formatDate(date, 'dddd, MMMM Do YYYY')} (
-              {distanceInWordsToNow(date, {
-                addSuffix: true
-              })}
+              <amp-timeago
+                width="160"
+                height="20"
+                datetime={meta.date}
+                layout="responsive"
+              >
+                {meta.date}
+              </amp-timeago>
               )
             </time>
           </div>
@@ -164,6 +177,9 @@ export default meta => ({ children }) => {
           .date {
             margin-top: 2rem;
             text-align: center;
+          }
+          amp-timeago {
+            display: inline;
           }
           .authors {
             margin: 1.5rem 0 4rem;

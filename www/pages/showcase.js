@@ -2,7 +2,7 @@ import { withRouter } from 'next/router';
 import { SkipNavContent } from '@reach/skip-nav';
 
 import Page from '../components/page';
-import HeaderLegacy from '../components/header-legacy';
+import Header from '../components/header';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar';
 import Tabs from '../components/tabs';
@@ -21,28 +21,24 @@ function Showcase({ router }) {
   const { item, from } = router.query;
 
   return (
-    <Page title="Showcase | Next.js">
-      <SocialMeta
-        image="/static/twitter-cards/showcase.png"
-        title="Showcase | Next.js"
-        url="https://nextjs.org/showcase"
-        description="Meet hundreds of beautiful websites powered by Next.js"
-      />
-      <HeaderLegacy height={0} zIndex={1001} background="white" defaultActive>
+    <>
+      <Header
+        height={{
+          desktop: 0,
+          mobile: 0
+        }}
+        zIndex={1001}
+        shadow={false}
+      >
         <Navbar />
-      </HeaderLegacy>
-      <SiteDetail siteData={mapping[item]} from={from} />
-      <SkipNavContent />
+      </Header>
       <Tabs data={categories} anchor>
         {(onSelect, selectedId) => (
           <>
-            <HeaderLegacy
+            <Header
               height={{
-                desktop: HEADER_HEIGHT + 64 + 32,
-                mobile: HEADER_HEIGHT + 64 + 32 + 32
+                desktop: 192
               }}
-              distance={HEADER_HEIGHT}
-              offset={-HEADER_HEIGHT}
               shadow
             >
               <Title
@@ -52,13 +48,37 @@ function Showcase({ router }) {
                 }}
               />
               <Filter onSelect={onSelect} selectedId={selectedId} />
-            </HeaderLegacy>
-            <List category={selectedId} />
+            </Header>
+
+            <div className="wrapList">
+              <List category={selectedId} />
+            </div>
+
+            <style jsx>{`
+              .wrapList {
+                margin-top: 96px;
+              }
+              @media screen and (max-width: 640px) {
+                .wrapList {
+                  margin-top: 128px;
+                }
+              }
+            `}</style>
           </>
         )}
       </Tabs>
-      <Footer />
-    </Page>
+      <Page title="Showcase | Next.js">
+        <SocialMeta
+          image="/static/twitter-cards/showcase.png"
+          title="Showcase | Next.js"
+          url="https://nextjs.org/showcase"
+          description="Meet hundreds of beautiful websites powered by Next.js"
+        />
+        <SiteDetail siteData={mapping[item]} from={from} />
+        <SkipNavContent />
+        <Footer />
+      </Page>
+    </>
   );
 }
 

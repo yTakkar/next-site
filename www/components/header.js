@@ -42,7 +42,7 @@ export default class Header extends PureComponent {
               position: -webkit-sticky;
               position: sticky;
               top: ${defaultActive ? 0 : -desktopHeight}px;
-              z-index: 1000;
+              z-index: ${zIndex || 1000};
             }
             @media screen and (max-width: 960px) {
               header {

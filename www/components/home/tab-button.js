@@ -47,7 +47,7 @@ export default function TabButton({
         button:hover {
           // color;
           ${light
-            ? ''
+            ? 'opacity: 1;'
             : invert
             ? 'background-color: rgba(255, 255, 255, .05)'
             : 'background-color: rgba(0, 0, 0, .05)'};
@@ -55,7 +55,7 @@ export default function TabButton({
         button.selected {
           color: ${invert ? '#efefef' : 'inherit'};
           ${light
-            ? ''
+            ? 'opacity: 1;'
             : invert
             ? 'background-color: rgba(255, 255, 255, .1)'
             : 'background-color: rgba(0, 0, 0, .1)'};

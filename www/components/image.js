@@ -139,7 +139,7 @@ class Image extends Component {
               figure :global(video) {
                 ${
                   isAmp
-                    ? ''
+                    ? 'position: inherit;'
                     : `
                       height: 100%;
                       left: 0;

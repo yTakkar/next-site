@@ -108,12 +108,12 @@ export default ({
             <p className="f6 date mute">
               {formatDate(date, 'dddd, MMMM Do YYYY')} (
               <amp-timeago
-                width="160"
-                height="20"
+                width="0"
+                height="15"
                 datetime={date}
                 layout="responsive"
               >
-                {date}
+                .
               </amp-timeago>
               )
             </p>

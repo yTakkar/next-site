@@ -142,12 +142,12 @@ export default meta => ({ children }) => {
             <time dateTime={meta.date}>
               {formatDate(date, 'dddd, MMMM Do YYYY')} (
               <amp-timeago
-                width="160"
-                height="20"
+                width="0"
+                height="15"
                 datetime={meta.date}
                 layout="responsive"
               >
-                {meta.date}
+                .
               </amp-timeago>
               )
             </time>

@@ -108,7 +108,8 @@ const sortOrder = [
   'friday-digital',
   'supervielle',
   'theculturetrip',
-  'carbon'
+  'carbon',
+  'vogue'
 ];
 
 const mapping = {
@@ -864,6 +865,15 @@ const mapping = {
     height: 1800,
     internalUrl: 'carbon',
     tags: ['dev', 'creative']
+  },
+  vogue: {
+    title: 'Vogue Fashion Shows',
+    link: 'https://www.vogue.de/fashion-shows',
+    src: '/static/images/showcases/vogue-fashion-shows.png',
+    width: 2560,
+    height: 1282,
+    internalUrl: 'vogue',
+    tags: ['news', 'creative']
   }
 };
 

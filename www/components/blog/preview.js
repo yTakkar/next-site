@@ -68,7 +68,7 @@ export default ({
           display: block;
           text-transform: uppercase;
           font-size: 12px;
-          color: #0076ff;
+          color: #0070f3;
         }
         // CSS only media query for mobile
         @media screen and (max-width: 640px) {

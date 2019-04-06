@@ -160,7 +160,7 @@ export default meta => ({ children }) => {
           <Container small wide overflow>
             <main>{children}</main>
             <div className="back-button">
-              <Button href="/blog" invert prefetch>
+              <Button href="/blog" invert>
                 <span className="icon">
                   <ArrowLeftLong color="white" />
                 </span>{' '}
@@ -197,7 +197,7 @@ export default meta => ({ children }) => {
             text-align: center;
             text-transform: uppercase;
             font-size: 12px;
-            color: #0076ff;
+            color: #0070f3;
           }
           // CSS only media query for mobile
           @media screen and (max-width: 640px) {

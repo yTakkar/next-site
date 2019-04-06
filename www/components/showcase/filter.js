@@ -128,7 +128,7 @@ export default class extends PureComponent {
           }
           .tab.selected {
             // font-weight: 900;
-            color: #0076ff;
+            color: #0070f3;
           }
           .indicator {
             position: absolute;

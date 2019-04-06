@@ -53,10 +53,10 @@ function Navbar({ className, hideLogo, route, isMobile }) {
                 text-decoration: none;
               }
               nav .links a.active {
-                color: #0076ff;
+                color: #0070f3;
               }
               nav .links a.selected {
-                color: #0076ff;
+                color: #0070f3;
                 font-weight: 600;
               }
               nav .logo {
@@ -165,7 +165,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
                 Showcase
               </a>
             </Link>
-            <Link href="/blog" prefetch>
+            <Link href="/blog">
               <a
                 className={classNames({
                   selected: route.startsWith('/blog')
@@ -186,7 +186,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
 
   return (
     <Container className={className} center>
-      <SkipNavLink tabIndex="1" />
+      <SkipNavLink tabIndex="0" />
       <h1 className="visually-hidden" aria-hidden="true">
         Next.js
       </h1>
@@ -220,7 +220,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
               color: #111;
             }
             nav .links a.selected {
-              color: #0076ff;
+              color: #0070f3;
               font-weight: 600;
             }
             nav .logo {
@@ -327,7 +327,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
               Showcase
             </a>
           </Link>
-          <Link href="/blog" prefetch>
+          <Link href="/blog">
             <a
               className={classNames('mute', {
                 selected: route.startsWith('/blog')

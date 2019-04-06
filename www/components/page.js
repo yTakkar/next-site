@@ -64,7 +64,7 @@ function Page({ title, description, children }) {
             color: #111;
           }
           ::selection {
-            background-color: #0076ff;
+            background-color: #0070f3;
             color: #fff;
           }
           [role='grid']:focus {
@@ -79,7 +79,7 @@ function Page({ title, description, children }) {
             margin: 0;
           }
           a {
-            color: #2195ff;
+            color: #0074de;
             text-decoration: none;
             transition: color 0.2s ease;
           }
@@ -163,7 +163,7 @@ function Page({ title, description, children }) {
             font-weight: 900;
           }
           .subtitle {
-            color: #737373;
+            color: #717171;
           }
           .mute {
             color: #757575;
@@ -285,7 +285,7 @@ function Page({ title, description, children }) {
             font-weight: 600;
           }
           .language-json .token.boolean {
-            color: #0076ff;
+            color: #0070f3;
           }
           .token.keyword {
             color: #ff0078;
@@ -296,7 +296,7 @@ function Page({ title, description, children }) {
           .token.class-name,
           .token.number,
           .token.tag .token.punctuation {
-            color: #0076ff;
+            color: #0070f3;
           }
           .language-autohotkey .token.tag {
             color: #9a050f;
@@ -317,7 +317,7 @@ function Page({ title, description, children }) {
             font-weight: bolder;
           }
           .token.inserted {
-            color: #0076ff;
+            color: #0070f3;
             font-weight: bolder;
           }
           .language-json .token.property,
@@ -326,7 +326,7 @@ function Page({ title, description, children }) {
             font-weight: bolder;
           }
           .language-markdown .token.code {
-            color: #0076ff;
+            color: #0070f3;
             font-weight: normal;
           }
           .language-markdown .token.list,

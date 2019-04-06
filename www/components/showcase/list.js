@@ -280,7 +280,7 @@ export default class extends Component {
           <Button onClick={() => scrollTo(0)}>
             <div className="flex-center">
               <span className="icon-label">Back to Top</span>
-              <ArrowUpIcon color="#0076ff" />
+              <ArrowUpIcon color="#0070f3" />
             </div>
           </Button>
           <div className="spacer" />

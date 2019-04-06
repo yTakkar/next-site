@@ -60,7 +60,7 @@ const StepNav = ({ steps, nextLessonId, meta: { stepId, courseId, lessonId } }) 
     <div>
       <Button full href={`/learn/${courseId}/${lessonId}${i === 0 ? '' : `/${steps[i - 1].id}`}`}>
         <Icon left>
-          <LeftArrow color="#0076ff" />
+          <LeftArrow color="#0070f3" />
         </Icon>
         Prev
       </Button>

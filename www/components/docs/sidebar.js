@@ -93,7 +93,7 @@ export function SidebarNavItem({ item }) {
         }
         a.active {
           font-weight: 600;
-          color: #0076ff;
+          color: #0070f3;
         }
       `}</style>
     </li>

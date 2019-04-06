@@ -514,7 +514,7 @@ export default () => (
             fill: #e1e1e1;
           }
           10% {
-            fill: #0076ff;
+            fill: #0070f3;
           }
           20%,
           100% {

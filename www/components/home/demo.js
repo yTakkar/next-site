@@ -77,14 +77,14 @@ export default function Demo() {
                     </TabButton>
                   )
                 )}
-                <Link href="/features/server-side-rendering" prefetch>
+                <Link href="/features/server-side-rendering">
                   <a>
                     <TabButton invert className="tab">
                       Server Side Rendering
                     </TabButton>
                   </a>
                 </Link>
-                <Link href="/features/static-exporting" prefetch>
+                <Link href="/features/static-exporting">
                   <a>
                     <TabButton invert className="tab">
                       Static Exporting

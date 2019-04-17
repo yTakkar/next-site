@@ -4,6 +4,9 @@ const withMDX = require('@zeit/next-mdx')()
 module.exports = phase => {
   return withMDX({
     target: 'serverless',
+    experimental: {
+      flyingShuttle: true
+    },
     assetPrefix: phase === PHASE_PRODUCTION_BUILD ? '/learn' : '',
     pageExtensions: ['js', 'jsx', 'mdx'],
     env: {

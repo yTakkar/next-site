@@ -12,7 +12,7 @@ Today, we're excited to announce we've extended the Next.js experience to author
 - [What is AMP](#what-is-amp)
 - [AMP in Next.js](#amp-in-next.js)
 - [Hybrid AMP pages](#hybrid-amp-pages)
-- [AMP-only pages](#amp-only-pages)
+- [AMP-first pages](#amp-first-pages)
 - [AMP Validation](#amp-validation)
 
 ## What is AMP?
@@ -33,7 +33,7 @@ AMP pages are automatically discovered by search engines which support it. These
 
 ## AMP in Next.js
 
-Today, we're excited to announce we've extended the Next.js experience to authoring AMP pages. This means that you can now leverage the power of React components to create AMP pages. AMP support is defined on a per-page basis, allowing incremental adoption of AMP. There are two ways to enable AMP in Next.js: a Hybrid AMP page or an AMP-only page.
+Today, we're excited to announce we've extended the Next.js experience to authoring AMP pages. This means that you can now leverage the power of React components to create AMP pages. AMP support is defined on a per-page basis, allowing incremental adoption of AMP. There are two ways to enable AMP in Next.js: a Hybrid AMP page or an AMP-first page.
 
 ## Hybrid AMP Pages
 
@@ -68,11 +68,11 @@ One example of the hybrid AMP pattern being used in production is Reddit. Each t
   height={684 / 2.5}
 />
 
-### AMP-Only Pages
+### AMP-First Pages
 
-AMP-only pages are served to the website's primary traffic as well as search engine traffic. By using AMP-only pages, we bring the fast experience of AMP to the main website, including desktop.
+AMP-first pages are served to the website's primary traffic as well as search engine traffic. By using AMP-first pages, we bring the fast experience of AMP to the main website, including desktop.
 
-To implement to AMP-only pages, you wrap pages with the `withAmp` function:
+To implement to AMP-first pages, you wrap pages with the `withAmp` function:
 
 ```js
 // pages/index.js
@@ -83,7 +83,7 @@ function HomePage() {
 export default withAmp(HomePage)
 ```
 
-If you don't have a need for the Next.js runtime, using AMP-only pages could help speed up development. AMP-Only requires you to only use AMP compatible components to build your pages. AMP-Only pages are currently in production on [nextjs.org/docs](http://nextjs.org/docs) and [nextjs.org/blog](http://nextjs.org/blog).
+If you don't have a need for the Next.js runtime, using AMP-first pages could help speed up development. AMP-First requires you to only use AMP compatible components to build your pages. AMP-First pages are currently in production on [nextjs.org/docs](http://nextjs.org/docs) and [nextjs.org/blog](http://nextjs.org/blog).
 
 ### Distinguishing AMP Rendering in Components
 

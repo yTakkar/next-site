@@ -1,5 +1,5 @@
 export default ({ large, children }) => (
-  <div>
+  <div className="icon">
     {children}
     <style jsx>
       {`
@@ -16,4 +16,4 @@ export default ({ large, children }) => (
       `}
     </style>
   </div>
-)
+);

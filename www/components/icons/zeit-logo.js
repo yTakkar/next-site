@@ -1,4 +1,4 @@
-export default () => (
+export default ({ solid }) => (
   <svg
     width="18"
     height="17"
@@ -8,13 +8,14 @@ export default () => (
   >
     <defs>
       <linearGradient
+        id="a"
         x1="100.929941%"
         y1="181.283245%"
         x2="41.7687834%"
         y2="100%"
       >
         <stop stopColor="#FFF" offset="0%" />
-        <stop stopColor="#000" offset="100%" />
+        <stop stopColor={solid ? '#FFF' : '#000'} offset="100%" />
       </linearGradient>
     </defs>
     <polygon

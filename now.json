@@ -29,6 +29,11 @@
       "status": 301,
       "headers": { "Location": "/features/server-side-rendering" }
     },
+    {
+      "src": "/case-studies/?",
+      "status": 301,
+      "headers": { "Location": "/case-studies/hulu" }
+    },
     { "src": "(.*)", "dest": "/www$1" }
   ]
 }

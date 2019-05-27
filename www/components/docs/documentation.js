@@ -96,7 +96,10 @@ const Details = ({ children }) => {
           margin: 1rem 0;
           padding: 0 0.5rem;
           background: #f9f9f9;
-          overflow: hidden;
+
+          details[open] {
+            overflow: hidden;
+          }
         `}
       </style>
     </details>

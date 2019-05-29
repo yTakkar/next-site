@@ -10,12 +10,7 @@ export default () => (
       </a>
     </Link>
     <span>+</span>
-    <a
-      href="https://hulu.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="hulu"
-    >
+    <a href="https://hulu.com" target="_blank" rel="noopener noreferrer" className="hulu">
       <HuluLogo color="#fff" />
     </a>
     <style jsx>

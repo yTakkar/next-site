@@ -9,14 +9,13 @@ export default () => (
       <h2 className="f0 fw6">Great Developer Tooling</h2>
       <div className="content">
         <p>
-          Developing with <code>styled-jsx</code> is easier than ever with
-          syntax highlighting for major editors like WebStorm and VSCode. With a
-          simple plugin system, it's easy to use your favorite preprocessors
-          such as Sass, PostCSS, and Stylus.
+          Developing with <code>styled-jsx</code> is easier than ever with syntax highlighting for
+          major editors like WebStorm and VSCode. With a simple plugin system, it's easy to use your
+          favorite preprocessors such as Sass, PostCSS, and Stylus.
         </p>
       </div>
       <div>
-        <Button invert href="/docs#css-in-js">
+        <Button invert href="/docs#css-in-js" amp>
           View Documentation
         </Button>
       </div>

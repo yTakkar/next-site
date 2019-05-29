@@ -6,16 +6,7 @@ import Container from '../container';
 import Button from '../button';
 import ArrowRightLong from '../icons/arrow-right-long';
 
-export default ({
-  type,
-  thumbnail,
-  detail,
-  link,
-  title,
-  date,
-  prefetch,
-  children
-}) => {
+export default ({ type, thumbnail, detail, link, title, date, alt, children }) => {
   return (
     <div className="post-preview">
       <style jsx>{`
@@ -101,18 +92,13 @@ export default ({
           <div className="preview-content">
             {type && <span className="post-type mute fw6">{type}</span>}
             <h3 className="f2 fw6 post-title">
-              <Link href={link} prefetch={prefetch}>
-                <a href={link}>{title}</a>
+              <Link href={link}>
+                <a>{title}</a>
               </Link>
             </h3>
             <p className="f6 date mute">
               {formatDate(date, 'dddd, MMMM Do YYYY')} (
-              <amp-timeago
-                width="0"
-                height="15"
-                datetime={date}
-                layout="responsive"
-              >
+              <amp-timeago width="0" height="15" datetime={date} layout="responsive">
                 .
               </amp-timeago>
               )
@@ -129,7 +115,7 @@ export default ({
           </div>
           {thumbnail && (
             <div className="thumbnail">
-              <img src={thumbnail} />
+              <img src={thumbnail} alt={alt || ''} />
             </div>
           )}
         </div>

@@ -106,30 +106,28 @@ function Navbar({ className, hideLogo, route, isMobile }) {
           </div>
           <div className="links">
             <div className="icons">
-              <Link href="https://github.com/zeit/next.js">
-                <a
-                  aria-label="Next.js on GitHub"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <GitHubLogo />
-                </a>
-              </Link>
-              <Link href={links.spectrum}>
-                <a
-                  aria-label="Next.js on Spectrum"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="no-margin"
-                >
-                  <SpectrumLogo />
-                  <span className="badge" />
-                </a>
-              </Link>
+              <a
+                href="https://github.com/zeit/next.js"
+                aria-label="Next.js on GitHub"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <GitHubLogo />
+              </a>
+              <a
+                href={links.spectrum}
+                aria-label="Next.js on Spectrum"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="no-margin"
+              >
+                <SpectrumLogo />
+                <span className="badge" />
+              </a>
             </div>
           </div>
           <div className="links mute dropdown">
-            <Link href="/#features" prefetch>
+            <Link href="/#features">
               <a
                 className={classNames({
                   selected: route.startsWith('/features')
@@ -139,7 +137,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
                 Features
               </a>
             </Link>
-            <Link href="/learn">
+            <Link href="/learn/basics/getting-started">
               <a
                 className={classNames({
                   selected: route.startsWith('/learn')
@@ -158,7 +156,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
             >
               Docs
             </a>
-            <Link href="/showcase" prefetch>
+            <Link href="/showcase">
               <a
                 className={classNames({
                   selected: route.startsWith('/showcase')
@@ -178,7 +176,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
               Blog
             </a>
             {
-              // <Link href="/enterprise" prefetch><a className={classNames({ selected: route.startsWith('/enterprise') })} title='Enterprise'>Enterprise</a></Link>
+              // <Link href="/enterprise"><a className={classNames({ selected: route.startsWith('/enterprise') })} title='Enterprise'>Enterprise</a></Link>
             }
           </div>
         </nav>
@@ -278,7 +276,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
           `}
         </style>
         <div className="links">
-          <Link href="/#features" prefetch>
+          <Link href="/#features">
             <a
               className={classNames('mute', {
                 selected: route.startsWith('/features')
@@ -288,7 +286,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
               Features
             </a>
           </Link>
-          <Link href="/learn">
+          <Link href="/learn/basics/getting-started">
             <a
               className={classNames('mute', {
                 selected: route.startsWith('/learn')
@@ -310,7 +308,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
         </div>
         {!hideLogo && (
           <div className="logo">
-            <Link href="/" prefetch>
+            <Link href="/">
               <a aria-label="Next.js">
                 <NextLogo />
               </a>
@@ -318,7 +316,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
           </div>
         )}
         <div className="links">
-          <Link href="/showcase" prefetch>
+          <Link href="/showcase">
             <a
               className={classNames('mute', {
                 selected: route.startsWith('/showcase')
@@ -337,18 +335,17 @@ function Navbar({ className, hideLogo, route, isMobile }) {
             Blog
           </a>
           {
-            // <Link href="/enterprise" prefetch><a className={classNames('mute', { selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
+            // <Link href="/enterprise"><a className={classNames('mute', { selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
           }
           <div className="icons">
-            <Link href="https://github.com/zeit/next.js">
-              <a
-                aria-label="Next.js on GitHub"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <GitHubLogo />
-              </a>
-            </Link>
+            <a
+              href="https://github.com/zeit/next.js"
+              aria-label="Next.js on GitHub"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <GitHubLogo />
+            </a>
             <Popover
               content={
                 <div style={{ whiteSpace: 'nowrap' }}>
@@ -357,17 +354,16 @@ function Navbar({ className, hideLogo, route, isMobile }) {
                 </div>
               }
             >
-              <Link href={links.spectrum}>
-                <a
-                  aria-label="Next.js on Spectrum"
-                  rel="noreferrer"
-                  target="_blank"
-                  className="no-margin"
-                >
-                  <SpectrumLogo />
-                  <span className="badge" />
-                </a>
-              </Link>
+              <a
+                href={links.spectrum}
+                aria-label="Next.js on Spectrum"
+                rel="noopener noreferrer"
+                target="_blank"
+                className="no-margin"
+              >
+                <SpectrumLogo />
+                <span className="badge" />
+              </a>
             </Popover>
           </div>
         </div>
@@ -400,12 +396,7 @@ export default withRouter(({ router, hideLogo = false }) => {
         hideLogo={hideLogoDesktop}
         isMobile={false}
       />
-      <Navbar
-        className="navbar-mobile"
-        route={route}
-        hideLogo={hideLogoMobile}
-        isMobile
-      />
+      <Navbar className="navbar-mobile" route={route} hideLogo={hideLogoMobile} isMobile />
       <style jsx global>
         {`
           @media screen and (max-width: 640px) {

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Head from 'next/head';
 import { MDXProvider } from '@mdx-js/tag';
 import formatDate from 'date-fns/format';
@@ -19,29 +18,24 @@ const Author = meta => {
   return (
     <div className="author">
       {isAmp ? (
-        <amp-img
-          width={1}
-          height={1}
-          layout="responsive"
-          src={meta.avatar}
-          alt={meta.name}
-        />
+        <amp-img width={1} height={1} layout="responsive" src={meta.avatar} alt={meta.name} />
       ) : (
         <img src={meta.avatar} alt={meta.name} />
       )}
       <span className="name f5">
         <span className="real-name">{meta.name}</span>
-        <Link href={`https://twitter.com/${meta.twitter}`}>
-          <a className="twitter" target="_blank">
+        <a
+          href={`https://twitter.com/${meta.twitter}`}
+          className="twitter"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          @{meta.twitter}
+        </a>
+        <span className="twitter-mobile">
+          <a href={`https://twitter.com/${meta.twitter}`} rel="noopener noreferrer" target="_blank">
             @{meta.twitter}
           </a>
-        </Link>
-        <span className="twitter-mobile">
-          (
-          <Link href={`https://twitter.com/${meta.twitter}`}>
-            <a target="_blank">@{meta.twitter}</a>
-          </Link>
-          )
         </span>
       </span>
       <style jsx>{`
@@ -123,15 +117,8 @@ export default meta =>
     return (
       <MDXProvider components={components}>
         <Page title={`Blog - ${meta.title} | Next.js`}>
-          <SocialMeta
-            image={`/static${meta.link}/twitter-card.png`}
-            {...meta}
-          />
-          <Header
-            height={{ desktop: 64, mobile: 64 + 32 }}
-            shadow
-            defaultActive
-          >
+          <SocialMeta image={`/static${meta.link}/twitter-card.png`} {...meta} />
+          <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow defaultActive>
             <Navbar />
           </Header>
           <HeaderImage {...meta} />
@@ -145,18 +132,11 @@ export default meta =>
           </Head>
           <Container padding>
             <h1 className="title fw6 f0">{meta.title}</h1>
-            {meta.type && (
-              <span className="post-type mute fw7">{meta.type}</span>
-            )}
+            {meta.type && <span className="post-type mute fw7">{meta.type}</span>}
             <div className="date mute f6">
               <time dateTime={meta.date}>
                 {formatDate(date, 'dddd, MMMM Do YYYY')} (
-                <amp-timeago
-                  width="0"
-                  height="15"
-                  datetime={meta.date}
-                  layout="responsive"
-                >
+                <amp-timeago width="0" height="15" datetime={meta.date} layout="responsive">
                   .
                 </amp-timeago>
                 )
@@ -170,7 +150,7 @@ export default meta =>
             <Container small wide overflow>
               <main>{children}</main>
               <div className="back-button">
-                <Button href="/blog" invert>
+                <Button href="/blog" invert amp>
                   <span className="icon">
                     <ArrowLeftLong color="white" />
                   </span>{' '}

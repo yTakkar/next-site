@@ -80,11 +80,14 @@ export default class extends PureComponent {
               <img src={src} alt={siteData.title} />
               <div className="info">
                 <h3 className="f4">{siteData.title}</h3>
-                <Link href={siteData.link}>
-                  <a className="f5" target="_blank">
-                    {siteData.link}
-                  </a>
-                </Link>
+                <a
+                  href={siteData.link}
+                  className="f5"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  {siteData.link}
+                </a>
               </div>
             </div>
           </Fade>

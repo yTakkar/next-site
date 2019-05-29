@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Container from '../container';
 import Button from '../button';
 
-export default ({ type, link, title, prefetch, featuredImage, subtitle }) => (
+export default ({ type, link, title, featuredImage, subtitle }) => (
   <div className="case-study">
     <style jsx>{`
       .case-study {
@@ -11,11 +11,7 @@ export default ({ type, link, title, prefetch, featuredImage, subtitle }) => (
         align-items: center;
         height: 380px;
         text-align: left;
-        background-image: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0.25) 110%
-          ),
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.25) 110%),
           url(${featuredImage});
         background-size: cover;
         background-position: center 30%;
@@ -57,7 +53,7 @@ export default ({ type, link, title, prefetch, featuredImage, subtitle }) => (
     <Container small>
       <div className="wrapper">
         {type && <span className="post-type fw6">{type}</span>}
-        <Link href={link} prefetch={prefetch}>
+        <Link href={link}>
           <h2 className="f1 fw7">{title}</h2>
         </Link>
         <div className="content">{subtitle}</div>

@@ -14,15 +14,14 @@ export default () => (
         <h2 className="f0 fw6">No More Switching Frameworks</h2>
         <div className="content">
           <p>
-            With the flexibility to target any frontend environment, choosing
-            Next.js means your team can handle static site generation without
-            needing to learn a new framework. If your requirements change down
-            the road, Next.js makes the transition to a dynamic application a
-            breeze.
+            With the flexibility to target any frontend environment, choosing Next.js means your
+            team can handle static site generation without needing to learn a new framework. If your
+            requirements change down the road, Next.js makes the transition to a dynamic application
+            a breeze.
           </p>
         </div>
         <div>
-          <Button invert href="/docs">
+          <Button invert href="/docs" amp>
             View Documentation
           </Button>
         </div>

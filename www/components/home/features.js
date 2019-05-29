@@ -20,8 +20,8 @@ export default function Features() {
               </Button>
             </h3>
             <p>
-              With Next.js, server rendering React applications has never been
-              easier, no matter where your data is coming from.
+              With Next.js, server rendering React applications has never been easier, no matter
+              where your data is coming from.
             </p>
           </div>
           <div className="column">
@@ -31,8 +31,8 @@ export default function Features() {
               </Button>
             </h3>
             <p>
-              No need to learn a new framework. Exporting a static site with
-              Next.js is as easy as a single command.
+              No need to learn a new framework. Exporting a static site with Next.js is as easy as a
+              single command.
             </p>
           </div>
           <div className="column">
@@ -42,8 +42,8 @@ export default function Features() {
               </Button>
             </h3>
             <p>
-              Next.js comes with <code>styled-jsx</code> included, but it also
-              works with every CSS-in-JS solution you know and love.
+              Next.js comes with <code>styled-jsx</code> included, but it also works with every
+              CSS-in-JS solution you know and love.
             </p>
           </div>
         </div>
@@ -51,16 +51,16 @@ export default function Features() {
           <div className="column">
             <h3 className="f3 fw6">Zero Setup</h3>
             <p>
-              Automatic code splitting, filesystem based routing, hot code
-              reloading and universal rendering.
+              Automatic code splitting, filesystem based routing, hot code reloading and universal
+              rendering.
             </p>
-            <Button href="/learn">Learn Next.js</Button>
+            <Button href="/learn/basics/getting-started">Learn Next.js</Button>
           </div>
           <div className="column">
             <h3 className="f3 fw6">Fully Extensible</h3>
             <p>
-              Complete control over Babel and Webpack. Customizable server,
-              routing and next-plugins.
+              Complete control over Babel and Webpack. Customizable server, routing and
+              next-plugins.
             </p>
             <Button href="/docs" amp>
               View Full Documentation
@@ -69,8 +69,8 @@ export default function Features() {
           <div className="column">
             <h3 className="f3 fw6">Ready for Production</h3>
             <p>
-              Optimized for a smaller build size, faster dev compilation and
-              dozens of other improvements.
+              Optimized for a smaller build size, faster dev compilation and dozens of other
+              improvements.
             </p>
             <Button href="/showcase">View Showcase</Button>
           </div>

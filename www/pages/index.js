@@ -21,13 +21,9 @@ export default withAmp(
     return (
       <>
         <Header height={32} shadow>
-          <Notification
-            href="/blog/next-8"
-            title="Next 8 is out!"
-            titleMobile="Next 8 is out!"
-          >
-            Next 8 is out! — Serverless mode, performance and security
-            improvements and more. Monday, February 11th 2019
+          <Notification href="/blog/next-8" title="Next 8 is out!" titleMobile="Next 8 is out!">
+            Next 8 is out! — Serverless mode, performance and security improvements and more.
+            Monday, February 11th 2019
           </Notification>
           <Navbar hideLogo={{ desktop: !isAmp, mobile: false }} />
         </Header>

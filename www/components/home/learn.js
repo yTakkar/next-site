@@ -46,7 +46,7 @@ export default function Learn() {
         `}</style>
       </div>
       <div>
-        <Button href="/learn" invert>
+        <Button href="/learn/basics/getting-started" invert>
           Get Started
         </Button>
       </div>

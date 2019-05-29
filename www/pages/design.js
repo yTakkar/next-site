@@ -15,7 +15,9 @@ const ComponentTitle = ({ children }) => (
   <h3 className="fw8 f4">
     {children}
     <style jsx>{`
-      margin: 3rem 0 2rem;
+      h3 {
+        margin: 3rem 0 2rem;
+      }
     `}</style>
   </h3>
 );
@@ -51,11 +53,7 @@ export default () => (
       <Navbar />
     </Header>
     <Container padding>
-      <SectionHeader
-        id="design"
-        title="Design"
-        description="Components for nextjs.org"
-      />
+      <SectionHeader id="design" title="Design" description="Components for nextjs.org" />
       <ComponentTitle>Typography</ComponentTitle>
       <ComponentModal title="Modular Scale">
         <h1 className="f0">XXXL - Heading 0</h1>
@@ -123,11 +121,7 @@ export default () => (
           {(onSelect, tab) => (
             <div style={{ display: 'inline-block ' }}>
               {['React', 'Vue', 'Angular'].map(t => (
-                <TabButton
-                  selected={t === tab}
-                  onClick={() => onSelect(t)}
-                  key={t}
-                >
+                <TabButton selected={t === tab} onClick={() => onSelect(t)} key={t}>
                   {t}
                 </TabButton>
               ))}
@@ -145,12 +139,7 @@ export default () => (
             {(onSelect, tab) => (
               <div style={{ display: 'inline-block ' }}>
                 {['React', 'Vue', 'Angular'].map(t => (
-                  <TabButton
-                    invert
-                    selected={t === tab}
-                    onClick={() => onSelect(t)}
-                    key={t}
-                  >
+                  <TabButton invert selected={t === tab} onClick={() => onSelect(t)} key={t}>
                     {t}
                   </TabButton>
                 ))}
@@ -168,12 +157,7 @@ export default () => (
           {(onSelect, tab) => (
             <div style={{ display: 'inline-block ' }}>
               {['React', 'Vue', 'Angular'].map(t => (
-                <TabButton
-                  small
-                  selected={t === tab}
-                  onClick={() => onSelect(t)}
-                  key={t}
-                >
+                <TabButton small selected={t === tab} onClick={() => onSelect(t)} key={t}>
                   {t}
                 </TabButton>
               ))}
@@ -193,13 +177,7 @@ export default () => (
                 {tab}
               </p>
               {['React', 'Vue', 'Angular'].map(t => (
-                <TabButton
-                  light
-                  small
-                  selected={t === tab}
-                  onClick={() => onSelect(t)}
-                  key={t}
-                >
+                <TabButton light small selected={t === tab} onClick={() => onSelect(t)} key={t}>
                   {t}
                 </TabButton>
               ))}

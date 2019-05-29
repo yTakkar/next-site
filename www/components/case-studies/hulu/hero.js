@@ -41,14 +41,12 @@ const Hero = () => (
         </h2>
 
         <p>
-          <a href="https://hulu.tv">Hulu</a> makes TV and movies easily
-          accessible online — a feat which would be impossible without powerful
-          engineering practices and tools. While the team at Hulu has been using
-          Next.js since it's initial release, they recently made a push to
-          spread the framework deeply throughout their organization. Next.js
-          gave Hulu the confidence to migrate to a modern frontend environment,
-          all while reducing their code surface area and shipping faster in the
-          process.
+          <a href="https://hulu.tv">Hulu</a> makes TV and movies easily accessible online — a feat
+          which would be impossible without powerful engineering practices and tools. While the team
+          at Hulu has been using Next.js since it's initial release, they recently made a push to
+          spread the framework deeply throughout their organization. Next.js gave Hulu the
+          confidence to migrate to a modern frontend environment, all while reducing their code
+          surface area and shipping faster in the process.
         </p>
       </div>
     </div>
@@ -142,8 +140,7 @@ const Hero = () => (
         .macbook amp-img {
           max-width: 90%;
           border-radius: 4px;
-          box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25),
-            0 18px 36px -18px rgba(0, 0, 0, 0.3),
+          box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3),
             0 -12px 36px -8px rgba(0, 0, 0, 0.025);
         }
 

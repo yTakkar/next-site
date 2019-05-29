@@ -2,22 +2,12 @@
   "version": 2,
   "alias": "nextjs.org",
   "scope": "next-js",
-  "builds": [
-    { "src": "google79eca80c0e444114.html", "use": "@now/static" },
-    { "src": "www/package.json", "use": "@now/static-build" },
-    { "src": "learn/next.config.js", "use": "@now/next@canary" }
-  ],
+  "builds": [{ "src": "www/next.config.js", "use": "@now/next@canary" }],
   "routes": [
     {
       "src": "/learn/?",
       "status": 301,
       "headers": { "Location": "/learn/basics/getting-started" }
-    },
-    { "src": "/learn/_next(.*)", "dest": "/learn/_next$1" },
-    { "src": "/learn(.*)", "dest": "/learn/learn$1" },
-    {
-      "src": "/google79eca80c0e444114.html",
-      "dest": "/google79eca80c0e444114.html"
     },
     {
       "src": "/features/?",
@@ -32,7 +22,17 @@
     {
       "src": "/case-studies/?",
       "status": 301,
-      "headers": { "Location": "/case-studies/hulu" }
+      "headers": {
+        "Location": "/case-studies/hulu"
+      }
+    },
+    {
+      "src": "/showcase/(?<item>[^/]*)",
+      "dest": "/www/showcase?item=$item"
+    },
+    {
+      "src": "/feed.xml",
+      "dest": "/www/_next/static/feed.xml"
     },
     { "src": "(.*)", "dest": "/www$1" }
   ]

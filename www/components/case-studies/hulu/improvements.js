@@ -19,42 +19,37 @@ const Improvements = () => (
 
       <p>
         A critical requirement for Hulu was{' '}
-        <a href="https://nextjs.org/features/server-side-rendering">
-          server-side rendering
-        </a>
-        . With data coming from many sources and a fundamental need for SEO,
-        server-side rendering was a must. With other frameworks,
-        server-rendering pages with complex data dependencies is difficult and
-        error prone, if not impossible. Next.js however made the process
+        <a href="https://nextjs.org/features/server-side-rendering">server-side rendering</a>. With
+        data coming from many sources and a fundamental need for SEO, server-side rendering was a
+        must. With other frameworks, server-rendering pages with complex data dependencies is
+        difficult and error prone, if not impossible. Next.js however made the process
         straightforward.
       </p>
 
       <div className="quote">
         <p>
-          “[Server rendering] was as easy as moving data fetching from one spot
-          to another. Next.js dealt with the underlying client hydration, while
-          giving us a single abstraction to handle our data fetching logic.”
+          “[Server rendering] was as easy as moving data fetching from one spot to another. Next.js
+          dealt with the underlying client hydration, while giving us a single abstraction to handle
+          our data fetching logic.”
         </p>
         <span>— Zack Tanner</span>
       </div>
 
       <p>
-        Even when issues arose, Zack found that error tracing with
-        server-rendered pages was far superior compared to any other solution
-        he'd tried. By acting as a unified tool for managing both client and
-        server-side rendering, Next.js makes it easy for developers to tap into
-        the rich benefits of server-side rendering, while still working in
-        familiar territory of writing client side code.
+        Even when issues arose, Zack found that error tracing with server-rendered pages was far
+        superior compared to any other solution he'd tried. By acting as a unified tool for managing
+        both client and server-side rendering, Next.js makes it easy for developers to tap into the
+        rich benefits of server-side rendering, while still working in familiar territory of writing
+        client side code.
       </p>
 
       <p>
-        Finally, by using the CSS-in-JS solution that Next.js provides by
-        default, Zack and team were able to implement optimized styles that were
-        code-split automatically. This meant each page would load only the CSS
-        it needed, keeping page-size small without compromising on
-        functionality. The Hulu teams also extended these defaults using
-        sanctioned <code>next-plugins</code>, enhancing their setup to support
-        existing global Sass files with minimal overhead.
+        Finally, by using the CSS-in-JS solution that Next.js provides by default, Zack and team
+        were able to implement optimized styles that were code-split automatically. This meant each
+        page would load only the CSS it needed, keeping page-size small without compromising on
+        functionality. The Hulu teams also extended these defaults using sanctioned{' '}
+        <code>next-plugins</code>, enhancing their setup to support existing global Sass files with
+        minimal overhead.
       </p>
     </div>
 
@@ -78,20 +73,17 @@ const Improvements = () => (
       <h2>One Framework for Everyone</h2>
 
       <p>
-        Adopting Next.js early on in its history required writing lots of custom
-        code to deal with the team's specific use cases. However, as the
-        ecosystem evolved, they were able to chip away at old abstractions and
-        let Next.js handle them directly.
+        Adopting Next.js early on in its history required writing lots of custom code to deal with
+        the team's specific use cases. However, as the ecosystem evolved, they were able to chip
+        away at old abstractions and let Next.js handle them directly.
       </p>
 
       <p>
-        As the migration progressed, a large amount of technical debt tapered,
-        but another powerful benefit arose. The frontend teams at Hulu were
-        unified around a single platform, reducing the time it would take
-        developers to be productive in a new codebase. Zack confirms, "devs
-        would come and go and switch teams, but everyone understands Next.
-        Everyone is on the same page." The number of operational wins Hulu
-        earned were on par with the technical ones.
+        As the migration progressed, a large amount of technical debt tapered, but another powerful
+        benefit arose. The frontend teams at Hulu were unified around a single platform, reducing
+        the time it would take developers to be productive in a new codebase. Zack confirms, "devs
+        would come and go and switch teams, but everyone understands Next. Everyone is on the same
+        page." The number of operational wins Hulu earned were on par with the technical ones.
       </p>
     </div>
 
@@ -151,8 +143,7 @@ const Improvements = () => (
           max-width: 56rem;
           margin: 0 auto;
           border-radius: 8px;
-          box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25),
-            0 18px 36px -18px rgba(0, 0, 0, 0.3),
+          box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3),
             0 -12px 36px -8px rgba(0, 0, 0, 0.025);
         }
 
@@ -211,12 +202,7 @@ const Improvements = () => (
           left: 0;
           width: 100%;
           height: 30%;
-          background: linear-gradient(
-              180deg,
-              #ffffff 0%,
-              rgba(255, 255, 255, 0) 164.16%
-            ),
-            #333333;
+          background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 164.16%), #333333;
         }
 
         @media screen and (max-width: 1080px) {

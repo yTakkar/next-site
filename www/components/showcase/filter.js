@@ -1,10 +1,8 @@
 import { PureComponent } from 'react';
-import Link from 'next/link';
-
+import { categories, categoriesShort } from '../../showcase-manifest';
 import Popover from '../popover';
 import Container from '../container';
 import HeartIcon from '../icons/heart';
-import { categories, categoriesShort } from '../../showcase-manifest';
 
 const SUBMIT_URL = `https://spectrum.chat/thread/e425a8b6-c9cb-4cd1-90bb-740fb3bd7541`;
 
@@ -18,12 +16,7 @@ export default class extends PureComponent {
           {categoriesShort.map((_, index) => {
             const id = categories[index];
             return (
-              <span
-                className={`tab${
-                  selectedId === id ? ' selected' : ''
-                } short f6`}
-                key={id}
-              >
+              <span className={`tab${selectedId === id ? ' selected' : ''} short f6`} key={id}>
                 {_}
               </span>
             );
@@ -31,12 +24,7 @@ export default class extends PureComponent {
           {categories.map((_, index) => {
             const id = categories[index];
             return (
-              <span
-                className={`tab${
-                  selectedId === id ? ' selected' : ''
-                } not-short f6`}
-                key={id}
-              >
+              <span className={`tab${selectedId === id ? ' selected' : ''} not-short f6`} key={id}>
                 {_}
               </span>
             );
@@ -51,9 +39,7 @@ export default class extends PureComponent {
             return (
               <button
                 type="button"
-                className={`no-tap-highlight short tab${
-                  selectedId === id ? ' selected' : ''
-                } f6`}
+                className={`no-tap-highlight short tab${selectedId === id ? ' selected' : ''} f6`}
                 onClick={() => onSelect(id)}
                 key={id}
               >
@@ -77,18 +63,17 @@ export default class extends PureComponent {
             );
           })}
           <span className="not-mobile">
-            <Popover
-              content={
-                <div style={{ whiteSpace: 'nowrap' }}>Share your website!</div>
-              }
-            >
-              <Link href={SUBMIT_URL}>
-                <a aria-label="Submit Your Website">
-                  <span className="tab f5" style={{ verticalAlign: 'top' }}>
-                    <HeartIcon />
-                  </span>
-                </a>
-              </Link>
+            <Popover content={<div style={{ whiteSpace: 'nowrap' }}>Share your website!</div>}>
+              <a
+                href={SUBMIT_URL}
+                aria-label="Submit Your Website"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <span className="tab f5" style={{ verticalAlign: 'top' }}>
+                  <HeartIcon />
+                </span>
+              </a>
             </Popover>
           </span>
         </div>

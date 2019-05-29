@@ -1,13 +1,9 @@
 import { PureComponent } from 'react';
 import Router, { withRouter } from 'next/router';
-import Link from 'next/link';
-import classNames from 'classnames';
-
 import IObserver from '../intersection-observer';
 
 const GAP_X = 48;
 const GAP_Y = 48;
-const ROW_HEIGHT = 250 + GAP_Y;
 
 export default withRouter(
   class extends PureComponent {
@@ -19,19 +15,17 @@ export default withRouter(
       if (ev.target.nodeName === 'A') {
         return;
       }
-      let item = this.props.siteData.internalUrl;
-      Router.router.push(
-        '/showcase?from=click&item=' + item,
-        '/showcase/' + item,
-        { shallow: true }
-      );
+      const item = this.props.siteData.internalUrl;
+      Router.router.push(`/showcase?from=click&item=${item}`, `/showcase/${item}`, {
+        shallow: true
+      });
     };
 
     handleIntersect = entry => {
       if (entry.isIntersecting) {
         const { highlighted, siteData, isTablet } = this.props;
 
-        let useLargeThumbnail = highlighted && !isTablet;
+        const useLargeThumbnail = highlighted && !isTablet;
         let src = siteData.src.replace('/showcases/', '/showcase-thumbnails/');
 
         if (useLargeThumbnail) {
@@ -58,14 +52,15 @@ export default withRouter(
               <div className="preview" onClick={this.loadDetail}>
                 <div className="shadow">
                   <div className="info">
-                    <h3 className={highlighted && !isTablet ? 'f2' : 'f4'}>
-                      {siteData.title}
-                    </h3>
-                    <Link href={siteData.link}>
-                      <a className="f5" target="_blank">
-                        {siteData.link}
-                      </a>
-                    </Link>
+                    <h3 className={highlighted && !isTablet ? 'f2' : 'f4'}>{siteData.title}</h3>
+                    <a
+                      href={siteData.link}
+                      className="f5"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      {siteData.link}
+                    </a>
                   </div>
                 </div>
               </div>
@@ -87,13 +82,10 @@ export default withRouter(
                 bottom: ${GAP_Y / 2}px;
                 left: ${GAP_X / 2}px;
                 right: ${GAP_X / 2}px;
-                ${src
-                  ? `background-image: url(${src});`
-                  : ''} background-size: cover;
+                ${src ? `background-image: url(${src});` : ''} background-size: cover;
                 background-position: center top;
                 background-repeat: no-repeat;
-                box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08),
-                  0 0 0 1px rgba(0, 0, 0, 0.02);
+                box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.02);
                 border-radius: 7px;
                 text-align: center;
                 overflow: hidden;
@@ -108,11 +100,7 @@ export default withRouter(
                 height: 100%;
                 color: white;
                 text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-                background: linear-gradient(
-                  to bottom,
-                  rgba(0, 0, 0, 0.5),
-                  rgba(0, 0, 0, 0.3)
-                );
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
                 transition: opacity 0.2s ease;
                 opacity: 0;
               }

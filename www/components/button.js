@@ -41,41 +41,32 @@ const cachedStyles = css`
     background: #006ae6;
   }
 `;
-export default withPure(function Button({
-  children,
-  invert,
-  href,
-  as,
-  className,
-  prefetch,
-  amp,
-  ...props
-}) {
+export default withPure(function Button({ children, invert, href, as, className, amp, ...props }) {
   const cachedClassNames = classNames(className, 'btn', 'fw4 no-drag', {
     invert
   });
+  const isExternal = href && href.startsWith('http');
   const a = (
-    <a className={cachedClassNames} href={href} {...props}>
+    <a className={cachedClassNames} href={isExternal ? href : undefined} {...props}>
       {children}
       <style jsx>{cachedStyles}</style>
     </a>
   );
 
-  const btn = (
-    <button className={cachedClassNames} {...props}>
-      {children}
-      <style jsx>{cachedStyles}</style>
-    </button>
-  );
-
   if (href) {
-    return amp ? (
+    return amp || isExternal ? (
       a
     ) : (
-      <Link href={href} as={as} prefetch={prefetch}>
+      <Link href={href} as={as}>
         {a}
       </Link>
     );
   }
-  return btn;
+
+  return (
+    <button type="button" className={cachedClassNames} {...props}>
+      {children}
+      <style jsx>{cachedStyles}</style>
+    </button>
+  );
 });

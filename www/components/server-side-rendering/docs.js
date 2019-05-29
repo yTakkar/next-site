@@ -12,15 +12,14 @@ export default () => {
           <h2 className="f0 fw6">The Right Abstraction</h2>
           <div className="content">
             <p>
-              Next.js extends React to provide a powerful method for loading a
-              page's initial data, no matter where it is coming from. With a
-              single place to prepopulate page context, server-side rendering
-              with Next.js seamlessly integrates with any existing data-fetching
-              strategy.
+              Next.js extends React to provide a powerful method for loading a page's initial data,
+              no matter where it is coming from. With a single place to prepopulate page context,
+              server-side rendering with Next.js seamlessly integrates with any existing
+              data-fetching strategy.
             </p>
           </div>
           <div>
-            <Button invert href="/docs#fetching-data-and-component-lifecycle">
+            <Button invert href="/docs#fetching-data-and-component-lifecycle" amp>
               View Documentation
             </Button>
           </div>
@@ -29,11 +28,7 @@ export default () => {
         <div className="abstraction">
           {isAmp ? (
             <>
-              <amp-img
-                src="/static/images/abstraction.png"
-                height={757}
-                width={512}
-              />
+              <amp-img src="/static/images/abstraction.png" height={757} width={512} />
               <div className="shadow" />
             </>
           ) : (
@@ -88,8 +83,7 @@ export default () => {
             width: 92%;
             left: 4%;
             top: 26rem;
-            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1),
-              0px 10px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.08);
           }
 
           @media screen and (max-width: 960px) {

@@ -100,7 +100,7 @@ export default withPure(() => (
           </div>
           <div className="column">
             <h4 className="fw5">
-              <Link href="/learn">
+              <Link href="/learn/basics/getting-started">
                 <a>Learn</a>
               </Link>
             </h4>
@@ -131,25 +131,23 @@ export default withPure(() => (
             }
             <h4 className="fw5">More</h4>
             <p>
-              <Link href="https://github.com/zeit/next.js">
-                <a rel="noreferrer" target="_blank">
-                  GitHub
-                </a>
-              </Link>
+              <a href="https://github.com/zeit/next.js" rel="noopener noreferrer" target="_blank">
+                GitHub
+              </a>
             </p>
             <p>
-              <Link href="https://github.com/zeit/next.js/releases">
-                <a rel="noreferrer" target="_blank">
-                  Releases
-                </a>
-              </Link>
+              <a
+                href="https://github.com/zeit/next.js/releases"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Releases
+              </a>
             </p>
             <p>
-              <Link href={links.spectrum}>
-                <a rel="noreferrer" target="_blank">
-                  Spectrum
-                </a>
-              </Link>
+              <a href={links.spectrum} rel="noopener noreferrer" target="_blank">
+                Spectrum
+              </a>
             </p>
             <p>
               <Link href="/design">
@@ -160,34 +158,26 @@ export default withPure(() => (
           <div className="column">
             <h4 className="fw5">About ZEIT</h4>
             <p>
-              <Link href="https://zeit.co/oss">
-                <a rel="noreferrer" target="_blank">
-                  Open Source Software
-                </a>
-              </Link>
+              <a href="https://zeit.co/oss" rel="noopener noreferrer" target="_blank">
+                Open Source Software
+              </a>
             </p>
             <p>
-              <Link href="https://github.com/zeit">
-                <a rel="noreferrer" target="_blank">
-                  GitHub
-                </a>
-              </Link>
+              <a href="https://github.com/zeit" rel="noopener noreferrer" target="_blank">
+                GitHub
+              </a>
             </p>
             <p>
-              <Link href="https://twitter.com/zeithq">
-                <a rel="noreferrer" target="_blank">
-                  Twitter
-                </a>
-              </Link>
+              <a href="https://twitter.com/zeithq" rel="noopener noreferrer" target="_blank">
+                Twitter
+              </a>
             </p>
           </div>
         </div>
         <div className="copyright f6">
-          <Link href="https://zeit.co">
-            <a rel="noreferrer" target="_blank" aria-label="ZEIT">
-              <ZEITLogo />
-            </a>
-          </Link>
+          <a href="https://zeit.co" rel="noopener noreferrer" target="_blank" aria-label="ZEIT">
+            <ZEITLogo />
+          </a>
           <div> Copyright © 2019 ZEIT, Inc. All rights reserved.</div>
         </div>
       </footer>

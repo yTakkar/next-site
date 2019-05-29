@@ -2,21 +2,19 @@ const Testimony = () => (
   <section>
     <div className="container">
       <p>
-        “Productivity has skyrocketed. We’re able to focus on feature
-        development and improving our product, while Next.js handles the more
-        difficult tooling for us.”
+        “Productivity has skyrocketed. We’re able to focus on feature development and improving our
+        product, while Next.js handles the more difficult tooling for us.”
       </p>
       <span>Zack Tanner, Hulu Senior Software Engineer</span>
     </div>
 
     <p>
-      Zack also found that Next.js helps developers avoid common pitfalls. By
-      having a single abstraction for handling difficult UI tasks, Next.js
-      prevents developers from introducing problems incidentally—for example
-      from over-fetching deep in the component tree. If a developer needed to
-      fetch new data, they knew exactly where to look. Nobody needed to learn
-      any of the cumbersome underlying APIs and the team could trust Next.js to
-      handle the hard parts.
+      Zack also found that Next.js helps developers avoid common pitfalls. By having a single
+      abstraction for handling difficult UI tasks, Next.js prevents developers from introducing
+      problems incidentally—for example from over-fetching deep in the component tree. If a
+      developer needed to fetch new data, they knew exactly where to look. Nobody needed to learn
+      any of the cumbersome underlying APIs and the team could trust Next.js to handle the hard
+      parts.
     </p>
 
     <style jsx>

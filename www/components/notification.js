@@ -1,6 +1,4 @@
-import Link from 'next/link';
 import { ellipsis } from 'polished';
-
 import Container from './container';
 import withPure from './hoc/pure';
 
@@ -26,16 +24,18 @@ export default withPure(({ href, title, titleMobile, children }) => (
       `}
     </style>
     <Container style={ellipsis()}>
-      <Link href={href}>
-        {titleMobile ? (
-          <>
-            <a className="display-mobile">{titleMobile}</a>
-            <a className="hide-mobile">{children}</a>
-          </>
-        ) : (
-          <a>{children}</a>
-        )}
-      </Link>
+      {titleMobile ? (
+        <>
+          <a href={href} className="display-mobile">
+            {titleMobile}
+          </a>
+          <a href={href} className="hide-mobile">
+            {children}
+          </a>
+        </>
+      ) : (
+        <a href={href}>{children}</a>
+      )}
     </Container>
   </div>
 ));

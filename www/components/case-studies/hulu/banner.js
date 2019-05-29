@@ -8,11 +8,7 @@ export default () => (
       layout="responsive"
     />
     <div className="svg-container">
-      <amp-img
-        src="/static/images/case-studies/hulu/next.js.svg"
-        width={432}
-        height={432}
-      />
+      <amp-img src="/static/images/case-studies/hulu/next.js.svg" width={432} height={432} />
     </div>
 
     <style jsx>{`

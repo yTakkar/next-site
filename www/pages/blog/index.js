@@ -33,12 +33,7 @@ const items = previewItems
   .sort(dateSortDesc)
   .map(({ default: Component, meta }, index) => {
     return (
-      <Preview
-        key={meta.title}
-        detail={index < 5}
-        prefetch={index < 3}
-        {...meta}
-      >
+      <Preview key={meta.title} detail={index < 5} {...meta}>
         <Component components={components} />
       </Preview>
     )

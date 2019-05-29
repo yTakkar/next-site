@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import '../lib/polyfill';
 import RouterEvents from '../lib/router-events';
 import { trackPageview } from '../lib/analytics';
+import { withMediaQuery } from './media-query';
 
 RouterEvents.on('routeChangeComplete', url => {
   trackPageview(url);
@@ -15,9 +15,7 @@ function Page({ title, description, children }) {
         <title>{title || 'Next.js - The React Framework'}</title>
         <meta
           name="description"
-          content={
-            description || 'Next.js is the React framework for production'
-          }
+          content={description || 'Next.js is the React framework for production'}
         />
       </Head>
       <style jsx>
@@ -45,9 +43,8 @@ function Page({ title, description, children }) {
             min-height: 100%;
             margin: 0;
             line-height: 1.65;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-              'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-              'Helvetica Neue', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+              'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
             font-size: 16px;
             font-weight: 400;
             min-width: 320px;
@@ -88,9 +85,8 @@ function Page({ title, description, children }) {
           }
           code {
             font-size: 0.9em;
-            font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-              DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
-              serif;
+            font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+              Bitstream Vera Sans Mono, Courier New, monospace, serif;
           }
           code:before,
           code:after {
@@ -389,4 +385,4 @@ function Page({ title, description, children }) {
   );
 }
 
-export default Page;
+export default withMediaQuery(Page);

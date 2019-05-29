@@ -1,4 +1,3 @@
-/* global window */
 import React from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
@@ -46,40 +45,35 @@ class LogoContainer extends React.PureComponent {
         className={classNames('logo-main f4 fw6', { unmounted: !mounted })}
         style={{
           top: Math.max(LOGO_TOP - scroll, 7),
-          transform: `scale(${Math.max(easing(1 - scroll / LOGO_TOP), 0) *
-            0.325 +
+          transform: `scale(${Math.max(easing(1 - scroll / LOGO_TOP), 0) * 0.325 +
             0.625}) translate3d(0, 0, 0)`,
           transformOrigin: 'top'
         }}
       >
         <Link href="/">
-          <a
-            className={scroll >= LOGO_TOP ? null : 'disable'}
-            aria-label="Next.js"
-          >
+          <a className={scroll >= LOGO_TOP ? null : 'disable'} aria-label="Next.js">
             <Logo size={80} />
           </a>
         </Link>
-        <Link href="/blog/next-8">
-          <a
-            className="version no-tap-highlight no-drag"
-            style={{
-              opacity: Math.max(1 - (scroll * 3) / LOGO_TOP, 0),
-              visibility: scroll * 3 > LOGO_TOP ? 'hidden' : 'visible'
-            }}
+        <a
+          href="/blog/next-8"
+          className="version no-tap-highlight no-drag"
+          style={{
+            opacity: Math.max(1 - (scroll * 3) / LOGO_TOP, 0),
+            visibility: scroll * 3 > LOGO_TOP ? 'hidden' : 'visible'
+          }}
+        >
+          <Popover
+            content={
+              <span className="f5 fw4 tip">
+                What’s new in <strong className="fw7">8</strong>?
+              </span>
+            }
+            top={65}
           >
-            <Popover
-              content={
-                <span className="f5 fw4 tip">
-                  What’s new in <strong className="fw7">8</strong>?
-                </span>
-              }
-              top={65}
-            >
-              8
-            </Popover>
-          </a>
-        </Link>
+            8
+          </Popover>
+        </a>
         <style jsx>{`
           .disable {
             pointer-events: none;
@@ -126,6 +120,7 @@ class LogoContainer extends React.PureComponent {
   }
 }
 
+// eslint-disable-next-line react/no-multi-comp
 export default class extends React.PureComponent {
   render() {
     const { isAmp } = this.props;
@@ -137,7 +132,7 @@ export default class extends React.PureComponent {
         overflow
         dotBackground
         minHeight={564}
-        mobileStyle={'min-height: 460px;'}
+        mobileStyle="min-height: 460px;"
         style={{
           display: 'flex',
           alignItems: 'flex-end'
@@ -217,9 +212,7 @@ export default class extends React.PureComponent {
             `}</style>
             {!isAmp && <LogoContainer />}
             <div className="campaign no-drag no-tap-highlight">
-              <h1 className={classNames('title-1', 'fw6')}>
-                The React Framework for
-              </h1>
+              <h1 className={classNames('title-1', 'fw6')}>The React Framework for</h1>
               <h2 className={classNames('title-2', 'fw7')}>
                 <Campaign />
               </h2>
@@ -231,13 +224,13 @@ export default class extends React.PureComponent {
                 </Button>
               </div>
               <div className="links">
-                <Link href={links.license}>
-                  <a rel="noreferrer" target="_blank">
-                    <span className="mute">License: MIT</span>
-                  </a>
-                </Link>
+                <a href={links.license} rel="noopener noreferrer" target="_blank">
+                  <span className="mute">License: MIT</span>
+                </a>
                 <div>
-                  <Button href="/docs">View Docs</Button>
+                  <Button href="/docs" amp>
+                    View Docs
+                  </Button>
                 </div>
                 <div>
                   <Button href="https://github.com/zeit/next.js">GitHub</Button>

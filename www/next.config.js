@@ -1,8 +1,9 @@
 const path = require('path');
-
+const webpack = require('webpack');
 const rehypePrism = require('@mapbox/rehype-prism');
+const nextMDX = require('@next/mdx');
+const bundleAnalyzer = require('@next/bundle-analyzer');
 const rehypeReadme = require('./lib/rehype-readme');
-const nextMDX = require('@zeit/next-mdx');
 
 // only enable rehypeReadme for this file
 // because the github relative path replacement
@@ -25,22 +26,31 @@ const withGitHubMDX = nextMDX({
 });
 
 const withMDX = nextMDX({
-  extension: /\/(pages|blog)\/(.+)\.mdx?$/,
+  extension: /[/\\](pages|blog)[/\\](.+)\.mdx?$/,
   options: {
     hastPlugins: [rehypePrism]
   }
 });
 
-const { mapping: showcaseMapping } = require('./showcase-manifest');
-const webpack = require('webpack');
+const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' });
 
-let config = {
+const nextConfig = {
+  target: 'serverless',
   pageExtensions: ['jsx', 'js', 'mdx'],
+  experimental: {
+    flyingShuttle: true
+  },
+  env: {
+    BACKEND_URL: process.env.BACKEND_URL || 'https://learn-server.nextjs.org',
+    FIRST_COURSE: 'basics',
+    FIRST_LESSON: 'getting-started',
+    SITE_NAME: 'Next.js'
+  },
   webpack: (config, { dev, isServer }) => {
     config.plugins = config.plugins || [];
     config.plugins.push(
       new webpack.ContextReplacementPlugin(
-        /highlight\.js[\/\\]lib[\/\\]languages$/,
+        /highlight\.js[/\\]lib[/\\]languages$/,
         new RegExp(`^./(${['javascript', 'json', 'xml'].join('|')})$`)
       )
     );
@@ -56,42 +66,7 @@ let config = {
     }
 
     return config;
-  },
-  exportPathMap(defaultPathMap, { dev, dir, outDir }) {
-    for (const route of Object.keys(showcaseMapping)) {
-      defaultPathMap[`/showcase/${route}`] = {
-        page: '/showcase',
-        query: { item: route, from: 'url' }
-      };
-    }
-
-    if (!dev) {
-      const generateRSS = require('./.next/server/scripts/build-rss.js')
-        .default;
-      generateRSS(outDir);
-    }
-
-    return defaultPathMap;
   }
 };
 
-if (process.env.BUNDLE_ANALYZE) {
-  const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
-  config = withBundleAnalyzer({
-    analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
-    analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
-    bundleAnalyzerConfig: {
-      server: {
-        analyzerMode: 'static',
-        reportFilename: '../../bundles/server.html'
-      },
-      browser: {
-        analyzerMode: 'static',
-        reportFilename: '../bundles/client.html'
-      }
-    },
-    ...config
-  });
-}
-
-module.exports = withGitHubMDX(withMDX(config));
+module.exports = withGitHubMDX(withMDX(withBundleAnalyzer(nextConfig)));

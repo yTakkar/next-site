@@ -12,19 +12,17 @@ const Intro = () => (
         <h2>Upgrading the Developer Experience</h2>
 
         <p>
-          At the beginning of 2018, senior software engineer Zack Tanner and
-          team began leading the migration of the Hulu Account app off of a
-          legacy tech-stack, with the goal of unifying the developer
-          organization and modernizing their code in an effort to prevent bugs
-          and increase velocity.
+          At the beginning of 2018, senior software engineer Zack Tanner and team began leading the
+          migration of the Hulu Account app off of a legacy tech-stack, with the goal of unifying
+          the developer organization and modernizing their code in an effort to prevent bugs and
+          increase velocity.
         </p>
 
         <p>
-          Hulu had already been using Next.js for greenfield applications, so it
-          was an obvious option when it came to choosing which framework to move
-          to. This time, however, the team needed to migrate an existing
-          production app—a challenge that comes with new difficulties of its
-          own.
+          Hulu had already been using Next.js for greenfield applications, so it was an obvious
+          option when it came to choosing which framework to move to. This time, however, the team
+          needed to migrate an existing production app—a challenge that comes with new difficulties
+          of its own.
         </p>
 
         <a href="#read-more" className="button">
@@ -43,11 +41,7 @@ const Intro = () => (
         layout="responsive"
       />
       <div className="lightning-container">
-        <amp-img
-          src="/static/images/case-studies/hulu/lightning.svg"
-          width={482}
-          height={482}
-        />
+        <amp-img src="/static/images/case-studies/hulu/lightning.svg" width={482} height={482} />
       </div>
     </div>
 
@@ -61,25 +55,21 @@ const Intro = () => (
       <h2>Migration Made Easy</h2>
 
       <p>
-        One of the most common challenges teams face when executing an
-        incremental migration is handling the transition between the new and old
-        systems. Fortunately, with Next.js there was never an issue with running
-        both versions at once. With out-of-the-box support for prefetching new
-        pages while jumping into the legacy app when needed, Zack and the team
-        were able to easily migrate pages one-by-one. And since the intermediary
-        hybrid-site was intelligently routed by Next.js, there was no need to
-        maintain the overhead of explicitly tracking the migration's progress in
-        the code itself.
+        One of the most common challenges teams face when executing an incremental migration is
+        handling the transition between the new and old systems. Fortunately, with Next.js there was
+        never an issue with running both versions at once. With out-of-the-box support for
+        prefetching new pages while jumping into the legacy app when needed, Zack and the team were
+        able to easily migrate pages one-by-one. And since the intermediary hybrid-site was
+        intelligently routed by Next.js, there was no need to maintain the overhead of explicitly
+        tracking the migration's progress in the code itself.
       </p>
 
       <p>
-        In fact, throughout the migration, the ability of Next.js to make the
-        extraction of common issues and patterns as easy as possible was a
-        recurring theme. With each new version of Next.js, Zack and the team
-        found they were constantly deleting internal code in favor of framework
-        integrated tooling. Whenever the team needed to incorporate a new
-        technology, Next.js had either first-class support or an endorsed
-        example for them to follow.
+        In fact, throughout the migration, the ability of Next.js to make the extraction of common
+        issues and patterns as easy as possible was a recurring theme. With each new version of
+        Next.js, Zack and the team found they were constantly deleting internal code in favor of
+        framework integrated tooling. Whenever the team needed to incorporate a new technology,
+        Next.js had either first-class support or an endorsed example for them to follow.
       </p>
     </div>
 
@@ -151,8 +141,7 @@ const Intro = () => (
 
         .zack {
           width: 100%;
-          box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25),
-            0 18px 36px -18px rgba(0, 0, 0, 0.3),
+          box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3),
             0 -12px 36px -8px rgba(0, 0, 0, 0.025);
           border-radius: 8px;
         }
@@ -178,12 +167,7 @@ const Intro = () => (
           left: 0;
           width: 100%;
           height: 30%;
-          background: linear-gradient(
-              180deg,
-              #ffffff 0%,
-              rgba(255, 255, 255, 0) 164.16%
-            ),
-            #333333;
+          background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 164.16%), #333333;
           transform: rotate(180deg);
         }
 

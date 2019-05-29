@@ -7,13 +7,7 @@ export default ({ solid }) => (
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
     <defs>
-      <linearGradient
-        id="a"
-        x1="100.929941%"
-        y1="181.283245%"
-        x2="41.7687834%"
-        y2="100%"
-      >
+      <linearGradient id="a" x1="100.929941%" y1="181.283245%" x2="41.7687834%" y2="100%">
         <stop stopColor="#FFF" offset="0%" />
         <stop stopColor={solid ? '#FFF' : '#000'} offset="100%" />
       </linearGradient>

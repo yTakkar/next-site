@@ -57,11 +57,7 @@ export default () => {
             right: 0;
             z-index: 2;
             bottom: -1rem;
-            background: linear-gradient(
-              to bottom,
-              rgba(255, 255, 255, 0) 30%,
-              #f6f6f6 85%
-            );
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 30%, #f6f6f6 85%);
           }
           @media screen and (max-width: 640px) {
             .slide {
@@ -114,11 +110,7 @@ export default () => {
             height: 100%;
             color: white;
             text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-            background: linear-gradient(
-              to bottom,
-              rgba(0, 0, 0, 0.5),
-              rgba(0, 0, 0, 0.3)
-            );
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
             transition: opacity 0.2s ease;
             opacity: 0;
           }
@@ -144,8 +136,7 @@ export default () => {
             height: ${imgHeight}px;
             margin: 0 calc(${50 / DATA.length}vw - ${imgWidth / 2}px);
             border-radius: 7px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08),
-              0 5px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 5px 12px rgba(0, 0, 0, 0.1);
             transition: all 0.5s ease;
             cursor: pointer;
             overflow: hidden;
@@ -172,29 +163,26 @@ export default () => {
         `}</style>
         <div className="slides">
           {DATA.map((item, i) => {
-            let offset = ~~(DATA.length / 2) - i;
-            let z = -Math.abs(offset);
-            let top = z * (margin + 5);
+            const offset = ~~(DATA.length / 2) - i;
+            const z = -Math.abs(offset);
+            const top = z * (margin + 5);
             return (
               <Link
                 key={`showcase-${i}`}
-                href={`/showcase/${item.internalUrl}`}
+                href={`/showcase?from=click&item=${item.internalUrl}`}
+                as={`/showcase/${item.internalUrl}`}
               >
                 <div
                   className="slide"
                   style={{
                     zIndex: DATA.length + z,
-                    transform: `scale(${1 +
-                      Math.sin(z / 9)}) translate3d(${-Math.sin(offset) *
+                    transform: `scale(${1 + Math.sin(z / 9)}) translate3d(${-Math.sin(offset) *
                       30}px, ${top}px, 0)`
                   }}
                 >
                   <Img
                     className="no-drag"
-                    src={item.src.replace(
-                      '/showcases/',
-                      '/showcase-thumbnails/'
-                    )}
+                    src={item.src.replace('/showcases/', '/showcase-thumbnails/')}
                     style={{
                       opacity: z === 0 ? 1 : undefined
                     }}

@@ -107,12 +107,12 @@ export function SidebarNavItemContainer({ headings }) {
         {headings.map((item, i) => {
           if (Array.isArray(item)) {
             return (
-              <li>
-                <SidebarNavItemContainer headings={item} key={i} />
+              <li key={i}>
+                <SidebarNavItemContainer headings={item} />
               </li>
             );
           }
-          return <SidebarNavItemContainer headings={item} key={i} />;
+          return <SidebarNavItemContainer key={i} headings={item} />;
         })}
         <style jsx>{`
           ul {

@@ -93,10 +93,11 @@ const Details = ({ children }) => {
       {children}
       <style jsx>
         {`
-          margin: 1rem 0;
-          padding: 0 0.5rem;
-          background: #f9f9f9;
-
+          details {
+            margin: 1rem 0;
+            padding: 0 0.5rem;
+            background: #f9f9f9;
+          }
           details[open] {
             overflow: hidden;
           }
@@ -116,7 +117,6 @@ const Summary = ({ children }) => {
           outline: none;
           font-weight: 500;
         }
-
         summary:hover {
           opacity: 0.8;
         }

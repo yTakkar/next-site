@@ -34,6 +34,7 @@ export default withPure(
         href={isExternal ? href : undefined}
         className={classNames(className, 'fw4 no-drag', { invert, disabled })}
         role="button"
+        tabIndex="0"
         {...props}
       >
         {children}

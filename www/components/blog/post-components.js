@@ -1,7 +1,4 @@
-import Highlight from '../highlight';
-
 import { components as docsComponents } from '../docs/documentation';
-import { GenericLink } from '../text/link';
 
 const H1 = ({ children }) => (
   <h1 className="fw6">

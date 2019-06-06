@@ -1,19 +1,5 @@
-const categories = [
-  'All',
-  'Finance',
-  'News',
-  'E-commerce',
-  'Creative',
-  'Entertainment'
-];
-const categoriesShort = [
-  'All',
-  'Finance',
-  'News',
-  'E-comm',
-  'Creative',
-  'Entertainment'
-];
+const categories = ['All', 'Finance', 'News', 'E-commerce', 'Creative', 'Entertainment'];
+const categoriesShort = ['All', 'Finance', 'News', 'E-comm', 'Creative', 'Entertainment'];
 
 const frontSortOrder = [
   'ticketmaster',
@@ -55,7 +41,7 @@ const sortOrder = [
   'jet',
   'weedmaps',
   'ticketswap',
-  'ignmovies',
+  'ign',
   'dicefm',
   'giveindia',
   'allvoices',
@@ -72,7 +58,7 @@ const sortOrder = [
   'midrive',
   'stv',
   'hyper',
-  'typeform-connect',
+  'typeform',
   'deliveroo',
   'colorbox',
   'hollar',
@@ -109,17 +95,21 @@ const sortOrder = [
   'supervielle',
   'theculturetrip',
   'carbon',
-  'vogue'
+  'vogue',
+  'bang-olufsen',
+  'futurism',
+  'nubank',
+  'ferrari'
 ];
 
 const mapping = {
-  'typeform-connect': {
-    title: 'Typeform Connect',
-    link: 'https://www.typeform.com/connect/',
-    src: '/static/images/showcases/typeform-connect.jpg',
+  typeform: {
+    title: 'Typeform',
+    link: 'https://www.typeform.com',
+    src: '/static/images/showcases/typeform.jpg',
     width: 3836,
     height: 2200,
-    internalUrl: 'typeform-connect',
+    internalUrl: 'typeform',
     tags: ['creative']
   },
   blendle: {
@@ -186,7 +176,7 @@ const mapping = {
     tags: []
   },
   ticketswap: {
-    title: 'AT&T',
+    title: 'TicketSwap',
     link: 'https://www.ticketswap.uk',
     src: '/static/images/showcases/ticketswap.jpg',
     width: 3836,
@@ -194,13 +184,13 @@ const mapping = {
     internalUrl: 'ticketswap',
     tags: ['e-commerce']
   },
-  ignmovies: {
-    title: 'IGN Movies',
-    link: 'https://www.ign.com/movies',
-    src: '/static/images/showcases/ignmovies.jpg',
+  ign: {
+    title: 'IGN',
+    link: 'https://www.ign.com',
+    src: '/static/images/showcases/ign.jpg',
     width: 3836,
     height: 2200,
-    internalUrl: 'ignmovies',
+    internalUrl: 'ign',
     tags: ['entertainment']
   },
   audible: {
@@ -268,8 +258,7 @@ const mapping = {
   },
   supervielle: {
     title: 'Supervielle',
-    link:
-      'https://www.supervielle.com.ar/personas/tarjetas/credito/mastercard-black',
+    link: 'https://www.supervielle.com.ar/personas/tarjetas/credito/mastercard-black',
     src: '/static/images/showcases/supervielle.jpg',
     width: 3836,
     height: 2200,
@@ -874,6 +863,43 @@ const mapping = {
     height: 1282,
     internalUrl: 'vogue',
     tags: ['news', 'creative']
+  },
+  'bang-olufsen': {
+    title: 'BANG & OLUFSEN',
+    link: 'https://www.bang-olufsen.com',
+    src: '/static/images/showcases/bang-olufsen.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'bang-olufsen',
+    tags: ['e-commerce']
+  },
+  futurism: {
+    title: 'Futurism',
+    link: 'https://www.futurism.com',
+    src: '/static/images/showcases/futurism.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'futurism',
+    tags: ['news']
+  },
+  nubank: {
+    title: 'Nubank',
+    link: 'https://nubank.com.br',
+    src: '/static/images/showcases/nubank.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'nubank',
+    tags: ['finance']
+  },
+  ferrari: {
+    title: 'Ferrari',
+    link: 'https://www.ferrari.com',
+    src: '/static/images/showcases/ferrari.jpg',
+    width: 3836,
+    height: 2200,
+    internalUrl: 'ferrari',
+    tags: ['entertainment'],
+    highlighted: 1
   }
 };
 

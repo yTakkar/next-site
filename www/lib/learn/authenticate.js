@@ -4,8 +4,8 @@ export function setToken({ res }, token) {
   res.setHeader(
     'Set-Cookie',
     require('cookie').serialize('loginToken', token, {
-      path: '/learn',
-      expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
+      path: '/',
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30), // 30 days
       httpOnly: false
     })
   );
@@ -16,14 +16,14 @@ export function removeToken({ res }) {
     res.setHeader(
       'Set-Cookie',
       require('cookie').serialize('loginToken', null, {
-        path: '/learn',
+        path: '/',
         expires: new Date(Date.now() - 1000),
         httpOnly: false
       })
     );
   } else {
     const Cookies = require('js-cookie');
-    Cookies.remove('loginToken', { path: '/learn' });
+    Cookies.remove('loginToken', { path: '/' });
   }
 }
 

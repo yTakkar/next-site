@@ -47,7 +47,7 @@ export default withPure(function Button({ children, invert, href, as, className,
   });
   const isExternal = href && href.startsWith('http');
   const a = (
-    <a className={cachedClassNames} href={isExternal ? href : undefined} {...props}>
+    <a className={cachedClassNames} href={href} {...props}>
       {children}
       <style jsx>{cachedStyles}</style>
     </a>

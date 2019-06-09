@@ -12,11 +12,11 @@ export const getStoredValue = key => {
   }
 };
 
-export const useLocalStorage = (key, reducer, initialState) => {
+export const useLocalStorage = (key, reducer, serverState) => {
   const [isReady, setIsReady] = React.useState(isLocalStorageReady);
   const [state, dispatch] = React.useReducer(
     reducer,
-    (isReady && getStoredValue(key)) || initialState
+    (isReady && getStoredValue(key)) || serverState
   );
 
   // Defer the usage of localStorage after the initial render to avoid unmatching content
@@ -29,18 +29,20 @@ export const useLocalStorage = (key, reducer, initialState) => {
 
       dispatch({
         type: 'init',
-        serverState: state,
-        clientState: value
+        clientState: value,
+        serverState
       });
     }
-  }, [isReady]);
+  }, [isReady, serverState]);
 
   React.useEffect(() => {
-    const nextState = JSON.stringify(state);
-
-    if (nextState !== undefined) {
+    if (state !== undefined) {
+      const nextState = JSON.stringify(state);
       storage.setItem(key, nextState);
     } else {
+      // If `state` is still undefined then maybe serverState is still not in use and therefore
+      // the state is not yet ready
+      setIsReady(false);
       storage.removeItem(key);
     }
   }, [state]);

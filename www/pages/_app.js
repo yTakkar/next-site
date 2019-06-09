@@ -8,6 +8,24 @@ import { getUser } from '../lib/learn/api';
 import { UserProvider } from '../lib/learn/user';
 import NProgress from '../components/nprogress';
 
+// Migrate the loginToken to a new cookie with the path set to `/`, this is just temporal and
+// should be removed in 30 days
+function replaceLoginCookie() {
+  const Cookies = require('js-cookie');
+  const loginToken = Cookies.get('loginToken');
+
+  if (loginToken) {
+    Cookies.remove('loginToken', { path: '/learn' });
+    // if a cookie with the path `/learn` was removed then move it to `/`
+    if (!Cookies.get('loginToken')) {
+      Cookies.set('loginToken', loginToken, {
+        path: '/',
+        expires: 30 // 30 days
+      });
+    }
+  }
+}
+
 export default class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const isLearnPage = ctx.pathname.startsWith('/learn');
@@ -64,6 +82,14 @@ export default class MyApp extends App {
     }
 
     return props;
+  }
+
+  componentDidMount() {
+    replaceLoginCookie();
+  }
+
+  componentDidUpdate() {
+    replaceLoginCookie();
   }
 
   render() {

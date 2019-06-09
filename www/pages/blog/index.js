@@ -1,5 +1,6 @@
-import { SkipNavContent } from '@reach/skip-nav'
+import React from 'react'
 import { withAmp } from 'next/amp'
+import { SkipNavContent } from '@reach/skip-nav'
 
 import Header from '../../components/header'
 import Footer from '../../components/footer'
@@ -29,12 +30,27 @@ function dateSortDesc(a, b) {
   return 0
 }
 
+const Li = components.li
+
+const getLi = path => ({ children }) => {
+  const { props } = children.props
+  const { href } = props
+  const isHash = href && href.startsWith('#')
+  const element = React.cloneElement(children, {
+    props: isHash ? { ...props, href: path + href } : props
+  })
+
+  return <Li>{element}</Li>
+}
+
 const items = previewItems
   .sort(dateSortDesc)
   .map(({ default: Component, meta }, index) => {
+    const previewComponents = { ...components, li: getLi(meta.link) }
+
     return (
       <Preview key={meta.title} detail={index < 5} {...meta}>
-        <Component components={components} />
+        <Component components={previewComponents} />
       </Preview>
     )
   })

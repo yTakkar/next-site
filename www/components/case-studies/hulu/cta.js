@@ -1,12 +1,16 @@
+import Link from 'next/link';
+
 export default () => (
   <div className="container">
     <div>
       <h2>
         Find Out How Next.js Can <br /> Empower Your Team Today
       </h2>
-      <a href="/learn">
-        <button>Learn More</button>
-      </a>
+      <Link href="/learn/basics/getting-started">
+        <a>
+          <button type="button">Learn More</button>
+        </a>
+      </Link>
     </div>
 
     <style jsx>

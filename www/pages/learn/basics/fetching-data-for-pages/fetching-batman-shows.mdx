@@ -77,7 +77,7 @@ Index.getInitialProps = async function() {
   console.log(`Show data fetched. Count: ${data.length}`);
 
   return {
-    shows: data
+    shows: data.map(entry => entry.show)
   };
 };
 ```

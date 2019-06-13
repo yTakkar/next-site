@@ -245,7 +245,7 @@ export default function Sidebar({ headings, mobile, desktop }) {
           -webkit-overflow-scrolling: touch;
           display: flex;
           flex-direction: column;
-          width: 18rem;
+          width: 15%;
           padding: 2rem 1rem 0 0;
           height: calc(100vh - 64px);
         }

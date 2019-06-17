@@ -245,9 +245,14 @@ export default function Sidebar({ headings, mobile, desktop }) {
           -webkit-overflow-scrolling: touch;
           display: flex;
           flex-direction: column;
-          width: 15%;
+          width: 288px;
           padding: 2rem 1rem 0 0;
           height: calc(100vh - 64px);
+        }
+        @media screen and (max-width: 1024px) {
+          .documentation__sidebar.desktop nav {
+            width: 33%;
+          }
         }
         // CSS only media query for mobile + SSR
         @media screen and (max-width: 640px) {

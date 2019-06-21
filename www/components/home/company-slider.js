@@ -102,7 +102,7 @@ export default function CompanySlider() {
       <style jsx>{`
         .company-slider {
           margin-top: 2rem;
-          margin-bottom: 3rem;
+          margin-bottom: 4rem;
         }
         .company-logos-container {
           white-space: nowrap;

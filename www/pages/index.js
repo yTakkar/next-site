@@ -20,11 +20,7 @@ export default withAmp(
 
     return (
       <>
-        <Header height={32} shadow>
-          <Notification href="/blog/next-8" title="Next 8 is out!" titleMobile="Next 8 is out!">
-            Next 8 is out! — Serverless mode, performance and security improvements and more.
-            Monday, February 11th 2019
-          </Notification>
+        <Header height={64} shadow defaultActive>
           <Navbar hideLogo={{ desktop: !isAmp, mobile: false }} />
         </Header>
         <Page title="Next.js - The React Framework">
@@ -35,6 +31,10 @@ export default withAmp(
             description="Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more."
           />
           <SkipNavContent />
+          <Notification href="/blog/next-8" title="Next 8 is out!" titleMobile="Next 8 is out!">
+            Next 8 is out! — Serverless mode, performance and security improvements and more.
+            Monday, February 11th 2019
+          </Notification>
           <Intro isAmp={isAmp} />
           <Demo />
           <Features />

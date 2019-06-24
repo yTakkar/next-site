@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
 import classNames from 'classnames';
@@ -13,6 +14,22 @@ import SpectrumLogo from './icons/spectrum';
 import { links } from '../site-manifest';
 
 function Navbar({ className, hideLogo, route, isMobile }) {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const LOGO_TOP = 170;
+
+  const handleScroll = () => {
+    if (window.scrollY !== 0) {
+      setScrollPosition(window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   if (isMobile) {
     return (
       <Container className={className} center>
@@ -224,21 +241,20 @@ function Navbar({ className, hideLogo, route, isMobile }) {
               font-weight: 600;
             }
             nav .logo {
-              position: absolute;
               width: 100%;
               font-size: 0;
               text-align: center;
               overflow: hidden;
               transition: all 0.2s ease;
-              // visibility: hidden;
+              visibility: hidden;
               pointer-events: none;
-              // transform: translate3d(0, 30%, 0);
+              transform: translate3d(-1.5%, 30%, 0);
               opacity: 0;
             }
-            :global(.active) nav .logo,
-            :global(.show-logo) nav .logo {
+            nav .logo.visible {
               pointer-events: auto;
-              // transform: translate3d(0, 0, 0);
+              transform: translate3d(-1.5%, 0, 0);
+              visibility: visible;
               opacity: 1;
             }
             nav .logo a {
@@ -306,15 +322,13 @@ function Navbar({ className, hideLogo, route, isMobile }) {
             Docs
           </a>
         </div>
-        {!hideLogo && (
-          <div className="logo">
-            <Link href="/">
-              <a aria-label="Next.js">
-                <NextLogo />
-              </a>
-            </Link>
-          </div>
-        )}
+        <div className={scrollPosition >= LOGO_TOP || !hideLogo ? 'logo visible' : 'logo'}>
+          <Link href="/">
+            <a aria-label="Next.js">
+              <NextLogo />
+            </a>
+          </Link>
+        </div>
         <div className="links">
           <Link href="/showcase">
             <a

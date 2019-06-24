@@ -87,7 +87,6 @@ class LogoContainer extends React.PureComponent {
             right: 0;
             width: 200px;
             margin: auto;
-            z-index: 1000;
           }
           .logo-main .version {
             width: 0;

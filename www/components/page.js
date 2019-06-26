@@ -61,7 +61,7 @@ function Page({ title, description, children }) {
             color: rgb(var(--foreground-color));
           }
           ::selection {
-            background-color: #0070f3;
+            background-color: rgb(var(--accent-color));
             color: #fff;
           }
           [role='grid']:focus {
@@ -159,7 +159,7 @@ function Page({ title, description, children }) {
             font-weight: 900;
           }
           .subtitle {
-            color: #717171;
+            color: #999;
           }
           .mute {
             color: #999;
@@ -281,7 +281,7 @@ function Page({ title, description, children }) {
             font-weight: 600;
           }
           .language-json .token.boolean {
-            color: #0070f3;
+            color: rgb(var(--accent-color));
           }
           .token.keyword {
             color: #ff0078;
@@ -292,7 +292,7 @@ function Page({ title, description, children }) {
           .token.class-name,
           .token.number,
           .token.tag .token.punctuation {
-            color: #0070f3;
+            color: rgb(var(--accent-color));
           }
           .language-autohotkey .token.tag {
             color: #9a050f;
@@ -313,7 +313,7 @@ function Page({ title, description, children }) {
             font-weight: bolder;
           }
           .token.inserted {
-            color: #0070f3;
+            color: rgb(var(--accent-color));
             font-weight: bolder;
           }
           .language-json .token.property,
@@ -322,7 +322,7 @@ function Page({ title, description, children }) {
             font-weight: bolder;
           }
           .language-markdown .token.code {
-            color: #0070f3;
+            color: rgb(var(--accent-color));
             font-weight: normal;
           }
           .language-markdown .token.list,

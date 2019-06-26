@@ -18,10 +18,7 @@ const ROW_HEIGHT = 220 + GAP_Y;
 
 function getData(category) {
   return sortOrder.filter(id => {
-    return (
-      category === 'all' ||
-      (mapping[id].tags && mapping[id].tags.indexOf(category) !== -1)
-    );
+    return category === 'all' || (mapping[id].tags && mapping[id].tags.indexOf(category) !== -1);
   });
 }
 
@@ -36,10 +33,7 @@ const getRowHeight = ({ index }, columnCount) => {
   let height = 1,
     startIndex = index * columnCount;
   for (let i = 0; i < columnCount; ++i) {
-    if (
-      dataSource[startIndex + i] &&
-      mapping[dataSource[startIndex + i]].highlighted
-    ) {
+    if (dataSource[startIndex + i] && mapping[dataSource[startIndex + i]].highlighted) {
       height *= columnCount - 1;
       return height;
     }
@@ -60,14 +54,7 @@ const scrollTo = top => {
   window.scrollTo({ top, left: 0, behavior: 'smooth' });
 };
 
-const getRowRender = columnCount => ({
-  index,
-  isScrolling,
-  isVisible,
-  key,
-  parent,
-  style
-}) => {
+const getRowRender = columnCount => ({ index, isScrolling, isVisible, key, parent, style }) => {
   // let height = getRowHeight({index}, columnCount)
   let content = [];
   let highlighted = null;
@@ -185,10 +172,7 @@ export default class extends Component {
     this.updateCategory(newProps.category);
   }
 
-  overscanIndicesGetter = (
-    { cellCount, overscanCellsCount, startIndex, stopIndex },
-    isTablet
-  ) => {
+  overscanIndicesGetter = ({ cellCount, overscanCellsCount, startIndex, stopIndex }, isTablet) => {
     // preload +- 5 rows
     // cache += 50 rows
     let overscanStartIndex = Math.max(
@@ -248,19 +232,12 @@ export default class extends Component {
                 onScroll={onChildScroll}
                 scrollTop={scrollTop}
                 width={width}
-                rowCount={Math.ceil(
-                  dataSource.length / (isMobile ? 1 : isTablet ? 2 : 3)
-                )}
+                rowCount={Math.ceil(dataSource.length / (isMobile ? 1 : isTablet ? 2 : 3))}
                 estimatedRowSize={500}
-                rowHeight={args =>
-                  getRowHeight(args, isMobile ? 1 : isTablet ? 2 : 3) *
-                  ROW_HEIGHT
-                }
+                rowHeight={args => getRowHeight(args, isMobile ? 1 : isTablet ? 2 : 3) * ROW_HEIGHT}
                 rowRenderer={isMobile ? MobileRow : isTablet ? TabletRow : Row}
                 overscanRowCount={5}
-                overscanIndicesGetter={args =>
-                  this.overscanIndicesGetter(args, isTablet)
-                }
+                overscanIndicesGetter={args => this.overscanIndicesGetter(args, isTablet)}
                 style={{
                   willChange: '',
                   margin: 'auto'
@@ -280,7 +257,7 @@ export default class extends Component {
           <Button onClick={() => scrollTo(0)}>
             <div className="flex-center">
               <span className="icon-label">Back to Top</span>
-              <ArrowUpIcon color="#0070f3" />
+              <ArrowUpIcon color="rgb(var(--accent-color))" />
             </div>
           </Button>
           <div className="spacer" />

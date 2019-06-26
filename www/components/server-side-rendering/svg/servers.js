@@ -12,22 +12,9 @@ export default () => (
     >
       <g>
         <g>
-          <rect
-            x="50"
-            y="36"
-            width="223.612"
-            height="62.8125"
-            rx="4"
-            fill="white"
-          />
+          <rect x="50" y="36" width="223.612" height="62.8125" rx="4" fill="white" />
         </g>
-        <circle
-          cx="247.231"
-          cy="67.4063"
-          r="8.79375"
-          stroke="#E1E1E1"
-          strokeWidth="2"
-        />
+        <circle cx="247.231" cy="67.4063" r="8.79375" stroke="#E1E1E1" strokeWidth="2" />
         <circle cx="127.259" cy="41.6532" r="1.88438" fill="#E1E1E1" />
         <circle cx="120.978" cy="41.6532" r="1.88438" fill="#E1E1E1" />
         <circle cx="114.697" cy="41.6532" r="1.88438" fill="#E1E1E1" />
@@ -135,14 +122,7 @@ export default () => (
           fill="#E1E1E1"
         />
         <g>
-          <rect
-            x="50"
-            y="105.094"
-            width="223.612"
-            height="62.8125"
-            rx="4"
-            fill="white"
-          />
+          <rect x="50" y="105.094" width="223.612" height="62.8125" rx="4" fill="white" />
         </g>
         <path
           className="atom"
@@ -298,44 +278,12 @@ export default () => (
           d="M230.438 105.094H232.95V117.913C232.95 118.465 232.502 118.913 231.95 118.913H231.438C230.885 118.913 230.438 118.465 230.438 117.913V105.094Z"
           fill="#E1E1E1"
         />
-        <rect
-          x="67.5875"
-          y="121.425"
-          width="67.8375"
-          height="25.125"
-          rx="1"
-          fill="#E1E1E1"
-        />
-        <circle
-          cx="70.1"
-          cy="154.088"
-          r="2.5125"
-          fill="#E1E1E1"
-          className="dot-seq-1"
-        />
-        <circle
-          cx="77.6375"
-          cy="154.088"
-          r="2.5125"
-          fill="#E1E1E1"
-          className="dot-seq-2"
-        />
-        <circle
-          cx="85.175"
-          cy="154.088"
-          r="2.5125"
-          fill="#E1E1E1"
-          className="dot-seq-3"
-        />
+        <rect x="67.5875" y="121.425" width="67.8375" height="25.125" rx="1" fill="#E1E1E1" />
+        <circle cx="70.1" cy="154.088" r="2.5125" fill="#E1E1E1" className="dot-seq-1" />
+        <circle cx="77.6375" cy="154.088" r="2.5125" fill="#E1E1E1" className="dot-seq-2" />
+        <circle cx="85.175" cy="154.088" r="2.5125" fill="#E1E1E1" className="dot-seq-3" />
         <g>
-          <rect
-            x="50"
-            y="174.188"
-            width="223.612"
-            height="62.8125"
-            rx="4"
-            fill="white"
-          />
+          <rect x="50" y="174.188" width="223.612" height="62.8125" rx="4" fill="white" />
         </g>
         <circle cx="118.466" cy="221.297" r="1.88438" fill="#E1E1E1" />
         <circle cx="112.184" cy="221.297" r="1.88438" fill="#E1E1E1" />
@@ -379,13 +327,7 @@ export default () => (
         <circle cx="181.278" cy="227.578" r="1.88438" fill="#E1E1E1" />
         <circle cx="174.997" cy="227.578" r="1.88438" fill="#E1E1E1" />
         <circle cx="168.716" cy="227.578" r="1.88438" fill="#E1E1E1" />
-        <circle
-          cx="248.488"
-          cy="205.594"
-          r="7.79375"
-          stroke="#E1E1E1"
-          strokeWidth="2"
-        />
+        <circle cx="248.488" cy="205.594" r="7.79375" stroke="#E1E1E1" strokeWidth="2" />
         <path
           d="M60.05 174.188H62.5625V200.825C62.5625 201.377 62.1148 201.825 61.5625 201.825H61.05C60.4977 201.825 60.05 201.377 60.05 200.825V174.188Z"
           fill="#E1E1E1"
@@ -459,8 +401,7 @@ export default () => (
     <style jsx>
       {`
         .servers {
-          filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 1))
-            drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+          filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 1)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
         }
         .dot-seq-1 {
           animation: sequence 1.5s ease 0.3s infinite;
@@ -514,7 +455,7 @@ export default () => (
             fill: #e1e1e1;
           }
           10% {
-            fill: #0070f3;
+            fill: rgb(var(--accent-color));
           }
           20%,
           100% {

@@ -8,7 +8,7 @@ export default () => (
   >
     <g
       transform="translate(-1600.000000, -1337.000000) translate(-17.000000, 1337.000000) translate(1617.517734, 0.000000)"
-      fill="rgba(var(--foreground-color), 0.7)"
+      fill="rgba(var(--foreground-color), 0.8)"
       stroke="none"
       strokeWidth={1}
       fillRule="evenodd"

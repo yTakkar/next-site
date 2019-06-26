@@ -46,7 +46,7 @@ export default withPure(
             padding: 0.25rem 0.5rem;
             margin: -0.25rem -0.5rem;
             border-radius: 7px;
-            color: ${color || '#0070f3'};
+            color: ${color || 'rgb(var(--accent-color))'};
             transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
             ${full
               ? `
@@ -58,14 +58,14 @@ export default withPure(
               : ''}
           }
           a:hover {
-            color: ${color || '#0070f3'};
+            color: ${color || 'rgb(var(--accent-color))'};
             background: ${shadowColor || 'rgba(0,118,255,0.1)'};
           }
           a.invert {
             margin: 0;
             border-radius: 7px;
             color: white;
-            background: ${color || '#0070f3'};
+            background: ${color || 'rgb(var(--accent-color))'};
             ${flat
               ? `box-shadow: 0 2px 6px 0 ${shadowColor || 'rgba(0, 0, 0, 0.12)'};`
               : light

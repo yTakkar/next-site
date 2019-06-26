@@ -12,7 +12,7 @@ const cachedStyles = css`
     padding: 0.25rem 0.5rem;
     margin: -0.25rem -0.5rem;
     border-radius: 7px;
-    color: #0070f3;
+    color: rgb(var(--accent-color));
     background-color: transparent;
     border: none;
     font-size: inherit;
@@ -20,8 +20,8 @@ const cachedStyles = css`
     transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   }
   .btn:hover {
-    color: #0070f3;
-    background: rgba(0, 118, 255, 0.1);
+    color: rgb(var(--accent-color));
+    background: rgba(var(--accent-color), 0.1);
   }
   .btn.invert {
     margin: 0;
@@ -29,16 +29,16 @@ const cachedStyles = css`
     height: 2.5rem;
     line-height: 2.5rem;
     border-radius: 7px;
-    background-color: #0070f3;
-    box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39);
+    background-color: rgb(var(--accent-color));
+    box-shadow: 0 4px 14px 0 rgba(var(--accent-color), 0.39);
     color: white;
   }
   .btn.invert:hover {
-    background: rgba(0, 118, 255, 0.9);
-    box-shadow: 0 6px 20px rgba(0, 118, 255, 0.23);
+    background: rgba(var(--accent-color), 0.9);
+    box-shadow: 0 6px 20px rgba(var(--accent-color), 0.23);
   }
   .btn.invert:active {
-    background: #006ae6;
+    background: rgb(var(--accent-color));
   }
 `;
 export default withPure(function Button({ children, invert, href, as, className, amp, ...props }) {

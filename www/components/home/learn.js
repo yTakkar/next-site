@@ -5,7 +5,7 @@ import SectionHeader from '../section-header';
 export default function Learn() {
   return (
     <Container center padding wide role="region" aria-labelledby="learn">
-      <SectionHeader id="learn" title="Learn Next.js" />
+      <SectionHeader id="learn" title="Learn Next.js" margin={0} />
       <div className="learn-intro">
         <p>
           Tutorials, examples and quizzes. <br className="display-mobile" />
@@ -18,6 +18,7 @@ export default function Learn() {
             height: 450px;
             max-width: 1024px;
             margin: auto;
+            color: #999;
             background: url(/static/images/learn.png);
             background-size: 100% auto;
             background-position: 0 2rem;
@@ -31,8 +32,8 @@ export default function Learn() {
             bottom: 0;
             background: linear-gradient(
               to bottom,
-              rgba(255, 255, 255, 0) 60%,
-              rgba(255, 255, 255, 1) 90%
+              rgba(var(--background-color), 0) 60%,
+              rgba(var(--background-color), 1) 90%
             );
             pointer-events: none;
           }

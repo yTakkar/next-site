@@ -27,7 +27,7 @@ export default function Container({
         ${center ? 'text-align: center;' : ''}
         ${dark ? 'background-image: linear-gradient(to bottom, #121212 0%, #323232 100%);' : ''}
         ${dark ? 'color: #f1f1f1;' : ''}
-        ${gray ? 'background-color: #f6f6f6;' : ''}
+        ${gray ? 'background-color: rgba(var(--foreground-color), 0.03);' : ''}
         ${wide && !overflow ? 'overflow: hidden;' : ''}
         ${minHeight ? `min-height: ${minHeight}px;` : ''}
         ${vCenter ? 'display: flex; align-items: center;' : ''}

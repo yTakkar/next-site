@@ -187,7 +187,7 @@ export default meta =>
               text-align: center;
               text-transform: uppercase;
               font-size: 12px;
-              color: #0070f3;
+              color: rgb(var(--accent-color));
             }
             // CSS only media query for mobile
             @media screen and (max-width: 640px) {

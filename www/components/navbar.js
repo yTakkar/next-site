@@ -72,10 +72,10 @@ function Navbar({ className, hideLogo, route, isMobile }) {
                 text-decoration: none;
               }
               nav .links a.active {
-                color: #0070f3;
+                color: rgb(var(--accent-color));
               }
               nav .links a.selected {
-                color: #0070f3;
+                color: rgb(var(--accent-color));
                 font-weight: 600;
               }
               nav .logo {
@@ -239,7 +239,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
               color: rgb(var(--foreground-color));
             }
             nav .links a.selected {
-              color: #0070f3;
+              color: rgb(var(--accent-color));
               font-weight: 600;
             }
             nav .logo {

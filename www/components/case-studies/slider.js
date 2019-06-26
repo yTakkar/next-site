@@ -6,7 +6,7 @@ import HuluLogo from '../icons/companies/hulu';
 const items = [
   {
     name: 'Hulu',
-    logo: <HuluLogo color="#000" />
+    logo: <HuluLogo />
   }
 ];
 
@@ -51,8 +51,8 @@ export default function CaseStudiesSlider() {
       <style jsx>{`
         .slider-wrapper {
           padding: 16px;
-          background-color: #fff;
-          box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.12);
+          background-color: rgb(var(--background-color));
+          box-shadow: 0px 30px 60px rgba(var(--foreground-color), 0.12);
           border-radius: 6px;
           max-width: 375px;
           height: 72px;

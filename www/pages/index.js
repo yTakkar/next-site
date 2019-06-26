@@ -46,10 +46,12 @@ export default withAmp(
           .dark-mode {
             --foreground-color: 255, 255, 255;
             --background-color: 0, 0, 0;
+            --accent-color: 255, 0, 128;
           }
           .light-mode {
             --foreground-color: 0, 0, 0;
             --background-color: 255, 255, 255;
+            --accent-color: 0, 112, 243;
           }
         `}</style>
       </>

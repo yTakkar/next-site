@@ -7,7 +7,7 @@ export default class Caret extends React.PureComponent {
         <style jsx>
           {`
             .caret {
-              background: #0070f3;
+              background: rgb(var(--accent-color));
               display: inline-block;
               width: 7px;
               height: 15px;

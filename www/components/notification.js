@@ -10,16 +10,16 @@ export default withPure(({ href, title, titleMobile, children }) => (
           width: 100%;
           height: 32px;
           text-align: center;
-          background: rgba(0, 0, 0, 0.06);
+          background: rgba(var(--foreground-color), 0.06);
           display: flex;
           align-items: center;
           justify-content: space-around;
         }
         a {
-          color: #6a6a6a;
+          color: #999;
         }
         a:hover {
-          color: #111;
+          color: rgb(var(--foreground-color));
         }
       `}
     </style>

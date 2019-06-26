@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { withRouter } from 'next/router';
 import classNames from 'classnames';
 import { SkipNavLink } from '@reach/skip-nav';
+import useDarkMode from 'use-dark-mode';
 
 import NextLogo from './logo';
 import Container from './container';
@@ -14,6 +15,7 @@ import SpectrumLogo from './icons/spectrum';
 import { links } from '../site-manifest';
 
 function Navbar({ className, hideLogo, route, isMobile }) {
+  const darkMode = useDarkMode(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const LOGO_TOP = 170;
 
@@ -234,7 +236,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
               transition: color 0.2s ease;
             }
             nav .links a:hover {
-              color: #111;
+              color: rgb(var(--foreground-color));
             }
             nav .links a.selected {
               color: #0070f3;
@@ -379,6 +381,12 @@ function Navbar({ className, hideLogo, route, isMobile }) {
                 <span className="badge" />
               </a>
             </Popover>
+            <button type="button" onClick={darkMode.disable}>
+              ☀
+            </button>
+            <button type="button" onClick={darkMode.enable}>
+              ☾
+            </button>
           </div>
         </div>
       </nav>

@@ -61,10 +61,10 @@ export default function Header(props) {
               background-image: radial-gradient(circle, #D7D7D7, #D7D7D7 1px, #FFF 1px, #FFF);
               background-size: 28px 28px;
             `
-              : 'background: rgba(255, 255, 255, 0);'};
+              : 'background: rgba(var(--background-color), 0);'};
           }
           .active {
-            background: ${background || 'rgba(255, 255, 255, 0.98)'};
+            background: ${background || 'rgba(var(--background-color), 0.98)'};
             box-shadow: ${desktopShadow ? '0px 6px 20px rgba(0, 0, 0, 0.06)' : 'unset'};
             pointer-events: auto;
           }

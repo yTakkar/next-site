@@ -42,6 +42,16 @@ export default withAmp(
           <Learn />
           <Footer />
         </Page>
+        <style jsx global>{`
+          .dark-mode {
+            --foreground-color: 255, 255, 255;
+            --background-color: 0, 0, 0;
+          }
+          .light-mode {
+            --foreground-color: 0, 0, 0;
+            --background-color: 255, 255, 255;
+          }
+        `}</style>
       </>
     );
   },

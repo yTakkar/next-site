@@ -25,11 +25,7 @@ export default function Container({
         ${wide && !small ? '' : 'max-width: 1024px;'}
         ${small ? 'max-width: 682px;' : ''}
         ${center ? 'text-align: center;' : ''}
-        ${
-          dark
-            ? 'background-image: linear-gradient(to bottom, #121212 0%, #323232 100%);'
-            : ''
-        }
+        ${dark ? 'background-image: linear-gradient(to bottom, #121212 0%, #323232 100%);' : ''}
         ${dark ? 'color: #f1f1f1;' : ''}
         ${gray ? 'background-color: #f6f6f6;' : ''}
         ${wide && !overflow ? 'overflow: hidden;' : ''}
@@ -38,14 +34,13 @@ export default function Container({
         ${
           dotBackground
             ? `
-          background-image: radial-gradient(circle, #D7D7D7, #D7D7D7 1px, #FFF 1px, #FFF);
-          background-size: 28px 28px;
+          background-image: radial-gradient(rgba(var(--foreground-color), 0.3) 1px, transparent 1px), radial-gradient(rgba(var(--foreground-color), 0.3) 1px, transparent 1px);
+          background-position: 0 0, 25px 25px;
+          background-size: 50px 50px;
         `
             : ''
         }
-        ${
-          divider ? `border-top: 1px solid rgba(0,0,0,0.1);` : ''
-        }
+        ${divider ? `border-top: 1px solid rgba(0,0,0,0.1);` : ''}
       }
       :after {
         // BFC

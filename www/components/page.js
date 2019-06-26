@@ -57,8 +57,8 @@ function Page({ title, description, children }) {
           }
           html,
           body {
-            background-color: #fff;
-            color: #111;
+            background-color: rgb(var(--background-color));
+            color: rgb(var(--foreground-color));
           }
           ::selection {
             background-color: #0070f3;
@@ -162,7 +162,7 @@ function Page({ title, description, children }) {
             color: #717171;
           }
           .mute {
-            color: #757575;
+            color: #999;
           }
           .tc {
             text-align: center;

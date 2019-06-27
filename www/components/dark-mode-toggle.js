@@ -26,7 +26,7 @@ export default function DarkModeToggle() {
           display: flex;
           align-items: center;
           justify-content: center;
-          margin: 0 1rem;
+          margin-left: 1rem;
         }
         .toggle {
           appearance: none;
@@ -36,7 +36,7 @@ export default function DarkModeToggle() {
           align-items: center;
           justify-content: center;
           width: 2rem;
-          margin: 0 5px;
+          margin-left: 5px;
           color: rgb(var(--foreground-color));
         }
         .toggle:focus {

@@ -249,12 +249,12 @@ function Navbar({ className, hideLogo, route, isMobile }) {
               transition: all 0.2s ease;
               visibility: hidden;
               pointer-events: none;
-              transform: translate3d(-1.5%, 30%, 0);
+              transform: translate3d(5.3%, 30%, 0);
               opacity: 0;
             }
             nav .logo.visible {
               pointer-events: auto;
-              transform: translate3d(-1.5%, 0, 0);
+              transform: translate3d(5.3%, 0, 0);
               visibility: visible;
               opacity: 1;
             }

@@ -59,7 +59,7 @@ export default withPure(
           }
           a:hover {
             color: ${color || 'rgb(var(--accent-color))'};
-            background: ${shadowColor || 'rgba(0,118,255,0.1)'};
+            background: ${shadowColor || 'rgba(var(--accent-color),0.1)'};
           }
           a.invert {
             margin: 0;
@@ -67,13 +67,13 @@ export default withPure(
             color: white;
             background: ${color || 'rgb(var(--accent-color))'};
             ${flat
-              ? `box-shadow: 0 2px 6px 0 ${shadowColor || 'rgba(0, 0, 0, 0.12)'};`
+              ? `box-shadow: 0 2px 6px 0 ${shadowColor || 'rgba(var(--foreground-color), 0.12)'};`
               : light
               ? `
-              box-shadow: 0 2px 6px 0 ${shadowColor || 'rgba(0,118,255,0.39)'};
+              box-shadow: 0 2px 6px 0 ${shadowColor || 'rgba(var(--accent-color),0.39)'};
             `
               : `
-              box-shadow: 0 4px 14px 0 ${shadowColor || 'rgba(0,118,255,0.39)'};
+              box-shadow: 0 4px 14px 0 ${shadowColor || 'rgba(var(--accent-color),0.39)'};
             `}
             ${light
               ? ''
@@ -87,12 +87,12 @@ export default withPure(
             ${noHover
               ? ''
               : `
-            background: ${color ? transparentize(0.1, color) : 'rgba(0,118,255,0.9)'};
-            box-shadow: 0 6px 20px ${shadowColor || 'rgba(0,118,255,0.23)'};
+            background: ${color ? transparentize(0.1, color) : 'rgba(var(--accent-color),0.9)'};
+            box-shadow: 0 6px 20px ${shadowColor || 'rgba(var(--accent-color),0.23)'};
           `}
           }
           a.invert:active {
-            background: ${color ? darken(0.05, color) : '#006ae6'};
+            background: ${color ? darken(0.05, color) : 'rgb(var(--accent-color))'};
           }
           a.disabled {
             color: #c7c7c7;

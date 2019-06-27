@@ -10,13 +10,11 @@ export default function Documentation({ children, headings }) {
   return (
     <>
       <Head title="Getting Started" />
-
       <div className="documentation">
         <Sidebar headings={headings} desktop />
         <div className="documentation__container">
           <div className="documentation__content">{children}</div>
         </div>
-
         <style jsx>{`
           .documentation {
             display: flex;

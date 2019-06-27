@@ -53,13 +53,7 @@ export default class Popover extends PureComponent {
   }
 
   render() {
-    const {
-      bottom: _bottom,
-      left: _left,
-      right: _right,
-      content,
-      children
-    } = this.props;
+    const { bottom: _bottom, left: _left, right: _right, content, children } = this.props;
     const { show, left, right, bottom } = this.state;
 
     return (
@@ -81,9 +75,9 @@ export default class Popover extends PureComponent {
               left: 50%;
               padding: 0.5rem 1rem;
               border-radius: 7px;
-              background: white;
-              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08),
-                0 0 8px rgba(0, 0, 0, 0.1);
+              background: rgb(var(--background-color));
+              box-shadow: 0 10px 20px rgba(var(--foreground-color), 0.08),
+                0 0 8px rgba(var(--foreground-color), 0.1);
               transition: opacity 0.2s ease;
               transform: translateX(-50%);
               opacity: 0;
@@ -104,7 +98,7 @@ export default class Popover extends PureComponent {
               position: absolute;
               width: 8px;
               height: 8px;
-              background: white;
+              background: rgb(var(--background-color));
               transform: translateX(-50%) translateY(-50%) rotate(45deg);
             }
             .popover.top:after {

@@ -60,6 +60,16 @@ function Page({ title, description, children }) {
             background-color: rgb(var(--background-color));
             color: rgb(var(--foreground-color));
           }
+          .dark-mode {
+            --foreground-color: 255, 255, 255;
+            --background-color: 0, 0, 0;
+            --accent-color: 255, 0, 128;
+          }
+          .light-mode {
+            --foreground-color: 0, 0, 0;
+            --background-color: 255, 255, 255;
+            --accent-color: 0, 112, 243;
+          }
           ::selection {
             background-color: rgb(var(--accent-color));
             color: #fff;
@@ -76,12 +86,12 @@ function Page({ title, description, children }) {
             margin: 0;
           }
           a {
-            color: #0074de;
+            color: rgb(var(--accent-color));
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: all 0.2s ease;
           }
           a:hover {
-            color: #68b5fb;
+            opacity: 0.9;
           }
           code {
             font-size: 0.9em;

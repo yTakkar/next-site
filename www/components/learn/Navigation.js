@@ -72,7 +72,7 @@ const Lesson = ({ course, lesson, selected }) => {
           width: 9px;
           height: 9px;
           min-width: 9px;
-          background: #111;
+          background: rgb(var(--accent-color));
           transform: translateX(-5px);
         }
         .finished .step {

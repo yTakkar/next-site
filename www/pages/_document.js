@@ -9,12 +9,7 @@ export default class NextSite extends Document {
     return (
       <Html lang="en">
         <Head>
-          {!amphtml && (
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1.0"
-            />
-          )}
+          {!amphtml && <meta name="viewport" content="width=device-width, initial-scale=1.0" />}
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -33,20 +28,12 @@ export default class NextSite extends Document {
             href="/static/favicon/favicon-16x16.png"
           />
           <link rel="manifest" href="/static/favicon/site.webmanifest" />
-          <link
-            rel="mask-icon"
-            href="/static/favicon/safari-pinned-tab.svg"
-            color="#000000"
-          />
+          <link rel="mask-icon" href="/static/favicon/safari-pinned-tab.svg" color="#000000" />
           <link rel="shortcut icon" href="/static/favicon/favicon.ico" />
           <meta name="msapplication-TileColor" content="#000000" />
-          <meta
-            name="msapplication-config"
-            content="/static/favicon/browserconfig.xml"
-          />
+          <meta name="msapplication-config" content="/static/favicon/browserconfig.xml" />
           <meta name="theme-color" content="#000" />
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-
           {amphtml && (
             <script
               async
@@ -60,11 +47,7 @@ export default class NextSite extends Document {
           <Main />
           <NextScript />
           {amphtml ? (
-            <amp-analytics
-              type="googleanalytics"
-              id="analytics1"
-              data-credentials="include"
-            >
+            <amp-analytics type="googleanalytics" id="analytics1" data-credentials="include">
               <script
                 type="application/json"
                 dangerouslySetInnerHTML={{
@@ -88,10 +71,7 @@ export default class NextSite extends Document {
             </amp-analytics>
           ) : (
             <>
-              <script
-                async
-                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-              />
+              <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
               <script
                 dangerouslySetInnerHTML={{
                   __html: `

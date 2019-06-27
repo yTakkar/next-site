@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { withRouter } from 'next/router';
 import classNames from 'classnames';
 import { SkipNavLink } from '@reach/skip-nav';
-import useDarkMode from 'use-dark-mode';
 
 import NextLogo from './logo';
 import Container from './container';
 import Popover from './popover';
+import DarkModeToggle from './dark-mode-toggle';
 
 import GitHubLogo from './icons/github';
 import SpectrumLogo from './icons/spectrum';
@@ -15,7 +15,6 @@ import SpectrumLogo from './icons/spectrum';
 import { links } from '../site-manifest';
 
 function Navbar({ className, hideLogo, route, isMobile }) {
-  const darkMode = useDarkMode(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const LOGO_TOP = 170;
 
@@ -381,13 +380,8 @@ function Navbar({ className, hideLogo, route, isMobile }) {
                 <span className="badge" />
               </a>
             </Popover>
-            <button type="button" onClick={darkMode.disable}>
-              ☀
-            </button>
-            <button type="button" onClick={darkMode.enable}>
-              ☾
-            </button>
           </div>
+          <DarkModeToggle />
         </div>
       </nav>
     </Container>

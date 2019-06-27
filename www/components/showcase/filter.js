@@ -109,6 +109,7 @@ export default class extends PureComponent {
             cursor: pointer;
             transition: color 0.5s ease;
             white-space: nowrap;
+            color: rgba(var(--foreground-color), 0.5);
             text-transform: uppercase;
           }
           .tab.selected {
@@ -151,7 +152,7 @@ export default class extends PureComponent {
             z-index: 0;
           }
           .indicator .tab.selected:after {
-            box-shadow: 0 4px 24px 0 rgba(0, 118, 255, 0.23);
+            box-shadow: 0 4px 24px 0 rgba(var(--accent-color), 0.23);
           }
           .indicator *::selection {
             background: transparent;

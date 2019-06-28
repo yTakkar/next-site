@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useAmp, withAmp } from 'next/amp';
+import { useAmp } from 'next/amp';
 import Page from '../../components/page';
 import Header from '../../components/header';
 import Navbar from '../../components/navbar';
@@ -15,7 +15,7 @@ import Scalable from '../../components/server-side-rendering/scalable';
 import Customers from '../../components/server-side-rendering/customers';
 
 const title = 'Features - Server Side Rendering | Next.js';
-export default withAmp(() => {
+export default () => {
   const isAmp = useAmp();
 
   return (
@@ -59,4 +59,8 @@ export default withAmp(() => {
       </style>
     </Page>
   );
-});
+};
+
+export const config = {
+  amp: true
+};

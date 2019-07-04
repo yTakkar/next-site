@@ -1,4 +1,3 @@
-import { withAmp } from 'next/amp';
 import Page from '../../components/page';
 import Header from '../../components/header';
 import Navbar from '../../components/navbar';
@@ -14,7 +13,7 @@ import Customers from '../../components/progressive-web-apps/customers';
 
 const title = 'Features - Progressive Web Apps | Next.js';
 
-export default withAmp(() => (
+export default () => (
   <Page title={title}>
     <SocialMeta
       title={title}
@@ -44,4 +43,8 @@ export default withAmp(() => (
       `}
     </style>
   </Page>
-));
+);
+
+export const config = {
+  amp: true
+};

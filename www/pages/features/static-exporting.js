@@ -1,5 +1,5 @@
 import { SkipNavContent } from '@reach/skip-nav';
-import { useAmp, withAmp } from 'next/amp';
+import { useAmp } from 'next/amp';
 import Page from '../../components/page';
 import Header from '../../components/header';
 import Navbar from '../../components/navbar';
@@ -16,7 +16,7 @@ import Docs from '../../components/static-exporting/docs';
 import Customers from '../../components/static-exporting/customers';
 
 const title = 'Features - Static Exporting | Next.js';
-export default withAmp(() => {
+export default () => {
   const isAmp = useAmp();
   return (
     <Page title={title}>
@@ -52,4 +52,8 @@ export default withAmp(() => {
       </style>
     </Page>
   );
-});
+};
+
+export const config = {
+  amp: true
+};

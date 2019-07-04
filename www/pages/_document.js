@@ -1,15 +1,23 @@
 /* eslint-disable react/no-danger */
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { useAmp } from 'next/amp';
 
 import { GA_TRACKING_ID } from '../lib/analytics';
 
-export default class NextSite extends Document {
+function AmpWrap({ ampOnly, nonAmp }) {
+  const isAmp = useAmp();
+  if (ampOnly) return isAmp && ampOnly;
+  return !isAmp && nonAmp;
+}
+
+class NextSite extends Document {
   render() {
-    const { amphtml } = this.props;
     return (
       <Html lang="en">
         <Head>
-          {!amphtml && <meta name="viewport" content="width=device-width, initial-scale=1.0" />}
+          <AmpWrap
+            ampOnly={<meta name="viewport" content="width=device-width, initial-scale=1.0" />}
+          />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -34,58 +42,71 @@ export default class NextSite extends Document {
           <meta name="msapplication-config" content="/static/favicon/browserconfig.xml" />
           <meta name="theme-color" content="#000" />
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-          {amphtml && (
-            <script
-              async
-              key="amp-analytics"
-              custom-element="amp-analytics"
-              src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
-            />
-          )}
+
+          <AmpWrap
+            ampOnly={
+              <script
+                async
+                key="amp-analytics"
+                custom-element="amp-analytics"
+                src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
+              />
+            }
+          />
         </Head>
         <body>
           <Main />
           <NextScript />
-          {amphtml ? (
-            <amp-analytics type="googleanalytics" id="analytics1" data-credentials="include">
-              <script
-                type="application/json"
-                dangerouslySetInnerHTML={{
-                  __html: JSON.stringify({
-                    vars: {
-                      account: GA_TRACKING_ID,
-                      gtag_id: GA_TRACKING_ID,
-                      config: {
-                        GA_TRACKING_ID: { groups: 'default' }
+          <AmpWrap
+            ampOnly={
+              <amp-analytics type="googleanalytics" id="analytics1" data-credentials="include">
+                <script
+                  type="application/json"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                      vars: {
+                        account: GA_TRACKING_ID,
+                        gtag_id: GA_TRACKING_ID,
+                        config: {
+                          GA_TRACKING_ID: { groups: 'default' }
+                        }
+                      },
+                      triggers: {
+                        trackPageview: {
+                          on: 'visible',
+                          request: 'pageview'
+                        }
                       }
-                    },
-                    triggers: {
-                      trackPageview: {
-                        on: 'visible',
-                        request: 'pageview'
-                      }
-                    }
-                  })
-                }}
-              />
-            </amp-analytics>
-          ) : (
-            <>
-              <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `
+                    })
+                  }}
+                />
+              </amp-analytics>
+            }
+          />
+          <AmpWrap
+            nonAmp={
+              <>
+                <script
+                  async
+                  src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+                />
+                <script
+                  dangerouslySetInnerHTML={{
+                    __html: `
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
                     gtag('js', new Date());
                     gtag('config', '${GA_TRACKING_ID}');
                   `
-                }}
-              />
-            </>
-          )}
+                  }}
+                />
+              </>
+            }
+          />
         </body>
       </Html>
     );
   }
 }
+
+export default NextSite;

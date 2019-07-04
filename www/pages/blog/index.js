@@ -1,5 +1,4 @@
 import React from 'react'
-import { withAmp } from 'next/amp'
 import { SkipNavContent } from '@reach/skip-nav'
 
 import Header from '../../components/header'
@@ -55,7 +54,7 @@ const items = previewItems
     )
   })
 
-export default withAmp(() => (
+export default () => (
   <>
     <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow defaultActive>
       <Navbar />
@@ -71,4 +70,8 @@ export default withAmp(() => (
       <Footer />
     </Page>
   </>
-))
+)
+
+export const config = {
+  amp: true
+}

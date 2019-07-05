@@ -42,7 +42,12 @@ class NextSite extends Document {
           <meta name="msapplication-config" content="/static/favicon/browserconfig.xml" />
           <meta name="theme-color" content="#000" />
           <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                '.dark-mode { --foreground-color: 255, 255, 255; --background-color: 0, 0, 0; --accent-color: 255, 0, 128; }.light-mode {--foreground-color: 0, 0, 0;--background-color: 255, 255, 255;--accent-color: 0, 112, 243;}'
+            }}
+          />
           <AmpWrap
             ampOnly={
               <script

@@ -76,7 +76,7 @@ const ExampleCard = withPure(({ name, href, description }) => (
       <span className="example-link fw6 f6">
         See this example{' '}
         <span className="icon">
-          <ArrowRightLong size="14" color="#2195ff" />
+          <ArrowRightLong size="14" color="rgb(var(--accent-color))" />
         </span>
       </span>
       <style jsx>{`
@@ -102,10 +102,10 @@ const ExampleCard = withPure(({ name, href, description }) => (
           color: #ccc;
         }
         .example-container:hover {
-          border-color: #2195ff;
+          border-color: rgb(var(--accent-color));
         }
         .example-link {
-          color: #2195ff;
+          color: rgb(var(--accent-color));
           opacity: 0;
           transition: opacity 0.1s ease;
         }

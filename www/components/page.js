@@ -60,16 +60,6 @@ function Page({ title, description, children }) {
             background-color: rgb(var(--background-color));
             color: rgb(var(--foreground-color));
           }
-          .dark-mode {
-            --foreground-color: 255, 255, 255;
-            --background-color: 0, 0, 0;
-            --accent-color: 255, 0, 128;
-          }
-          .light-mode {
-            --foreground-color: 0, 0, 0;
-            --background-color: 255, 255, 255;
-            --accent-color: 0, 112, 243;
-          }
           ::selection {
             background-color: rgb(var(--accent-color));
             color: #fff;

@@ -58,6 +58,9 @@ export default function CaseStudiesSlider() {
           height: 72px;
           margin: 0 auto;
         }
+        :global(.dark-mode) .slider-wrapper {
+          box-shadow: none;
+        }
         .content {
           display: flex;
           align-items: center;

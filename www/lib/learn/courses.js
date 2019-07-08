@@ -150,32 +150,6 @@ const courses = [
         ]
       },
       {
-        id: 'server-side-support-for-clean-urls',
-        name: 'Server Side Support for Clean URLs',
-        steps: [
-          {
-            id: 'setup',
-            points: 5
-          },
-          {
-            id: 'create-a-custom-server',
-            points: 25
-          },
-          {
-            id: 'create-our-custom-route',
-            points: 30
-          },
-          {
-            id: 'information-on-url',
-            points: 5
-          },
-          {
-            id: 'finally',
-            points: 5
-          }
-        ]
-      },
-      {
         id: 'fetching-data-for-pages',
         name: 'Fetching Data for Pages',
         steps: [

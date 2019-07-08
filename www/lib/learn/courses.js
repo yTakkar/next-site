@@ -115,10 +115,10 @@ const courses = [
           },
           {
             id: 'passing-data',
-            points: 20
+            points: 10
           },
           {
-            id: 'with-router',
+            id: 'use-router',
             points: 5
           },
           {

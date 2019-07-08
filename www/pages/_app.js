@@ -37,10 +37,6 @@ export default class MyApp extends App {
         query: { loginToken, logout }
       } = ctx;
 
-      if (!isLearnPage) {
-        res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate');
-      }
-
       if ((loginToken && loginToken.length < 50) || logout) {
         const parsedAsPath = url.parse(asPath);
 
@@ -59,6 +55,10 @@ export default class MyApp extends App {
           res.end();
           return {};
         }
+      }
+
+      if (!isLearnPage) {
+        res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate');
       }
     }
 

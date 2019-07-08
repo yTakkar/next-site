@@ -115,10 +115,10 @@ const courses = [
           },
           {
             id: 'passing-data',
-            points: 20
+            points: 10
           },
           {
-            id: 'with-router',
+            id: 'use-router',
             points: 5
           },
           {
@@ -128,27 +128,23 @@ const courses = [
         ]
       },
       {
-        id: 'clean-urls-with-route-masking',
-        name: 'Clean URLs with Route Masking',
+        id: 'clean-urls-with-dynamic-routing',
+        name: 'Clean URLs with Dynamic Routing',
         steps: [
           {
             id: 'setup',
             points: 5
           },
           {
-            id: 'route-masking',
-            points: 25
+            id: 'dynamic-routing',
+            points: 30
           },
           {
             id: 'history-awareness',
             points: 5
           },
           {
-            id: 'reload',
-            points: 25
-          },
-          {
-            id: '404',
+            id: 'finally',
             points: 5
           }
         ]
@@ -415,6 +411,32 @@ const courses = [
           },
           {
             id: 'hybrid-amp',
+            points: 5
+          }
+        ]
+      },
+      {
+        id: 'automatic-prerendering',
+        name: 'Automatic Prerendering',
+        steps: [
+          {
+            id: 'setup',
+            points: 20
+          },
+          {
+            id: 'static-build',
+            points: 5
+          },
+          {
+            id: 'ssr',
+            points: 15
+          },
+          {
+            id: 'serverless',
+            points: 15
+          },
+          {
+            id: 'finally',
             points: 5
           }
         ]

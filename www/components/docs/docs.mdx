@@ -381,7 +381,7 @@ Client-side transitions between routes can be enabled via a `<Link>` component.
 
 > This component is not required for navigations to static pages that require a hard refresh, like when using [AMP](#amp-support).
 
-**Basic Example**
+#### Basic Example
 
 Consider these two pages:
 
@@ -432,7 +432,7 @@ function About() {
 export default About;
 ```
 
-**Dynamic Routes**
+#### Dynamic Routes
 
 `<Link>` component has two relevant props when using _Dynamic Routes_:
 
@@ -462,7 +462,7 @@ A link for `/post/first-post` looks like this:
 </Link>
 ```
 
-**Custom routes (using props from URL)**
+#### Custom routes (using props from URL)
 
 If you find that your use case is not covered by [Dynamic Routing](#dynamic-routing) then you can create a custom server and manually add dynamic routes.
 
@@ -506,7 +506,7 @@ Client-side routing behaves exactly like the browser:
 
 To inject the `pathname`, `query` or `asPath` in your component, you can use the [useRouter](#useRouter) hook, or [withRouter](#using-a-higher-order-component) for class components.
 
-##### With URL object
+#### With URL object
 
 <details>
   <summary>
@@ -542,7 +542,7 @@ export default Home;
 
 That will generate the URL string `/about?name=Zeit`, you can use every property as defined in the [Node.js URL module documentation](https://nodejs.org/api/url.html#url_url_strings_and_url_objects).
 
-##### Replace instead of push url
+#### Replace instead of push url
 
 The default behaviour for the `<Link>` component is to `push` a new url into the stack. You can use the `replace` prop to prevent adding a new entry.
 
@@ -565,7 +565,7 @@ function Home() {
 export default Home;
 ```
 
-##### Using a component that supports `onClick`
+#### Using a component that supports `onClick`
 
 `<Link>` supports any component that supports the `onClick` event. In case you don't provide an `<a>` tag, it will only add the `onClick` event handler and won't pass the `href` property.
 
@@ -587,7 +587,7 @@ function Home() {
 export default Home;
 ```
 
-##### Forcing the Link to expose `href` to its child
+#### Forcing the Link to expose `href` to its child
 
 If child is an `<a>` tag and doesn't have a href attribute we specify it so that the repetition is not needed by the user. However, sometimes, you’ll want to pass an `<a>` tag inside of a wrapper and the `Link` won’t recognize it as a _hyperlink_, and, consequently, won’t transfer its `href` to the child. In cases like that, you should define a boolean `passHref` property to the `Link`, forcing it to expose its `href` property to the child.
 
@@ -608,7 +608,7 @@ function NavLink({ href, name }) {
 export default NavLink;
 ```
 
-##### Disabling the scroll changes to top on page
+#### Disabling the scroll changes to top on page
 
 The default behaviour of `<Link>` is to scroll to the top of the page. When there is a hash defined it will scroll to the specific id, just like a normal `<a>` tag. To prevent scrolling to the top / hash `scroll={false}` can be added to `<Link>`:
 
@@ -686,7 +686,7 @@ Above `Router` object comes with the following API:
 
 The second `as` parameter for `push` and `replace` is an optional _decoration_ of the URL. Useful if you configured custom routes on the server.
 
-##### With URL object
+#### With URL object
 
 You can use a URL object the same way you use it in a `<Link>` component to `push` and `replace` a URL.
 
@@ -713,7 +713,7 @@ export default ReadMore;
 
 This uses the same exact parameters as in the `<Link>` component.
 
-##### Router Events
+#### Router Events
 
 You can also listen to different events happening inside the Router.
 Here's a list of supported events:
@@ -769,7 +769,7 @@ Router.events.on('routeChangeError', (err, url) => {
 > }, []);
 > ```
 
-##### Shallow Routing
+#### Shallow Routing
 
 <details>
   <summary>

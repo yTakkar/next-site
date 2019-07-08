@@ -414,6 +414,32 @@ const courses = [
             points: 5
           }
         ]
+      },
+      {
+        id: 'automatic-prerendering',
+        name: 'Automatic Prerendering',
+        steps: [
+          {
+            id: 'setup',
+            points: 20
+          },
+          {
+            id: 'static-build',
+            points: 5
+          },
+          {
+            id: 'ssr',
+            points: 15
+          },
+          {
+            id: 'serverless',
+            points: 15
+          },
+          {
+            id: 'finally',
+            points: 5
+          }
+        ]
       }
     ]
   }

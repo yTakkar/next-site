@@ -183,6 +183,15 @@ static async getInitialProps({ query }) {
 }
 ```
 
+Multiple dynamic URL segments are also supported!
+
+The `[param]` syntax is supported for directory names and file names, meaning the following examples work:
+
+```
+./pages/blog/[blogId]/comments/[commentId].js
+./pages/posts/[pid]/index.js
+```
+
 You can [read more about this feature in the Next.js Documentation](https://github.com/zeit/next.js#dynamic-routing) or [Next.js Learn section](https://nextjs.org/learn/basics/clean-urls-with-dynamic-routing).
 
 ## Automatic Static Optimization
@@ -292,6 +301,8 @@ the same way that other page files are mapped to routes.
 
 For example, `pages/api/contact.js` will be mapped to `/api/contact`.
 
+> **Note**: API Routes also support [Dynamic Routes](#dynamic-route-segments)!
+
 All the files inside the `pages/api/` directory export a request handler function
 instead of a React Component:
 
@@ -372,21 +383,21 @@ property to `false`:
 
 #### Optimized AMP by Default
 
-Next.js 9 now renders optimized AMP by default.
-Optimized AMP is up to [50% faster](https://blog.amp.dev/2018/10/08/how-to-make-amp-even-faster/) than traditional AMP.
+Next.js 9 now renders optimized AMP by default for AMP-first and hybrid AMP pages.
 
-This was made possible by [Sebastian Benz](https://twitter.com/sebabenz)'s work on the
+While AMP pages are opt-in, Next.js will automatically optimize their output.
+These optimizations can result in up to [50% faster](https://blog.amp.dev/2018/10/08/how-to-make-amp-even-faster/) rendering speed!
+
+This change was made possible by
+[Sebastian Benz](https://twitter.com/sebabenz)'s incredible work on the
 [AMP Optimizer](https://github.com/ampproject/amp-toolbox/tree/master/packages/optimizer).
-
-Prior to v9, Next.js would provide both an original and optimized version of an AMP page.
-This was necessary as the AMP Optimizer produced invalid AMP, which would cause it to
-be skipped by search engine AMP indexing.
 
 #### Dead Code Elimination for `typeof window` Branches
 
 Next.js 9 replaces `typeof window` with its appropriate value (`undefined` or
 `object`) during server and client builds.
-This change allows Next.js to remove dead code from compiled code automatically.
+This change allows Next.js to remove dead code from your production built
+application automatically.
 
 Users should see their client-side bundle sizes decrease if they have
 server-only code in `getInitialProps` or other parts of their application.

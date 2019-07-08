@@ -128,27 +128,23 @@ const courses = [
         ]
       },
       {
-        id: 'clean-urls-with-route-masking',
-        name: 'Clean URLs with Route Masking',
+        id: 'clean-urls-with-dynamic-routing',
+        name: 'Clean URLs with Dynamic Routing',
         steps: [
           {
             id: 'setup',
             points: 5
           },
           {
-            id: 'route-masking',
-            points: 25
+            id: 'dynamic-routing',
+            points: 30
           },
           {
             id: 'history-awareness',
             points: 5
           },
           {
-            id: 'reload',
-            points: 25
-          },
-          {
-            id: '404',
+            id: 'finally',
             points: 5
           }
         ]

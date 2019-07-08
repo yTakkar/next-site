@@ -58,7 +58,7 @@ export default class MyApp extends App {
       }
 
       if (!isLearnPage) {
-        res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate');
+        res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
       }
     }
 

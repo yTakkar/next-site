@@ -300,6 +300,28 @@ const courses = [
         ]
       },
       {
+        id: 'typescript',
+        name: 'TypeScript',
+        steps: [
+          {
+            id: 'setup',
+            points: 25
+          },
+          {
+            id: 'home-page',
+            points: 20
+          },
+          {
+            id: 'page-types',
+            points: 10
+          },
+          {
+            id: 'finally',
+            points: 5
+          }
+        ]
+      },
+      {
         id: 'lazy-loading-modules',
         name: 'Lazy Loading Modules',
         steps: [

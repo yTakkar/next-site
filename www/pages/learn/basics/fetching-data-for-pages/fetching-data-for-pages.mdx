@@ -19,26 +19,12 @@ export const meta = {
 
 ## Implement the Post Page
 
-Now let's try to implement the “/post” page where it shows the detailed information about the TV show.
+Now let's add the detailed information about the TV show to the post.
 
-First, open the `server.js` and change the `/p/:id` route with the following content:
-
-```js
-server.get('/p/:id', (req, res) => {
-  const actualPage = '/post';
-  const queryParams = { id: req.params.id };
-  app.render(req, res, actualPage, queryParams);
-});
-```
-
-Then restart your app to apply the above code change.
-
-> Earlier, we mapped the `title` query param to the page. Now we need to rename it to `id`.
-
-Now replace the `pages/post.js` with the following content:
+Replace `pages/p/[id].js` with the following content:
 
 ```jsx
-import Layout from '../components/MyLayout.js';
+import Layout from '../../components/MyLayout.js';
 import fetch from 'isomorphic-unfetch';
 
 const Post = props => (
@@ -76,9 +62,9 @@ Post.getInitialProps = async function(context) {
 };
 ```
 
-In that, the first argument of the function is the **context** object. It has a query field that we can use to fetch information.
+The first argument of the function is the **context** object. It has a `query` object that we can use to fetch information.
 
-In our example, we picked the show ID from query params and fetched its show data from the TVMaze API.
+In our example, we picked the show ID from `query` and used it to fetch the show data from the TVMaze API.
 
 ---
 

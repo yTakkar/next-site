@@ -31,7 +31,7 @@ First of all we need to install [isomorphic-unfetch](https://github.com/developi
 npm install --save isomorphic-unfetch
 ```
 
-Then replace our `pages/index.js` with the following content:
+Then replace `pages/index.js` with the following content:
 
 ```jsx
 import Layout from '../components/MyLayout.js';
@@ -44,7 +44,7 @@ const Index = props => (
     <ul>
       {props.shows.map(show => (
         <li key={show.id}>
-          <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
+          <Link href="/p/[id]" as={`/p/${show.id}`}>
             <a>{show.name}</a>
           </Link>
         </li>
@@ -67,7 +67,7 @@ Index.getInitialProps = async function() {
 export default Index;
 ```
 
-Everything on the above page will be familiar to you except the `Index.getInitialProps` as shown below:
+Everything on the above page will be familiar to you except `Index.getInitialProps` as shown below:
 
 ```jsx
 Index.getInitialProps = async function() {

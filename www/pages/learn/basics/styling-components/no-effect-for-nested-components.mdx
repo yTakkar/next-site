@@ -22,7 +22,7 @@ In that case, you need to style the child component directly. And in our particu
 ```jsx
 const PostLink = ({ post }) => (
   <li>
-    <Link as={`/p/${post.id}`} href={`/post?title=${post.title}`}>
+    <Link href="/p/[id]" as={`/p/${post.id}`}>
       <a>{post.title}</a>
     </Link>
     <style jsx>{`

@@ -20,23 +20,28 @@ export const meta = {
 ## Run two instances
 
 Now we are going to run two instances of our app. Usually, we do this to horizontally scale our app.
-First of all, make the following changes to our start npm script:
+
+First of all, replace the `scripts` of our `package.json` with the following:
 
 ```json
 "scripts": {
+  "dev": "next",
+  "build": "next build",
   "start": "next start -p $PORT"
 }
 ```
 
+We changed the `start` script and it now accepts a port to start the app on.
+
 > If you are on Windows, your start script should be `next start -p %PORT%`.
 
-Now let's build our app first.
+Now let's build our app:
 
 ```bash
 npm run build
 ```
 
-Then try to run the following commands, one by one (two sessions), in it's own terminal:
+Then try to run the following commands, one by one (two sessions), in their own terminal:
 
 ```bash
 PORT=8000 npm start
@@ -44,7 +49,7 @@ PORT=9000 npm start
 ```
 
 > On Windows, you will need to run the commands differently. One option is to install the npm module [`cross-env`](https://www.npmjs.com/package/cross-env) into your app.
-> Then run these two commands from the command line: `cross-env PORT=8000 npm start` and `cross-env PORT=9000 npm start`
+> Then run these two commands from the command line: <br/> `cross-env PORT=8000 npm start` <br/> `cross-env PORT=9000 npm start`
 
 Is it possible to access our app on both ports?
 

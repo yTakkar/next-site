@@ -35,7 +35,7 @@ function getPosts() {
 
 const PostLink = ({ post }) => (
   <li>
-    <Link as={`/p/${post.id}`} href={`/post?title=${post.title}`}>
+    <Link href="/p/[id]" as={`/p/${post.id}`}>
       <a>{post.title}</a>
     </Link>
   </li>
@@ -81,6 +81,6 @@ export default function Blog() {
 
 Replace the above content in `pages/index.js`
 
-What will happen?
+What changed?
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>;

@@ -42,7 +42,7 @@ function Navbar({ className, hideLogo, route, isMobile }) {
               nav {
                 position: relative;
                 flex: 1;
-                height: 96px;
+                height: 114px;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -80,6 +80,17 @@ function Navbar({ className, hideLogo, route, isMobile }) {
                 font-size: 0;
                 text-align: center;
                 overflow: hidden;
+                transition: all 0.2s ease;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translate3d(0, 30%, 0);
+                opacity: 0;
+              }
+              nav .logo.visible {
+                pointer-events: auto;
+                transform: translate3d(0, 0, 0);
+                visibility: visible;
+                opacity: 1;
               }
               nav .logo a {
                 display: inline-block;
@@ -112,14 +123,12 @@ function Navbar({ className, hideLogo, route, isMobile }) {
               }
             `}
           </style>
-          <div className="logo">
-            {!hideLogo && (
-              <Link href="/">
-                <a aria-label="Next.js">
-                  <NextLogo />
-                </a>
-              </Link>
-            )}
+          <div className={scrollPosition >= LOGO_TOP || !hideLogo ? 'logo visible' : 'logo'}>
+            <Link href="/">
+              <a aria-label="Next.js">
+                <NextLogo />
+              </a>
+            </Link>
           </div>
           <div className="links">
             <div className="icons">

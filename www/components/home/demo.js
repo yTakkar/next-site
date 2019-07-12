@@ -27,8 +27,6 @@ export default function Demo() {
                   justify-content: center;
                   margin: 2rem 0;
                 }
-                .demo-body {
-                }
                 .demo-footer {
                   display: flex;
                   margin: 2rem 0;
@@ -67,9 +65,7 @@ export default function Demo() {
                       onClick={isAmp ? undefined : () => onSelect(id)}
                       on={
                         isAmp
-                          ? `tap:AMP.setState({ demoTabs: { selected: ${JSON.stringify(
-                              id
-                            )} } })`
+                          ? `tap:AMP.setState({ demoTabs: { selected: ${JSON.stringify(id)} } })`
                           : undefined
                       }
                     >
@@ -92,11 +88,7 @@ export default function Demo() {
                   className="tab"
                   selected={selectedId === 'More...'}
                   onClick={isAmp ? undefined : () => onSelect('More...')}
-                  on={
-                    isAmp
-                      ? `tap:AMP.setState({ demoTabs: { selected: 'More...' } })`
-                      : undefined
-                  }
+                  on={isAmp ? `tap:AMP.setState({ demoTabs: { selected: 'More...' } })` : undefined}
                 >
                   {'More...'}
                 </TabButton>
@@ -142,11 +134,7 @@ export default function Demo() {
                                 invert
                                 light
                                 selected={_selectedId === data.tabs[0]}
-                                onClick={
-                                  isAmp
-                                    ? undefined
-                                    : () => onSelect(data.tabs[0])
-                                }
+                                onClick={isAmp ? undefined : () => onSelect(data.tabs[0])}
                                 on={
                                   isAmp
                                     ? `tap:AMP.setState({ ${uniqueId}: { selected: ${JSON.stringify(
@@ -161,11 +149,7 @@ export default function Demo() {
                                 invert
                                 light
                                 selected={_selectedId === data.tabs[1]}
-                                onClick={
-                                  isAmp
-                                    ? undefined
-                                    : () => onSelect(data.tabs[1])
-                                }
+                                onClick={isAmp ? undefined : () => onSelect(data.tabs[1])}
                                 on={
                                   isAmp
                                     ? `tap:AMP.setState({ ${uniqueId}: { selected: ${JSON.stringify(

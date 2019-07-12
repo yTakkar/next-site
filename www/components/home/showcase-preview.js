@@ -32,7 +32,7 @@ export default () => {
         <style jsx>{`
           .showcase-container.tablet {
             position: relative;
-            margin: 3rem 0 -2rem;
+            margin: 3rem 0 2rem;
             pointer-events: none;
             line-height: 0;
           }
@@ -56,7 +56,7 @@ export default () => {
             left: 0;
             right: 0;
             z-index: 2;
-            bottom: -1rem;
+            bottom: -2rem;
             background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 30%, #f6f6f6 85%);
           }
           @media screen and (max-width: 640px) {

@@ -12,7 +12,7 @@ export default function Customers() {
         <style jsx>{`
           .case-studies-box {
             position: relative;
-            margin-top: -6rem;
+            margin-top: -8.5rem;
             margin-bottom: 4rem;
           }
         `}</style>

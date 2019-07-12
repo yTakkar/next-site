@@ -54,7 +54,7 @@ export default function CaseStudiesSlider() {
           background-color: #fff;
           box-shadow: 0px 30px 60px rgba(0, 0, 0, 0.12);
           border-radius: 6px;
-          max-width: 375px;
+          max-width: 450px;
           height: 72px;
           margin: 0 auto;
         }

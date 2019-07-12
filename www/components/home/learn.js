@@ -5,12 +5,12 @@ import SectionHeader from '../section-header';
 export default function Learn() {
   return (
     <Container center padding wide role="region" aria-labelledby="learn">
-      <SectionHeader id="learn" title="Learn Next.js" />
+      <SectionHeader
+        id="learn"
+        title="Learn Next.js"
+        description="Tutorials, examples and quizzes. Learn Next.js step-by-step and earn points ✨."
+      />
       <div className="learn-intro">
-        <p>
-          Tutorials, examples and quizzes. <br className="display-mobile" />
-          Learn Next.js step-by-step and earn points ✨.
-        </p>
         <div className="overlay" />
         <style jsx>{`
           .learn-intro {
@@ -20,7 +20,7 @@ export default function Learn() {
             margin: auto;
             background: url(/static/images/learn.png);
             background-size: 100% auto;
-            background-position: 0 2rem;
+            background-position: 0 1rem;
             background-repeat: no-repeat;
           }
           .overlay {
@@ -39,8 +39,9 @@ export default function Learn() {
           // CSS only media query for tablet
           @media screen and (max-width: 960px) {
             .learn-intro {
-              background-position: 0 3.5rem;
-              background-size: 160% auto;
+              height: 200px;
+              background-position: 0;
+              background-size: 100% auto;
             }
           }
         `}</style>

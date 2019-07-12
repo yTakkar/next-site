@@ -8,7 +8,7 @@ export default withPure(({ href, title, titleMobile, children }) => (
       {`
         .notification {
           width: 100%;
-          height: 32px;
+          height: 50px;
           text-align: center;
           background: rgba(0, 0, 0, 0.06);
           display: flex;
@@ -17,9 +17,15 @@ export default withPure(({ href, title, titleMobile, children }) => (
         }
         a {
           color: #6a6a6a;
+          font-size: 0.875rem;
         }
-        a:hover {
-          color: #111;
+        :global(.highlight) {
+          margin: 0 1rem;
+          color: #0070f3;
+          transition: opacity 200ms ease;
+        }
+        a:hover :global(.highlight) {
+          opacity: 0.8;
         }
       `}
     </style>

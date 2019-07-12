@@ -136,7 +136,14 @@ class EmailForm extends React.Component {
     }
 
     return (
-      <form id={this.props.id} className={cn(classes)} onSubmit={this.submit.bind(this)}>
+      <form
+        amp-form
+        action=""
+        target="_self"
+        id={this.props.id}
+        className={cn(classes)}
+        onSubmit={this.submit.bind(this)}
+      >
         {this.props.label ? <p className="label">{this.props.label}</p> : null}
         <div
           className={cn(
@@ -163,8 +170,6 @@ class EmailForm extends React.Component {
             >
               <input
                 type="email"
-                autoCorrect="off"
-                autoCapitalize="off"
                 id="email-input-field"
                 defaultValue={this.state.defaultEmail || ''}
                 disabled={Boolean(this.props.loading || this.props.disabled)}

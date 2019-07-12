@@ -24,8 +24,7 @@ export default () => {
           <span
             key={word}
             style={{
-              animationDelay:
-                index === 0 ? '1ms' : `${animationDuration * index}s`
+              animationDelay: index === 0 ? '1ms' : `${animationDuration * index}s`
             }}
           >
             {word}
@@ -36,24 +35,26 @@ export default () => {
         .slider-container {
           margin: auto;
           margin-top: 0;
-          margin-bottom: -1rem;
-          line-height: 1.4em;
+          margin-bottom: 0;
+          line-height: 1.2em;
           white-space: nowrap;
           position: relative;
+          pointer-events: none;
         }
 
         .words {
           width: 100%;
-          height: 3.4em;
+          height: 2.8em;
           display: block;
           margin-top: 1rem;
-          margin-bottom: 2rem;
+          margin-bottom: 0;
         }
 
         .words span {
           position: absolute;
           opacity: 0;
           overflow: hidden;
+          letter-spacing: -1px;
           animation: slide-word ${animationLength}s linear infinite 0s;
           animation-timing-function: cubic-bezier(0.19, 0.82, 0.84, 1.06);
         }

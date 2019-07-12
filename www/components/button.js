@@ -25,9 +25,9 @@ const cachedStyles = css`
   }
   .btn.invert {
     margin: 0;
-    padding: 0 2rem;
-    height: 2.5rem;
-    line-height: 2.5rem;
+    padding: 0 3.5rem;
+    height: 2.81rem;
+    line-height: 2.8rem;
     border-radius: 7px;
     background-color: #0070f3;
     box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39);

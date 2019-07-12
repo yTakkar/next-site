@@ -21,7 +21,7 @@ export default () => {
   return (
     <>
       <Header height={64} shadow defaultActive>
-        <Navbar hideLogo={{ desktop: !isAmp, mobile: false }} />
+        <Navbar hideLogo={{ desktop: !isAmp, mobile: true }} />
       </Header>
       <Page title="Next.js - The React Framework">
         <SocialMeta
@@ -32,8 +32,8 @@ export default () => {
         />
         <SkipNavContent />
         <Notification href="/blog/next-9" title="Next 9 is out!" titleMobile="Next 9 is out!">
-          Next 9 is out! — TypeScript, Dynamic Routing, Auto Static Optimization, and more! Monday,
-          July 8th 2019
+          <b>Next 9 is out!</b> — TypeScript, Dynamic Routing, Auto Static Optimization, and more!
+          <span className="highlight">Learn More →</span>
         </Notification>
         <Intro isAmp={isAmp} />
         <Demo />

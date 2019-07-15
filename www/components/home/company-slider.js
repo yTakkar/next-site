@@ -22,6 +22,7 @@ import Pling from '../icons/companies/pling';
 import Starbucks from '../icons/companies/starbucks';
 import Uber from '../icons/companies/uber';
 import Trovit from '../icons/companies/trovit';
+import Sesame from '../icons/companies/sesame';
 
 export default function CompanySlider() {
   return (
@@ -54,6 +55,9 @@ export default function CompanySlider() {
           </div>
           <div>
             <Twitch />
+          </div>
+          <div>
+            <Sesame />
           </div>
         </div>
       </BackgroundSlider>

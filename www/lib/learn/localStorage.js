@@ -1,8 +1,23 @@
 import React from 'react';
 
-let isLocalStorageReady = false;
+function getStorage() {
+  if (typeof window !== 'undefined') {
+    try {
+      return window.localStorage;
+    } catch {
+      // If localStorage is disabled, ignore the exception caused by reading it
+    }
+  }
+  return {
+    getItem: () => {},
+    setItem: () => {},
+    removeItem: () => {}
+  };
+}
 
-const storage = typeof window !== 'undefined' ? localStorage : { getItem: () => {} };
+const storage = getStorage();
+
+let isLocalStorageReady = false;
 
 export const getStoredValue = key => {
   try {

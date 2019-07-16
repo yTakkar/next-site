@@ -45,6 +45,7 @@ class LogoContainer extends React.PureComponent {
         className={classNames('logo-main f4 fw6', { unmounted: !mounted })}
         style={{
           top: Math.max(LOGO_TOP - scroll, 7),
+          opacity: `${Math.max(easing(1 - scroll / LOGO_TOP), 0)}`,
           transform: `scale(${Math.max(easing(1 - scroll / LOGO_TOP), 0) * 0.325 +
             0.625}) translate3d(0, 0, 0)`,
           transformOrigin: 'top'

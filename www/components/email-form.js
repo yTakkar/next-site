@@ -137,9 +137,9 @@ class EmailForm extends React.Component {
 
     return (
       <form
-        amp-form
-        action=""
-        target="_self"
+        method="POST"
+        action-xhr="https://api-subscribe-nextjs.zeit.sh/"
+        target="_top"
         id={this.props.id}
         className={cn(classes)}
         onSubmit={this.submit.bind(this)}

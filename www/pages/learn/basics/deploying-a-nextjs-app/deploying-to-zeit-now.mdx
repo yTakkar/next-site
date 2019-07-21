@@ -5,49 +5,25 @@ export const meta = {
   title: 'Deploying a Next.js App',
   courseId: 'basics',
   lessonId: 'deploying-a-nextjs-app',
-  stepId: 'deploying-to-zeit-now',
-  question: {
-    answers: [
-      '8000',
-      '443 (or without a port mentioned)',
-      'Any port you mentioned in the URL',
-      "It will throw an error saying, 'You can only start your app on port 443'"
-    ],
-    correctAnswer: '443 (or without a port mentioned)'
-  }
+  stepId: 'deploying-to-zeit-now'
 };
 
 ## Deploying to ▲ZEIT Now
 
-Now we know how to build and start a Next.js app. We did everything with npm scripts. So, you will be able to customize it to work with your favorite deployment service.
+First, [download Now](https://zeit.co/download) if you do not already have it installed.
 
-to deploy our app with [▲ZEIT Now](https://zeit.co/now) let's add the `next.config.js` file in the root of the project and specify `target` as `serverless`:
-
-```js
-module.exports = {
-  target: 'serverless'
-};
-```
-
-Then, create a now.json file in the root of your project with the following content:
-
-```json
-{
-  "version": 2,
-  "builds": [{ "src": "package.json", "use": "@now/next" }]
-}
-```
-
-> The [@now/next Builder](https://zeit.co/docs/v2/deployments/official-builders/next-js-now-next) will convert pages of our app into a series of individual [lambdas](https://zeit.co/docs/v2/deployments/concepts/lambdas/). Read the [Create a Next.js Application and Deploy with Now](https://zeit.co/guides/deploying-nextjs-with-now/) guide for additional information.
-
-Finally, [install Now](https://zeit.co/now) and run the following command in the root directory of our app:
+Then, run the following command in the root directory of your app:
 
 ```bash
 now
 ```
 
-Here, we mentioned port 8000 as the port in which we start our app. But we didn't change it when deploying to ZEIT Now.
+That's it!
 
-So, in which port could we access our app when deployed to ZEIT Now?
+Your application is deployed to production.
+You'll see a URL printed in your terminal that your application is accessible at.
+
+To read more about what to do next, please visit [▲ZEIT Now's documentation](https://zeit.co/docs#related).
+You'll find topics ranging from integrating with Git to deploying with your own domain!
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>;

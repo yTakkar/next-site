@@ -226,28 +226,24 @@ const courses = [
             points: 5
           },
           {
+            id: 'deploying-to-zeit-now',
+            points: 15
+          },
+          {
+            id: 'deploying-to-your-own-environment',
+            points: 5
+          },
+          {
             id: 'build-and-start',
             points: 10
           },
           {
             id: 'run-two-instances',
-            points: 25
+            points: 20
           },
           {
             id: 'build-once-run-many-instances',
             points: 5
-          },
-          {
-            id: 'deploying-to-zeit-now',
-            points: 30
-          },
-          {
-            id: 'zeit-now-port-443',
-            points: 5
-          },
-          {
-            id: 'build-your-app-locally',
-            points: 10
           },
           {
             id: 'finally',

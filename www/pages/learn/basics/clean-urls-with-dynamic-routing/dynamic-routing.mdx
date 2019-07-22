@@ -25,7 +25,7 @@ Let's create our first dynamic route by adding a new page to `pages/p/[id].js`, 
 
 ```jsx
 import { useRouter } from 'next/router';
-import Layout from '../../components/MyLayout.js';
+import Layout from '../../components/MyLayout';
 
 export default function Post() {
   const router = useRouter();
@@ -50,7 +50,7 @@ When creating the dynamic route we added `id` between the brackets (`[]`). This 
 Now let's add multiple links that use our new dynamic route, Use the following code for `pages/index.js`:
 
 ```jsx
-import Layout from '../components/MyLayout.js';
+import Layout from '../components/MyLayout';
 import Link from 'next/link';
 
 const PostLink = props => (

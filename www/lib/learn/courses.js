@@ -54,14 +54,6 @@ const courses = [
             points: 5
           },
           {
-            id: 'link-with-a-button',
-            points: 20
-          },
-          {
-            id: 'works-with-anything',
-            points: 5
-          },
-          {
             id: 'simple-but-powerful',
             points: 5
           }

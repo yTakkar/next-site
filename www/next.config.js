@@ -34,15 +34,19 @@ const withMDX = nextMDX({
 
 const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' });
 
+// To test the API use localhost here
+// const BACKEND_URL = 'http://localhost:3000';
+const BACKEND_URL = process.env.BACKEND_URL || 'https://nextjs.org';
+
 const nextConfig = {
   target: 'serverless',
-  pageExtensions: ['jsx', 'js', 'mdx'],
+  pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx'],
   experimental: {
     flyingShuttle: true,
     publicDirectory: true
   },
   env: {
-    BACKEND_URL: process.env.BACKEND_URL || 'https://learn-server.nextjs.org',
+    BACKEND_URL,
     FIRST_COURSE: 'basics',
     FIRST_LESSON: 'getting-started',
     SITE_NAME: 'Next.js'

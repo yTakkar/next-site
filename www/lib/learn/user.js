@@ -1,27 +1,27 @@
 import React from 'react';
-import { useLocalStorage } from './localStorage';
-
-const reducer = (records, action) => {
-  switch (action.type) {
-    case 'init':
-      return action.serverState && { ...action.serverState };
-    default:
-      throw new Error('Unkown action');
-  }
-};
+import { removeToken } from './authenticate';
 
 const User = React.createContext();
 
-export const UserProvider = ({ user, children }) => {
-  const [userData] = useLocalStorage('user', reducer, user || undefined);
-
-  return <User.Provider value={userData}>{children}</User.Provider>;
+export const UserProvider = ({ user: payload, children }) => {
+  const [user, setUser] = React.useState(payload || undefined);
+  return <User.Provider value={[user, setUser]}>{children}</User.Provider>;
 };
 
 export const useGetUser = () => {
-  return React.useContext(User);
+  return React.useContext(User)[0];
 };
 
 export const useHasUser = () => {
-  return Boolean(useGetUser());
+  return Boolean(React.useContext(User)[0]);
+};
+
+export const useLogout = () => {
+  const setUser = React.useContext(User)[1];
+
+  // Remove the user from the state and the token from cookies
+  return () => {
+    setUser();
+    removeToken();
+  };
 };

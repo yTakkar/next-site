@@ -3,8 +3,7 @@ import React from 'react';
 import App, { Container } from 'next/app';
 import url from 'url';
 
-import { setToken, removeToken, getToken } from '../lib/learn/authenticate';
-import { getUser } from '../lib/learn/api';
+import { setToken, removeToken, getToken, getTokenPayload } from '../lib/learn/authenticate';
 import { UserProvider } from '../lib/learn/user';
 import NProgress from '../components/nprogress';
 
@@ -34,27 +33,16 @@ export default class MyApp extends App {
       const {
         res,
         asPath,
-        query: { loginToken, logout }
+        query: { loginToken }
       } = ctx;
 
-      if ((loginToken && loginToken.length < 50) || logout) {
+      if (loginToken && getTokenPayload(loginToken)) {
         const parsedAsPath = url.parse(asPath);
 
-        if (loginToken) {
-          setToken(ctx, loginToken);
-          res.writeHead(302, {
-            Location: parsedAsPath.pathname
-          });
-          res.end();
-          return {};
-        }
-
-        if (logout) {
-          removeToken(ctx);
-          res.writeHead(302, { Location: parsedAsPath.pathname });
-          res.end();
-          return {};
-        }
+        setToken(ctx, loginToken);
+        res.writeHead(302, { Location: parsedAsPath.pathname });
+        res.end();
+        return {};
       }
 
       if (!isLearnPage) {
@@ -68,9 +56,9 @@ export default class MyApp extends App {
       const loginToken = getToken(ctx);
 
       if (loginToken) {
-        const user = await getUser(loginToken);
+        const user = getTokenPayload(loginToken);
 
-        // If the user is null then the loginToken is no longer valid
+        // If the user is null then the loginToken is invalid
         if (user === null) removeToken(ctx);
 
         props.user = user || undefined;

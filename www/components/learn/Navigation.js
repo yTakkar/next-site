@@ -191,7 +191,7 @@ const Navigation = ({ meta }) => {
                     display: flex;
                     height: 100%;
                     align-items: center;
-                    padding-right: 1rem;
+                    padding-right: 0.5rem;
                     overflow: hidden;
                     cursor: pointer;
                   }

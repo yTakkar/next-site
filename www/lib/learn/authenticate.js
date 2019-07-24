@@ -1,3 +1,5 @@
+import decodeJwt from 'jwt-decode';
+
 export function setToken({ res }, token) {
   if (process.browser) return;
 
@@ -11,7 +13,7 @@ export function setToken({ res }, token) {
   );
 }
 
-export function removeToken({ res }) {
+export function removeToken({ res } = {}) {
   if (!process.browser) {
     res.setHeader(
       'Set-Cookie',
@@ -39,4 +41,12 @@ export function getToken({ req } = {}) {
   const Cookies = require('js-cookie');
   const { loginToken } = Cookies.get();
   return loginToken;
+}
+
+export function getTokenPayload(loginToken) {
+  try {
+    return decodeJwt(loginToken);
+  } catch {
+    return null;
+  }
 }

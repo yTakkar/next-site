@@ -1,7 +1,7 @@
 import { ellipsis } from 'polished';
-import { useGetUser } from '../../lib/learn/user';
+import { useGetUser, useLogout } from '../../lib/learn/user';
 import { useGetPoints } from '../../lib/learn/records';
-import { login, logout } from '../../lib/learn/actions';
+import { login } from '../../lib/learn/actions';
 import GitHubButton from './github-button';
 
 const tweet = points => {
@@ -12,6 +12,7 @@ const tweet = points => {
 const Profile = ({ isMobile }) => {
   const user = useGetUser();
   const points = useGetPoints();
+  const logout = useLogout();
 
   if (!user) {
     if (isMobile) {
@@ -55,11 +56,13 @@ const Profile = ({ isMobile }) => {
   if (isMobile) {
     return (
       <div className="namecard f6">
-        <div>
-          <strong className="fw6">{points}</strong> &#x2728;
-        </div>
+        {points ? (
+          <span className="points">
+            <strong className="fw6">{points}</strong> &#x2728;
+          </span>
+        ) : null}
         <div className="fw5 username" style={ellipsis()}>
-          {user.name}
+          {user.displayName}
         </div>
         <button type="button" onClick={logout}>
           Logout
@@ -71,6 +74,10 @@ const Profile = ({ isMobile }) => {
             align-items: center;
             height: 100%;
             margin-top: 1px;
+          }
+          .points {
+            display: flex;
+            margin-right: 0.5rem;
           }
           .username {
             max-width: 7rem;
@@ -103,16 +110,10 @@ const Profile = ({ isMobile }) => {
         <img className="avatar" alt="Avatar" src={avatarUrl} />
         <div className="info">
           <p className="f-reset fw6 username" style={ellipsis()}>
-            {user.name}
+            {user.displayName}
           </p>
           <div className="f5">
-            {points ? (
-              <>
-                <strong className="fw7">{points}</strong> points &#x2728;
-              </>
-            ) : (
-              <>&nbsp;</>
-            )}
+            <strong className="fw7">{points}</strong> points &#x2728;
           </div>
         </div>
       </div>
@@ -120,11 +121,9 @@ const Profile = ({ isMobile }) => {
         <button type="button" className="f5" onClick={logout}>
           Logout
         </button>
-        {points > 0 && (
-          <button type="button" className="f5" onClick={() => tweet(points)}>
-            Tweet
-          </button>
-        )}
+        <button type="button" className="f5" onClick={() => tweet(points)} disabled={points <= 0}>
+          Tweet
+        </button>
       </div>
       <style jsx>{`
         .profile {
@@ -165,12 +164,15 @@ const Profile = ({ isMobile }) => {
           border: none;
           background: none;
           -webkit-appearance: none;
-          color: #aeaeae;
           cursor: pointer;
           transition: color 0.2s ease;
         }
         .buttons button:hover {
-          color: #111;
+          color: grey;
+        }
+        .buttons button:disabled {
+          color: #aeaeae;
+          cursor: auto;
         }
         .namecard {
           display: flex;

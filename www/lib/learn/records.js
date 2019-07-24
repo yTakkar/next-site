@@ -1,9 +1,6 @@
 import React from 'react';
 import courses from './courses';
 import { useLocalStorage } from './localStorage';
-import { useGetUser } from './user';
-import { getToken } from './authenticate';
-import { fetchCourses } from './api';
 
 const getRecordId = ({ courseId, lessonId, stepId }) =>
   `${courseId}/${lessonId}${stepId ? `/${stepId}` : ''}`;
@@ -20,40 +17,10 @@ const updateRecords = (records, meta, update) => {
   };
 };
 
-const mergeRecords = async (currentRecords, dispatch) => {
-  const apiCourses = (await fetchCourses(getToken())) || [];
-  const setNewRecords = (newRecords, course) => {
-    course.lessons.forEach(lesson => {
-      lesson.steps.forEach(({ id: stepId, visited, points, givenAnswer, correctAnswer }) => {
-        if (!visited) return;
-
-        const checked = (givenAnswer && givenAnswer === correctAnswer) || points <= 5;
-        const meta = { courseId: course.id, lessonId: lesson.id, stepId };
-        const id = getRecordId(meta);
-        const record = { ...currentRecords[id], checked, visited };
-
-        if (givenAnswer) {
-          record.answer = givenAnswer;
-          record.submitted = true;
-        }
-
-        Object.assign(newRecords, { [id]: record });
-      });
-    });
-
-    return newRecords;
-  };
-  const records = apiCourses.reduce(setNewRecords, {});
-
-  dispatch({ type: 'merge', records });
-};
-
 const reducer = (records, action) => {
   switch (action.type) {
     case 'init':
       return { ...action.clientState, ready: true };
-    case 'merge':
-      return { ...records, ...action.records, merged: true };
     case 'visit':
       return updateRecords(records, action.ids, { visited: true });
     case 'check':
@@ -72,15 +39,6 @@ const Records = React.createContext();
 
 const RecordsProvider = ({ children }) => {
   const [records, record] = useLocalStorage('points', reducer, { ready: false });
-  const user = useGetUser();
-  const hasPoints = Boolean(records.ready && user && user.points);
-
-  // Merge DB points with localStorage
-  React.useEffect(() => {
-    if (hasPoints && !records.merged) {
-      mergeRecords(records, record);
-    }
-  }, [hasPoints, records.merged]);
 
   return (
     <Record.Provider value={record}>

@@ -34,11 +34,11 @@ export const githubStrategy = new GitHub.Strategy(
     clientSecret: env.GITHUB_CLIENT_SECRET,
     callbackURL
   },
-  (req, _accessToken, _refreshToken, profile, done) => {
+  (_req, _accessToken, _refreshToken, profile, done) => {
     const accessToken = createJwt(env.ACCESS_TOKEN_SECRET, profile);
 
     learnTable
-      .addGitHubEntry(profile, req.get('user-agent'))
+      .addGitHubEntry(profile)
       .catch(e => {
         console.log('An error ocurred with Airtable');
         console.error(e);

@@ -13,18 +13,14 @@ export const learnTable = {
       .firstPage();
     return records[0];
   },
-  async addGitHubEntry(profile: { [key: string]: any }, userAgent?: string) {
+  async addGitHubEntry(profile: { [key: string]: any }) {
     const data = profile._json;
     const record = await learnTable.getGitHubEntry(data.login);
     const entry = {
-      'Profile URL': data.html_url,
       Name: data.name,
       Username: data.login,
       Company: data.company,
-      Location: data.location,
-      Followers: data.followers,
-      Bio: data.bio,
-      UA: userAgent
+      Followers: data.followers
     };
 
     if (record) {

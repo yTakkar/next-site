@@ -34,21 +34,20 @@ export default class MyApp extends App {
 
     const props = { pageProps: {} };
 
-    if (isLearnPage) {
-      const loginToken = getToken(ctx);
+    const loginToken = getToken(ctx);
 
-      if (loginToken) {
-        const user = getTokenPayload(loginToken);
+    if (loginToken) {
+      const user = getTokenPayload(loginToken);
 
-        // If the user is null then the loginToken is invalid
-        if (user === null) removeToken(ctx);
+      // If the user is null then the loginToken is invalid
+      if (user === null) removeToken(ctx);
 
-        props.user = user || undefined;
-      }
-      if (!Component.getInitialProps) {
-        // Make sure that learn pages have getInitialProps set so they don't get catched
-        Component.getInitialProps = () => ({});
-      }
+      props.user = user || undefined;
+    }
+
+    if (isLearnPage && !Component.getInitialProps) {
+      // Make sure that learn pages have getInitialProps set so they don't get catched
+      Component.getInitialProps = () => ({});
     }
 
     if (Component.getInitialProps) {

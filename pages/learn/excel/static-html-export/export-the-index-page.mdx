@@ -9,11 +9,11 @@ export const meta = {
   question: {
     answers: [
       'A page with the usual page content',
-      'An empty page but Not Found in the browser console',
-      "A page with 'Not Found' as the content",
-      "A page with '500 Internal Error' as the content"
+      'An empty page but `404: Not Found` in the browser console',
+      'A page with `404 This page could not be found` as the content',
+      'A page with `500 Internal Error` as the content'
     ],
-    correctAnswer: "A page with 'Not Found' as the content"
+    correctAnswer: 'A page with `404 This page could not be found` as the content'
   }
 };
 
@@ -49,7 +49,7 @@ npm run build
 npm run export
 ```
 
-Now you can see the exported HTML content on a directory called "out" inside your project.
+Now you can see the exported HTML content on a directory called `out` inside your project.
 
 That's a fully functioning static web app. You can deploy it to any static hosting service, and it will work fine.
 But before we do that, we need to test it out locally.
@@ -60,20 +60,20 @@ In order to test the app, install the following [serve](https://www.npmjs.com/pa
 npm install -g serve
 ```
 
-> "serve" is a pretty simple static web server. You can also use any other similar tool.
-> But to make things simple, use serve for this lesson.
+> `serve` is a pretty simple static web server. You can also use any other similar tool.
+> But to make things simple, use `serve` for this lesson.
 
-After you've installed "serve", run following commands from the app root:
+After you've installed `serve`, run following commands from the root folder:
 
 ```bash
 cd out
 serve -p 8080
 ```
 
-Now you can access your static app with: [http://localhost:8080](http://localhost:8080/).
+Now you can access your static app in http://localhost:8080.
 Everything should be working as usual.
 
-Now try to visit this page: http://localhost:8080/p/hello-nextjs/.
+Now try to visit this page: http://localhost:8080/show/975
 
 How do you describe the output?
 

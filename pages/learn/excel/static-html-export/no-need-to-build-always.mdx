@@ -9,21 +9,21 @@ export const meta = {
   question: {
     answers: [
       "It's not required for `next export`",
-      'Next export invokes `next build` inside it',
-      'The page `/post` already exists in the build',
-      'The page `/p` already exists in the build'
+      '`next export` invokes `next build` inside it',
+      'The page `/show/[id]` already exists in the build',
+      'The page `/show` already exists in the build'
     ],
-    correctAnswer: 'The page `/post` already exists in the build'
+    correctAnswer: 'The page `/show/[id]` already exists in the build'
   }
 };
 
 ## No Need to Always Build
 
-As you've seen, we can access the page without any issues. That page is not available in the `/` page, but we were able to generate the static HTML for it.
+As you've seen, we can access the page without any issues. You can also access any of the other shows in `/`.
 
-That's because the exporting HTML is totally controlled by the config we've added to the `next.config.js`.
+The page `/show/[id]` can be used to generate an HTML file for every show. The exported HTML is totally controlled by the config we've added to `next.config.js`.
 
-In order to export that page, these are the commands we've invoked:
+In order to export the app, these are the commands we've invoked:
 
 ```bash
 npm run export

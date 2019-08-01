@@ -1,4 +1,5 @@
 {
+  "name": "next-site",
   "version": 2,
   "alias": "nextjs.org",
   "scope": "next-js",

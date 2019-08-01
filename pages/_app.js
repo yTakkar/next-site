@@ -11,6 +11,11 @@ export default class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const isLearnPage = ctx.pathname.startsWith('/learn');
 
+    if (isLearnPage && !Component.getInitialProps) {
+      // Make sure that learn pages have getInitialProps set so they don't get catched
+      Component.getInitialProps = () => ({});
+    }
+
     if (!process.browser) {
       const {
         res,
@@ -36,22 +41,19 @@ export default class MyApp extends App {
 
     const loginToken = getToken(ctx);
 
-    if (loginToken) {
-      const user = getTokenPayload(loginToken);
+    if (isLearnPage) {
+      if (loginToken) {
+        const user = getTokenPayload(loginToken);
 
-      // If the user is null then the loginToken is invalid
-      if (user === null) removeToken(ctx);
+        // If the user is null then the loginToken is invalid
+        if (user === null) removeToken(ctx);
 
-      props.user = user || undefined;
-    }
+        props.user = user || undefined;
+      }
 
-    if (isLearnPage && !Component.getInitialProps) {
-      // Make sure that learn pages have getInitialProps set so they don't get catched
-      Component.getInitialProps = () => ({});
-    }
-
-    if (Component.getInitialProps) {
-      props.pageProps = await Component.getInitialProps(ctx);
+      if (Component.getInitialProps) {
+        props.pageProps = await Component.getInitialProps(ctx);
+      }
     }
 
     return props;

@@ -9,10 +9,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
+    "start": "next start",
     "build": "next build",
     "build:rss": "node ./.next/serverless/scripts/build-rss.js",
-    "lint": "eslint",
-    "now-build": "next build && yarn build:rss"
+    "now-build": "next build && yarn build:rss",
+    "lint": "eslint"
   },
   "husky": {
     "hooks": {

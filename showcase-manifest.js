@@ -99,7 +99,14 @@ const sortOrder = [
   'bang-olufsen',
   'futurism',
   'nubank',
-  'ferrari'
+  'ferrari',
+  'movietickets',
+  'mesalva',
+  'ohtuleht',
+  'stargatecommand',
+  'shakeshack',
+  'coop',
+  'mprnews'
 ];
 
 const mapping = {
@@ -900,6 +907,69 @@ const mapping = {
     internalUrl: 'ferrari',
     tags: ['entertainment'],
     highlighted: 1
+  },
+  movietickets: {
+    title: 'MovieTickets',
+    link: 'https://www.movietickets.com',
+    src: '/static/images/showcases/movietickets.jpg',
+    width: 3840,
+    height: 2159,
+    internalUrl: 'movietickets',
+    tags: ['e-commerce', 'entertainment']
+  },
+  mesalva: {
+    title: 'Me Salva!',
+    link: 'https://www.mesalva.com',
+    src: '/static/images/showcases/mesalva.png',
+    width: 3840,
+    height: 2159,
+    internalUrl: 'mesalva',
+    tags: ['education']
+  },
+  ohtuleht: {
+    title: 'Õhtuleht',
+    link: 'https://www.ohtuleht.ee',
+    src: '/static/images/showcases/ohtuleht.jpg',
+    width: 3840,
+    height: 2159,
+    internalUrl: 'ohtuleht',
+    tags: ['news']
+  },
+  stargatecommand: {
+    title: 'Stargate Command',
+    link: 'https://www.stargatecommand.co',
+    src: '/static/images/showcases/stargatecommand.jpg',
+    width: 3840,
+    height: 2159,
+    internalUrl: 'stargatecommand',
+    tags: ['entertainment']
+  },
+  shakeshack: {
+    title: 'Shake Shack',
+    link: 'https://order.shakeshack.com/',
+    src: '/static/images/showcases/shakeshack.jpg',
+    width: 3840,
+    height: 2159,
+    internalUrl: 'shakeshack',
+    tags: ['e-commerce']
+  },
+  coop: {
+    title: 'Co-op Shop',
+    link: 'https://shop.coop.co.uk',
+    src: '/static/images/showcases/coop.png',
+    width: 3840,
+    height: 2159,
+    internalUrl: 'coop',
+    tags: ['e-commerce']
+  },
+  mprnews: {
+    title: 'MPR News',
+    link: 'https://www.mprnews.org',
+    src: '/static/images/showcases/mprnews.jpg',
+    width: 3840,
+    height: 2159,
+    internalUrl: 'mprnews',
+    tags: ['news']
   }
 };
 

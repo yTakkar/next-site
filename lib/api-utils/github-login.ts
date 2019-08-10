@@ -37,14 +37,14 @@ export const githubStrategy = new GitHub.Strategy(
   (_req, _accessToken, _refreshToken, profile, done) => {
     const accessToken = createJwt(env.ACCESS_TOKEN_SECRET, profile);
 
-    // learnTable
-    //   .addGitHubEntry(profile)
-    //   .catch(e => {
-    //     console.log('An error ocurred with Airtable');
-    //     console.error(e);
-    //   })
-    //   .finally(() => {
-    done(null, { accessToken });
-    // });
+    learnTable
+      .addGitHubEntry(profile)
+      .catch(e => {
+        console.log('An error ocurred with Airtable');
+        console.error(e);
+      })
+      .finally(() => {
+        done(null, { accessToken });
+      });
   }
 );

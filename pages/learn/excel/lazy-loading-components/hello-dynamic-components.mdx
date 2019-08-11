@@ -64,7 +64,7 @@ Creating a dynamic component is simple. You can use the [`next/dynamic`](https:/
 //import Highlight from 'react-highlight'
 import dynamic from 'next/dynamic';
 
-const Highlight = dynamic(import('react-highlight'));
+const Highlight = dynamic(() => import('react-highlight'));
 ```
 
 That's all you have to do.

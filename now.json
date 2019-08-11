@@ -1,9 +1,4 @@
 {
-  "name": "next-site",
-  "version": 2,
-  "alias": "nextjs.org",
-  "scope": "next-js",
-  "builds": [{ "src": "package.json", "use": "@now/next" }],
   "env": {
     "ROOT_URL": "https://nextjs.org",
     "ACCESS_TOKEN_SECRET": "@next-learn-access-token-secret",

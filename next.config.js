@@ -42,7 +42,6 @@ const nextConfig = {
   target: 'serverless',
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx'],
   experimental: {
-    flyingShuttle: true,
     publicDirectory: true
   },
   env: {

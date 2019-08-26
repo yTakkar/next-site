@@ -26,7 +26,7 @@ const withGitHubMDX = nextMDX({
 });
 
 const withMDX = nextMDX({
-  extension: /[/\\](pages|blog)[/\\](.+)\.mdx?$/,
+  extension: /[/\\](pages|blog|telemetry)[/\\](.+)\.mdx?$/,
   options: {
     hastPlugins: [rehypePrism]
   }

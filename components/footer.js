@@ -154,6 +154,11 @@ export default withPure(() => (
                 <a>Design</a>
               </Link>
             </p>
+            <p>
+              <Link href="/telemetry">
+                <a>Telemetry</a>
+              </Link>
+            </p>
           </div>
           <div className="column">
             <h4 className="fw5">About ZEIT</h4>

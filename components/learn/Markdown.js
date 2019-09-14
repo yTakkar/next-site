@@ -97,7 +97,7 @@ const InlineCode = ({ children }) => (
     {children}
     <style jsx>{`
       code {
-        color: #313131;
+        color: rgb(212, 0, 255);
         font-size: 14px;
         white-space: pre-wrap;
       }

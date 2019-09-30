@@ -1,6 +1,6 @@
 import '../lib/polyfill';
 import React from 'react';
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import url from 'url';
 
 import { setToken, removeToken, getToken, getTokenPayload } from '../lib/learn/authenticate';
@@ -63,12 +63,12 @@ export default class MyApp extends App {
     const { Component, pageProps, user } = this.props;
 
     return (
-      <Container>
+      <>
         <UserProvider user={user}>
           <Component {...pageProps} />
         </UserProvider>
         <NProgress />
-      </Container>
+      </>
     );
   }
 }

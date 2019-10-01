@@ -42,7 +42,7 @@ const files = [
   },
   {
     name: 'Sidebar.js',
-    content: `export default Sidebar({ name, items }) {
+    content: `export default function Sidebar({ name, items }) {
   return (
     <div>
       <h2>{ name }</h2>

@@ -65,9 +65,9 @@ Here, we use `import()` function to load the firebase modules. It returns a prom
 Try to apply the above change and analyze the JavaScript bundles again with:
 
 ```bash
-npm run analyze:browser
+npm run analyze
 ```
 
-Then, select the name of the bundle where the firebase modules reside. That might be:
+In `.next/analyze/client.html`. Where do Firebase modules reside now?
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>;

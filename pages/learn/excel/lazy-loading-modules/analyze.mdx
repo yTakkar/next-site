@@ -8,12 +8,12 @@ export const meta = {
   stepId: 'analyze',
   question: {
     answers: [
-      'inside commons[a-random-string].js bundle',
-      'inside main[a-random-string].js bundle',
-      'inside pages/index.js and pages/post.js bundles',
-      'in all pages'
+      'Inside `commons[a-random-string].js`',
+      'Inside `main[a-random-string].js`',
+      'Inside `pages/index.js` and `pages/p/[id].js`',
+      'In all pages'
     ],
-    correctAnswer: 'inside pages/index.js and pages/post.js bundles'
+    correctAnswer: 'Inside `pages/index.js` and `pages/p/[id].js`'
   }
 };
 
@@ -28,11 +28,11 @@ Now, let's try to understand what is inside our app bundle.
 For that, simply run the following command:
 
 ```bash
-npm run analyze:browser
+npm run analyze
 ```
 
-Then, it will start a [webpack bundle analyzer](https://github.com/zeit/next-plugins/tree/master/packages/next-bundle-analyzer) and you will be able to inspect what is inside each of the JavaScript bundles.
+Then, it will use [webpack bundle analyzer](https://github.com/zeit/next.js/tree/canary/packages/next-bundle-analyzer) to analyze the pages in a build. You should be able to access the analyses in the `.next/analyze` folder.
 
-So, the firebase modules are contained:
+In the analysis for the client build (`.next/analyze/client.html`). Where are the Firebase modules contained?
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>;

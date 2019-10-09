@@ -25,6 +25,11 @@
       "headers": { "Location": "/learn/basics/clean-urls-with-dynamic-routing" }
     },
     {
+      "src": "/learn/excel/automatic-prerendering/?",
+      "status": 301,
+      "headers": { "Location": "/learn/excel/automatic-static-optimization" }
+    },
+    {
       "src": "/features/?",
       "status": 301,
       "headers": { "Location": "/features/static-exporting" }

@@ -9,7 +9,7 @@ import SitePreview from './site-preview';
 import ArrowUpIcon from '../icons/arrow-up';
 import HeartIcon from '../icons/heart';
 
-import { sortOrder, mapping } from '../../showcase-manifest';
+import { sortedByAlexa } from '../../showcase-manifest';
 import { links } from '../../site-manifest';
 
 const GAP_X = 48;
@@ -17,12 +17,8 @@ const GAP_Y = 48;
 const ROW_HEIGHT = 220 + GAP_Y;
 
 function getData(category) {
-  return sortOrder.filter(id => {
-    return (
-      category === 'all' ||
-      (mapping[id].tags && mapping[id].tags.indexOf(category) !== -1)
-    );
-  });
+  if (category === 'all') return sortedByAlexa;
+  return sortedByAlexa.filter(item => item.tags && item.tags.includes(category));
 }
 
 let dataCategory = 'All';
@@ -33,13 +29,10 @@ const getRowHeight = ({ index }, columnCount) => {
     // no highlighted
     return 1;
   }
-  let height = 1,
-    startIndex = index * columnCount;
+  let height = 1;
+  const startIndex = index * columnCount;
   for (let i = 0; i < columnCount; ++i) {
-    if (
-      dataSource[startIndex + i] &&
-      mapping[dataSource[startIndex + i]].highlighted
-    ) {
+    if (dataSource[startIndex + i] && dataSource[startIndex + i].highlighted) {
       height *= columnCount - 1;
       return height;
     }
@@ -60,22 +53,15 @@ const scrollTo = top => {
   window.scrollTo({ top, left: 0, behavior: 'smooth' });
 };
 
-const getRowRender = columnCount => ({
-  index,
-  isScrolling,
-  isVisible,
-  key,
-  parent,
-  style
-}) => {
+const getRowRender = columnCount => ({ index, isScrolling, isVisible, key, parent, style }) => {
   // let height = getRowHeight({index}, columnCount)
-  let content = [];
+  const content = [];
   let highlighted = null;
   let rowDir = 'row';
 
-  let startIndex = index * columnCount;
+  const startIndex = index * columnCount;
   for (let i = 0; i < columnCount; ++i) {
-    let siteData = mapping[dataSource[startIndex + i]];
+    const siteData = dataSource[startIndex + i];
     if (!siteData) {
       if (columnCount > 1) {
         // push placeholder
@@ -123,7 +109,7 @@ const getRowRender = columnCount => ({
         ? [
             highlighted,
             <div
-              key={`column-normal`}
+              key="column-normal"
               style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -185,13 +171,10 @@ export default class extends Component {
     this.updateCategory(newProps.category);
   }
 
-  overscanIndicesGetter = (
-    { cellCount, overscanCellsCount, startIndex, stopIndex },
-    isTablet
-  ) => {
+  overscanIndicesGetter = ({ cellCount, overscanCellsCount, startIndex, stopIndex }, isTablet) => {
     // preload +- 5 rows
     // cache += 50 rows
-    let overscanStartIndex = Math.max(
+    const overscanStartIndex = Math.max(
       0,
       Math.min(startIndex - overscanCellsCount, this.startCachedIndex)
     );
@@ -200,7 +183,7 @@ export default class extends Component {
       Math.min(this.startCachedIndex, overscanStartIndex)
     );
 
-    let overscanStopIndex = Math.min(
+    const overscanStopIndex = Math.min(
       cellCount - 1,
       Math.max(stopIndex + overscanCellsCount, this.stopCachedIndex)
     );
@@ -248,25 +231,18 @@ export default class extends Component {
                 onScroll={onChildScroll}
                 scrollTop={scrollTop}
                 width={width}
-                rowCount={Math.ceil(
-                  dataSource.length / (isMobile ? 1 : isTablet ? 2 : 3)
-                )}
+                rowCount={Math.ceil(dataSource.length / (isMobile ? 1 : isTablet ? 2 : 3))}
                 estimatedRowSize={500}
-                rowHeight={args =>
-                  getRowHeight(args, isMobile ? 1 : isTablet ? 2 : 3) *
-                  ROW_HEIGHT
-                }
+                rowHeight={args => getRowHeight(args, isMobile ? 1 : isTablet ? 2 : 3) * ROW_HEIGHT}
                 rowRenderer={isMobile ? MobileRow : isTablet ? TabletRow : Row}
                 overscanRowCount={5}
-                overscanIndicesGetter={args =>
-                  this.overscanIndicesGetter(args, isTablet)
-                }
+                overscanIndicesGetter={args => this.overscanIndicesGetter(args, isTablet)}
                 style={{
                   willChange: '',
                   margin: 'auto'
                 }}
                 ref={list => {
-                  let columnCount = isMobile ? 1 : isTablet ? 2 : 3;
+                  const columnCount = isMobile ? 1 : isTablet ? 2 : 3;
                   if (columnCount !== this.lastColumnCount) {
                     // reset row height for responsive width
                     this.lastColumnCount = columnCount;

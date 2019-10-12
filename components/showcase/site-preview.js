@@ -26,11 +26,9 @@ export default withRouter(
         const { highlighted, siteData, isTablet } = this.props;
 
         const useLargeThumbnail = highlighted && !isTablet;
-        let src = siteData.src.replace('/showcases/', '/showcase-thumbnails/');
-
-        if (useLargeThumbnail) {
-          src = src.replace(/\.jpg/, '@2x.jpg');
-        }
+        const src = useLargeThumbnail
+          ? siteData.src
+          : siteData.src.replace('/showcases/', '/showcase-thumbnails/');
 
         this.setState({ src });
       }

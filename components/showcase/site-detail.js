@@ -1,6 +1,5 @@
 import { PureComponent } from 'react';
 import Router from 'next/router';
-import Link from 'next/link';
 import Head from 'next/head';
 import Fade from '../fade';
 
@@ -15,21 +14,15 @@ export default class extends PureComponent {
 
   render() {
     const { siteData } = this.props;
-    if (!siteData) {
-      return null;
-    }
-    const { src } = siteData;
+
+    if (!siteData) return null;
 
     return (
       <>
         <Head>
           <title>Showcase | {siteData.title}</title>
         </Head>
-        <div
-          className="lightbox"
-          onClick={this.clickOuter}
-          ref={el => (this.lightbox = el)}
-        >
+        <div className="lightbox" onClick={this.clickOuter} ref={el => (this.lightbox = el)}>
           <style jsx>{`
             .lightbox {
               position: fixed;
@@ -64,11 +57,9 @@ export default class extends PureComponent {
               max-width: 100%;
               max-height: 100%;
               border-radius: 7px;
-              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2),
-                0 10px 20px rgba(0, 0, 0, 0.1);
+              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
               overflow: hidden;
             }
-
             @media screen and (max-width: 640px) {
               .lightbox {
                 padding: 2rem 1rem 3rem 1rem;
@@ -77,15 +68,10 @@ export default class extends PureComponent {
           `}</style>
           <Fade>
             <div className="preview">
-              <img src={src} alt={siteData.title} />
+              <img src={siteData.src} alt={siteData.title} />
               <div className="info">
                 <h3 className="f4">{siteData.title}</h3>
-                <a
-                  href={siteData.link}
-                  className="f5"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
+                <a href={siteData.link} className="f5" rel="noopener noreferrer" target="_blank">
                   {siteData.link}
                 </a>
               </div>

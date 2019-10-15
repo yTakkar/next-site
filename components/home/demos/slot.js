@@ -8,9 +8,7 @@ const makeLink = (onSelect, ampKey) => ({ tab, children }) => {
       <>
         <button
           type="button"
-          on={`tap:AMP.setState({ ${ampKey}: { selected: ${JSON.stringify(
-            tab
-          )} } })`}
+          on={`tap:AMP.setState({ ${ampKey}: { selected: ${JSON.stringify(tab)} } })`}
         >
           {children}
         </button>
@@ -38,9 +36,13 @@ const makeLink = (onSelect, ampKey) => ({ tab, children }) => {
     );
   }
 
+  const handleClick = e => {
+    e.preventDefault();
+    onSelect(tab);
+  };
+
   return (
-    // eslint-disable-next-line no-script-url
-    <a href="javascript:;" onClick={() => onSelect(tab)}>
+    <a href={tab} onClick={handleClick}>
       {children}
     </a>
   );

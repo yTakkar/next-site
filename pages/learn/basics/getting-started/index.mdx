@@ -6,11 +6,9 @@ export const meta = {
   lessonId: 'getting-started'
 };
 
-It's no secret that creating single-page JavaScript applications can be pretty challenging these days. Fortunately, there are some projects available which simplify things and help you build apps faster.
+It's no secret that creating single-page JavaScript applications can be pretty challenging these days. Fortunately, there are multiple frameworks and libraries to choose from.
 
-[Create React App](https://facebook.github.io/create-react-app/) is a very good example of that.
-
-Even still, there's a high learning curve before you can build a proper application. That's because you need to learn about client-side routing, page layout, and so on. If you'd like to perform server-side rendering for faster page loads, things can become even more difficult.
+Even still, there's a high learning curve before you can build a proper application. That's because you need to learn about client-side routing, page layout, APIs, and so on. Furthermore, you may want to server-side render certain pages and statically prerender others (balancing SEO and speed).
 
 **So, we need something simple but customizable.**
 
@@ -24,12 +22,14 @@ Think about how webapps are created with PHP. You create some files, write PHP c
 
 That's exactly what we do with [Next.js](https://github.com/zeit/next.js). Instead of PHP, we build the app with JavaScript and React. Here are some other cool features Next.js brings to the table:
 
-- Server-rendered by default
+- An intuitive page-based routing system (with support for dynamic routes)
+- Automatically statically optimizes page(s) when possible
+- Server-side renders page(s) with blocking data requirements
 - Automatic code splitting for faster page loads
-- Simple client-side routing (page based)
+- Client-side routing with optimized page prefetching
 - Webpack-based dev environment which supports [Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/) (HMR)
-- Able to implement with Express or any other Node.js HTTP server
-- Customizable with your own Babel and Webpack configurations
+- API routes to build your API with serverless functions, with the same simple router used for pages
+- Customizable with community plugins and with your own Babel and Webpack configurations
 
 Sounds great, right?
 Let's give it a try.

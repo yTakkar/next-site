@@ -23,10 +23,11 @@ Before we do anything else, let's analyze our app's JavaScript bundles.
 For that, simply run the following command:
 
 ```bash
-npm run analyze:browser
+npm run analyze
 ```
 
-After the command completes, you can see the results in the web browser.
-Where is the `highlight.js` module included?
+After the command completes, you'll see two new tabs in the web browser, one for `server.html`, and another one for `client.html`.
+
+take a look into `.next/analyze/client.html`. Where is the `highlight.js` module included?
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>;

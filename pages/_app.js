@@ -50,10 +50,10 @@ export default class MyApp extends App {
 
         props.user = user || undefined;
       }
+    }
 
-      if (Component.getInitialProps) {
-        props.pageProps = await Component.getInitialProps(ctx);
-      }
+    if (Component.getInitialProps) {
+      props.pageProps = await Component.getInitialProps(ctx);
     }
 
     return props;

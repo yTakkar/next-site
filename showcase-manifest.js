@@ -933,6 +933,24 @@ const mapping = {
     alexa: 1220,
     internalUrl: 'hilton',
     tags: ['e-commerce']
+  },
+  ftd: {
+    title: 'FTD',
+    link: 'https://www.ftd.com',
+    src: '/static/images/showcases/ftd.jpg',
+    srcFallback: true,
+    alexa: 32734,
+    internalUrl: 'ftd',
+    tags: ['e-commerce']
+  },
+  realself: {
+    title: 'RealSelf',
+    link: 'https://www.realself.com/',
+    src: '/static/images/showcases/realself.jpg',
+    srcFallback: true,
+    alexa: 13772,
+    internalUrl: 'realself',
+    tags: ['e-commerce']
   }
 };
 

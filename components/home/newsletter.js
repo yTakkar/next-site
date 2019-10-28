@@ -11,11 +11,9 @@ class Newsletter extends React.PureComponent {
     this.state = {
       loading: false
     };
-
-    this.onEmail = this.email.bind(this);
   }
 
-  email(val) {
+  onEmail = val => {
     this.setState({ loading: true });
     fetch('https://api-subscribe-nextjs.zeit.sh/', {
       method: 'POST',
@@ -40,7 +38,7 @@ class Newsletter extends React.PureComponent {
       .catch(() => {
         this.setState({ loading: false, errorMessage: true });
       });
-  }
+  };
 
   render() {
     return (

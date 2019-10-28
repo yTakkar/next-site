@@ -1,27 +1,12 @@
 // Packages
 import { Component, cloneElement, Children } from 'react';
 import { findDOMNode } from 'react-dom';
-import PropTypes from 'prop-types';
 
 // Private Observer Manager functions and manager
 import { getObserver, observeTarget, unobserveTarget } from './manager';
 import { hasEqualOptions, isDOMNode } from './utils';
 
 export default class Observer extends Component {
-  static propTypes = {
-    disabled: PropTypes.bool,
-    once: PropTypes.bool,
-    onIntersect: PropTypes.func.isRequired,
-    render: PropTypes.func,
-    root: PropTypes.element,
-    rootMargin: PropTypes.string,
-    threshold: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.number),
-      PropTypes.number
-    ]),
-    value: PropTypes.string
-  };
-
   static defaultProps = {
     disabled: false,
     once: false

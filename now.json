@@ -10,7 +10,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@now/next@canary"
+      "use": "@ijjk/now-next@0.0.5-spr"
     }
   ],
   "routes": [
@@ -45,10 +45,6 @@
       "headers": {
         "Location": "/case-studies/hulu"
       }
-    },
-    {
-      "src": "/showcase/(?<item>[^/]*)",
-      "dest": "/showcase?item=$item"
     },
     {
       "src": "/feed.xml",

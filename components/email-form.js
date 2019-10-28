@@ -24,10 +24,6 @@ class EmailForm extends React.Component {
     };
 
     this.inputRef = null;
-    this.onRef = this.onRef.bind(this);
-    this.onInput = this.onInput.bind(this);
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
   }
 
   componentDidMount() {
@@ -41,7 +37,7 @@ class EmailForm extends React.Component {
     });
   }
 
-  onRef(input) {
+  onRef = input => {
     this.inputRef = input;
 
     if (this.inputRef && this.props.autoFocus) {
@@ -51,9 +47,9 @@ class EmailForm extends React.Component {
         this.focus();
       }
     }
-  }
+  };
 
-  onInput(email) {
+  onInput = email => {
     if (this.state.error) {
       if (validate(email)) {
         this.setState({ error: false });
@@ -65,15 +61,15 @@ class EmailForm extends React.Component {
     if (this.props.onChange && typeof this.props.onChange === 'function') {
       this.props.onChange({ email });
     }
-  }
+  };
 
-  onFocus() {
+  onFocus = () => {
     this.setState({ focus: true });
-  }
+  };
 
-  onBlur() {
+  onBlur = () => {
     this.setState({ focus: false });
-  }
+  };
 
   focus() {
     // On mobile, we don't want to auto-focus
@@ -95,7 +91,7 @@ class EmailForm extends React.Component {
     this.inputRef.reset();
   }
 
-  submit(ev) {
+  submit = ev => {
     if (ev) ev.preventDefault();
 
     const { email } = this.state;
@@ -121,7 +117,7 @@ class EmailForm extends React.Component {
         this.focus();
       }, 1000);
     }
-  }
+  };
 
   render() {
     const classes = [];
@@ -142,7 +138,7 @@ class EmailForm extends React.Component {
         target="_top"
         id={this.props.id}
         className={cn(classes)}
-        onSubmit={this.submit.bind(this)}
+        onSubmit={this.submit}
       >
         {this.props.label ? <p className="label">{this.props.label}</p> : null}
         <div

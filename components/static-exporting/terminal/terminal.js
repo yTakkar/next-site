@@ -233,82 +233,79 @@ function generateFrames(onRender) {
   return frames;
 }
 
-export default class Console extends React.PureComponent {
-  render() {
-    const { showResult, height } = this.props;
+export default function Console(props) {
+  const { showResult, height } = props;
 
-    const classes = ['console'];
+  const classes = ['console'];
 
-    return (
-      <Window
-        title={null}
-        height={height || 275}
-        mobileHeight={height || 275}
-        backgroundColor="black"
-      >
-        <div className={classes.join(' ')}>
-          {this.props.children || <pre>{generateFrames(showResult)}</pre>}
-        </div>
-        <style jsx>
-          {`
-            .console {
-              color: #fff;
-              font-size: 12px;
-              font-family: ${FONT_FAMILY_MONO};
-              line-height: 24px;
-              margin: 0 16px;
-              text-align: left;
-            }
-            .console i {
-              font-style: normal;
-              color: #04ecc5;
-            }
-          `}
-        </style>
-        <style jsx global>{`
-          pre {
-            font-size: 13px;
-            font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-              DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
-              serif;
-            line-height: 17px;
-            margin: 0;
-            white-space: pre;
+  return (
+    <Window
+      title={null}
+      height={height || 275}
+      mobileHeight={height || 275}
+      backgroundColor="black"
+    >
+      <div className={classes.join(' ')}>
+        {props.children || <pre>{generateFrames(showResult)}</pre>}
+      </div>
+      <style jsx>
+        {`
+          .console {
+            color: #fff;
+            font-size: 12px;
+            font-family: ${FONT_FAMILY_MONO};
+            line-height: 24px;
+            margin: 0 16px;
+            text-align: left;
           }
-          .highlight {
-            color: #00ffff;
+          .console i {
+            font-style: normal;
+            color: #04ecc5;
           }
-          .bold {
-            font-weight: 600;
+        `}
+      </style>
+      <style jsx global>{`
+        pre {
+          font-size: 13px;
+          font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+            Bitstream Vera Sans Mono, Courier New, monospace, serif;
+          line-height: 17px;
+          margin: 0;
+          white-space: pre;
+        }
+        .highlight {
+          color: #00ffff;
+        }
+        .bold {
+          font-weight: 600;
+        }
+        .dim {
+          opacity: 0.5;
+        }
+        @keyframes showFrame {
+          0% {
+            height: unset;
+            overflow: unset;
           }
-          .dim {
-            opacity: 0.5;
+          99% {
+            height: unset;
+            overflow: unset;
           }
-          @keyframes showFrame {
-            0% {
-              height: unset;
-              overflow: unset;
-            }
-            99% {
-              height: unset;
-              overflow: unset;
-            }
-            100% {
-              height: 0;
-            }
+          100% {
+            height: 0;
           }
-          @keyframes lastFrame {
-            0% {
-              height: unset;
-              overflow: unset;
-            }
-            100% {
-              height: unset;
-              overflow: unset;
-            }
+        }
+        @keyframes lastFrame {
+          0% {
+            height: unset;
+            overflow: unset;
           }
-        `}</style>
-      </Window>
-    );
-  }
+          100% {
+            height: unset;
+            overflow: unset;
+          }
+        }
+      `}</style>
+    </Window>
+  );
 }

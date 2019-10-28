@@ -1,6 +1,5 @@
 // Packages
 import NativeLink from 'next/link';
-import PropTypes from 'prop-types';
 
 export const GenericLink = props => {
   if (
@@ -18,17 +17,11 @@ export const GenericLink = props => {
   return <ExternalLink {...props} />;
 };
 
-export const InternalLink = (
-  { href, as, children, error = false, underlineOnHover = true },
-  { disabled, darkBg = false, inError = false } = {}
-) => (
+export const InternalLink = ({ href, as, children, error = false, underlineOnHover = true }) => (
   <NativeLink href={href} as={as}>
     <a
       className={`
-      ${darkBg ? 'dark' : ''}
-      ${disabled ? 'disabled' : ''}
       ${underlineOnHover ? '' : 'no-underline'}
-      ${inError ? 'in-error' : ''}
     `}
     >
       {children}
@@ -43,38 +36,10 @@ export const InternalLink = (
         a:not(.no-underline):hover {
           text-decoration: underline;
         }
-
-        a.disabled {
-          color: #999;
-        }
-
-        a.dark {
-          color: ${error ? 'red' : '#fff'};
-          border-bottom: 1px solid #fff;
-        }
-
-        a.dark:hover {
-          text-decoration: none;
-        }
-
-        a.in-error {
-          color: inherit;
-        }
-
-        a.in-error:hover {
-          border-bottom: 1px solid currentColor;
-          text-decoration: none;
-        }
       `}</style>
     </a>
   </NativeLink>
 );
-
-InternalLink.contextTypes = {
-  darkBg: PropTypes.bool,
-  disabled: PropTypes.bool,
-  inError: PropTypes.bool
-};
 
 export const AnchorLink = ({ href, onClick, children, underlineOnHover = true }) => (
   <a href={href} onClick={onClick}>
@@ -101,16 +66,8 @@ export const AnchorLink = ({ href, onClick, children, underlineOnHover = true })
   </a>
 );
 
-export const ExternalLink = ({ href, children }, { disabled, darkBg } = {}) => (
-  <a
-    className={`
-      ${darkBg ? 'dark' : ''}
-      ${disabled ? 'disabled' : ''}
-    `}
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
+export const ExternalLink = ({ href, children }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer">
     {children}
 
     <style jsx>
@@ -124,21 +81,7 @@ export const ExternalLink = ({ href, children }, { disabled, darkBg } = {}) => (
         a:hover {
           text-decoration: underline;
         }
-
-        a.disabled {
-          color: #999;
-        }
-
-        a.dark {
-          color: #fff;
-          text-decoration: underline;
-        }
       `}
     </style>
   </a>
 );
-
-ExternalLink.contextTypes = {
-  darkBg: PropTypes.bool,
-  disabled: PropTypes.bool
-};

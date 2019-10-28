@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
-import RouterEvents from '../lib/router-events';
+import Router from 'next/router';
 import { trackPageview } from '../lib/analytics';
 import { withMediaQuery } from './media-query';
 
-RouterEvents.on('routeChangeComplete', url => {
+Router.events.on('routeChangeComplete', url => {
   trackPageview(url);
 });
 

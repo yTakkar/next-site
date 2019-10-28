@@ -167,7 +167,7 @@ export default class extends Component {
     window.removeEventListener('resize', this.resize);
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     this.updateCategory(newProps.category);
   }
 

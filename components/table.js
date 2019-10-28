@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 // Packages
 import React from 'react';
 
@@ -20,40 +19,28 @@ const Table = ({ children }) => (
   </table>
 );
 
-class Row extends React.Component {
-  getChildContext() {
-    return {
-      header: this.props.header || false
-    };
-  }
+function Row({ children }) {
+  return (
+    <tr>
+      {children}
 
-  render() {
-    return (
-      <tr>
-        {this.props.children}
-
-        <style jsx>
-          {`
-            tr {
-              text-align: left;
-              font-weight: 400;
-              font-size: 14px;
-              line-height: 24px;
-            }
-          `}
-        </style>
-      </tr>
-    );
-  }
+      <style jsx>
+        {`
+          tr {
+            text-align: left;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 24px;
+          }
+        `}
+      </style>
+    </tr>
+  );
 }
 
-Row.childContextTypes = {
-  header: PropTypes.bool
-};
-
-const Column = ({ children }, context) =>
+const Cell = ({ children }) =>
   React.createElement(
-    context.header ? 'th' : 'td',
+    'td',
     {
       style: {
         verticalAlign: 'top'
@@ -62,10 +49,4 @@ const Column = ({ children }, context) =>
     children
   );
 
-Column.contextTypes = {
-  header: PropTypes.bool
-};
-
-const Cell = Column;
-
-export { Table, Row, Column, Cell };
+export { Table, Row, Cell };

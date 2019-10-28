@@ -1,12 +1,20 @@
 import withPost from '../../components/blog/with-post'
 import Image from '../../components/image'
 import { meta } from '../../blog/next-8-preview.mdx'
-import ReactTweet from 'react-tweet-embed'
 import { TerminalInput } from '../../components/text/terminal'
+import Head from 'next/head'
 
 export const config = { amp: true }
 
 export default withPost({ ...meta })
+
+<Head>
+  <script
+    async
+    custom-element="amp-twitter"
+    src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"
+  />
+</Head>
 
 We are proud today to introduce the production-ready Next.js 8, featuring:
 
@@ -103,7 +111,11 @@ This effort has resulted in up to **16 times better memory usage with no degrada
 
 Memory gets released much more quickly and processes don't crash anymore under lots of stress (many pages).
 
-<ReactTweet id="1085398982753468416" />
+<amp-twitter width="375"
+  height="320"
+  layout="responsive"
+  data-tweetid="1085398982753468416"
+  data-conversation="none" />
 
 We will be going in-depth on how we've achieved this optimization soon. Keep an eye out on the [Next.js blog](/blog).
 

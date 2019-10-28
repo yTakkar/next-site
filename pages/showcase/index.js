@@ -1,25 +1,23 @@
 import { withRouter } from 'next/router';
 import { SkipNavContent } from '@reach/skip-nav';
 
-import Page from '../components/page';
-import Header from '../components/header';
-import Footer from '../components/footer';
-import Navbar from '../components/navbar';
-import Tabs from '../components/tabs';
+import Page from '../../components/page';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
+import Navbar from '../../components/navbar';
+import Tabs from '../../components/tabs';
 
-import Title from '../components/showcase/title';
-import List from '../components/showcase/list';
-import Filter from '../components/showcase/filter';
-import SiteDetail from '../components/showcase/site-detail';
-import SocialMeta from '../components/social-meta';
+import Title from '../../components/showcase/title';
+import List from '../../components/showcase/list';
+import Filter from '../../components/showcase/filter';
+import SiteDetail from '../../components/showcase/site-detail';
+import SocialMeta from '../../components/social-meta';
 
-import { categories, mapping } from '../showcase-manifest';
+import { categories, mapping } from '../../showcase-manifest';
 
 const HEADER_HEIGHT = 16 * 12;
 
-function Showcase({ router }) {
-  const { item, from } = router.query;
-
+function Showcase({ item }) {
   return (
     <>
       <Header
@@ -74,7 +72,7 @@ function Showcase({ router }) {
           url="https://nextjs.org/showcase"
           description="Meet hundreds of beautiful websites powered by Next.js"
         />
-        <SiteDetail siteData={mapping[item]} from={from} />
+        {item && mapping[item] && <SiteDetail siteData={mapping[item]} />}
         <SkipNavContent />
         <Footer />
       </Page>
@@ -82,4 +80,11 @@ function Showcase({ router }) {
   );
 }
 
-export default withRouter(Showcase);
+export async function unstable_getStaticProps() {
+  return {
+    props: {},
+    revalidate: false
+  };
+}
+
+export default Showcase;

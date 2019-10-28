@@ -16,9 +16,7 @@ export default withRouter(
         return;
       }
       const item = this.props.siteData.internalUrl;
-      Router.router.push(`/showcase?from=click&item=${item}`, `/showcase/${item}`, {
-        shallow: true
-      });
+      Router.push(`/showcase/[item]`, `/showcase/${item}`);
     };
 
     handleIntersect = entry => {

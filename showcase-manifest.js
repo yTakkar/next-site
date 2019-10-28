@@ -363,13 +363,13 @@ const mapping = {
     internalUrl: 'underbelly',
     tags: ['creative']
   },
-  'syntax.fm': {
+  'syntax-fm': {
     title: 'Syntax',
     link: 'https://syntax.fm',
     src: '/static/images/showcases/syntax.fm.jpg',
     srcFallback: true,
     alexa: 422189,
-    internalUrl: 'syntax.fm',
+    internalUrl: 'syntax-fm',
     tags: ['dev', 'creative']
   },
   institchu: {
@@ -471,22 +471,22 @@ const mapping = {
     internalUrl: 'givecrypto',
     tags: ['finance']
   },
-  'satoshis.place': {
+  'satoshis-place': {
     title: "Satoshi's Place",
     link: 'https://satoshis.place',
     src: '/static/images/showcases/satoshis.place.jpg',
     srcFallback: true,
     alexa: 3061332,
-    internalUrl: 'satoshis.place',
+    internalUrl: 'satoshis-place',
     tags: ['entertainment']
   },
-  'repl.it': {
+  'repl-it': {
     title: 'repl.it',
     link: 'https://repl.it',
     src: '/static/images/showcases/repl.it.jpg',
     srcFallback: true,
     alexa: 7074,
-    internalUrl: 'repl.it',
+    internalUrl: 'repl-it',
     tags: ['dev']
   },
   'styled-components': {

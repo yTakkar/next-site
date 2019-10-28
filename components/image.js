@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useAmp } from 'next/amp';
 import Head from 'next/head';
@@ -17,13 +16,6 @@ import IObserver from './intersection-observer';
 class Image extends Component {
   static defaultProps = {
     lazy: true
-  };
-
-  static propTypes = {
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-    lazy: PropTypes.bool,
-    isAmp: PropTypes.bool.isRequired
   };
 
   state = {
@@ -56,12 +48,7 @@ class Image extends Component {
     const aspectRatio = `${String((height / width) * 100)}%`;
 
     return (
-      <IObserver
-        once
-        onIntersect={this.handleIntersect}
-        rootMargin="20%"
-        disabled={!lazy}
-      >
+      <IObserver once onIntersect={this.handleIntersect} rootMargin="20%" disabled={!lazy}>
         <figure
           className={classNames({
             oversize: width > 650,
@@ -112,9 +99,7 @@ class Image extends Component {
             </div>
 
             {caption && (
-              <figcaption
-                style={captionSpacing ? { marginTop: captionSpacing } : {}}
-              >
+              <figcaption style={captionSpacing ? { marginTop: captionSpacing } : {}}>
                 {caption}
               </figcaption>
             )}

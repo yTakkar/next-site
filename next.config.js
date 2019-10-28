@@ -39,7 +39,6 @@ const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'tr
 const BACKEND_URL = process.env.BACKEND_URL || 'https://nextjs.org';
 
 const nextConfig = {
-  target: 'serverless',
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx'],
   experimental: {
     granularChunks: true

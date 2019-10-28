@@ -25,18 +25,16 @@ const PermalinkIcon = () => (
   </span>
 );
 
-class Heading extends React.Component {
-  render() {
-    const { component, className, children, ...rest } = this.props;
-    return React.cloneElement(
-      component,
-      {
-        className: [className, component.props.className || ''].join(' '),
-        ...rest
-      },
-      children
-    );
-  }
+function Heading(props) {
+  const { component, className, children, ...rest } = props;
+  return React.cloneElement(
+    component,
+    {
+      className: [className, component.props.className || ''].join(' '),
+      ...rest
+    },
+    children
+  );
 }
 
 export default props => {
@@ -63,15 +61,9 @@ export default props => {
   }
 
   const targetStyle =
-    null != offsetTop
-      ? { marginTop: -offsetTop + 'px', paddingTop: offsetTop + 'px' }
-      : null;
+    null != offsetTop ? { marginTop: -offsetTop + 'px', paddingTop: offsetTop + 'px' } : null;
   return (
-    <Heading
-      className={props.lean ? 'lean' : ''}
-      component={component}
-      data-components-heading
-    >
+    <Heading className={props.lean ? 'lean' : ''} component={component} data-components-heading>
       <span id={id} className="target docs-anchor-target" style={targetStyle} />
       <a href={'#' + id}>{children}</a>
       <span className="permalink">

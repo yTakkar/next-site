@@ -1,7 +1,5 @@
-import { bool } from 'prop-types';
-
-export const H1 = ({ className, children }, { darkBg }) => (
-  <h1 className={`${className}${darkBg ? ' inverted' : ''}`}>
+export const H1 = ({ className, children }) => (
+  <h1 className={className}>
     {children}
     <style jsx>{`
       h1 {
@@ -14,17 +12,9 @@ export const H1 = ({ className, children }, { darkBg }) => (
         margin-left: 6px;
         margin-right: 6px;
       }
-
-      .inverted {
-        color: white;
-      }
     `}</style>
   </h1>
 );
-
-H1.contextTypes = {
-  darkBg: bool
-};
 
 const B = ({ children }) => (
   <span>
@@ -41,8 +31,8 @@ const B = ({ children }) => (
 
 H1.B = B;
 
-export const H2 = ({ children }, { darkBg }) => (
-  <h2 className={darkBg ? 'inverted' : ''}>
+export const H2 = ({ children }) => (
+  <h2>
     {children}
     <style jsx>{`
       h2 {
@@ -54,20 +44,12 @@ export const H2 = ({ children }, { darkBg }) => (
         margin-left: 6px;
         margin-right: 6px;
       }
-
-      .inverted {
-        color: white;
-      }
     `}</style>
   </h2>
 );
 
-H2.contextTypes = {
-  darkBg: bool
-};
-
-export const H3 = ({ children }, { darkBg }) => (
-  <h3 className={darkBg ? 'inverted' : ''}>
+export const H3 = ({ children }) => (
+  <h3>
     {children}
     <style jsx>{`
       h3 {
@@ -79,20 +61,12 @@ export const H3 = ({ children }, { darkBg }) => (
         margin-left: 6px;
         margin-right: 6px;
       }
-
-      .inverted {
-        color: white;
-      }
     `}</style>
   </h3>
 );
 
-H3.contextTypes = {
-  darkBg: bool
-};
-
-export const H4 = ({ children, isCommand }, { darkBg }) => (
-  <h4 className={(isCommand ? 'command' : '') + (darkBg ? ' inverted' : '')}>
+export const H4 = ({ children, isCommand }) => (
+  <h4 className={isCommand ? 'command' : ''}>
     {children}
     <style jsx>{`
       h4 {
@@ -102,9 +76,8 @@ export const H4 = ({ children, isCommand }, { darkBg }) => (
 
       .command {
         color: #bd10e0;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace,
-          serif;
+        font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+          Bitstream Vera Sans Mono, Courier New, monospace, serif;
         font-size: 0.9em;
       }
 
@@ -112,20 +85,12 @@ export const H4 = ({ children, isCommand }, { darkBg }) => (
         margin-left: 6px;
         margin-right: 6px;
       }
-
-      .inverted {
-        color: white;
-      }
     `}</style>
   </h4>
 );
 
-H4.contextTypes = {
-  darkBg: bool
-};
-
-export const H5 = ({ children }, { darkBg }) => (
-  <h5 className={darkBg ? 'inverted' : ''}>
+export const H5 = ({ children }) => (
+  <h5>
     {children}
     <style jsx>{`
       h5 {
@@ -137,14 +102,6 @@ export const H5 = ({ children }, { darkBg }) => (
         margin-left: 6px;
         margin-right: 6px;
       }
-
-      .inverted {
-        color: white;
-      }
     `}</style>
   </h5>
 );
-
-H5.contextTypes = {
-  darkBg: bool
-};

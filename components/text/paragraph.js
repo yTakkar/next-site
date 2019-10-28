@@ -1,7 +1,5 @@
-import PropTypes from 'prop-types';
-
-export const P = ({ className = '', children, large }, { darkBg } = {}) => (
-  <p className={className + (darkBg ? ' inverted' : '')}>
+export const P = ({ className = '', children, large }) => (
+  <p className={className}>
     {children}
     <style jsx>{`
       p {
@@ -9,17 +7,9 @@ export const P = ({ className = '', children, large }, { darkBg } = {}) => (
         font-size: ${large ? '18px' : '14px'};
         line-height: 24px;
       }
-
-      .inverted {
-        color: #fff;
-      }
     `}</style>
   </p>
 );
-
-P.contextTypes = {
-  darkBg: PropTypes.bool
-};
 
 export const PDIV = ({ children }) => (
   <div>
@@ -57,8 +47,8 @@ export const HR = () => (
   </div>
 );
 
-export const Quote = ({ children }, { darkBg } = {}) => (
-  <blockquote className={darkBg ? 'dark' : ''}>
+export const Quote = ({ children }) => (
+  <blockquote>
     {children}
     <style jsx>{`
       blockquote {
@@ -68,19 +58,11 @@ export const Quote = ({ children }, { darkBg } = {}) => (
         color: #888;
       }
 
-      blockquote.dark {
-        border-left-color: #fff;
-      }
-
       blockquote :global(div) {
         margin: 0;
       }
     `}</style>
   </blockquote>
 );
-
-Quote.contextTypes = {
-  darkBg: PropTypes.bool
-};
 
 P.B = B;

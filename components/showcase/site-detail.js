@@ -1,7 +1,6 @@
 import { PureComponent } from 'react';
 import Router from 'next/router';
 import Head from 'next/head';
-import Fade from '../fade';
 
 function clearRoute() {
   Router.router.push('/showcase', '/showcase', { shallow: true });
@@ -14,8 +13,6 @@ export default class extends PureComponent {
 
   render() {
     const { siteData } = this.props;
-
-    if (!siteData) return null;
 
     return (
       <>
@@ -66,17 +63,15 @@ export default class extends PureComponent {
               }
             }
           `}</style>
-          <Fade>
-            <div className="preview">
-              <img src={siteData.src} alt={siteData.title} />
-              <div className="info">
-                <h3 className="f4">{siteData.title}</h3>
-                <a href={siteData.link} className="f5" rel="noopener noreferrer" target="_blank">
-                  {siteData.link}
-                </a>
-              </div>
+          <div className="preview">
+            <img src={siteData.src} alt={siteData.title} />
+            <div className="info">
+              <h3 className="f4">{siteData.title}</h3>
+              <a href={siteData.link} className="f5" rel="noopener noreferrer" target="_blank">
+                {siteData.link}
+              </a>
             </div>
-          </Fade>
+          </div>
         </div>
       </>
     );

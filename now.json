@@ -10,7 +10,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@ijjk/now-next@0.0.5-spr"
+      "use": "@now/next@canary"
     }
   ],
   "routes": [

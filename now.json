@@ -5,7 +5,7 @@
     "ACCESS_TOKEN_SECRET": "@next-learn-access-token-secret",
     "GITHUB_CLIENT_ID": "@next-learn-github-client-id",
     "GITHUB_CLIENT_SECRET": "@next-learn-github-client-secret",
-    "AIRTABLE_API_KEY": "@next-learn-airtable-api-key"
+    "AIRTABLE_API_KEY": "@airtable_key"
   },
   "builds": [
     {

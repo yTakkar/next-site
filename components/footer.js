@@ -62,26 +62,25 @@ export default withPure(() => (
         <div className="row f5">
           <div className="column">
             <h4 className="fw5">
-              <a href="/docs">Docs</a>
+              <Link href="/docs" prefetch={false}>
+                <a>Docs</a>
+              </Link>
             </h4>
-            <p>
-              <a href="/docs#setup">Setup</a>
-            </p>
-            <p>
-              <a href="/docs#custom-configuration">Configuration</a>
-            </p>
-            <p>
-              <a href="/docs#static-html-export">Static Export</a>
-            </p>
-            <p>
-              <a href="/docs#recipes">Recipes</a>
-            </p>
-            <p>
-              <a href="/docs#faq">FAQ</a>
-            </p>
-            <p>
-              <a href="/docs#contributing">Contributing</a>
-            </p>
+            <h4 className="fw5">
+              <Link href="/learn/basics/getting-started" prefetch={false}>
+                <a>Learn</a>
+              </Link>
+              <h4 className="fw5">
+                <Link href="/showcase" prefetch={false}>
+                  <a>Showcase</a>
+                </Link>
+              </h4>
+              <h4 className="fw5">
+                <Link href="/blog" prefetch={false}>
+                  <a>Blog</a>
+                </Link>
+              </h4>
+            </h4>
           </div>
           <div className="column">
             <h4 className="fw5">Features</h4>
@@ -99,36 +98,6 @@ export default withPure(() => (
             </p>
           </div>
           <div className="column">
-            <h4 className="fw5">
-              <Link href="/learn/basics/getting-started">
-                <a>Learn</a>
-              </Link>
-            </h4>
-            <p>
-              <Link href="/learn/basics/getting-started">
-                <a>Basics</a>
-              </Link>
-            </p>
-            <p>
-              <Link href="/learn/excel/static-html-export">
-                <a>Excel</a>
-              </Link>
-            </p>
-            <h4 className="fw5">
-              <Link href="/showcase">
-                <a>Showcase</a>
-              </Link>
-            </h4>
-            <h4 className="fw5">
-              <a href="/blog">Blog</a>
-            </h4>
-          </div>
-          <div className="column">
-            {
-              // <p>Case Studies</p>
-              // <h4 className="fw5">Enterprise</h4>
-              // <p>Plans</p>
-            }
             <h4 className="fw5">More</h4>
             <p>
               <a href="https://github.com/zeit/next.js" rel="noopener noreferrer" target="_blank">
@@ -148,11 +117,6 @@ export default withPure(() => (
               <a href={links.spectrum} rel="noopener noreferrer" target="_blank">
                 Spectrum
               </a>
-            </p>
-            <p>
-              <Link href="/design">
-                <a>Design</a>
-              </Link>
             </p>
             <p>
               <Link href="/telemetry">

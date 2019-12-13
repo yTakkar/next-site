@@ -62,9 +62,7 @@ export default withPure(() => (
         <div className="row f5">
           <div className="column">
             <h4 className="fw5">
-              <Link href="/docs" prefetch={false}>
-                <a>Docs</a>
-              </Link>
+              <a href="/docs">Docs</a>
             </h4>
             <h4 className="fw5">
               <Link href="/learn/basics/getting-started" prefetch={false}>

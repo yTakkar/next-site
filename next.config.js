@@ -34,30 +34,59 @@ const withMDX = nextMDX({
 
 const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' });
 
-// To test the API use localhost here
-// const BACKEND_URL = 'http://localhost:3000';
-const BACKEND_URL = process.env.BACKEND_URL || 'https://nextjs.org';
-
 const nextConfig = {
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx'],
   experimental: {
-    granularChunks: true
+    granularChunks: true,
+    rewrites() {
+      return [
+        {
+          source: '/feed.xml',
+          destination: '/_next/static/feed.xml'
+        }
+      ];
+    },
+    redirects() {
+      return [
+        {
+          source: '/learn{/}?',
+          statusCode: 301,
+          destination: '/learn/basics/getting-started'
+        },
+        {
+          source: '/learn/basics/server-side-support-for-clean-urls{/}?',
+          statusCode: 301,
+          destination: '/learn/basics/clean-urls-with-dynamic-routing'
+        },
+        {
+          source: '/learn/excel/automatic-prerendering{/}?',
+          statusCode: 301,
+          destination: '/learn/excel/automatic-static-optimization'
+        },
+        {
+          source: '/features{/}?',
+          statusCode: 301,
+          destination: '/features/static-exporting'
+        },
+        {
+          source: '/features/ssr{/}?',
+          statusCode: 301,
+          destination: '/features/server-side-rendering'
+        },
+        {
+          source: '/case-studies{/}?',
+          statusCode: 301,
+          destination: '/case-studies/hulu'
+        }
+      ];
+    }
   },
   env: {
-    BACKEND_URL,
     FIRST_COURSE: 'basics',
     FIRST_LESSON: 'getting-started',
     SITE_NAME: 'Next.js'
   },
   webpack: (config, { dev, isServer }) => {
-    config.plugins = config.plugins || [];
-    config.plugins.push(
-      new webpack.ContextReplacementPlugin(
-        /highlight\.js[/\\]lib[/\\]languages$/,
-        new RegExp(`^./(${['javascript', 'json', 'xml'].join('|')})$`)
-      )
-    );
-
     if (isServer && !dev) {
       const originalEntry = config.entry;
       config.entry = async () => {

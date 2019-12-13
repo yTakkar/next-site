@@ -5,43 +5,5 @@
       "src": "package.json",
       "use": "@now/next@canary"
     }
-  ],
-  "routes": [
-    {
-      "src": "/learn/?",
-      "status": 301,
-      "headers": { "Location": "/learn/basics/getting-started" }
-    },
-    {
-      "src": "/learn/basics/server-side-support-for-clean-urls/?",
-      "status": 301,
-      "headers": { "Location": "/learn/basics/clean-urls-with-dynamic-routing" }
-    },
-    {
-      "src": "/learn/excel/automatic-prerendering/?",
-      "status": 301,
-      "headers": { "Location": "/learn/excel/automatic-static-optimization" }
-    },
-    {
-      "src": "/features/?",
-      "status": 301,
-      "headers": { "Location": "/features/static-exporting" }
-    },
-    {
-      "src": "/features/ssr/?",
-      "status": 301,
-      "headers": { "Location": "/features/server-side-rendering" }
-    },
-    {
-      "src": "/case-studies/?",
-      "status": 301,
-      "headers": {
-        "Location": "/case-studies/hulu"
-      }
-    },
-    {
-      "src": "/feed.xml",
-      "dest": "/_next/static/feed.xml"
-    }
   ]
 }

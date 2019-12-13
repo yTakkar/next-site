@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { useAmp } from 'next/amp';
 import Container from '../container';
 import Tabs from '../tabs';
@@ -21,6 +20,21 @@ export default function Demo() {
           {(onSelect, selectedId) => (
             <div>
               <style jsx>{`
+                .demo-body :global(.editor .content) {
+                  padding: 1rem;
+                }
+                .demo-body :global(.editor pre) {
+                  margin: 0;
+                  white-space: pre-wrap;
+                }
+                .demo-body :global(.editor .token) {
+                  color: #f1f1f1;
+                }
+
+                .demo-body :global(.editor .token.plain-text) {
+                  color: #c3c3c3;
+                }
+
                 .demo-header {
                   display: flex;
                   align-items: center;

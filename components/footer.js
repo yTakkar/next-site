@@ -117,7 +117,7 @@ export default withPure(() => (
               </a>
             </p>
             <p>
-              <Link href="/telemetry">
+              <Link href="/telemetry" prefetch={false}>
                 <a>Telemetry</a>
               </Link>
             </p>

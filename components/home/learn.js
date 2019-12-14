@@ -14,8 +14,9 @@ export default function Learn() {
         description="Tutorials, examples and quizzes. Learn Next.js step-by-step and earn points ✨."
       />
       <Link href="/learn/basics/getting-started">
-        <a>
+        <a title="Get started learning Next.js">
           <Image
+            alt="Learn page overview"
             margin={0}
             oversize={false}
             src="/static/images/learn.png"

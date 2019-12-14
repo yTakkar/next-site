@@ -13,6 +13,11 @@ export default withPure(() => (
       <footer>
         <style jsx>
           {`
+            .grid {
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr 1fr;
+              grid-row-gap: 2rem;
+            }
             footer {
               padding: 2rem 0 4rem;
               min-height: 400px;
@@ -34,9 +39,6 @@ export default withPure(() => (
             .copyright div {
               margin-top: 0.5rem;
             }
-            .row {
-              align-items: flex-start;
-            }
             h4 {
               margin-bottom: 0.75rem;
             }
@@ -44,43 +46,47 @@ export default withPure(() => (
               margin-top: 0;
               margin-bottom: 0.25rem;
             }
-            * + h4 {
-              margin-top: 1rem;
-            }
-            // CSS only media query for mobile
-            @media screen and (max-width: 640px) {
-              footer .column {
-                flex: 1 1 120px;
+            @media screen and (max-width: 700px) {
+              .grid {
+                grid-template-columns: 1fr 1fr;
               }
-              footer .row {
-                flex-direction: row;
-                flex-wrap: wrap;
+
+              h4,
+              p {
+                margin: 0;
+              }
+
+              a {
+                display: block;
+                padding-top: 15px;
+                padding-bottom: 15px;
               }
             }
           `}
         </style>
-        <div className="row f5">
-          <div className="column">
-            <h4 className="fw5">
+        <div className="grid f5">
+          <div>
+            <h4 className="fw5">General resources</h4>
+            <p>
               <a href="/docs">Docs</a>
-            </h4>
-            <h4 className="fw5">
+            </p>
+            <p>
               <Link href="/learn/basics/getting-started" prefetch={false}>
                 <a>Learn</a>
               </Link>
-              <h4 className="fw5">
-                <Link href="/showcase" prefetch={false}>
-                  <a>Showcase</a>
-                </Link>
-              </h4>
-              <h4 className="fw5">
-                <Link href="/blog" prefetch={false}>
-                  <a>Blog</a>
-                </Link>
-              </h4>
-            </h4>
+            </p>
+            <p>
+              <Link href="/showcase" prefetch={false}>
+                <a>Showcase</a>
+              </Link>
+            </p>
+            <p>
+              <Link href="/blog" prefetch={false}>
+                <a>Blog</a>
+              </Link>
+            </p>
           </div>
-          <div className="column">
+          <div>
             <h4 className="fw5">Features</h4>
             <p>
               <a href="/features/server-side-rendering">SSR</a>
@@ -95,7 +101,7 @@ export default withPure(() => (
               <a href="/features/progressive-web-apps">PWA</a>
             </p>
           </div>
-          <div className="column">
+          <div>
             <h4 className="fw5">More</h4>
             <p>
               <a href="https://github.com/zeit/next.js" rel="noopener noreferrer" target="_blank">
@@ -122,7 +128,7 @@ export default withPure(() => (
               </Link>
             </p>
           </div>
-          <div className="column">
+          <div>
             <h4 className="fw5">About ZEIT</h4>
             <p>
               <a href="https://zeit.co/oss" rel="noopener noreferrer" target="_blank">

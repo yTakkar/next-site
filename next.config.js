@@ -38,6 +38,7 @@ const nextConfig = {
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx'],
   experimental: {
     granularChunks: true,
+    deferScripts: true,
     prefetchPreload: true,
     rewrites() {
       return [

@@ -37,6 +37,7 @@ const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'tr
 const nextConfig = {
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx'],
   experimental: {
+    babelMultiThread: true,
     granularChunks: true,
     deferScripts: true,
     prefetchPreload: true,

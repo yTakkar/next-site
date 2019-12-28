@@ -157,6 +157,8 @@ function AutoComplete({
           outline: 0;
           padding: 0;
           padding-right: 1rem;
+          -moz-appearance: none;
+          -webkit-appearance: none;
         }
 
         @media screen and (max-width: 960px) {

@@ -1,0 +1,14 @@
+{
+  "excluded": [
+    "how-to-use",
+    "setup",
+    "quick-start",
+    "manual-setup",
+    "system-requirements",
+    "related",
+    "automatic-code-splitting"
+  ],
+  "redirects": {
+    "css": "/basic-features/built-in-css-support"
+  }
+}

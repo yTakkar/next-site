@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Error from 'next/error';
 import matter from 'gray-matter';
+import hashMap from '../../lib/docs/hash-map.json';
 import { getSlug, removeFromLast } from '../../lib/docs/utils';
 import { getPaths, findRouteByPath, fetchDocsManifest } from '../../lib/docs/page';
 import { getRawFileFromRepo } from '../../lib/github';
@@ -14,17 +15,6 @@ import DocsPage from '../../components/docs/docs-page';
 import SocialMeta from '../../components/social-meta';
 import { Sidebar, SidebarMobile, Post, Category, Heading } from '../../components/sidebar';
 import Page from '../../components/page';
-
-// These hashes don't need to be redirected to the olds docs because they are covered
-// by the first page of the new docs
-const excludedHashes = [
-  'how-to-use',
-  'quick-start',
-  'manual-setup',
-  'setup',
-  'system-requirements',
-  'related'
-];
 
 function getCategoryPath(routes) {
   const route = routes.find(r => r.path);
@@ -78,9 +68,13 @@ const Docs = ({ routes, route, data, html }) => {
     if (asPath.startsWith('/docs#')) {
       const hash = asPath.split('#')[1];
 
-      if (!excludedHashes.includes(hash)) {
-        // Redirect the user to the old docs
-        router.push(`/docs/old#${hash}`);
+      // excluded hashes don't need to be redirected to the olds docs because they are covered
+      // by the first page of the new docs (/docs/getting-started)
+      if (!hashMap.excluded.includes(hash)) {
+        const to = hashMap.redirects[hash];
+        // Redirect the user to the section in the new docs that corresponds to the hash,
+        // or to the old docs if a redirect for that hash is not set
+        router.push(`/docs${to || `/old#${hash}`}`);
       }
     }
   }, [asPath]);

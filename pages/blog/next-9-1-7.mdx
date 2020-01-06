@@ -136,9 +136,12 @@ inadvertently import a polyfill for one of these APIs.
 
 The list of built-in APIs and the polyfills they make obsolete are as follows:
 
-- [**fetch()**](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) — Replacing: `whatwg-fetch`, `isomorphic-fetch`, `unfetch`, and `isomorphic-unfetch`.
+- [**fetch()**](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) — Replacing: `whatwg-fetch` and `unfetch`.
 - [**URL**](https://developer.mozilla.org/en-US/docs/Web/API/URL) — Replacing: the [`url` package (Node.js API)](https://nodejs.org/api/url.html).
 - [**Object.assign()**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) — Replacing: `object-assign`, `object.assign`, and `core-js/object/assign`.
+
+You still need to import `isomorphic-fetch` or `isomorphic-unfetch` if you're
+using `fetch()` on the server.
 
 This change is completely non-breaking, and all polyfills are made with the
 most spec-compliant versions available.

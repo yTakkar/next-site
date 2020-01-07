@@ -38,7 +38,7 @@ function DocsPage({ path, html }) {
           font-size: 0.875rem;
           justify-content: flex-end;
           border-top: 1px solid #f3f3f3;
-          margin-top: 2.5rem;
+          margin-top: 3rem;
           padding: 1.5rem 0;
         }
       `}</style>
@@ -58,8 +58,7 @@ function DocsPage({ path, html }) {
           font-size: 1.2rem;
         }
         .docs .heading {
-          margin: 0;
-          margin-top: 2.5rem;
+          margin: 3.5rem 0 2rem 0;
           font-weight: 600;
         }
         .docs .heading > span[id] {
@@ -93,6 +92,10 @@ function DocsPage({ path, html }) {
           }
         }
 
+        .docs p {
+          margin: 1.25rem 0;
+        }
+
         /* Inline code */
         .docs code.inline {
           color: rgb(212, 0, 255);
@@ -103,11 +106,12 @@ function DocsPage({ path, html }) {
 
         /* Code */
         .docs pre {
-          padding: 1.25rem;
-          margin: 1rem 0;
-          border: 1px solid #d8d8d8;
+          background: #1d1f21;
           white-space: pre;
           overflow: auto;
+          padding: 1.5rem;
+          margin: 1.5rem 0;
+          border-radius: 3px;
           -webkit-overflow-scrolling: touch;
         }
         .docs pre > code {
@@ -137,9 +141,11 @@ function DocsPage({ path, html }) {
 
         /* details */
         .docs details {
-          margin: 1rem 0;
-          padding: 0.25rem 0.5rem;
-          background: #f9f9f9;
+          margin: 1.5rem 0;
+          padding: 0.5rem 1rem;
+          background: #fafafa;
+          border: 1px solid #eaeaea;
+          border-radius: 3px;
         }
         .docs details[open] {
           overflow: hidden;
@@ -152,22 +158,22 @@ function DocsPage({ path, html }) {
 
         /* Quotes */
         .docs blockquote {
-          margin: 1rem 0;
+          color: #666666;
+          background: #fafafa;
+          border: 1px solid #eaeaea;
+          border-radius: 3px;
           padding: 1rem 1.25rem;
-          background: #f7f7f7;
+          margin: 1.5rem 0;
         }
         .docs blockquote p {
           margin: 0;
-        }
-        .docs blockquote pre {
-          background: white;
         }
 
         /* Card */
         .docs .card {
           margin: 1.5rem 0;
           border-radius: 5px;
-          border: 1px solid #f3f3f3;
+          border: 1px solid #eaeaea;
           box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
           transition: box-shadow 0.2s ease;
         }
@@ -201,10 +207,25 @@ function DocsPage({ path, html }) {
         /* Misc */
         .docs hr {
           border: 0;
-          border-top: 1px solid #f3f3f3;
+          border-top: 1px solid #eaeaea;
+          margin: 1.25rem 0;
         }
-        .docs ul li {
-          margin-bottom: 0.5rem;
+        .docs ul,
+        .docs ol {
+          padding-left: 1.5rem;
+          margin: 1.25rem 0;
+        }
+        .docs ul {
+          list-style-type: none;
+        }
+        .docs li {
+          margin-bottom: 0.625rem;
+        }
+        ul :global(li:before) {
+          content: '-';
+          color: #999999;
+          position: absolute;
+          margin-left: -1rem;
         }
       `}</style>
     </div>

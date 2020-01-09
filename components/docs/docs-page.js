@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { GITHUB_URL, REPO_NAME, REPO_BRANCH } from '../../lib/github-constants';
 import Notification from './notification';
+import Feedback from './feedback';
 
 function areEqual(prevProps, props) {
   return prevProps.path === props.path;
@@ -17,6 +18,8 @@ function DocsPage({ path, html }) {
       </Notification>
       {/* eslint-disable-next-line */}
       <div dangerouslySetInnerHTML={{ __html: html }} />
+      <hr />
+      <Feedback />
       <footer>
         <a href={editUrl} target="_blank" rel="noopener noreferrer">
           Edit this page on GitHub
@@ -33,12 +36,15 @@ function DocsPage({ path, html }) {
             margin: 0;
           }
         }
+        hr {
+          margin-top: 3rem;
+        }
         footer {
           display: flex;
           font-size: 0.875rem;
           justify-content: flex-end;
           border-top: 1px solid #f3f3f3;
-          margin-top: 3rem;
+          margin-top: 2.5rem;
           padding: 1.5rem 0;
         }
       `}</style>
@@ -56,6 +62,9 @@ function DocsPage({ path, html }) {
         }
         .docs h4 {
           font-size: 1.2rem;
+        }
+        .docs h5 {
+          font-size: 1rem;
         }
         .docs .heading {
           margin: 3.5rem 0 2rem 0;

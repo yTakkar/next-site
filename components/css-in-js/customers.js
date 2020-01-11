@@ -15,7 +15,7 @@ import Kap from '../icons/companies/kap';
 const slides = [
   {
     href: 'https://ticketmaster.com/',
-    image: '/static/images/showcases/ticketmaster.jpg',
+    image: '/static/images/showcases/ticketmaster-1.jpg',
     alt: 'Ticketmaster',
     logo: <Ticketmaster />
   },
@@ -39,7 +39,7 @@ const slides = [
   },
   {
     href: 'https://auth0.com/',
-    image: '/static/images/showcases/showcases-03.jpg',
+    image: '/static/images/showcases/auth0.jpg',
     alt: 'Auth0',
     logo: <Auth0 />
   },

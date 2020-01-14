@@ -155,7 +155,26 @@ If there was a large number of marketing pages compared to other page types, the
 
 Our goal is to optimize for all page types, in one application.
 
-[Alex Castle](https://twitter.com/atcastle) [defined a new method of chunking](https://github.com/zeit/next.js/issues/7631) (creation of separate JavaScript files) that allows more optimized commons chunking with multiple files, especially when many pages are involved.
+[Alex Castle](https://twitter.com/atcastle) [proposed a new method of chunking](https://github.com/zeit/next.js/issues/7631) (creation of separate JavaScript files) that allows more optimized commons chunking with multiple files, especially when many pages are involved.
+
+Today, we're happy to announce this new chunking behavior is on-by-default in Next.js 9.2.
+We'd like to extend deep gratitude to the [Google Chrome team](/blog/next-9#google-chrome-collaboration) and [Alex Castle](https://twitter.com/atcastle) for contributing this change.
+This change reflects the cumulative effort of weeks of research, lab testing, real-world testing, and implementation.
+
+The new chunking implementation leverages [HTTP/2](https://developers.google.com/web/fundamentals/performance/http2) to deliver more, smaller chunks.
+
+Under the new heuristic, chunks are created for:
+
+- A minimal chunk for each page
+- A framework chunk containing React, ReactDOM, React's Scheduler, etc
+- Library chunks for any `node_module` dependency over 160kb (pre-minify/gzip)
+- A commons chunk for code used across all pages
+- As many shared chunks (used by 2 or more pages) as possible, optimizing for overall application size and initial load speed
+- Next.js' client-side runtime
+- Webpack runtime
+
+This new behavior is fully backwards compatible.
+Upgrading to the latest version of Next.js is all you need to do to leverage this performance improvement.
 
 ### Catch-All Dynamic Routes
 

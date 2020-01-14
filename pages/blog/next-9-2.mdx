@@ -67,9 +67,67 @@ This CSS file will be loaded via a `<link>` tag automatically injected into the 
 
 This new feature is fully backwards compatible. If you are using `@zeit/next-css` or other CSS related plugins the feature is disabled to avoid conflicts.
 
-If you are currently using `@zeit/next-css` we recommend removing the plugin from your `next.config.js` and moving to the built-in CSS support.
+If you are currently using `@zeit/next-css` we recommend removing the plugin from your `next.config.js` and `package.json`, thereby moving to the built-in CSS support.
 
 ### Built-In CSS Module Support for Component-Level Styles
+
+Next.js now supports [CSS Modules](https://github.com/css-modules/css-modules) using the `[name].module.css` file naming convention.
+
+Unlike the support previously available in Next.js 5 using `next-css`,
+[global CSS](#built-in-css-support-for-global-stylesheets) and CSS modules can
+now **coexist** — `next-css` required all `.css` files in your application be
+handled as global or local, but not both.
+
+CSS Modules locally scope CSS by automatically creating unique class names.
+This allows you to use the same CSS class name in different files without worrying about collisions.
+
+This behavior makes CSS Modules the ideal way to include component-level CSS.
+CSS Module files **can be imported anywhere in your application**.
+
+For example, consider a reusable `Button` component in the `components/` folder:
+
+First, create `components/Button.module.css` with the following content:
+
+```css
+/*
+You do not need to worry about .error {} colliding with any other `.css` or
+`.module.css` files!
+*/
+.error {
+  color: white;
+  background-color: red;
+}
+```
+
+Then, create `components/Button.js`, importing and using the above CSS file:
+
+```jsx
+import styles from './Button.module.css'
+
+export function Button() {
+  return (
+    <button
+      type="button"
+      // Note how the "error" class is accessed as a property on the imported
+      // `styles` object.
+      className={styles.error}
+    >
+      Destroy
+    </button>
+  )
+}
+```
+
+CSS Modules are an _optional_ feature and are only enabled for files with the `.module.css` extension.
+Regular [`<link>` stylesheets](https://nextjs.org/docs/api-reference/next/head) and [global CSS files](#built-in-css-support-for-global-stylesheets) are still supported.
+
+In production, all CSS Module files are automatically concatenated into **many minified and code-split `.css` files**.
+These `.css` files represent hot execution paths in your application, ensuring the minimal amount of CSS is loaded per-page for your application to paint.
+
+Like above, this new feature is fully backwards compatible.
+If you are using `@zeit/next-css` or other CSS related plugins the feature is disabled to avoid conflicts.
+
+If you are currently using `@zeit/next-css` we recommend removing the plugin from your `next.config.js` and `package.json`, thereby moving to the built-in CSS support.
 
 ### Improved Code-Splitting Strategy
 

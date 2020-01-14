@@ -23,12 +23,19 @@ All of these benefits are non-breaking and fully backwards compatible. All you n
 
 ### Built-In CSS Support for Global Stylesheets
 
-Next.js now has native support for importing stylesheets into your application.
-Prior to this support, is was necessary to use custom configuration, a CSS-in-JS solution, or manually append `<link>` tags.
+Next.js 5 introduced support for importing CSS through a custom plugin called `next-css` that add extra behavior on top of Next.js.
 
-To add a stylesheet to your application, import the CSS file within `pages/_app.js`.
+Over time we got consistent feedback from companies and users of Next.js that they end up adding `next-css` to their Next.js application quite often.
 
-For example, consider the following stylesheet named `styles.css`:
+Furthermore `next-css` had a few missing constraints in how you can import CSS. For example you could import a CSS file in every file of the project, however this imported CSS file would be global for the whole application.
+
+In order to solve improve developer experience and solve these inconsistencies we started working on bringing CSS imports support to Next.js by default.
+
+We're excited to announce that Next.js now has native support for importing stylesheets into your application.
+
+To get started using CSS imports in your application, import the CSS file within `pages/_app.js`.
+
+For example, consider the following stylesheet named `styles.css` in the root of your project:
 
 ```css
 body {
@@ -38,7 +45,7 @@ body {
 ```
 
 Create a [`pages/_app.js` file](https://nextjs.org/docs/advanced-features/custom-app) if not already present.
-Then, [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) the `styles.css` file:
+Then, import the `styles.css` file:
 
 ```jsx
 import '../styles.css'
@@ -49,15 +56,17 @@ export default function MyApp({ Component, pageProps }) {
 }
 ```
 
-Since stylesheets are global by nature, they must be imported in your [Custom `<App>`](https://nextjs.org/docs/advanced-features/custom-app).
-This is necessary to avoid class name and ordering conflicts.
+Since stylesheets are global by nature, they must be imported in the [Custom `<App>` component](https://nextjs.org/docs/advanced-features/custom-app).
+This is necessary to avoid class name and ordering conflicts for global styles.
 
-In development, expressing stylesheets this way allows your styles to be hot reloaded as you edit them—meaning you can keep application state.
+In development, expressing stylesheets this way allows your styles to be automatically updated on the page as you edit them.
 
 In production, all CSS files will be automatically concatenated into a single minified `.css` file.
-This CSS file will be loaded via a `<link>` tag automatically injected into your application.
+This CSS file will be loaded via a `<link>` tag automatically injected into the default HTML markup Next.js generated.
 
-If you were previously using `@zeit/next-css`, you may now remove the plugin from your `next.config.js`.
+This new feature is fully backwards compatible. If you are using `@zeit/next-css` or other CSS related plugins the feature is disabled to avoid conflicts.
+
+If you are currently using `@zeit/next-css` we recommend removing the plugin from your `next.config.js` and moving to the built-in CSS support.
 
 ### Built-In CSS Module Support for Component-Level Styles
 

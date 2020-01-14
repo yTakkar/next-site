@@ -1,0 +1,43 @@
+import withPost from '../../components/blog/with-post'
+import Image from '../../components/image'
+import { meta } from '../../blog/next-9-2-preview.mdx'
+import { TerminalInput } from '../../components/text/terminal'
+import Caption from '../../components/text/caption'
+
+export const config = { amp: true }
+
+export default withPost({ ...meta })
+
+We are excited today to introduce the production-ready Next.js 9.2, featuring:
+
+- **[Built-In CSS Support for Global Stylesheets](#built-in-css-support-for-global-stylesheets)**: Applications can now directly import `.css` files as global stylesheets.
+- **[Built-In CSS Module Support for Component-Level Styles](#built-in-css-support-for-global-stylesheets)**: Leveraging the `.module.css` convention, locally scoped CSS can be imported and used anywhere in your application.
+- **[Improved Code-Splitting Strategy](#improved-code-splitting-strategy)**: The Google Chrome team heavily optimized Next.js' code-splitting strategy, resulting in much smaller client-side bundles. Furthermore, they've maximized [HTTP/2](https://developers.google.com/web/fundamentals/performance/http2) utilization to improve page load speed without hurting HTTP/1.1 performance.
+- **[Catch-All Dynamic Routes](#catch-all-dynamic-routes)**: Next.js' Dynamic Routes now support catch-all routes, supporting a variety of new use-cases, e.g. CMS-powered websites.
+
+All of these benefits are non-breaking and fully backwards compatible. All you need to do to update is run:
+
+<TerminalInput
+  prefix
+>{`npm i next@latest react@latest react-dom@latest`}</TerminalInput>
+
+### Built-In CSS Support for Global Stylesheets
+
+### Built-In CSS Module Support for Component-Level Styles
+
+### Improved Code-Splitting Strategy
+
+### Catch-All Dynamic Routes
+
+## Community
+
+We're very excited to see the continued growth in Next.js adoption:
+
+- We have had over **880** independent contributors.
+- On GitHub, the project has been starred over **44,000** times.
+- The [examples directory](https://github.com/zeit/next.js/tree/canary/examples) has over **220 examples.**
+
+The Next.js community on [spectrum.chat/next-js](https://spectrum.chat/next-js) now has over **13,800** members.
+[Join us](https://spectrum.chat/next-js)!
+
+We are thankful to our community and all the external feedback and contributions that helped shape this release.

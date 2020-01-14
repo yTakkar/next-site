@@ -74,6 +74,18 @@ If you are currently using `@zeit/next-css` we recommend removing the plugin fro
 
 ### Catch-All Dynamic Routes
 
+With the release of Next.js 9 we introduced [dynamic route segments](https://nextjs.org/blog/next-9#dynamic-route-segments) with the goal of simplifying dynamic segments in Next.js without the need for a custom server. This feature has been massively adopted by Next.js users.
+
+There were still some cases that the dynamic route segments feature didn't cover.
+
+One of these cases was catch-all routes. For example, routing a wildcard like `/post/*` as a page. This is especially useful when you have a nested structure that is defined by a content source like a CMS.
+
+You can now create catch-all dynamic routes using the `[...name]` syntax.
+
+For example: `pages/post/[...slug].js` will match `/post/:slug*`.
+
+`slug` will be provided in the router query object as an array of individual path parts, for example: `/post/example-category/hello-world`. The Router `query` object will hold `slug: ['example-category', 'hello-world]`.
+
 ## Community
 
 We're very excited to see the continued growth in Next.js adoption:

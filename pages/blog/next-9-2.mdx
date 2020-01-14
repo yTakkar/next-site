@@ -131,6 +131,32 @@ If you are currently using `@zeit/next-css` we recommend removing the plugin fro
 
 ### Improved Code-Splitting Strategy
 
+Next.js versions prior to 9.2 had a fixed set of JavaScript bundles required to load and make a page interactive:
+
+- The page's JavaScript file
+- A file with common JavaScript
+- Next.js client-side runtime bundle
+- Webpack client-side runtime bundle
+- Dynamic imports (added through `next/dynamic`, when used)
+
+To make the page interactive, all these bundles have to load as they all depend on each other to be able to boot up React in the browser.
+
+Because all of these bundles are required for the application to become interactive, it's important they are as optimized as possible.
+In practice, this means not over-downloading code from other parts of the application.
+
+For this reason, Next.js used a `commons` bundle that held common JavaScript between pages.
+The calculation of the old bundle-splitting strategy to generate `commons` was a usage-ratio heuristic.
+If a module was used in more than 50% of all pages, it'd be marked as a common module.
+Otherwise, it was bundled in the page's JavaScript file.
+
+However, applications could exist of many different types of pages.
+For example, marketing pages, a blog, and a dashboard.
+If there was a large number of marketing pages compared to other page types, the commons calculation would cause a more optimized result for the marketing pages.
+
+Our goal is to optimize for all page types, in one application.
+
+[Alex Castle](https://twitter.com/atcastle) [defined a new method of chunking](https://github.com/zeit/next.js/issues/7631) (creation of separate JavaScript files) that allows more optimized commons chunking with multiple files, especially when many pages are involved.
+
 ### Catch-All Dynamic Routes
 
 With the release of Next.js 9 we introduced [dynamic route segments](https://nextjs.org/blog/next-9#dynamic-route-segments) with the goal of simplifying dynamic segments in Next.js without the need for a custom server. This feature has been massively adopted by Next.js users.

@@ -31,8 +31,9 @@ export default () => {
           description="Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more."
         />
         <SkipNavContent />
-        <Notification href="/blog/next-9" title="Next 9 is out!" titleMobile="Next 9 is out!">
-          <b>Next 9 is out!</b> — TypeScript, Dynamic Routing, Auto Static Optimization, and more!
+        <Notification href="/blog/next-9-2" title="Next 9.2 is out!" titleMobile="Next 9.2 is out!">
+          <b>Next 9.2 is out!</b> — CSS Support, Improved Code-Splitting, Catch-All Routing, and
+          more!
           <span className="highlight">Learn More →</span>
         </Notification>
         <Intro isAmp={isAmp} />

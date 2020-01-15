@@ -8,11 +8,11 @@ export const config = { amp: true }
 
 export default withPost({ ...meta })
 
-We are excited today to introduce the production-ready Next.js 9.2, featuring:
+We are excited today to introduce Next.js 9.2, featuring:
 
 - **[Built-In CSS Support for Global Stylesheets](#built-in-css-support-for-global-stylesheets)**: Applications can now directly import `.css` files as global stylesheets.
 - **[Built-In CSS Module Support for Component-Level Styles](#built-in-css-support-for-global-stylesheets)**: Leveraging the `.module.css` convention, locally scoped CSS can be imported and used anywhere in your application.
-- **[Improved Code-Splitting Strategy](#improved-code-splitting-strategy)**: The Google Chrome team heavily optimized Next.js' code-splitting strategy, resulting in much smaller client-side bundles. Furthermore, they've maximized [HTTP/2](https://developers.google.com/web/fundamentals/performance/http2) utilization to improve page load speed without hurting HTTP/1.1 performance.
+- **[Improved Code-Splitting Strategy](#improved-code-splitting-strategy)**: The Google Chrome team heavily optimized Next.js' code-splitting strategy, resulting in significantly smaller client-side bundles. Furthermore, they've maximized [HTTP/2](https://developers.google.com/web/fundamentals/performance/http2) utilization to improve page load speed without hurting HTTP/1.1 performance.
 - **[Catch-All Dynamic Routes](#catch-all-dynamic-routes)**: Next.js' Dynamic Routes now support catch-all routes, supporting a variety of new use-cases, e.g. CMS-powered websites.
 
 All of these benefits are non-breaking and fully backwards compatible. All you need to do to update is run:
@@ -23,14 +23,14 @@ All of these benefits are non-breaking and fully backwards compatible. All you n
 
 ### Built-In CSS Support for Global Stylesheets
 
-Next.js 5 introduced support for importing CSS through a custom plugin called `next-css` that add extra behavior on top of Next.js.
+Next.js 5 introduced support for importing CSS through a custom plugin called `next-css` which extended the behavior of Next.js.
 
-Over time we got consistent feedback from companies and users of Next.js that they end up adding `next-css` to their Next.js application quite often.
+Over time we got consistent feedback from companies and users of Next.js, mentioning that they end up adding `next-css` to their application often.
 
-Furthermore, `next-css` had a few missing constraints in how you can import CSS.
+Furthermore, `next-css` had a few missing constraints when importing CSS.
 For example, you could import a CSS file in every file of the project, however this imported CSS file would be global for the whole application.
 
-In order to improve developer experience and solve these inconsistencies we started working on bringing CSS imports support to Next.js by default.
+In order to improve developer experience and solve these inconsistencies, we started working on bringing CSS imports support to Next.js by default.
 
 We're excited to announce that Next.js now has native support for importing stylesheets into your application.
 
@@ -63,11 +63,11 @@ This is necessary to avoid class name and ordering conflicts for global styles.
 In development, expressing stylesheets this way allows your styles to be automatically updated on the page as you edit them.
 
 In production, all CSS files will be automatically concatenated into a single minified `.css` file.
-This CSS file will be loaded via a `<link>` tag automatically injected into the default HTML markup Next.js generates.
+This CSS file will be loaded via a `<link>` tag and automatically injected into the default HTML markup Next.js generates.
 
 This new feature is fully backwards compatible. If you are using `@zeit/next-css` or other CSS related plugins the feature is disabled to avoid conflicts.
 
-If you are currently using `@zeit/next-css` we recommend removing the plugin from your `next.config.js` and `package.json`, thereby moving to the built-in CSS support.
+If you are currently using `@zeit/next-css` we recommend removing the plugin from your `next.config.js` and `package.json`, thereby moving to the built-in CSS support upon upgrading.
 
 ### Built-In CSS Module Support for Component-Level Styles
 
@@ -139,7 +139,7 @@ Next.js versions prior to 9.2 had a fixed set of JavaScript bundles required to 
 - Webpack client-side runtime bundle
 - Dynamic imports (added through `next/dynamic`, when used)
 
-To make the page interactive, all these bundles have to load as they all depend on each other to be able to boot up React in the browser.
+To make the page interactive, all of these bundles have to load as they depend on each other to boot up React in the browser.
 
 Because all of these bundles are required for the application to become interactive, it's important they are as optimized as possible.
 In practice, this means not over-downloading code from other parts of the application.
@@ -151,27 +151,27 @@ Otherwise, it was bundled in the page's JavaScript file.
 
 However, applications can consist of many different types of pages.
 For example, marketing pages, a blog, and a dashboard.
-If there was a large number of marketing pages compared to other page types, the commons calculation would cause a more optimized result for the marketing pages.
+If there was a large number of marketing pages compared to other page types, the commons calculation would result in optimizations heavily focused on the marketing pages.
 
 Our goal is to optimize for all page types, in one application.
 
-[Alex Castle](https://twitter.com/atcastle) [proposed a new method of chunking](https://github.com/zeit/next.js/issues/7631) (creation of separate JavaScript files) that allows more optimized commons chunking with multiple files, especially when many pages are involved.
+[Alex Castle](https://twitter.com/atcastle) [proposed a new method of chunking](https://github.com/zeit/next.js/issues/7631) (creation of separate JavaScript files) that allows optimized commons chunking with multiple files, including when many page types are involved.
 
-Today, we're happy to announce this new chunking behavior is on-by-default in Next.js 9.2.
+Today, we're happy to announce this new chunking behavior is enabled by default in Next.js 9.2.
 We'd like to extend deep gratitude to the [Google Chrome team](/blog/next-9#google-chrome-collaboration) and [Alex Castle](https://twitter.com/atcastle) for contributing this change.
 This change reflects the cumulative effort of weeks of research, lab testing, real-world testing, and implementation.
 
-The new chunking implementation leverages [HTTP/2](https://developers.google.com/web/fundamentals/performance/http2) to deliver more, smaller chunks.
+The new chunking implementation leverages [HTTP/2](https://developers.google.com/web/fundamentals/performance/http2) to deliver a greater number of smaller sized chunks.
 
 Under the new heuristic, chunks are created for:
 
-- A minimal chunk for each page
-- A framework chunk containing React, ReactDOM, React's Scheduler, etc
+- A minimal chunk for each page.
+- A framework chunk containing React, ReactDOM, React's Scheduler, etc.
 - Library chunks for any `node_module` dependency over 160kb (pre-minify/gzip)
-- A commons chunk for code used across all pages
-- As many shared chunks (used by 2 or more pages) as possible, optimizing for overall application size and initial load speed
-- Next.js' client-side runtime
-- Webpack runtime
+- A commons chunk for code used across all pages.
+- As many shared chunks (used by 2 or more pages) as possible, optimizing for overall application size and initial load speed.
+- Next.js' client-side runtime.
+- Webpack runtime.
 
 Let's take a look at what this means in a real-world application:
 
@@ -294,7 +294,7 @@ Another industry-partner, [SumUp®](https://sumup.com/), saw a 70% decrease in t
   </table>
 </div>
 
-The new chunking behavior does not only reduce your overall and initial-load size, but also successive client-side navigations.
+The new chunking behavior not only reduces your overall and initial-load size, but also successive client-side navigations.
 [Barnebys®](https://www.barnebys.com/) saw a 87% reduction in the amount of JavaScript loaded after six (6) page navigations:
 
 <h4>JavaScript Loaded by Multiple Client-Side Transitions</h4>

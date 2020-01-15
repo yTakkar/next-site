@@ -275,7 +275,7 @@ Another industry-partner, [SumUp®](https://sumup.com/), saw a 70% decrease in t
           <amp-img
             src="/static/blog/next-9-2/sumup.png"
             alt="SumUp"
-            width={91}
+            width={/*Math.round((36 / 412) * 1418) === */ 124}
             height={36}
           />
         </td>
@@ -407,10 +407,10 @@ This is especially useful when you have a nested structure that is defined by a 
 
 You can now create catch-all dynamic routes using the `[...name]` syntax.
 
-For example: `pages/post/[...slug].js` will match `/post/:slug+`.
+For example, `pages/post/[...slug].js` will match `/post/a`, `/post/a/b`, `/post/a/b/c`, and so on.
 
-`slug` will be provided in the router query object as an array of individual path parts, for example: `/post/example-category/hello-world`.
-The Router's `query` object will hold `{ slug: ['example-category', 'hello-world'] }`.
+`slug` will be provided in the router query object as an array of individual path parts.
+So, for the path `/post/foo/bar`, the query object will be `{ slug: ['foo', 'bar'] }`.
 
 ## Community
 

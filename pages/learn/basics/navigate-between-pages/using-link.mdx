@@ -24,18 +24,18 @@ Now we are going to use `next/link` to link our two pages.
 Add the following code into `pages/index.js`
 
 ```jsx
-import Link from 'next/link';
+import Link from 'next/link'
 
-const Index = () => (
-  <div>
-    <Link href="/about">
-      <a>About Page</a>
-    </Link>
-    <p>Hello Next.js</p>
-  </div>
-);
-
-export default Index;
+export default function Index() {
+  return (
+    <div>
+      <Link href="/about">
+        <a>About Page</a>
+      </Link>
+      <p>Hello Next.js</p>
+    </div>
+  )
+}
 ```
 
 Here we've imported `next/link` as `Link` and use it like this:

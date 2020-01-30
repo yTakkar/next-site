@@ -49,9 +49,6 @@ const PopoverText = () => (
 
 export default () => (
   <Page title="Design | Next.js">
-    <Header height={64} shadow defaultActive>
-      <Navbar />
-    </Header>
     <Container padding>
       <SectionHeader id="design" title="Design" description="Components for nextjs.org" />
       <ComponentTitle>Typography</ComponentTitle>

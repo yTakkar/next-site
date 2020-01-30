@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useState, useCallback, useEffect } from 'react';
 
 const { Provider: MediaQueryProvider, Consumer: MediaQueryConsumer } = React.createContext({
   isMobile: false,
@@ -40,4 +40,34 @@ const withMediaQuery = Comp =>
     }
   };
 
-export { MediaQueryProvider, MediaQueryConsumer, withMediaQuery };
+const useMediaQuery = width => {
+  const [targetReached, setTargetReached] = useState(false);
+
+  const updateTarget = useCallback(e => {
+    if (e.matches) {
+      setTargetReached(true);
+    } else {
+      setTargetReached(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia(`(max-width: ${width}px)`);
+    media.addListener(updateTarget);
+
+    // Check on mount (callback is not called until a change occurs)
+    if (media.matches) {
+      setTargetReached(true);
+    }
+
+    return () => media.removeListener(updateTarget);
+  }, []);
+
+  return targetReached;
+};
+
+const useIsMobile = () => {
+  return useMediaQuery(640);
+};
+
+export { MediaQueryProvider, MediaQueryConsumer, withMediaQuery, useMediaQuery, useIsMobile };

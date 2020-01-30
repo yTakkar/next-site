@@ -4,11 +4,13 @@ import Router from 'next/router';
 import { trackPageview } from '../lib/analytics';
 import { withMediaQuery } from './media-query';
 
+import Header from './header';
+
 Router.events.on('routeChangeComplete', url => {
   trackPageview(url);
 });
 
-function Page({ title, description, children }) {
+function Page({ title, description, sticky, children }) {
   return (
     <div>
       <Head>
@@ -20,6 +22,7 @@ function Page({ title, description, children }) {
           />
         )}
       </Head>
+      <Header sticky={sticky} />
       <style jsx global>
         {`
           html {

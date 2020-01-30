@@ -55,21 +55,16 @@ const items = previewItems
   })
 
 export default () => (
-  <>
-    <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow defaultActive>
-      <Navbar />
-    </Header>
-    <Page title="Blog | Next.js">
-      <Screen offset={64 + 400}>
-        <Container padding wide>
-          <SectionHeader title="Blog" />
-          <SkipNavContent />
-          {items}
-        </Container>
-      </Screen>
-      <Footer />
-    </Page>
-  </>
+  <Page title="Blog | Next.js">
+    <Screen offset={64 + 400}>
+      <Container padding wide>
+        <SectionHeader title="Blog" />
+        <SkipNavContent />
+        {items}
+      </Container>
+    </Screen>
+    <Footer />
+  </Page>
 )
 
 export const config = {

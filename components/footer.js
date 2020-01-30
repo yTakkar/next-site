@@ -5,10 +5,10 @@ import withPure from './hoc/pure';
 
 import { links } from '../site-manifest';
 
-import ZEITLogo from './icons/zeit-white-full-logo';
+import ZEITLogo from './icons/zeit-black-full-logo';
 
 export default withPure(() => (
-  <Container wide dark>
+  <Container wide gray>
     <Container>
       <footer>
         <style jsx>
@@ -31,7 +31,7 @@ export default withPure(() => (
               color: inherit;
             }
             a:hover {
-              color: #efefef;
+              color: #111;
             }
             .copyright {
               margin-top: 3rem;

@@ -116,9 +116,6 @@ export default meta => ({ children }) => {
     <MDXProvider components={components}>
       <Page title={`Blog - ${meta.title} | Next.js`}>
         <SocialMeta image={`/static${meta.link}/twitter-card.png`} {...meta} />
-        <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow defaultActive>
-          <Navbar />
-        </Header>
         <HeaderImage {...meta} />
         <Head>
           <script

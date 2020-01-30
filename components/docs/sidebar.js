@@ -1,6 +1,4 @@
 import GithubSlugger from 'github-slugger';
-import Header from '../header';
-import Navbar from '../navbar';
 import Container from '../container';
 import ArrowRight from '../icons/arrow-right';
 
@@ -134,42 +132,31 @@ export default function Sidebar({ headings, mobile, desktop }) {
     <>
       {mobile && (
         <>
-          <Header
-            shadow
-            zIndex={999}
-            offset={64 + 32}
-            height={{
-              desktop: 0,
-              mobile: 114
-            }}
-          >
-            <Navbar />
-            <label htmlFor="dropdown-input" className="dropdown-toggle">
-              <input id="dropdown-input" type="checkbox" />
-              <div className="docs-select f5 fw6">
-                <Container>
-                  <span
-                    style={{
-                      verticalAlign: 'middle',
-                      marginRight: '0.2rem',
-                      display: 'inline-block',
-                      lineHeight: '1rem'
-                    }}
-                  >
-                    <ArrowRight />
-                  </span>
-                  Menu
-                </Container>
-              </div>
-              <div className="documentation__sidebar docs-dropdown">
-                <Container>
-                  <nav>
-                    <SidebarNavItemContainer headings={headings} />
-                  </nav>
-                </Container>
-              </div>
-            </label>
-          </Header>
+          <label htmlFor="dropdown-input" className="dropdown-toggle">
+            <input id="dropdown-input" type="checkbox" />
+            <div className="docs-select f5 fw6">
+              <Container>
+                <span
+                  style={{
+                    verticalAlign: 'middle',
+                    marginRight: '0.2rem',
+                    display: 'inline-block',
+                    lineHeight: '1rem'
+                  }}
+                >
+                  <ArrowRight />
+                </span>
+                Menu
+              </Container>
+            </div>
+            <div className="documentation__sidebar docs-dropdown">
+              <Container>
+                <nav>
+                  <SidebarNavItemContainer headings={headings} />
+                </nav>
+              </Container>
+            </div>
+          </label>
         </>
       )}
       <style jsx>{`

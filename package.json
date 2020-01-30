@@ -16,7 +16,7 @@
     "analyze": "ANALYZE=true next build",
     "build:rss": "node ./.next/serverless/scripts/build-rss.js",
     "index-docs": "node ./.next/serverless/scripts/index-docs.js",
-    "lint": "eslint"
+    "lint": "eslint ."
   },
   "husky": {
     "hooks": {

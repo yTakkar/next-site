@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { GITHUB_URL, REPO_NAME, REPO_BRANCH } from '../../lib/github-constants';
 import Notification from './notification';
-import Feedback from './feedback';
+import Feedback from '../feedback';
 
 function areEqual(prevProps, props) {
   return prevProps.path === props.path;
@@ -19,7 +19,7 @@ function DocsPage({ path, html }) {
       {/* eslint-disable-next-line */}
       <div dangerouslySetInnerHTML={{ __html: html }} />
       <hr />
-      <Feedback />
+      <Feedback label="next-docs" />
       <footer>
         <a href={editUrl} target="_blank" rel="noopener noreferrer">
           Edit this page on GitHub

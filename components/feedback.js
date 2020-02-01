@@ -1,7 +1,7 @@
 import { memo, Component } from 'react';
 import cn from 'classnames';
-import ClickOutside from '../click-outside';
-import Button from '../button';
+import ClickOutside from './click-outside';
+import Button from './button';
 
 const EMOJIS = new Map([
   ['😭', 'f62d'],
@@ -80,6 +80,7 @@ export default class Feedback extends Component {
           url: window.location.toString(),
           note: this.textAreaRef ? this.textAreaRef.value : '',
           emotion: getEmoji(this.state.emoji),
+          label: this.props.label,
           ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${navigator.language ||
             'unknown language'})`
         })

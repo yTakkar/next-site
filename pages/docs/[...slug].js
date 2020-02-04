@@ -14,7 +14,8 @@ import SocialMeta from '../../components/social-meta';
 import { Sidebar, SidebarMobile, Post, Category, Heading } from '../../components/sidebar';
 import Page from '../../components/page';
 import Sticky from '../../components/sticky';
-import { useIsMobile } from '../../components/media-query.js';
+import { useIsMobile } from '../../components/media-query';
+import FeedbackContext from '../../components/feedback-context';
 
 function getCategoryPath(routes) {
   const route = routes.find(r => r.path);
@@ -81,40 +82,42 @@ const Docs = ({ routes, route, data, html }) => {
   }, [asPath]);
 
   return (
-    <Page title={title} description={false} sticky={!isMobile}>
-      <PageContent>
-        <Sticky shadow>
-          <SidebarMobile>
-            <SidebarRoutes isMobile routes={routes} />
-          </SidebarMobile>
-        </Sticky>
-        <Container>
-          <div className="content">
-            <Sidebar fixed>
-              <SidebarRoutes routes={routes} />
-            </Sidebar>
-            <DocsPage path={route.path} html={html} />
-          </div>
-          <style jsx>{`
-            .content {
-              position: relative;
-              display: flex;
-              margin-top: 2rem;
-            }
-            /* Remove the top margin of the first heading in the sidebar */
-            :global(.heading:first-child > h4) {
-              margin-top: 0;
-            }
-          `}</style>
-        </Container>
-        <SocialMeta
-          title={title}
-          url={`https://nextjs.org${asPath}`}
-          image="/static/twitter-cards/documentation.png"
-          description={data.description}
-        />
-      </PageContent>
-    </Page>
+    <FeedbackContext.Provider value={{ label: 'next-docs' }}>
+      <Page title={title} description={false} sticky={!isMobile}>
+        <PageContent>
+          <Sticky shadow>
+            <SidebarMobile>
+              <SidebarRoutes isMobile routes={routes} />
+            </SidebarMobile>
+          </Sticky>
+          <Container>
+            <div className="content">
+              <Sidebar fixed>
+                <SidebarRoutes routes={routes} />
+              </Sidebar>
+              <DocsPage path={route.path} html={html} />
+            </div>
+            <style jsx>{`
+              .content {
+                position: relative;
+                display: flex;
+                margin-top: 2rem;
+              }
+              /* Remove the top margin of the first heading in the sidebar */
+              :global(.heading:first-child > h4) {
+                margin-top: 0;
+              }
+            `}</style>
+          </Container>
+          <SocialMeta
+            title={title}
+            url={`https://nextjs.org${asPath}`}
+            image="/static/twitter-cards/documentation.png"
+            description={data.description}
+          />
+        </PageContent>
+      </Page>
+    </FeedbackContext.Provider>
   );
 };
 

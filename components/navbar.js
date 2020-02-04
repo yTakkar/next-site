@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useAmp } from 'next/amp';
 import cn from 'classnames';
 import { SkipNavLink } from '@reach/skip-nav';
 
@@ -9,11 +10,13 @@ import Container from './container';
 
 import GitHubLogo from './icons/github';
 import SpectrumLogo from './icons/spectrum';
+import HeaderFeedback from './header-feedback';
 
 import { links } from '../site-manifest';
 
 function Navbar() {
   const { route } = useRouter();
+  const isAmp = useAmp();
 
   return (
     <Container center>
@@ -114,6 +117,11 @@ function Navbar() {
             </a>
           </Link>
 
+          {!isAmp && (
+            <div className="header-feedback">
+              <HeaderFeedback />
+            </div>
+          )}
           <a
             href="https://github.com/zeit/next.js"
             aria-label="Next.js on GitHub"
@@ -205,6 +213,10 @@ function Navbar() {
           display: none;
         }
 
+        .header-feedback {
+          display: inline-flex;
+        }
+
         /* Mobile */
 
         @media (max-width: 640px) {
@@ -244,6 +256,12 @@ function Navbar() {
 
           .mobile-top > .icons a:nth-child(2) {
             margin-left: 2rem;
+          }
+        }
+
+        @media (max-width: 950px) {
+          .header-feedback {
+            display: none;
           }
         }
       `}</style>

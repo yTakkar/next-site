@@ -131,7 +131,11 @@ export default withPure(() => (
           <div>
             <h4 className="fw5">About ZEIT</h4>
             <p>
-              <a href="https://zeit.co/oss" rel="noopener noreferrer" target="_blank">
+              <a
+                href="https://zeit.co/oss?utm_source=next-site&utm_medium=footer&utm_campaign=next-website"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 Open Source Software
               </a>
             </p>
@@ -148,7 +152,12 @@ export default withPure(() => (
           </div>
         </div>
         <div className="copyright f6">
-          <a href="https://zeit.co" rel="noopener noreferrer" target="_blank" aria-label="ZEIT">
+          <a
+            href="https://zeit.co?utm_source=next-site&utm_medium=footer&utm_campaign=next-website"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label="ZEIT"
+          >
             <ZEITLogo />
           </a>
           <div> Copyright © {`${new Date().getFullYear()}`} ZEIT, Inc. All rights reserved.</div>

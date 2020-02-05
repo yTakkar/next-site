@@ -4,11 +4,19 @@ const Banner = () => {
   return (
     <div className="banner">
       <div className="inner">
-        <a href="https://zeit.co" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://zeit.co?utm_source=next-site&utm_medium=banner&utm_campaign=next-website"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Logo />
         </a>
 
-        <a href="https://zeit.co/new/nextjs" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://zeit.co/new/nextjs?utm_source=next-site&utm_medium=banner&utm_campaign=next-website"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <p>
             Deploy <b>Next.js</b> on the platform it was made for →
           </p>

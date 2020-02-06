@@ -78,18 +78,18 @@ class HeaderFeedback extends Component {
     }
   };
 
-  done = errorMessage => {
-    if (!errorMessage) {
-      this.setState({ loading: false, success: true });
-    } else {
-      this.setState({ errorMessage, loading: false });
-    }
-  };
-
   onSubmit = () => {
-    if (this.textAreaRef && this.textAreaRef.value.trim() === '') {
+    const value = this.textAreaRef?.value.trim();
+
+    if (!value.length) {
       this.setState({
         errorMessage: "Your feedback can't be empty"
+      });
+      return;
+    }
+    if (value.split(' ').length < 2) {
+      this.setState({
+        errorMessage: 'Please use at least 2 words'
       });
       return;
     }
@@ -102,7 +102,7 @@ class HeaderFeedback extends Component {
         },
         body: JSON.stringify({
           url: window.location.toString(),
-          note: this.textAreaRef ? this.textAreaRef.value : '',
+          note: value,
           emotion: getEmoji(this.state.emoji),
           label: this.context?.label,
           ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${navigator.language ||
@@ -113,7 +113,10 @@ class HeaderFeedback extends Component {
           this.setState({ loading: false, success: true });
         })
         .catch(err => {
-          this.setState({ loading: false, errorMessage: err });
+          this.setState({
+            loading: false,
+            errorMessage: err?.message || 'An error ocurred. Try again in a few minutes.'
+          });
         });
     });
   };

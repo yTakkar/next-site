@@ -39,10 +39,6 @@ export default class FooterFeedback extends Component {
     this.textAreaRef = node;
   };
 
-  setError = error => {
-    this.setState({ errorMessage: error });
-  };
-
   onFocus = () => {
     this.setState({ focused: true });
   };
@@ -51,22 +47,18 @@ export default class FooterFeedback extends Component {
     this.setState({ errorMessage: null });
   };
 
-  setSuccessState = state => {
-    this.setState({ success: state });
-  };
-
-  done = errorMessage => {
-    if (!errorMessage) {
-      this.setState({ loading: false, success: true });
-    } else {
-      this.setState({ errorMessage, loading: false, emoji: null });
-    }
-  };
-
   onSubmit = () => {
-    if (this.textAreaRef && this.textAreaRef.value.trim() === '') {
+    const value = this.textAreaRef?.value.trim();
+
+    if (!value.length) {
       this.setState({
         errorMessage: "Your feedback can't be empty"
+      });
+      return;
+    }
+    if (value.split(' ').length < 2) {
+      this.setState({
+        errorMessage: 'Please use at least 2 words'
       });
       return;
     }
@@ -79,7 +71,7 @@ export default class FooterFeedback extends Component {
         },
         body: JSON.stringify({
           url: window.location.toString(),
-          note: this.textAreaRef ? this.textAreaRef.value : '',
+          note: value,
           emotion: getEmoji(this.state.emoji),
           label: this.context?.label,
           ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${navigator.language ||
@@ -90,7 +82,10 @@ export default class FooterFeedback extends Component {
           this.setState({ loading: false, success: true });
         })
         .catch(err => {
-          this.setState({ loading: false, errorMessage: err });
+          this.setState({
+            loading: false,
+            errorMessage: err?.message || 'An error ocurred. Try again in a few minutes.'
+          });
         });
     });
   };

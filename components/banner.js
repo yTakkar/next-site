@@ -22,7 +22,7 @@ const Banner = () => {
           </p>
 
           <p className="mobile">
-            Deploy <b>Next.js</b> for free →
+            Deploy <b>Next.js</b> in seconds →
           </p>
         </a>
       </div>

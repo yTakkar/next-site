@@ -170,7 +170,7 @@ export default function Sidebar({ headings, mobile, desktop }) {
         .docs-select {
           height: 3rem;
           width: 100%;
-          border-top: 1px solid #f5f5f5;
+          border-top: 1px solid #eaeaea;
           line-height: 3rem;
           text-align: left;
           cursor: pointer;
@@ -186,7 +186,7 @@ export default function Sidebar({ headings, mobile, desktop }) {
           top: 100%;
           bottom: 100%;
           background: white;
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          border-bottom: 1px solid #eaeaea;
           transition: bottom 0.5s ease;
           overflow-y: auto;
           -webkit-overflow-scrolling: touch;
@@ -223,14 +223,17 @@ export default function Sidebar({ headings, mobile, desktop }) {
           padding-right: 3rem;
         }
         .documentation__sidebar.desktop nav {
-          position: fixed;
+          position: sticky;
+          /* header height + notification height */
+          top: calc(81px + 88px);
+          /* Full page - header height - notification height - ZEIT banner */
+          height: calc(100vh - 81px - 88px - 50px);
           overflow-y: auto;
           -webkit-overflow-scrolling: touch;
           display: flex;
           flex-direction: column;
           width: 288px;
           padding: 2rem 1rem 0 0;
-          height: calc(100vh - 64px);
         }
         @media screen and (max-width: 1024px) {
           .documentation__sidebar.desktop nav {

@@ -107,15 +107,15 @@ function Navbar() {
             </a>
           </Link>
 
-          <Link href="/blog">
-            <a
-              className={cn('mute', {
-                selected: route.startsWith('/blog')
-              })}
-            >
-              Blog
-            </a>
-          </Link>
+          {/* blog is AMP so don't use next/link as it causes a 404 */}
+          <a
+            href="/blog"
+            className={cn('mute', {
+              selected: route.startsWith('/blog')
+            })}
+          >
+            Blog
+          </a>
 
           {!isAmp && (
             <div className="header-feedback">

@@ -81,9 +81,8 @@ export default withPure(() => (
               </Link>
             </p>
             <p>
-              <Link href="/blog" prefetch={false}>
-                <a>Blog</a>
-              </Link>
+              {/* blog is AMP don't so we don't use next/link */}
+              <a href="/blog">Blog</a>
             </p>
           </div>
           <div>

@@ -123,7 +123,7 @@ const Docs = ({ routes, route, data, html }) => {
 
 export async function unstable_getStaticPaths() {
   const manifest = await fetchDocsManifest();
-  return getPaths(manifest.routes);
+  return { paths: getPaths(manifest.routes) };
 }
 
 export async function unstable_getStaticProps({ params }) {

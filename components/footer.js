@@ -117,11 +117,6 @@ export default withPure(() => (
               </a>
             </p>
             <p>
-              <a href={links.spectrum} rel="noopener noreferrer" target="_blank">
-                Spectrum
-              </a>
-            </p>
-            <p>
               <Link href="/telemetry" prefetch={false}>
                 <a>Telemetry</a>
               </Link>

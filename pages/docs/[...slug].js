@@ -41,7 +41,14 @@ function SidebarRoutes({ isMobile, routes: currentRoutes, level = 1 }) {
       }
 
       return (
-        <Category key={pathname} level={level} title={title} selected={selected} opened={opened}>
+        <Category
+          key={pathname}
+          isMobile={isMobile}
+          level={level}
+          title={title}
+          selected={selected}
+          opened={opened}
+        >
           <SidebarRoutes isMobile={isMobile} routes={routes} level={level + 1} />
         </Category>
       );

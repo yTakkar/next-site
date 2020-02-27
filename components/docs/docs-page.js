@@ -1,14 +1,22 @@
 import { memo } from 'react';
+import { removeFromLast } from '../../lib/docs/utils';
 import { GITHUB_URL, REPO_NAME, REPO_BRANCH } from '../../lib/github-constants';
+import getRouteContext from '../../lib/get-route-context';
 import Notification from './notification';
 import FooterFeedback from '../footer-feedback';
+import Button from '../button';
+import ArrowIcon from '../arrow-icon';
+import RightArrow from '../icons/arrow-right';
+import LeftArrow from '../icons/arrow-left';
 
 function areEqual(prevProps, props) {
-  return prevProps.path === props.path;
+  return prevProps.route.path === props.route.path;
 }
 
-function DocsPage({ path, html }) {
-  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/${REPO_BRANCH}${path}`;
+function DocsPage({ route, routes, html }) {
+  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/${REPO_BRANCH}${route.path}`;
+  const href = '/docs/[...slug]';
+  const { prevRoute, nextRoute } = getRouteContext(route, routes);
 
   return (
     <div className="docs">
@@ -16,15 +24,41 @@ function DocsPage({ path, html }) {
         <strong>Note:</strong> You are viewing the new Next.js documentation. The old docs are still
         available <a href="/docs/old">here</a>.
       </Notification>
+
       {/* eslint-disable-next-line */}
       <div dangerouslySetInnerHTML={{ __html: html }} />
+
+      <div className="page-nav">
+        {prevRoute ? (
+          <Button href={href} as={removeFromLast(prevRoute.path, '.')}>
+            <ArrowIcon left flex>
+              <LeftArrow color="#0070f3" />
+            </ArrowIcon>
+            {prevRoute.title}
+          </Button>
+        ) : (
+          <span />
+        )}
+        {nextRoute && (
+          <Button href={href} as={removeFromLast(nextRoute.path, '.')}>
+            {nextRoute.title}
+            <ArrowIcon right flex>
+              <RightArrow color="#0070f3" />
+            </ArrowIcon>
+          </Button>
+        )}
+      </div>
+
       <hr />
+
       <FooterFeedback />
+
       <footer>
         <a href={editUrl} target="_blank" rel="noopener noreferrer">
           Edit this page on GitHub
         </a>
       </footer>
+
       <style jsx>{`
         .docs {
           max-width: 100%;
@@ -35,16 +69,18 @@ function DocsPage({ path, html }) {
             margin: 0;
           }
         }
-        hr {
+        .page-nav {
+          display: flex;
+          justify-content: space-between;
           margin-top: 3rem;
         }
         footer {
           display: flex;
           font-size: 0.875rem;
           justify-content: flex-end;
-          border-top: 1px solid #f3f3f3;
-          padding: 1.5rem 0;
-          margin-top: 2.5rem;
+          border-top: 1px solid #eaeaea;
+          padding: 1.25rem 0;
+          margin-top: 2rem;
           margin-bottom: 5rem;
         }
       `}</style>

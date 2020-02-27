@@ -102,7 +102,7 @@ const Docs = ({ routes, route, data, html }) => {
               <Sidebar fixed>
                 <SidebarRoutes routes={routes} />
               </Sidebar>
-              <DocsPage path={route.path} html={html} />
+              <DocsPage route={route} routes={routes} html={html} />
             </div>
             <style jsx>{`
               .content {

@@ -6827,6 +6827,11 @@ react-themeable@^1.1.0:
   dependencies:
     object-assign "^3.0.0"
 
+react-tweet-embed@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/react-tweet-embed/-/react-tweet-embed-1.2.2.tgz#b518510a6e6ef17609f9c9b16bc4775624730d8a"
+  integrity sha512-Y932BlSaJsDUsKDucC2opzzd+uhc0YNhrlTa/4Beb2be1od+AjLGo6Fhuo2wPT0D+fF4VTXOyoZyA8Yc88RdYA==
+
 react-virtualized@9.21.2:
   version "9.21.2"
   resolved "https://registry.yarnpkg.com/react-virtualized/-/react-virtualized-9.21.2.tgz#02e6df65c1e020c8dbf574ec4ce971652afca84e"

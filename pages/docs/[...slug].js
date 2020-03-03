@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Error from 'next/error';
+import Head from 'next/head';
 import matter from 'gray-matter';
 import hashMap from '../../lib/docs/hash-map.json';
 import { getSlug, removeFromLast } from '../../lib/docs/utils';
 import { getPaths, findRouteByPath, fetchDocsManifest } from '../../lib/docs/page';
-import { getRawFileFromRepo } from '../../lib/github';
+import { getLatestTag } from '../../lib/github/api';
+import { getRawFileFromRepo } from '../../lib/github/raw';
 import markdownToHtml from '../../lib/docs/markdown-to-html';
 import PageContent from '../../components/page-content';
 import Container from '../../components/container';
@@ -16,6 +18,7 @@ import Page from '../../components/page';
 import Sticky from '../../components/sticky';
 import { useIsMobile } from '../../components/media-query';
 import FeedbackContext from '../../components/feedback-context';
+import Skeleton from '../../components/skeleton';
 
 function getCategoryPath(routes) {
   const route = routes.find(r => r.path);
@@ -24,7 +27,7 @@ function getCategoryPath(routes) {
 
 function SidebarRoutes({ isMobile, routes: currentRoutes, level = 1 }) {
   const { query } = useRouter();
-  const slug = getSlug(query);
+  const { tag, slug } = getSlug(query);
 
   return currentRoutes.map(({ path, title, routes, heading, open }) => {
     if (routes) {
@@ -55,8 +58,9 @@ function SidebarRoutes({ isMobile, routes: currentRoutes, level = 1 }) {
     }
 
     const href = '/docs/[...slug]';
-    const pathname = removeFromLast(path, '.');
-    const selected = slug.startsWith(pathname);
+    const pagePath = removeFromLast(path, '.');
+    const pathname = tag ? pagePath.replace('/docs', `/docs/tag/${tag}`) : pagePath;
+    const selected = slug.startsWith(pagePath);
     const route = { href, path, title, pathname, selected };
 
     return <Post key={title} isMobile={isMobile} level={level} route={route} />;
@@ -64,13 +68,8 @@ function SidebarRoutes({ isMobile, routes: currentRoutes, level = 1 }) {
 }
 
 const Docs = ({ routes, route, data, html }) => {
-  if (!route) {
-    return <Error statusCode={404} />;
-  }
-
   const router = useRouter();
-  const { asPath } = router;
-  const title = `${data.title || route.title} - Documentation | Next.js`;
+  const { asPath, isFallback, query } = router;
   const isMobile = useIsMobile();
 
   useEffect(() => {
@@ -88,61 +87,105 @@ const Docs = ({ routes, route, data, html }) => {
     }
   }, [asPath]);
 
+  if (!route && !isFallback) {
+    return <Error statusCode={404} />;
+  }
+
+  const title = route && `${data.title || route.title} - Documentation | Next.js`;
+  const { tag } = getSlug(query);
+
   return (
     <FeedbackContext.Provider value={{ label: 'next-docs' }}>
+      {tag && (
+        <Head>
+          <meta name="robots" content="noindex" />
+        </Head>
+      )}
       <Page title={title} description={false} sticky={!isMobile}>
-        <PageContent>
-          <Sticky shadow>
-            <SidebarMobile>
-              <SidebarRoutes isMobile routes={routes} />
-            </SidebarMobile>
-          </Sticky>
+        {route ? (
+          <PageContent>
+            <Sticky shadow>
+              <SidebarMobile>
+                <SidebarRoutes isMobile routes={routes} />
+              </SidebarMobile>
+            </Sticky>
+            <Container>
+              <div className="content">
+                <Sidebar fixed>
+                  <SidebarRoutes routes={routes} />
+                </Sidebar>
+                <DocsPage route={route} routes={routes} html={html} />
+              </div>
+              <style jsx>{`
+                .content {
+                  position: relative;
+                  display: flex;
+                  margin-top: 2rem;
+                }
+                /* Remove the top margin of the first heading in the sidebar */
+                :global(.heading:first-child > h4) {
+                  margin-top: 0;
+                }
+              `}</style>
+            </Container>
+            <SocialMeta
+              title={title}
+              url={`https://nextjs.org${asPath}`}
+              image="/static/twitter-cards/documentation.png"
+              description={data.description}
+            />
+          </PageContent>
+        ) : (
           <Container>
             <div className="content">
-              <Sidebar fixed>
-                <SidebarRoutes routes={routes} />
-              </Sidebar>
-              <DocsPage route={route} routes={routes} html={html} />
+              <aside>
+                <Skeleton style={{ height: '2.5rem', margin: '1.5rem 0' }} />
+                <Skeleton style={{ height: 'calc(100% - 5.5rem)' }} />
+              </aside>
+              <Skeleton style={{ maxWidth: '100%', margin: '1.5rem 0 0' }} />
             </div>
+
             <style jsx>{`
+              aside {
+                min-width: 300px;
+                height: calc(((100vh - 2rem) - 81px) - 50px);
+                padding-right: 1.5rem;
+                margin-right: 1rem;
+              }
               .content {
                 position: relative;
                 display: flex;
                 margin-top: 2rem;
               }
-              /* Remove the top margin of the first heading in the sidebar */
-              :global(.heading:first-child > h4) {
-                margin-top: 0;
-              }
             `}</style>
           </Container>
-          <SocialMeta
-            title={title}
-            url={`https://nextjs.org${asPath}`}
-            image="/static/twitter-cards/documentation.png"
-            description={data.description}
-          />
-        </PageContent>
+        )}
       </Page>
     </FeedbackContext.Provider>
   );
 };
 
-export async function unstable_getStaticPaths() {
-  const manifest = await fetchDocsManifest();
-  return { paths: getPaths(manifest.routes) };
+export async function getStaticPaths() {
+  const tag = await getLatestTag();
+  const manifest = await fetchDocsManifest(tag);
+  return { paths: getPaths(manifest.routes), fallback: true };
 }
 
-export async function unstable_getStaticProps({ params }) {
-  const slug = getSlug(params);
-  const manifest = await fetchDocsManifest();
-  const route = findRouteByPath(slug, manifest.routes);
+export async function getStaticProps({ params }) {
+  const { tag, slug } = getSlug(params);
+  const currentTag = tag || (await getLatestTag());
+  const manifest = await fetchDocsManifest(currentTag).catch(error => {
+    // If a manifest wasn't found for a custom tag, show a 404 instead
+    if (error.status === 404) return;
+    throw error;
+  });
+  const route = manifest && findRouteByPath(slug, manifest.routes);
 
   if (!route) return {};
 
-  const md = await getRawFileFromRepo(route.path);
+  const md = await getRawFileFromRepo(route.path, currentTag);
   const { content, data } = matter(md);
-  const html = await markdownToHtml(route.path, content);
+  const html = await markdownToHtml(route.path, tag, content);
 
   return { props: { routes: manifest.routes, data, route, html } };
 }

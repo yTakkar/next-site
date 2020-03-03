@@ -1,6 +1,8 @@
 import { memo } from 'react';
-import { removeFromLast } from '../../lib/docs/utils';
-import { GITHUB_URL, REPO_NAME, REPO_BRANCH } from '../../lib/github-constants';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { getSlug, removeFromLast } from '../../lib/docs/utils';
+import { GITHUB_URL, REPO_NAME } from '../../lib/github/constants';
 import getRouteContext from '../../lib/get-route-context';
 import Notification from './notification';
 import FooterFeedback from '../footer-feedback';
@@ -14,8 +16,10 @@ function areEqual(prevProps, props) {
 }
 
 function DocsPage({ route, routes, html }) {
-  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/${REPO_BRANCH}${route.path}`;
+  const { query } = useRouter();
+  const { tag, slug } = getSlug(query);
   const href = '/docs/[...slug]';
+  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/canary${route.path}`;
   const { prevRoute, nextRoute } = getRouteContext(route, routes);
 
   return (
@@ -54,20 +58,21 @@ function DocsPage({ route, routes, html }) {
       <FooterFeedback />
 
       <footer>
-        <a href={editUrl} target="_blank" rel="noopener noreferrer">
-          Edit this page on GitHub
-        </a>
+        {tag ? (
+          <Link href="/docs/[...slug]" as={slug}>
+            <a>Go to the live version of this page</a>
+          </Link>
+        ) : (
+          <a href={editUrl} target="_blank" rel="noopener noreferrer">
+            Edit this page on GitHub
+          </a>
+        )}
       </footer>
 
       <style jsx>{`
         .docs {
-          max-width: 100%;
-        }
-        @media screen and (max-width: 950px) {
-          .docs {
-            max-width: 100%;
-            margin: 0;
-          }
+          /* 300px is the sidebar width and its margin */
+          min-width: calc(100% - 300px - 1rem);
         }
         .page-nav {
           display: flex;

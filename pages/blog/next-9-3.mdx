@@ -357,7 +357,13 @@ Furthermore, `next-sass` had the same missing constraints as `next-css`. Meaning
 
 After considering these statistics and feedback we're delighted to announce that Next.js now has built-in support for importing Sass stylesheets.
 
-To get started using CSS imports in your application, import the CSS file within `pages/_app.js`.
+To get started using global Sass imports in your application, install [`sass`](https://github.com/sass/sass):
+
+```bash
+npm install sass
+```
+
+Then, import the Sass file within `pages/_app.js`.
 
 For example, consider the following stylesheet named `styles.scss` in the root of your project:
 
@@ -402,7 +408,13 @@ CSS Modules locally scope Sass by automatically creating unique class names. Thi
 
 This behavior makes CSS Modules the ideal way to include component-level Sass. CSS Module files **can be imported anywhere in your application**.
 
-For example, consider a reusable `Button` component in the `components/` folder:
+To get started using Sass CSS Modules in your application, make sure you have [`sass`](https://github.com/sass/sass) installed:
+
+```bash
+npm install sass
+```
+
+Now, consider a reusable `Button` component in the `components/` folder:
 
 First, create `components/Button.module.scss` with the following content:
 

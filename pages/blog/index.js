@@ -31,6 +31,10 @@ function dateSortDesc(a, b) {
 const Li = components.li
 
 const getLi = path => ({ children }) => {
+  if (!children?.props?.props) {
+    return <Li>{children}</Li>
+  }
+
   const { props } = children.props
   const { href } = props
   const isHash = href && href.startsWith('#')

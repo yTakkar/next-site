@@ -181,7 +181,7 @@ export async function getStaticProps({ params }) {
   });
   const route = manifest && findRouteByPath(slug, manifest.routes);
 
-  if (!route) return {};
+  if (!route) return { props: {} };
 
   const md = await getRawFileFromRepo(route.path, currentTag);
   const { content, data } = matter(md);

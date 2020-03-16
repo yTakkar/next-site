@@ -1,11 +1,18 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import formatDate from 'date-fns/format';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import cn from 'classnames';
 
 import Container from '../container';
 import Button from '../button';
 
 export default ({ type, thumbnail, detail, link, title, date, alt, children }) => {
+  const [dateDistance, setDateDistance] = useState('');
+  useEffect(() => {
+    setDateDistance(distanceInWordsToNow(date));
+  }, [date]);
+
   return (
     <div className="post-preview">
       <style jsx>{`
@@ -31,6 +38,11 @@ export default ({ type, thumbnail, detail, link, title, date, alt, children }) =
         .date {
           margin-top: 0.4rem;
           margin-bottom: 1rem;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+        .date-visible {
+          opacity: 1;
         }
         .icon {
           line-height: 0;
@@ -84,8 +96,12 @@ export default ({ type, thumbnail, detail, link, title, date, alt, children }) =
                 <a>{title}</a>
               </Link>
             </h3>
-            <p className="f6 date mute">
-              {formatDate(date, 'dddd, MMMM Do YYYY')} ({distanceInWordsToNow(date)} ago)
+            <p
+              className={cn('f6 date mute', {
+                'date-visible': dateDistance
+              })}
+            >
+              {formatDate(date, 'dddd, MMMM Do YYYY')} ({dateDistance} ago)
             </p>
             {detail && <section className="description f5">{children}</section>}
             <div className="read-more">

@@ -1,7 +1,9 @@
+import { useState, useEffect } from 'react';
 import { MDXProvider } from '@mdx-js/tag';
 import formatDate from 'date-fns/format';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
+import cn from 'classnames';
 import FeedbackContext from '../feedback-context';
 import FooterFeedback from '../footer-feedback';
 import Footer from '../footer';
@@ -104,6 +106,10 @@ const HeaderImage = meta => {
 
 export default meta => ({ children }) => {
   const date = meta.date ? new Date(meta.date) : new Date();
+  const [dateDistance, setDateDistance] = useState(null);
+  useEffect(() => {
+    setDateDistance(distanceInWordsToNow(date));
+  }, [date]);
 
   return (
     <FeedbackContext.Provider value={{ label: 'next-blog' }}>
@@ -114,9 +120,13 @@ export default meta => ({ children }) => {
           <Container padding>
             <h1 className="title fw6 f0">{meta.title}</h1>
             {meta.type && <span className="post-type mute fw7">{meta.type}</span>}
-            <div className="date mute f6">
-              <time dateTime={meta.date}>
-                {formatDate(date, 'dddd, MMMM Do YYYY')} ({distanceInWordsToNow(meta.date)} ago)
+            <div
+              className={cn('date mute f6', {
+                'date-visible': dateDistance
+              })}
+            >
+              <time dateTime={date}>
+                {formatDate(date, 'dddd, MMMM Do YYYY')} ({dateDistance} ago)
               </time>
             </div>
             <div className="authors">
@@ -143,6 +153,11 @@ export default meta => ({ children }) => {
             .date {
               margin-top: 2rem;
               text-align: center;
+              opacity: 0;
+              transition: opacity 0.2s ease;
+            }
+            .date-visible {
+              opacity: 1;
             }
             .authors {
               margin: 1.5rem 0 4rem;

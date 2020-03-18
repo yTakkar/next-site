@@ -1,9 +1,8 @@
 import { memo } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { getSlug, removeFromLast } from '../../lib/docs/utils';
+import { getSlug, removeFromLast, addTagToSlug } from '../../lib/docs/utils';
 import { GITHUB_URL, REPO_NAME } from '../../lib/github/constants';
-import getRouteContext from '../../lib/get-route-context';
 import Notification from './notification';
 import FooterFeedback from '../footer-feedback';
 import Button from '../button';
@@ -15,12 +14,11 @@ function areEqual(prevProps, props) {
   return prevProps.route.path === props.route.path;
 }
 
-function DocsPage({ route, routes, html }) {
+function DocsPage({ route, html, prevRoute, nextRoute }) {
   const { query } = useRouter();
   const { tag, slug } = getSlug(query);
   const href = '/docs/[...slug]';
   const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/canary${route.path}`;
-  const { prevRoute, nextRoute } = getRouteContext(route, routes);
 
   return (
     <div className="docs">
@@ -34,7 +32,7 @@ function DocsPage({ route, routes, html }) {
 
       <div className="page-nav">
         {prevRoute ? (
-          <Button href={href} as={removeFromLast(prevRoute.path, '.')}>
+          <Button href={href} as={addTagToSlug(removeFromLast(prevRoute.path, '.'), tag)}>
             <ArrowIcon left flex>
               <LeftArrow color="#0070f3" />
             </ArrowIcon>
@@ -44,7 +42,7 @@ function DocsPage({ route, routes, html }) {
           <span />
         )}
         {nextRoute && (
-          <Button href={href} as={removeFromLast(nextRoute.path, '.')}>
+          <Button href={href} as={addTagToSlug(removeFromLast(nextRoute.path, '.'), tag)}>
             {nextRoute.title}
             <ArrowIcon right flex>
               <RightArrow color="#0070f3" />

@@ -4,11 +4,12 @@ import Error from 'next/error';
 import Head from 'next/head';
 import matter from 'gray-matter';
 import hashMap from '../../lib/docs/hash-map.json';
-import { getSlug, removeFromLast } from '../../lib/docs/utils';
+import { getSlug, removeFromLast, addTagToSlug } from '../../lib/docs/utils';
 import { getPaths, findRouteByPath, fetchDocsManifest } from '../../lib/docs/page';
 import { getLatestTag } from '../../lib/github/api';
 import { getRawFileFromRepo } from '../../lib/github/raw';
 import markdownToHtml from '../../lib/docs/markdown-to-html';
+import getRouteContext from '../../lib/get-route-context';
 import PageContent from '../../components/page-content';
 import Container from '../../components/container';
 import DocsPage from '../../components/docs/docs-page';
@@ -59,7 +60,7 @@ function SidebarRoutes({ isMobile, routes: currentRoutes, level = 1 }) {
 
     const href = '/docs/[...slug]';
     const pagePath = removeFromLast(path, '.');
-    const pathname = tag ? pagePath.replace('/docs', `/docs/tag/${tag}`) : pagePath;
+    const pathname = addTagToSlug(pagePath, tag);
     const selected = slug.startsWith(pagePath);
     const route = { href, path, title, pathname, selected };
 
@@ -67,10 +68,11 @@ function SidebarRoutes({ isMobile, routes: currentRoutes, level = 1 }) {
   });
 }
 
-const Docs = ({ routes, route, data, html }) => {
+const Docs = ({ routes, route: _route, data, html }) => {
   const router = useRouter();
   const { asPath, isFallback, query } = router;
   const isMobile = useIsMobile();
+  const { route, prevRoute, nextRoute } = _route ? getRouteContext(_route, routes) : {};
 
   useEffect(() => {
     if (asPath.startsWith('/docs#')) {
@@ -91,7 +93,7 @@ const Docs = ({ routes, route, data, html }) => {
     return <Error statusCode={404} />;
   }
 
-  const title = route && `${data.title || route.title} - Documentation | Next.js`;
+  const title = route && `${data.title || route.title} | Next.js`;
   const { tag } = getSlug(query);
 
   return (
@@ -114,7 +116,7 @@ const Docs = ({ routes, route, data, html }) => {
                 <Sidebar fixed>
                   <SidebarRoutes routes={routes} />
                 </Sidebar>
-                <DocsPage route={route} routes={routes} html={html} />
+                <DocsPage route={route} html={html} prevRoute={prevRoute} nextRoute={nextRoute} />
               </div>
               <style jsx>{`
                 .content {

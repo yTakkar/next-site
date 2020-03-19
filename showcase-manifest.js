@@ -347,7 +347,7 @@ const mapping = {
   },
   worldpopulationreview: {
     title: 'World Population Review',
-    link: 'http://worldpopulationreview.com',
+    link: 'https://worldpopulationreview.com',
     src: '/static/images/showcases/worldpopulationreview.jpg',
     srcFallback: true,
     alexa: 6881,
@@ -555,7 +555,7 @@ const mapping = {
   },
   'boosted-boards': {
     title: 'Boosted',
-    link: 'http://boostedboards.com',
+    link: 'https://boostedboards.com',
     src: '/static/images/showcases/boosted.jpg',
     srcFallback: true,
     alexa: 40796,

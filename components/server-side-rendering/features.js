@@ -39,9 +39,9 @@ const BrowserContent = () => (
 );
 
 const browserData = {
-  browserTabs: ['http://nextjs-site.now.sh'],
+  browserTabs: ['https://nextjs-site.now.sh'],
   browserMapping: {
-    'http://nextjs-site.now.sh': BrowserContent
+    'https://nextjs-site.now.sh': BrowserContent
   }
 };
 

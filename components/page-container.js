@@ -10,7 +10,7 @@ export default function PageContainer({ title, description, children }) {
   return (
     <div>
       <Head>
-        <title>{title || 'Next.js - The React Framework'}</title>
+        <title>{title || 'Next.js by ZEIT - The React Framework'}</title>
         {description !== false && (
           <meta
             name="description"

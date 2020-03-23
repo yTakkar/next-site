@@ -21,7 +21,7 @@ const EXAMPLES = [
     name: 'Data Fetching',
     description: (
       <span>
-        Using <code>getInitialProps</code> to fetch data on the server or on the client.
+        Using <code>getStaticProps</code> to fetch data at built time.
       </span>
     ),
     href: 'https://github.com/zeit/next.js/tree/master/examples/data-fetch'

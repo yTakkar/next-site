@@ -27,13 +27,13 @@ const EXAMPLES = [
     href: 'https://github.com/zeit/next.js/tree/master/examples/data-fetch'
   },
   {
-    name: 'Parameterized Routing',
+    name: 'Dynamic Routing',
     description: (
       <span>
-        How to set up custom routes, such as <code>/blog/:id</code> for posts.
+        How to create dynamic routes, such as <code>/blog/[id]</code> for posts.
       </span>
     ),
-    href: 'https://github.com/zeit/next.js/tree/master/examples/parameterized-routing'
+    href: 'https://github.com/zeit/next.js/tree/master/examples/dynamic-routing'
   },
   {
     name: 'TypeScript',

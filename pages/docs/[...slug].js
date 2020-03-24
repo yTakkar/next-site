@@ -5,8 +5,7 @@ import Head from 'next/head';
 import matter from 'gray-matter';
 import hashMap from '../../lib/docs/hash-map.json';
 import { getSlug, removeFromLast, addTagToSlug } from '../../lib/docs/utils';
-import { getPaths, findRouteByPath, fetchDocsManifest } from '../../lib/docs/page';
-import { getLatestTag } from '../../lib/github/api';
+import { getPaths, getCurrentTag, findRouteByPath, fetchDocsManifest } from '../../lib/docs/page';
 import { getRawFileFromRepo } from '../../lib/github/raw';
 import markdownToHtml from '../../lib/docs/markdown-to-html';
 import getRouteContext from '../../lib/get-route-context';
@@ -168,14 +167,14 @@ const Docs = ({ routes, route: _route, data, html }) => {
 };
 
 export async function getStaticPaths() {
-  const tag = await getLatestTag();
+  const tag = await getCurrentTag();
   const manifest = await fetchDocsManifest(tag);
   return { paths: getPaths(manifest.routes), fallback: true };
 }
 
 export async function getStaticProps({ params }) {
   const { tag, slug } = getSlug(params);
-  const currentTag = tag || (await getLatestTag());
+  const currentTag = await getCurrentTag(tag);
   const manifest = await fetchDocsManifest(currentTag).catch(error => {
     // If a manifest wasn't found for a custom tag, show a 404 instead
     if (error.status === 404) return;

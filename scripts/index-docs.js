@@ -6,7 +6,7 @@ import toString from 'mdast-util-to-string';
 import GithubSlugger from 'github-slugger';
 import md5 from 'md5';
 import { removeFromLast } from '../lib/docs/utils';
-import { getLatestTag } from '../lib/github/api';
+import { getCurrentTag, fetchDocsManifest } from '../lib/docs/page';
 import { getRawFileFromRepo } from '../lib/github/raw';
 
 const processor = unified().use(markdown);
@@ -27,8 +27,7 @@ function getText(node) {
   return toString(node).replace(/\xA0/g, ' ');
 }
 
-async function addRecords(filePath) {
-  const tag = await getLatestTag();
+async function addRecords(filePath, tag) {
   const md = await getRawFileFromRepo(filePath, tag);
   const tree = await processor.parse(md);
   const slugger = new GithubSlugger();
@@ -87,9 +86,10 @@ async function indexDocs() {
   const client = algoliasearch('NNTAHQI9C5', process.env.ALGOLIA_API_KEY);
   // Init the docs index, this will throw if the index doesn't exist
   const index = await client.initIndex('nextjs_docs');
-  const manifest = JSON.parse(await getRawFileFromRepo('/docs/manifest.json'));
+  const tag = await getCurrentTag();
+  const manifest = await fetchDocsManifest(tag);
   const files = manifest.routes.reduce(flattenRoutes, []);
-  const recordsByFile = await Promise.all(files.map(addRecords));
+  const recordsByFile = await Promise.all(files.map(filePath => addRecords(filePath, tag)));
   // Group all records into a single array
   const objects = recordsByFile.reduce((records, record) => {
     records.push(...record);

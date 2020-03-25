@@ -3,21 +3,6 @@ import withPure from '../../hoc/pure';
 
 const EXAMPLES = [
   {
-    name: 'Custom Server with Express',
-    description: 'Setting up a custom Express server to handle requests.',
-    href: 'https://github.com/zeit/next.js/tree/master/examples/custom-server-express'
-  },
-  {
-    name: 'Prefetching',
-    description: 'How to use the built-in page prefetching functionality.',
-    href: 'https://github.com/zeit/next.js/tree/master/examples/with-prefetching'
-  },
-  {
-    name: 'Styled Components',
-    description: 'How to use Styled Components for styling.',
-    href: 'https://github.com/zeit/next.js/tree/master/examples/with-styled-components'
-  },
-  {
     name: 'Data Fetching',
     description: (
       <span>
@@ -37,33 +22,28 @@ const EXAMPLES = [
   },
   {
     name: 'TypeScript',
-    description: 'How to set up the TypeScript type system for your components.',
+    description: 'How to use built-in TypeScript support in Next.js',
     href: 'https://github.com/zeit/next.js/tree/master/examples/with-typescript'
   },
   {
-    name: 'Electron',
-    description: 'How you can use Next.js inside an Electron application.',
-    href: 'https://github.com/zeit/next.js/tree/master/examples/with-electron'
+    name: 'CSS',
+    description: 'How to use Next.js with CSS imports and CSS modules',
+    href: 'https://github.com/zeit/next.js/tree/canary/examples/with-next-css'
   },
   {
-    name: 'Redux',
-    description: 'How to use the well-known Redux for global state management.',
-    href: 'https://github.com/zeit/next.js/tree/master/examples/with-redux'
+    name: 'SASS',
+    description: 'How to use Next.js with Sass imports and Sass modules',
+    href: 'https://github.com/zeit/next.js/tree/canary/examples/with-next-sass'
   },
   {
-    name: 'SSR Caching',
-    description: 'How to cache the resulting HTML of a page to avoid re-rendering.',
-    href: 'https://github.com/zeit/next.js/tree/master/examples/ssr-caching'
+    name: 'API Routes',
+    description: 'Using Next.js API Routes to handle API logic',
+    href: 'https://github.com/zeit/next.js/tree/canary/examples/api-routes'
   },
   {
-    name: 'Less, PostCSS, CSS Modules',
-    description: 'How to use Next.js with next-less plugin.',
-    href: 'https://github.com/zeit/next.js/tree/canary/examples/with-next-less'
-  },
-  {
-    name: 'Apollo GraphQL',
-    description: 'How to use the Apollo framework for GraphQL data fetching.',
-    href: 'https://github.com/zeit/next.js/tree/canary/examples/with-apollo'
+    name: 'Using next/head',
+    description: 'How to add additional meta tags into the <head>',
+    href: 'https://github.com/zeit/next.js/tree/canary/examples/head-elements'
   }
 ];
 
@@ -146,7 +126,7 @@ export default {
             <span className="f5 fw6" style={{ color: '#f3f3f3', marginBottom: '.2rem' }}>
               github.com/zeit/next.js
             </span>
-            <span className="f5">150+ examples</span>
+            <span className="f5">190+ examples</span>
           </span>
         </a>
       </div>

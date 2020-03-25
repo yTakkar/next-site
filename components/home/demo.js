@@ -39,16 +39,6 @@ export default function Demo() {
                       </TabButton>
                     )
                   )}
-                  <a href="/features/server-side-rendering">
-                    <TabButton invert className="tab">
-                      Server Side Rendering
-                    </TabButton>
-                  </a>
-                  <a href="/features/static-exporting">
-                    <TabButton invert className="tab">
-                      Static Exporting
-                    </TabButton>
-                  </a>
                   <TabButton
                     invert
                     className="tab"

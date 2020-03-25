@@ -1,6 +1,6 @@
 const campaignWords = [
   'Production',
-  'Server-Rendered Apps',
+  'Pre-Rendered Apps',
   'Static Websites',
   'the Enterprise',
   'the Desktop',

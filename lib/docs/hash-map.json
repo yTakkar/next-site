@@ -89,9 +89,9 @@
     "static-html-export": "/advanced-features/static-html-export",
     "usage": "/advanced-features/static-html-export#how-to-use-it",
     "limitation": "/advanced-features/static-html-export#caveats",
-    "multi-zones": "",
-    "how-to-define-a-zone": "",
-    "how-to-merge-them": "",
+    "multi-zones": "/advanced-features/multi-zones",
+    "how-to-define-a-zone": "/advanced-features/multi-zones#how-to-define-a-zone",
+    "how-to-merge-them": "/advanced-features/multi-zones#how-to-merge-zones",
     "faq": "/faq"
   }
 }

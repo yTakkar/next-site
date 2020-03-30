@@ -87,21 +87,6 @@ export default withPure(() => (
             </p>
           </div>
           <div>
-            <h4 className="fw5">Features</h4>
-            <p>
-              <a href="/features/server-side-rendering">SSR</a>
-            </p>
-            <p>
-              <a href="/features/static-exporting">Static Exporting</a>
-            </p>
-            <p>
-              <a href="/features/css-in-js">CSS-in-JS</a>
-            </p>
-            <p>
-              <a href="/features/progressive-web-apps">PWA</a>
-            </p>
-          </div>
-          <div>
             <h4 className="fw5">More</h4>
             <p>
               <a href="https://github.com/zeit/next.js" rel="noopener noreferrer" target="_blank">

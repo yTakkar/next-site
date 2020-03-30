@@ -40,7 +40,6 @@ const nextConfig = {
   experimental: {
     babelMultiThread: true,
     modern: true,
-    granularChunks: true,
     rewrites() {
       return [
         {
@@ -61,47 +60,52 @@ const nextConfig = {
       return [
         {
           source: '/learn{/}?',
-          statusCode: 301,
+          permanent: true,
           destination: '/learn/basics/getting-started'
         },
         {
           source: '/learn/basics/server-side-support-for-clean-urls{/}?',
-          statusCode: 301,
+          permanent: true,
           destination: '/learn/basics/clean-urls-with-dynamic-routing'
         },
         {
           source: '/learn/excel/automatic-prerendering{/}?',
-          statusCode: 301,
+          permanent: true,
           destination: '/learn/excel/automatic-static-optimization'
         },
         {
           source: '/learn/basics/navigate-between-pages/hoc{/}?',
-          statusCode: 301,
+          permanent: true,
           destination: '/learn/basics/navigate-between-pages/link'
         },
         {
           source: '/features{/}?',
-          statusCode: 301,
-          destination: '/features/static-exporting'
+          permanent: false,
+          destination: '/'
+        },
+        {
+          source: '/features/:path*',
+          permanent: false,
+          destination: '/'
         },
         {
           source: '/features/ssr{/}?',
-          statusCode: 301,
-          destination: '/features/server-side-rendering'
+          permanent: false,
+          destination: '/'
         },
         {
           source: '/case-studies{/}?',
-          statusCode: 301,
+          permanent: false,
           destination: '/case-studies/hulu'
         },
         {
           source: '/api{/}?',
-          statusCode: 301,
+          permanent: false,
           destination: '/docs/api-routes/introduction'
         },
         {
           source: '/docs/api{/}?',
-          statusCode: 301,
+          permanent: false,
           destination: '/docs/api-routes/introduction'
         }
       ];

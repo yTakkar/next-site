@@ -14,33 +14,21 @@ export default function Features() {
         />
         <div className="row">
           <div className="column">
-            <h3 className="f3 fw6">
-              <Button href="/features/server-side-rendering" amp>
-                Server Rendering
-              </Button>
-            </h3>
+            <h3 className="f3 fw6">Server Rendering</h3>
             <p>
               With Next.js, server rendering React applications has never been easier, no matter
               where your data is coming from.
             </p>
           </div>
           <div className="column">
-            <h3 className="f3 fw6">
-              <Button href="/features/static-exporting" amp>
-                Static Exporting
-              </Button>
-            </h3>
+            <h3 className="f3 fw6">Static Exporting</h3>
             <p>
               No need to learn a new framework. Exporting a static site with Next.js is as easy as a
               single command.
             </p>
           </div>
           <div className="column">
-            <h3 className="f3 fw6">
-              <Button href="/features/css-in-js" amp>
-                CSS-in-JS
-              </Button>
-            </h3>
+            <h3 className="f3 fw6">CSS-in-JS</h3>
             <p>
               Next.js comes with <code>styled-jsx</code> included, but it also works with every
               CSS-in-JS solution you know and love.

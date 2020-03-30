@@ -14,10 +14,9 @@ export default function Features() {
         />
         <div className="row">
           <div className="column">
-            <h3 className="f3 fw6">Server Rendering</h3>
+            <h3 className="f3 fw6">Pre-Rendering</h3>
             <p>
-              With Next.js, server rendering React applications has never been easier, no matter
-              where your data is coming from.
+              Statically generated and server-rendered React applications have never been easier.
             </p>
           </div>
           <div className="column">
@@ -37,7 +36,7 @@ export default function Features() {
         </div>
         <div className="row">
           <div className="column">
-            <h3 className="f3 fw6">Zero Setup</h3>
+            <h3 className="f3 fw6">Zero Configuration</h3>
             <p>
               Automatic code splitting, filesystem based routing, hot code reloading and universal
               rendering.

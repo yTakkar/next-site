@@ -45,6 +45,15 @@ const cachedStyles = css`
   .btn.invert:active {
     background: #006ae6;
   }
+  .btn.invert.outline {
+    background: #fff;
+    color: #696969;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+  }
+  .btn.invert.outline:hover {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 20px rgba(93, 93, 93, 0.23);
+  }
   .btn.small {
     font-size: 0.875rem;
     height: 1.5rem;
@@ -72,6 +81,7 @@ const cachedStyles = css`
 export default withPure(function Button({
   children,
   invert,
+  outline,
   small,
   href,
   as,
@@ -81,6 +91,7 @@ export default withPure(function Button({
   ...props
 }) {
   const cachedClassNames = classNames(className, 'btn', 'fw4 no-drag', {
+    outline,
     invert,
     small,
     loading

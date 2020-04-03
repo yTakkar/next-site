@@ -133,9 +133,17 @@ export default class extends React.PureComponent {
                 <Campaign />
               </h2>
               <div className="main-button">
-                <Button href="#showcases" invert>
-                  View Showcase
-                </Button>
+                <div className="button-spacer">
+                  <Button href="/learn/basics/getting-started" invert>
+                    Start Learning
+                  </Button>
+                </div>
+
+                <div className="button-spacer">
+                  <Button href="#showcases" invert outline>
+                    View Showcase
+                  </Button>
+                </div>
               </div>
             </div>
             <div>
@@ -157,6 +165,10 @@ export default class extends React.PureComponent {
         </Container>
 
         <style jsx>{`
+          .button-spacer {
+            display: inline-block;
+            padding: 10px;
+          }
           .intro-container {
             margin: 0 0 2rem 0;
             overflow: visible;

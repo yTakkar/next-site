@@ -11,12 +11,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  return {
-    props: {
-      item: params.item
-    },
-    revalidate: false
-  };
+  return { props: { item: params.item } };
 }
 
 export default props => <Showcase {...props} />;

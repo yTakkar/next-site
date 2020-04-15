@@ -59,10 +59,7 @@ function Showcase({ item }) {
 }
 
 export async function getStaticProps() {
-  return {
-    props: {},
-    revalidate: false
-  };
+  return { props: {} };
 }
 
 export default Showcase;

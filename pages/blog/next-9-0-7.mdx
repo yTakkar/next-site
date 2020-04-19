@@ -2,6 +2,8 @@ import withPost from '../../components/blog/with-post'
 import Image from '../../components/image'
 import { meta } from '../../blog/next-9-0-7-preview.mdx'
 import { TerminalInput } from '../../components/text/terminal'
+import PlatformLink from '../../components/name/platform-link'
+import OrgText from '../../components/name/org-text'
 
 export default withPost({ ...meta })
 
@@ -39,7 +41,7 @@ This middleware compresses responses so fewer bytes are sent over-the-wire to yo
 
 However, when inspecting Next.js usage on the web, we found that a large percentage of companies did not have any compression configured.
 
-On platforms like [ZEIT Now](https://zeit.co), `gzip` and `brotli` are handled automatically on the proxy level.
+On platforms like <PlatformLink />, `gzip` and `brotli` are handled automatically on the proxy level.
 
 When self-hosting, companies have to add in gzip (via `compression` or a reverse proxy) themselves.
 
@@ -51,7 +53,7 @@ If compression is already enabled in your application via a custom server, Next.
 
 Next.js does not include compression for the serverless target by default because when using the serverless target assets are uploaded separately and not served through Node.js.
 
-If you're deploying on a platform that handles compression such as [ZEIT Now](https://zeit.co/home) no changes are needed.
+If you're deploying on a platform that handles compression such as <PlatformLink /> no changes are needed.
 
 ### TypeScript Report on Active Pages Only
 
@@ -77,7 +79,7 @@ Next.js was released almost 3 years ago, and the framework has grown considerabl
 
 The way that we've been approaching this improvement process has been very much a manual one.
 
-ZEIT has a few large Next.js applications. For example, [zeit.co](https://zeit.co/), [zeit.co/docs](https://zeit.co/docs), and [nextjs.org](https://nextjs.org/). We've been [dogfooding](https://en.wikipedia.org/wiki/Eating_your_own_dog_food) Next.js internally at ZEIT and improved Next.js based on our experiences.
+&#8203;<OrgText /> has a few large Next.js applications. For example, <PlatformLink href='/' />, <PlatformLink href='/docs' />, and [https://nextjs.org](https://nextjs.org). We've been [dogfooding](https://en.wikipedia.org/wiki/Eating_your_own_dog_food) Next.js internally at <OrgText /> and improved Next.js based on our experiences.
 
 On top of that, we actively engage with the community to gather feedback. Chances are that you have talked to Tim before to provide feedback on how you're using Next.js at your company.
 

@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import HuluLogo from '../../icons/companies/hulu';
-import ZeitLogo from '../../icons/zeit-logo-outline.js';
+import Logo from '../../icons/platform-logo';
 
 export default () => (
   <div>
     <Link href="https://zeit.co?utm_source=next-site&utm_medium=logo&utm_campaign=case-studies">
       <a className="home">
-        <ZeitLogo />
+        <Logo />
       </a>
     </Link>
     <span>+</span>

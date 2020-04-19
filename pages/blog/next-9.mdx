@@ -2,6 +2,7 @@ import withPost from '../../components/blog/with-post'
 import Image from '../../components/image'
 import { meta } from '../../blog/next-9-preview.mdx'
 import { TerminalInput } from '../../components/text/terminal'
+import PlatformCliLink from '../../components/name/platform-cli-link'
 
 export default withPost({ ...meta })
 
@@ -444,8 +445,7 @@ screen as you made changes.
 This behavior causes some issues.
 Most notably it would clear console output from both your application code, for
 example when you add `console.log` to your components.
-But also when using external tools that stitch log output together like the [Now CLI](https://zeit.co/download)
-or `docker-compose`.
+But also when using external tools that stitch log output together like the <PlatformCliLink /> or `docker-compose`.
 
 Starting from Next.js 9 the log output jumps less and no longer clears the screen.
 The allows for a better overall experience as your terminal window will have more

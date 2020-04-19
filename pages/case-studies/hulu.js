@@ -14,6 +14,7 @@ import Improvements from '../../components/case-studies/hulu/improvements';
 import LinesGallery from '../../components/case-studies/hulu/lines-gallery';
 import Conclusion from '../../components/case-studies/hulu/conclusion';
 import CTA from '../../components/case-studies/hulu/cta';
+import { ORG_NAME } from '../../lib/constants';
 
 const title = 'Case Study - Hulu | Next.js';
 
@@ -33,7 +34,7 @@ export default () => {
       )}
       <SocialMeta
         title={title}
-        description="Find out how Hulu migrated to Next.js and modernized their fronted stack to ship code faster."
+        description={`Find out how Hulu migrated to Next.js by ${ORG_NAME} and modernized their frontend stack to ship code faster.`}
         image="/static/twitter-cards/hulu.png"
         url="https://nextjs.org/case-studies/hulu"
         keywords="React, Migrate to Next.js, web applications, migration"
@@ -167,5 +168,5 @@ export default () => {
 };
 
 export const config = {
-  amp: true
+  amp: true,
 };

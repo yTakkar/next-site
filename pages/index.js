@@ -12,17 +12,18 @@ import Customers from '../components/home/customers';
 import Newsletter from '../components/home/newsletter';
 import Learn from '../components/home/learn';
 import SocialMeta from '../components/social-meta';
+import { ORG_NAME } from '../lib/constants';
 
 export default () => {
   const isAmp = useAmp();
 
   return (
-    <Page title="Next.js by ZEIT - The React Framework">
+    <Page title={`Next.js by ${ORG_NAME} - The React Framework`}>
       <SocialMeta
         image="/static/twitter-cards/home.jpg"
-        title="Next.js by ZEIT - The React Framework"
+        title={`Next.js by ${ORG_NAME} - The React Framework`}
         url="https://nextjs.org"
-        description="Production grade React applications that scale. The world’s leading companies use Next.js to build static and dynamic websites and web applications."
+        description={`Production grade React applications that scale. The world’s leading companies use Next.js by ${ORG_NAME} to build static and dynamic websites and web applications.`}
       />
       <SkipNavContent />
       <Notification href="/blog/next-9-3" title="Next 9.3 is out!" titleMobile="Next 9.3 is out!">
@@ -41,5 +42,5 @@ export default () => {
 };
 
 export const config = {
-  amp: 'hybrid'
+  amp: 'hybrid',
 };

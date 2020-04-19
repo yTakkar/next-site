@@ -9,7 +9,7 @@ import List from '../../components/showcase/list';
 import Filter from '../../components/showcase/filter';
 import SiteDetail from '../../components/showcase/site-detail';
 import SocialMeta from '../../components/social-meta';
-
+import { ORG_NAME } from '../../lib/constants';
 import { categories, mapping } from '../../showcase-manifest';
 
 const HEADER_HEIGHT = 16 * 12;
@@ -21,7 +21,7 @@ function Showcase({ item }) {
         image="/static/twitter-cards/showcase.png"
         title="Showcase | Next.js"
         url="https://nextjs.org/showcase"
-        description="Meet hundreds of beautiful websites powered by Next.js"
+        description={`Meet hundreds of beautiful websites powered by Next.js by ${ORG_NAME}`}
       />
       <Tabs data={categories} anchor>
         {(onSelect, selectedId) => (
@@ -29,7 +29,7 @@ function Showcase({ item }) {
             <Title
               height={{
                 desktop: HEADER_HEIGHT + 64,
-                mobile: HEADER_HEIGHT + 64 + 32
+                mobile: HEADER_HEIGHT + 64 + 32,
               }}
             />
             <Filter onSelect={onSelect} selectedId={selectedId} />

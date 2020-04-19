@@ -1,8 +1,10 @@
-const categories = ['All', 'Finance', 'News', 'E-commerce', 'Creative', 'Entertainment'];
-const categoriesShort = ['All', 'Finance', 'News', 'E-comm', 'Creative', 'Entertainment'];
+import { PLATFORM_NAME, PLATFORM_LOWERCASE, PLATFORM_URL } from './lib/constants';
+
+export const categories = ['All', 'Finance', 'News', 'E-commerce', 'Creative', 'Entertainment'];
+export const categoriesShort = ['All', 'Finance', 'News', 'E-comm', 'Creative', 'Entertainment'];
 
 // src is added to the sites that don't look good with a screenshot from https://microlink.io/screenshot
-const mapping = {
+export const mapping = {
   typeform: {
     title: 'Typeform',
     link: 'https://www.typeform.com',
@@ -632,13 +634,13 @@ const mapping = {
     internalUrl: 'hyper',
     tags: ['dev']
   },
-  zeit: {
-    title: 'ZEIT',
-    link: 'https://zeit.co?utm_source=next-site&utm_medium=showcase&utm_campaign=next-website',
+  [PLATFORM_LOWERCASE]: {
+    title: PLATFORM_NAME,
+    link: `${PLATFORM_URL}?utm_source=next-site&utm_medium=showcase&utm_campaign=next-website`,
     src: '/static/images/showcases/showcases-09.jpg',
     srcFallback: true,
     alexa: 34585,
-    internalUrl: 'zeit',
+    internalUrl: PLATFORM_LOWERCASE,
     tags: ['dev', 'creative']
   },
   avocode: {
@@ -963,11 +965,4 @@ const mapping = {
   }
 };
 
-const sortedByAlexa = Object.values(mapping).sort((a, b) => a.alexa - b.alexa);
-
-module.exports = {
-  categories,
-  categoriesShort,
-  mapping,
-  sortedByAlexa
-};
+export const sortedByAlexa = Object.values(mapping).sort((a, b) => a.alexa - b.alexa);

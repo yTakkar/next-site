@@ -1,11 +1,8 @@
 import Link from 'next/link';
-
+import { TWITTER_USER_NAME, ORG_NAME, PLATFORM_URL } from '../lib/constants';
 import Container from './container';
 import withPure from './hoc/pure';
-
-import { links } from '../site-manifest';
-
-import ZEITLogo from './icons/zeit-black-full-logo';
+import Logo from './icons/platform-logotype-black';
 
 export default withPure(() => (
   <Container wide gray>
@@ -109,10 +106,10 @@ export default withPure(() => (
             </p>
           </div>
           <div>
-            <h4 className="fw5">About ZEIT</h4>
+            <h4 className="fw5">About {ORG_NAME}</h4>
             <p>
               <a
-                href="https://zeit.co/oss?utm_source=next-site&utm_medium=footer&utm_campaign=next-website"
+                href={`${PLATFORM_URL}/oss?utm_source=next-site&utm_medium=footer&utm_campaign=next-website`}
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -125,7 +122,11 @@ export default withPure(() => (
               </a>
             </p>
             <p>
-              <a href="https://twitter.com/zeithq" rel="noopener noreferrer" target="_blank">
+              <a
+                href={`https://twitter.com/${TWITTER_USER_NAME}`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 Twitter
               </a>
             </p>
@@ -133,14 +134,16 @@ export default withPure(() => (
         </div>
         <div className="copyright f6">
           <a
-            href="https://zeit.co?utm_source=next-site&utm_medium=footer&utm_campaign=next-website"
+            href={`${PLATFORM_URL}?utm_source=next-site&utm_medium=footer&utm_campaign=next-website`}
             rel="noopener noreferrer"
             target="_blank"
-            aria-label="ZEIT"
+            aria-label={ORG_NAME}
           >
-            <ZEITLogo />
+            <Logo />
           </a>
-          <div> Copyright © {`${new Date().getFullYear()}`} ZEIT, Inc. All rights reserved.</div>
+          <div>
+            Copyright © {`${new Date().getFullYear()}`} {ORG_NAME}, Inc. All rights reserved.
+          </div>
         </div>
       </footer>
     </Container>

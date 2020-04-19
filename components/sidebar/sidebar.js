@@ -29,7 +29,7 @@ export default function Sidebar({ active, children, fixed }) {
           /* content margin + header size */
           top: calc(2rem + 81px);
           margin-right: 1rem;
-          /* Full page - content margin - header size - ZEIT banner */
+          /* Full page - content margin - header size - banner */
           height: calc(100vh - 2rem - 81px - 50px);
           padding-bottom: 0;
           display: flex;

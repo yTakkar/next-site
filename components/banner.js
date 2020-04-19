@@ -1,4 +1,4 @@
-import Logo from './icons/zeit-white-full-logo';
+import Logo from './icons/platform-logotype-white';
 
 const Banner = () => {
   return (

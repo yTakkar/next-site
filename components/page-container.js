@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import Router from 'next/router';
 import { trackPageview } from '../lib/analytics';
+import { ORG_NAME } from '../lib/constants';
 
-Router.events.on('routeChangeComplete', url => {
+Router.events.on('routeChangeComplete', (url) => {
   trackPageview(url);
 });
 
@@ -10,11 +11,11 @@ export default function PageContainer({ title, description, children }) {
   return (
     <div>
       <Head>
-        <title>{title || 'Next.js by ZEIT - The React Framework'}</title>
+        <title>{title || `Next.js by ${ORG_NAME} - The React Framework`}</title>
         {description !== false && (
           <meta
             name="description"
-            content={description || 'Next.js is the React framework for production'}
+            content={description || `Next.js by ${ORG_NAME} is the React framework for production`}
           />
         )}
       </Head>

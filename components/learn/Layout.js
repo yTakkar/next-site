@@ -12,6 +12,7 @@ import Navigation from './Navigation';
 import Lesson from './Lesson';
 import Markdown from './Markdown';
 import FeedbackContext from '../feedback-context';
+import { ORG_NAME } from '../../lib/constants';
 
 const Layout = ({ meta, children }) => {
   const isMobile = useIsMobile();
@@ -77,7 +78,7 @@ const Layout = ({ meta, children }) => {
           image="/static/twitter-cards/learn.png"
           title="Learn | Next.js"
           url="https://nextjs.org/learn"
-          description="Production grade React applications that scale. The world’s leading companies use Next.js to build server-rendered applications, static websites, and more."
+          description={`Production grade React applications that scale. The world’s leading companies use Next.js by ${ORG_NAME} to build server-rendered applications, static websites, and more.`}
         />
         <SkipNavContent />
         <Footer />

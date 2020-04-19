@@ -1,9 +1,9 @@
 {
   "name": "next-site",
-  "description": "Next.js Official Homepage",
+  "description": "Next.js by ZEIT: Official Homepage",
   "version": "1.0.0",
   "repository": "zeit/next-site",
-  "author": "",
+  "author": "ZEIT",
   "homepage": "https://nextjs.org",
   "license": "MIT",
   "engines": {

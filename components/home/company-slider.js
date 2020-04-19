@@ -59,11 +59,14 @@ export default function CompanySlider() {
           <div>
             <Sesame />
           </div>
+          <div>
+            <Pling />
+          </div>
         </div>
       </BackgroundSlider>
       <div style={{ marginBottom: '1rem' }} />
       <BackgroundSlider duration={50}>
-        {num => (
+        {(num) => (
           <div className="company-logos-container">
             <div>
               <Auth0 />
@@ -97,9 +100,6 @@ export default function CompanySlider() {
             </div>
             <div>
               <Binance />
-            </div>
-            <div>
-              <Pling />
             </div>
           </div>
         )}

@@ -1,9 +1,9 @@
 import Container from '../container';
 import SectionHeader from '../section-header';
+import { ORG_NAME } from '../../lib/constants';
 
 export default ({ height }) => {
-  const defaultHeight =
-    height.desktop || height.tablet || height.mobile || height;
+  const defaultHeight = height.desktop || height.tablet || height.mobile || height;
 
   return (
     <Container center region="showcase">
@@ -33,9 +33,8 @@ export default ({ height }) => {
           title="Showcase"
           description={
             <span>
-              Meet hundreds of beautiful websites{' '}
-              <br className="display-mobile" />
-              powered by Next.js
+              Meet hundreds of beautiful websites <br className="display-mobile" />
+              built with Next.js by {ORG_NAME}
             </span>
           }
         />

@@ -42,5 +42,5 @@ export default () => {
 };
 
 export const config = {
-  amp: 'hybrid',
+  amp: 'hybrid'
 };

@@ -1,0 +1,31 @@
+import Layout from '../../../../components/learn/Layout'
+
+export const meta = {
+  title: 'Dynamic Routes',
+  courseId: 'basics',
+  lessonId: 'dynamic-routes',
+  stepId: 'setup',
+  subtitle: 'Setup'
+}
+
+### Download Starter Code (Optional)
+
+**If you’re continuing from the previous lesson,** you can skip the following.
+
+Otherwise, you can download, install, and run the starter code for this lesson below. Again, this is NOT necessary if you’ve just finished the previous lesson.
+
+```bash
+# If you prefer Yarn, you can use `yarn create` instead of `npm init`
+npm init next-app nextjs-blog --example "https://github.com/zeit/next-learn-starter/tree/master/dynamic-routes-starter"
+cd nextjs-blog
+# If you prefer Yarn, you can use `yarn dev` instead
+npm run dev
+```
+
+Once you download your starter code, you should update:
+
+- `public/images/profile.jpg` with your photo (Recommended: 400px width/height).
+- `const name = '[Your Name]'` in `components/layout.js` with your name.
+- `<p>[Your Self Introduction]</p>` in `pages/index.js` with your self introduction.
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

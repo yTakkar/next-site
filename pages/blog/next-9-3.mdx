@@ -56,7 +56,7 @@ This allows you to use any asynchronous or even synchronous data fetching techni
 ```jsx
 export async function getStaticProps(context) {
   return {
-    props: {}, // will be passed to the page component as props
+    props: {} // will be passed to the page component as props
   }
 }
 ```
@@ -75,7 +75,7 @@ import fetch from 'node-fetch'
 function Blog({ posts }) {
   return (
     <ul>
-      {posts.map((post) => (
+      {posts.map(post => (
         <li>{post.title}</li>
       ))}
     </ul>
@@ -94,8 +94,8 @@ export async function getStaticProps() {
   // will receive `posts` as a prop at build time
   return {
     props: {
-      posts,
-    },
+      posts
+    }
   }
 }
 
@@ -176,7 +176,7 @@ export async function getStaticPaths() {
   const posts = await res.json()
 
   // Get the paths we want to pre-render based on posts
-  const paths = posts.map((post) => `/posts/${post.id}`)
+  const paths = posts.map(post => `/posts/${post.id}`)
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
@@ -231,7 +231,7 @@ export async function getStaticPaths() {
     paths: [{ params: { id: 1 } }, { params: { id: 2 } }],
     // Enable statically generating additional pages
     // For example: `/posts/3`
-    fallback: true,
+    fallback: true
   }
 }
 
@@ -264,7 +264,7 @@ When navigating between pages using `next/link` instead of executing `getServerS
 ```jsx
 export async function getServerSideProps(context) {
   return {
-    props: {}, // will be passed to the page component as props
+    props: {} // will be passed to the page component as props
   }
 }
 ```

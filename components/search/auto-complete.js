@@ -21,7 +21,7 @@ function AutoComplete({
   refine,
   onSearchStart,
   onSearchClear,
-  onRouteChange,
+  onRouteChange
 }) {
   const [inputValue, setValue] = useState('');
   const [hasFocus, setFocus] = useState(false);
@@ -37,12 +37,12 @@ function AutoComplete({
       setValue(newValue);
     },
     onBlur: onFocus,
-    onFocus,
+    onFocus
   };
   const renderSuggestionsContainer = useCallback(
     ({ containerProps, children }) => {
       const { ref, ...props } = containerProps;
-      const newRef = (element) => {
+      const newRef = element => {
         if (containerRef) containerRef.current = element;
         ref(element);
       };

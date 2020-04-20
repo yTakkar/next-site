@@ -31,7 +31,7 @@ function dateSortDesc(a, b) {
 
 const Li = components.li
 
-const getLi = (path) => ({ children }) => {
+const getLi = path => ({ children }) => {
   if (!children?.props?.props) {
     return <Li>{children}</Li>
   }
@@ -40,7 +40,7 @@ const getLi = (path) => ({ children }) => {
   const { href } = props
   const isHash = href && href.startsWith('#')
   const element = React.cloneElement(children, {
-    props: isHash ? { ...props, href: path + href } : props,
+    props: isHash ? { ...props, href: path + href } : props
   })
 
   return <Li>{element}</Li>

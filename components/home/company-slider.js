@@ -66,7 +66,7 @@ export default function CompanySlider() {
       </BackgroundSlider>
       <div style={{ marginBottom: '1rem' }} />
       <BackgroundSlider duration={50}>
-        {(num) => (
+        {num => (
           <div className="company-logos-container">
             <div>
               <Auth0 />

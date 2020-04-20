@@ -1,29 +1,25 @@
-import Layout from '../../../../components/learn/Layout';
+import Layout from '../../../../components/learn/Layout'
 
 export const meta = {
   title: 'Navigate Between Pages',
   courseId: 'basics',
   lessonId: 'navigate-between-pages',
-  stepId: 'setup'
-};
+  stepId: 'setup',
+  subtitle: 'Setup'
+}
 
-## Setup
+### Download Starter Code (Optional)
 
-In order to follow along with this lesson, you need to have a simple Next.js app. For that, continue your work from the previous lesson or download the following example app:
+**If you’re continuing from the previous lesson,** you can skip the following.
 
-```bash
-git clone https://github.com/zeit/next-learn-demo.git
-cd next-learn-demo
-cd 1-navigate-between-pages
-```
-
-You can run it with:
+Otherwise, you can download, install, and run the starter code for this lesson below. Again, this is NOT necessary if you’ve just finished the previous lesson.
 
 ```bash
-npm install
+# If you prefer Yarn, you can use `yarn create` instead of `npm init`
+npm init next-app nextjs-blog --example "https://github.com/zeit/next-learn-starter/tree/master/navigate-between-pages-starter"
+cd nextjs-blog
+# If you prefer Yarn, you can use `yarn dev` instead
 npm run dev
 ```
 
-Now you can access the app by navigating to http://localhost:3000/.
-
-export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

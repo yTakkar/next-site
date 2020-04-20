@@ -41,7 +41,7 @@ export default function Features() {
               Automatic code splitting, filesystem based routing, hot code reloading and universal
               rendering.
             </p>
-            <Button href="/learn/basics/getting-started">Learn Next.js</Button>
+            <Button href="/learn/basics/create-nextjs-app">Learn Next.js</Button>
           </div>
           <div className="column">
             <h3 className="f3 fw6">Fully Extensible</h3>

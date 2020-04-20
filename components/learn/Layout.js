@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { SkipNavContent } from '@reach/skip-nav';
 import { RecordsProvider } from '../../lib/learn/records';
 import { useIsMobile } from '../media-query';
@@ -10,7 +11,7 @@ import SocialMeta from '../social-meta';
 import FooterFeedback from '../footer-feedback';
 import Navigation from './Navigation';
 import Lesson from './Lesson';
-import Markdown from './Markdown';
+import Markdown, { H2 } from './Markdown';
 import FeedbackContext from '../feedback-context';
 import { ORG_NAME } from '../../lib/constants';
 
@@ -19,7 +20,15 @@ const Layout = ({ meta, children }) => {
 
   return (
     <FeedbackContext.Provider value={{ label: 'next-learn' }}>
-      <Page title={`Learn - ${meta.title} | Next.js`} sticky={!isMobile}>
+      {meta.stepId && (
+        <Head>
+          <meta name="robots" content="noindex" />
+        </Head>
+      )}
+      <Page
+        title={`${meta.subtitle ? `${meta.subtitle} - ` : ''}${meta.title} | Learn Next.js`}
+        sticky={!isMobile}
+      >
         <PageContent>
           <Container wide={isMobile}>
             <div className="content">
@@ -29,6 +38,7 @@ const Layout = ({ meta, children }) => {
                 </div>
                 <div className="lesson">
                   <Lesson meta={meta}>
+                    {meta.subtitle && <H2>{meta.subtitle}</H2>}
                     <Markdown>{children}</Markdown>
                   </Lesson>
                   <hr />
@@ -57,7 +67,6 @@ const Layout = ({ meta, children }) => {
                 flex: 1;
                 width: 100%;
                 min-width: 0;
-                max-width: 600px;
               }
               // CSS only media query for mobile + SSR
               @media screen and (max-width: 640px) {
@@ -78,7 +87,7 @@ const Layout = ({ meta, children }) => {
           image="/static/twitter-cards/learn.png"
           title="Learn | Next.js"
           url="https://nextjs.org/learn"
-          description={`Production grade React applications that scale. The world’s leading companies use Next.js by ${ORG_NAME} to build server-rendered applications, static websites, and more.`}
+          description={`Production grade React applications that scale. The world’s leading companies use Next.js by ${ORG_NAME} to build pre-rendered applications, static websites, and more.`}
         />
         <SkipNavContent />
         <Footer />

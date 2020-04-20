@@ -1,8 +1,8 @@
+import Link from 'next/link';
 import Container from '../container';
 import Button from '../button';
 import SectionHeader from '../section-header';
 import Image from '../image';
-import Link from 'next/link';
 
 export default function Learn() {
   return (
@@ -11,22 +11,23 @@ export default function Learn() {
         margin="0 0 2rem 0"
         id="learn"
         title="Learn Next.js"
-        description="Tutorials, examples and quizzes. Learn Next.js step-by-step and earn points ✨."
+        description="Learn Next.js step-by-step and earn points ✨."
       />
-      <Link href="/learn/basics/getting-started">
+      <Link href="/learn/basics/create-nextjs-app">
         <a title="Get started learning Next.js">
           <Image
+            shadow
             alt="Learn page overview"
-            margin={0}
             oversize={false}
+            margin={60}
             src="/static/images/learn.png"
-            width={2110 / 2}
-            height={1240 / 2}
+            width={1852 / 2}
+            height={990 / 2}
           />
         </a>
       </Link>
       <div>
-        <Button href="/learn/basics/getting-started" invert>
+        <Button href="/learn/basics/create-nextjs-app" invert>
           Get Started
         </Button>
       </div>

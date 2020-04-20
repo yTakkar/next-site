@@ -168,5 +168,5 @@ export default () => {
 };
 
 export const config = {
-  amp: true,
+  amp: true
 };

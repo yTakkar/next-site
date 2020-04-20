@@ -12,7 +12,7 @@ function flattenHeadings(headings) {
 function slugifyHeadings(headings) {
   const slugger = new GithubSlugger();
 
-  return headings.map((heading) => {
+  return headings.map(heading => {
     // n.b. mutation is required here unfortunately
     // eslint-disable-next-line no-param-reassign
     heading.id = slugger.slug(heading.title);
@@ -141,7 +141,7 @@ export default function Sidebar({ headings, mobile, desktop }) {
                     verticalAlign: 'middle',
                     marginRight: '0.2rem',
                     display: 'inline-block',
-                    lineHeight: '1rem',
+                    lineHeight: '1rem'
                   }}
                 >
                   <ArrowRight />

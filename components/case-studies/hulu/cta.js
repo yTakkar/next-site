@@ -6,7 +6,7 @@ export default () => (
       <h2>
         Find Out How Next.js Can <br /> Empower Your Team Today
       </h2>
-      <Link href="/learn/basics/getting-started">
+      <Link href="/learn/basics/create-nextjs-app">
         <a>
           <button type="button">Learn More</button>
         </a>

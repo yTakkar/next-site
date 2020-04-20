@@ -135,7 +135,7 @@ export default class extends React.PureComponent {
               <div className="main-button">
                 <div className="button-spacer">
                   <Button
-                    href="/learn/basics/getting-started?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website"
+                    href="/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website"
                     invert
                   >
                     Start Learning

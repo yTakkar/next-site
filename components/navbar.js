@@ -62,7 +62,7 @@ function Navbar() {
             </a>
           </Link>
 
-          <Link href="/learn/basics/getting-started">
+          <Link href="/learn/basics/create-nextjs-app">
             <a
               className={cn('mute', {
                 selected: route.startsWith('/learn')

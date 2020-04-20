@@ -34,6 +34,75 @@ const withMDX = nextMDX({
 
 const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' });
 
+const navigateBetweenPagesLessonsRedirect = [
+  'adding-link-props',
+  'client-side-history',
+  'link',
+  'hoc',
+  'simple-but-powerful',
+  'using-link'
+].map(page => ({
+  source: `/learn/basics/navigate-between-pages/${page}{/}?`,
+  permanent: true,
+  destination: '/learn/basics/navigate-between-pages'
+}));
+
+const apiRoutesLessonsRedirect = [
+  'creating-an-api-route',
+  'fetching-api-routes',
+  'finally',
+  'middlewares'
+].map(page => ({
+  source: `/learn/basics/api-routes/${page}{/}?`,
+  permanent: true,
+  destination: '/learn/basics/api-routes'
+}));
+
+const basicsLessonsRedirect = [].concat(
+  ...[
+    ['getting-started', 'create-nextjs-app'],
+    ['using-shared-components', 'assets-metadata-css'],
+    ['create-dynamic-pages', 'dynamic-routes'],
+    ['server-side-support-for-clean-urls', 'dynamic-routes'],
+    ['clean-urls-with-dynamic-routing', 'dynamic-routes'],
+    ['dynamic-routing', 'dynamic-routes'],
+    ['fetching-data-for-pages', 'data-fetching'],
+    ['styling-components', 'assets-metadata-css'],
+    ['deploying-a-nextjs-app', 'deploying-nextjs-app']
+  ].map(([before, after]) => [
+    {
+      source: `/learn/basics/${before}{/}?`,
+      permanent: true,
+      destination: `/learn/basics/${after}`
+    },
+    {
+      source: `/learn/basics/${before}/:page{/}?`,
+      permanent: true,
+      destination: `/learn/basics/${after}`
+    }
+  ])
+);
+
+const excelLessonsRedirect = [].concat(
+  ...[
+    ['static-html-export', '/docs/advanced-features/static-html-export'],
+    ['amp', '/docs/advanced-features/amp-support/introduction'],
+    ['automatic-static-optimization', '/docs/advanced-features/automatic-static-optimization'],
+    ['automatic-prerendering', '/docs/advanced-features/automatic-static-optimization']
+  ].map(([before, after]) => [
+    {
+      source: `/learn/excel/${before}{/}?`,
+      permanent: true,
+      destination: after
+    },
+    {
+      source: `/learn/excel/${before}/:page{/}?`,
+      permanent: true,
+      destination: after
+    }
+  ])
+);
+
 const nextConfig = {
   target: 'experimental-serverless-trace', // Not required for Now, but used by GitHub Actions
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx'],
@@ -60,23 +129,12 @@ const nextConfig = {
         {
           source: '/learn{/}?',
           permanent: true,
-          destination: '/learn/basics/getting-started'
+          destination: '/learn/basics/create-nextjs-app'
         },
-        {
-          source: '/learn/basics/server-side-support-for-clean-urls{/}?',
-          permanent: true,
-          destination: '/learn/basics/clean-urls-with-dynamic-routing'
-        },
-        {
-          source: '/learn/excel/automatic-prerendering{/}?',
-          permanent: true,
-          destination: '/learn/excel/automatic-static-optimization'
-        },
-        {
-          source: '/learn/basics/navigate-between-pages/hoc{/}?',
-          permanent: true,
-          destination: '/learn/basics/navigate-between-pages/link'
-        },
+        ...navigateBetweenPagesLessonsRedirect,
+        ...apiRoutesLessonsRedirect,
+        ...basicsLessonsRedirect,
+        ...excelLessonsRedirect,
         {
           source: '/features{/}?',
           permanent: false,

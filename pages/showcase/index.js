@@ -29,7 +29,7 @@ function Showcase({ item }) {
             <Title
               height={{
                 desktop: HEADER_HEIGHT + 64,
-                mobile: HEADER_HEIGHT + 64 + 32,
+                mobile: HEADER_HEIGHT + 64 + 32
               }}
             />
             <Filter onSelect={onSelect} selectedId={selectedId} />

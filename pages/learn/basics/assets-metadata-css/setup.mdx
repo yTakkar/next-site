@@ -1,0 +1,25 @@
+import Layout from '../../../../components/learn/Layout'
+
+export const meta = {
+  title: 'Assets, Metadata, and CSS',
+  courseId: 'basics',
+  lessonId: 'assets-metadata-css',
+  stepId: 'setup',
+  subtitle: 'Setup'
+}
+
+### Download Starter Code (Optional)
+
+**If you’re continuing from the previous lesson,** you can skip the following.
+
+Otherwise, you can download, install, and run the starter code for this lesson below. Again, this is NOT necessary if you’ve just finished the previous lesson.
+
+```bash
+# If you prefer Yarn, you can use `yarn create` instead of `npm init`
+npm init next-app nextjs-blog --example "https://github.com/zeit/next-learn-starter/tree/master/assets-metadata-css-starter"
+cd nextjs-blog
+# If you prefer Yarn, you can use `yarn dev` instead
+npm run dev
+```
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

@@ -241,7 +241,7 @@ dynamically according to your needs. Here's an example to create a list of links
 ```jsx
 const pids = ['id1', 'id2', 'id3'];
 {
-  pids.map((pid) => (
+  pids.map(pid => (
     <Link href="/post/[pid]" as={`/post/${pid}`}>
       <a>Post {pid}</a>
     </Link>
@@ -742,7 +742,7 @@ import Router from 'next/router';
 const handler = () => {
   Router.push({
     pathname: '/about',
-    query: { name: 'Zeit' },
+    query: { name: 'Zeit' }
   });
 };
 
@@ -776,7 +776,7 @@ Here's a list of supported events:
 Here's how to properly listen to the router event `routeChangeStart`:
 
 ```js
-const handleRouteChange = (url) => {
+const handleRouteChange = url => {
   console.log('App is changing to: ', url);
 };
 
@@ -804,7 +804,7 @@ Router.events.on('routeChangeError', (err, url) => {
 >
 > ```js
 > useEffect(() => {
->   const handleRouteChange = (url) => {
+>   const handleRouteChange = url => {
 >     console.log('App is changing to: ', url);
 >   };
 >
@@ -885,10 +885,10 @@ export default function ActiveLink({ children, href }) {
   const router = useRouter();
   const style = {
     marginRight: 10,
-    color: router.pathname === href ? 'red' : 'black',
+    color: router.pathname === href ? 'red' : 'black'
   };
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     e.preventDefault();
     router.push(href);
   };
@@ -1116,7 +1116,7 @@ Consider the following page `./pages/api/post/[pid].js`, here is how you get par
 ```js
 export default (req, res) => {
   const {
-    query: { pid },
+    query: { pid }
   } = req;
 
   res.end(`Post: ${pid}`);
@@ -1143,8 +1143,8 @@ export default (req, res) => {
 
 export const config = {
   api: {
-    bodyParser: false,
-  },
+    bodyParser: false
+  }
 };
 ```
 
@@ -1159,9 +1159,9 @@ export default (req, res) => {
 export const config = {
   api: {
     bodyParser: {
-      sizeLimit: '1mb',
-    },
-  },
+      sizeLimit: '1mb'
+    }
+  }
 };
 ```
 
@@ -1183,7 +1183,7 @@ Then, import `micro-cors` and [configure it](https://github.com/possibilities/mi
 import Cors from 'micro-cors';
 
 const cors = Cors({
-  allowedMethods: ['GET', 'HEAD'],
+  allowedMethods: ['GET', 'HEAD']
 });
 
 function Endpoint(req, res) {
@@ -1277,7 +1277,7 @@ app.prepare().then(() => {
     } else {
       handle(req, res, parsedUrl);
     }
-  }).listen(3000, (err) => {
+  }).listen(3000, err => {
     if (err) throw err;
     console.log('> Ready on http://localhost:3000');
   });
@@ -1308,7 +1308,7 @@ To disable this behavior & prevent routing based on files in `/pages`, simply se
 ```js
 // next.config.js
 module.exports = {
-  useFileSystemPublicRoutes: false,
+  useFileSystemPublicRoutes: false
 };
 ```
 
@@ -1343,7 +1343,7 @@ app.prepare().then(() => {
     handleNextRequests(req, res);
   });
 
-  server.listen(port, (err) => {
+  server.listen(port, err => {
     if (err) {
       throw err;
     }
@@ -1360,7 +1360,7 @@ By default Next.js will add `x-powered-by` to the request headers. There's an op
 ```js
 // next.config.js
 module.exports = {
-  poweredByHeader: false,
+  poweredByHeader: false
 };
 ```
 
@@ -1417,7 +1417,7 @@ export function Hello() {
 ```jsx
 import dynamic from 'next/dynamic';
 
-const DynamicComponent = dynamic(() => import('../components/hello').then((mod) => mod.Hello));
+const DynamicComponent = dynamic(() => import('../components/hello').then(mod => mod.Hello));
 
 function Home() {
   return (
@@ -1438,7 +1438,7 @@ export default Home;
 import dynamic from 'next/dynamic';
 
 const DynamicComponentWithCustomLoading = dynamic(() => import('../components/hello2'), {
-  loading: () => <p>...</p>,
+  loading: () => <p>...</p>
 });
 
 function Home() {
@@ -1611,9 +1611,9 @@ class MyDocument extends Document {
     ctx.renderPage = () =>
       originalRenderPage({
         // useful for wrapping the whole react tree
-        enhanceApp: (App) => App,
+        enhanceApp: App => App,
         // useful for wrapping in a per-page basis
-        enhanceComponent: (Component) => Component,
+        enhanceComponent: Component => Component
       });
 
     // Run the parent `getInitialProps` using `ctx` that now includes our custom `renderPage`
@@ -1731,7 +1731,7 @@ You can specify a name to use for a custom build directory. For example, the fol
 ```js
 // next.config.js
 module.exports = {
-  distDir: 'build',
+  distDir: 'build'
 };
 ```
 
@@ -1742,7 +1742,7 @@ You can disable etag generation for HTML pages depending on your cache strategy.
 ```js
 // next.config.js
 module.exports = {
-  generateEtags: false,
+  generateEtags: false
 };
 ```
 
@@ -1756,8 +1756,8 @@ module.exports = {
     // period (in ms) where the server will keep pages in the buffer
     maxInactiveAge: 25 * 1000,
     // number of pages that should be kept simultaneously without being disposed
-    pagesBufferLength: 2,
-  },
+    pagesBufferLength: 2
+  }
 };
 ```
 
@@ -1770,7 +1770,7 @@ Aimed at modules like [`@next/mdx`](https://github.com/zeit/next.js/tree/canary/
 ```js
 // next.config.js
 module.exports = {
-  pageExtensions: ['mdx', 'jsx', 'js'],
+  pageExtensions: ['mdx', 'jsx', 'js']
 };
 ```
 
@@ -1784,7 +1784,7 @@ module.exports = {
   generateBuildId: async () => {
     // For example get the latest git commit hash here
     return 'my-build-id';
-  },
+  }
 };
 ```
 
@@ -1799,7 +1799,7 @@ module.exports = {
     }
 
     return null;
-  },
+  }
 };
 ```
 
@@ -1847,7 +1847,7 @@ module.exports = withMDX(
     webpack(config, options) {
       // Further custom configuration here
       return config;
-    },
+    }
   })
 );
 ```
@@ -1867,11 +1867,11 @@ module.exports = {
     config.plugins.push(new webpack.IgnorePlugin(/\/__tests__\//));
     return config;
   },
-  webpackDevMiddleware: (config) => {
+  webpackDevMiddleware: config => {
     // Perform customizations to webpack dev middleware config
     // Important: return the modified config
     return config;
-  },
+  }
 };
 ```
 
@@ -1897,13 +1897,13 @@ module.exports = {
         options.defaultLoaders.babel,
         {
           loader: '@mdx-js/loader',
-          options: pluginOptions.options,
-        },
-      ],
+          options: pluginOptions.options
+        }
+      ]
     });
 
     return config;
-  },
+  }
 };
 ```
 
@@ -1985,8 +1985,8 @@ You can add the `env` key in `next.config.js`:
 // next.config.js
 module.exports = {
   env: {
-    customKey: 'value',
-  },
+    customKey: 'value'
+  }
 };
 ```
 
@@ -2034,12 +2034,12 @@ module.exports = {
   serverRuntimeConfig: {
     // Will only be available on the server side
     mySecret: 'secret',
-    secondSecret: process.env.SECOND_SECRET, // Pass through env variables
+    secondSecret: process.env.SECOND_SECRET // Pass through env variables
   },
   publicRuntimeConfig: {
     // Will be available on both server and client
-    staticFolder: '/static',
-  },
+    staticFolder: '/static'
+  }
 };
 ```
 
@@ -2075,7 +2075,7 @@ To set up a CDN, you can set up the `assetPrefix` setting and configure your CDN
 const isProd = process.env.NODE_ENV === 'production';
 module.exports = {
   // You may only need to add assetPrefix in the production.
-  assetPrefix: isProd ? 'https://cdn.mydomain.com' : '',
+  assetPrefix: isProd ? 'https://cdn.mydomain.com' : ''
 };
 ```
 
@@ -2086,7 +2086,7 @@ If your CDN is on a separate domain and you would like assets to be requested us
 ```js
 // next.config.js
 module.exports = {
-  crossOrigin: 'anonymous',
+  crossOrigin: 'anonymous'
 };
 ```
 
@@ -2133,8 +2133,8 @@ In some cases this indicator might not be as useful like when working on electro
 ```js
 module.exports = {
   devIndicators: {
-    autoPrerender: false,
-  },
+    autoPrerender: false
+  }
 };
 ```
 
@@ -2164,7 +2164,7 @@ To disable **compression** in Next.js, set `compress` to `false` in `next.config
 ```js
 // next.config.js
 module.exports = {
-  compress: false,
+  compress: false
 };
 ```
 
@@ -2197,7 +2197,7 @@ To enable **serverless mode** in Next.js, add the `serverless` build `target` in
 ```js
 // next.config.js
 module.exports = {
-  target: 'serverless',
+  target: 'serverless'
 };
 ```
 
@@ -2516,9 +2516,9 @@ module.exports = {
       '/readme.md': { page: '/readme' },
       '/p/hello-nextjs': { page: '/post', query: { title: 'hello-nextjs' } },
       '/p/learn-nextjs': { page: '/post', query: { title: 'learn-nextjs' } },
-      '/p/deploy-nextjs': { page: '/post', query: { title: 'deploy-nextjs' } },
+      '/p/deploy-nextjs': { page: '/post', query: { title: 'deploy-nextjs' } }
     };
-  },
+  }
 };
 ```
 
@@ -2531,7 +2531,7 @@ You can use the following `next.config.js` to switch back to this behavior:
 ```js
 // next.config.js
 module.exports = {
-  exportTrailingSlash: true,
+  exportTrailingSlash: true
 };
 ```
 

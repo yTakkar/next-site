@@ -205,6 +205,7 @@ const Navigation = ({ meta }) => {
             transition: bottom 0.5s ease;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            z-index: 1;
           }
           .navigation-area.dropdown.courses-closed {
             bottom: 100%;

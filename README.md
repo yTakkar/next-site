@@ -1,6 +1,6 @@
 # [Next.js website](https://nextjs.org/)
 
-The official website for Next.js, by [ZEIT](https://zeit.co/).
+The official website for Next.js.
 
 ## Contribution
 

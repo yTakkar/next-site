@@ -46,8 +46,7 @@ export default class AutoComplete extends React.Component {
       'mail.com',
       'gmx.com',
       'icloud.com',
-      'me.com',
-      'zeit.co'
+      'me.com'
     ];
     const { onInput: input } = this.props;
 

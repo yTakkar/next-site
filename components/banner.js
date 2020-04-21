@@ -1,11 +1,12 @@
 import Logo from './icons/platform-logotype-white';
+import { PLATFORM_URL } from '../lib/constants';
 
 const Banner = () => {
   return (
     <div className="banner">
       <div className="inner">
         <a
-          href="https://zeit.co?utm_source=next-site&utm_medium=banner&utm_campaign=next-website"
+          href={`${PLATFORM_URL}?utm_source=next-site&utm_medium=banner&utm_campaign=next-website`}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -13,7 +14,7 @@ const Banner = () => {
         </a>
 
         <a
-          href="https://zeit.co/import?filter=next.js&utm_source=next-site&utm_medium=banner&utm_campaign=next-website"
+          href={`${PLATFORM_URL}/import?filter=next.js&utm_source=next-site&utm_medium=banner&utm_campaign=next-website`}
           target="_blank"
           rel="noopener noreferrer"
         >

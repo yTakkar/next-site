@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import HuluLogo from '../../icons/companies/hulu';
 import Logo from '../../icons/platform-logo';
+import { PLATFORM_URL } from '../../../lib/constants';
 
 export default () => (
   <div>
-    <Link href="https://zeit.co?utm_source=next-site&utm_medium=logo&utm_campaign=case-studies">
+    <Link href={`${PLATFORM_URL}?utm_source=next-site&utm_medium=logo&utm_campaign=case-studies`}>
       <a className="home">
         <Logo />
       </a>

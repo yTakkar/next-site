@@ -49,10 +49,11 @@ export async function getPostData(id) {
 
 **Important**: We added the **`async`** keyword to `getPostData` because we need to use `await` for `remark`.
 
-That means we need to update `getStaticProps` in `[id].js` to use `await` when calling `getPostData`:
+That means we need to update `getStaticProps` in `pages/posts/[id].js` to use `await` when calling `getPostData`:
 
 ```js
 export async function getStaticProps({ params }) {
+  // Add the "await" keyword like this:
   const postData = await getPostData(params.id)
   // ...
 }

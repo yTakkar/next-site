@@ -74,8 +74,9 @@ export default class FooterFeedback extends Component {
           note: value,
           emotion: getEmoji(this.state.emoji),
           label: this.context?.label,
-          ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${navigator.language ||
-            'unknown language'})`
+          ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${
+            navigator.language || 'unknown language'
+          })`
         })
       })
         .then(() => {
@@ -193,7 +194,7 @@ export default class FooterFeedback extends Component {
 
   render() {
     const { focused, value } = this.state;
-    const { className, textAreaStyle, ...props } = this.props;
+    const { className, textAreaStyle, learn, ...props } = this.props;
 
     return (
       <div className="feedback">
@@ -277,9 +278,26 @@ export default class FooterFeedback extends Component {
             </div>
           )}
         />
+        {learn && (
+          <div className="learn">
+            You can also ask the community on{' '}
+            <a
+              href="https://github.com/zeit/next.js/discussions"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub Discussions
+            </a>
+            .
+          </div>
+        )}
 
         <style jsx>
           {`
+            .learn {
+              color: #666;
+            }
+
             .feedback {
               text-align: center;
               display: flex;
@@ -368,6 +386,7 @@ export default class FooterFeedback extends Component {
               position: relative;
               transition: all 150ms ease-out, border-radius 150ms step-end;
               z-index: 1000;
+              margin-bottom: 2rem;
             }
 
             .geist-feedback-input.focused .textarea-wrapper textarea {

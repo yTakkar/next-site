@@ -42,7 +42,7 @@ const Layout = ({ meta, children }) => {
                     <Markdown>{children}</Markdown>
                   </Lesson>
                   <hr />
-                  <FooterFeedback />
+                  <FooterFeedback learn />
                 </div>
               </RecordsProvider>
             </div>

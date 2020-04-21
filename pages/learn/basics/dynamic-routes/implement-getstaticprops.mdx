@@ -29,7 +29,7 @@ export function getPostData(id) {
 }
 ```
 
-Finally, in `[id].js`, replace this line:
+Finally, in `pages/posts/[id].js`, replace this line:
 
 ```js
 import { getAllPostIds } from '../../lib/posts'
@@ -86,7 +86,21 @@ You should be able to see the blog data for each page:
   height={738 / 2}
 />
 
-Great! We’ve successfully generated dynamic pages. Again, here’s the graphical summary of what we’ve done:
+Great! We’ve successfully generated dynamic pages.
+
+### Something Wrong?
+
+If you come across an error, make sure your files have the correct code:
+
+- `pages/posts/[id].js` should [look like this](https://github.com/zeit/next-learn-starter/blob/master/dynamic-routes-step-1/pages/posts/%5Bid%5D.js).
+- `lib/posts.js` should [look like this](https://github.com/zeit/next-learn-starter/blob/master/dynamic-routes-step-1/lib/posts.js).
+- (If it’s still not working) The remaining code should [look like this](https://github.com/zeit/next-learn-starter/tree/master/dynamic-routes-step-1).
+
+If you’re still stuck, feel free to ask the community on [GitHub Discussions](https://github.com/zeit/next.js/discussions). It’d be helpful if you could push your code to GitHub and link to it so others can take a look.
+
+### Summary
+
+Again, here’s the graphical summary of what we’ve done:
 
 <Image
   shadow

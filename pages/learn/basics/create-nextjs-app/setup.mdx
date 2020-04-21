@@ -23,29 +23,23 @@ First, let’s make sure that your development environment is ready.
 
 To create a Next.js app, open your terminal, `cd` into the directory you’d like to create the app in, and run the following command:
 
-```bash
-npm init next-app nextjs-blog
+```shell
+npm init next-app nextjs-blog --example "https://github.com/zeit/next-learn-starter/tree/master/learn-starter"
 ```
 
-Then choose the **Default starter app** template.
-
-```bash
-❯  Default starter app
-```
-
-> Under the hood, this uses the tool called `create-next-app`, which bootstraps a Next.js app for you.
+> Under the hood, this uses the tool called `create-next-app`, which bootstraps a Next.js app for you. It uses [this template](https://github.com/zeit/next-learn-starter/tree/master/learn-starter) through the `--example` flag.
 
 ### Run the development server
 
 You now have a new directory called `nextjs-blog`. Let’s `cd` into it:
 
-```bash
+```shell
 cd nextjs-blog
 ```
 
 Then, run the following command:
 
-```bash
+```shell
 npm run dev
 ```
 

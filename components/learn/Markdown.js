@@ -100,9 +100,15 @@ const Code = ({ children }) => (
       }
       /* Allow selecting all text for easy copy-pasting.
          Right now, only enable it for CSS / Markdown because
-         for bash / JS code, you might not want to copy
-         all the lines in a snippet. */
+         for JS code, you might not want to copy
+         all the lines in a snippet.
+
+         Workaround: For shell scripts,
+         - Use "shell" for one-liners to allow users to copy easily
+         - Use "bash" for multi-liners so they can select each line
+         */
       :global(.language-css) pre,
+      :global(.language-shell) pre,
       :global(.language-md) pre {
         user-select: all;
       }

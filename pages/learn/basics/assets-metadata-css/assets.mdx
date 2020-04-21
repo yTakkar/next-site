@@ -14,13 +14,13 @@ First, let’s talk about how Next.js handles **static assets** such as images.
 
 Next.js can serve static files, like images, under **the top-level `public` directory**. Files inside `public` can be referenced from the root of the application similar to `pages`.
 
-If you open `pages/index.js` in your application and take a look at the `<footer>`, we refer to the image at `/zeit.svg`:
+If you open `pages/index.js` in your application and take a look at the `<footer>`, we refer to the logo image like so:
 
 ```jsx
-Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
+Powered by <img src="..." alt="..." />
 ```
 
-`zeit.svg` exists inside the `public` directory at the top level of your application.
+The logo image exists inside the `public` directory at the top level of your application.
 
 The `public` directory is also useful for `robots.txt`, Google Site Verification, and any other static assets. Check out the <Link href="/docs/[...slug]" as="/docs/basic-features/static-file-serving"><a>static file serving documentation</a></Link> to learn more.
 

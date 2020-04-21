@@ -58,6 +58,12 @@ const apiRoutesLessonsRedirect = [
   destination: '/learn/basics/api-routes'
 }));
 
+const typeScriptLessonsRedirect = ['finally', 'home-page', 'page-types'].map(page => ({
+  source: `/learn/excel/typescript/${page}{/}?`,
+  permanent: true,
+  destination: '/learn/excel/typescript'
+}));
+
 const basicsLessonsRedirect = [].concat(
   ...[
     ['getting-started', 'create-nextjs-app'],
@@ -135,6 +141,7 @@ const nextConfig = {
         ...apiRoutesLessonsRedirect,
         ...basicsLessonsRedirect,
         ...excelLessonsRedirect,
+        ...typeScriptLessonsRedirect,
         {
           source: '/features{/}?',
           permanent: false,

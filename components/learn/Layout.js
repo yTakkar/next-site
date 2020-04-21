@@ -84,7 +84,7 @@ const Layout = ({ meta, children }) => {
           </Container>
         </PageContent>
         <SocialMeta
-          image="/static/twitter-cards/learn.png"
+          image="/static/twitter-cards/learn-twitter.png"
           title="Learn | Next.js"
           url="https://nextjs.org/learn"
           description={`Production grade React applications that scale. The world’s leading companies use Next.js by ${ORG_NAME} to build pre-rendered applications, static websites, and more.`}

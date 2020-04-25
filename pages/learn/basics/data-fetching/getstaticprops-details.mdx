@@ -21,7 +21,7 @@ import fetch from 'node-fetch'
 export async function getSortedPostsData() {
   // Instead of the file system,
   // fetch post data from an external API endpoint
-  const posts = await fetch('..')
+  const res = await fetch('..')
   return res.json()
 }
 ```

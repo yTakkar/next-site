@@ -28,9 +28,9 @@ Like `getStaticProps`, `getStaticPaths` can fetch data from any data source. In 
 export async function getAllPostIds() {
   // Instead of the file system,
   // fetch post data from an external API endpoint
-  const posts = await fetch('..')
-  const postsJson = res.json()
-  return postsJson.map(post => {
+  const res = await fetch('..')
+  const posts = await res.json()
+  return posts.map(post => {
     return {
       params: {
         id: post.id

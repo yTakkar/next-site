@@ -9,7 +9,7 @@ export const meta = {
   subtitle: 'getStaticProps Details'
 }
 
-You can get in-depth information about `getStaticProps` on <Link href="/docs/[...slug]" as="/docs/basic-features/data-fetching"><a>our documentation</a></Link>. But here are some essential information you should know about `getStaticProps`.
+You can get in-depth information about `getStaticProps` in <Link href="/docs/[...slug]" as="/docs/basic-features/data-fetching"><a>our documentation</a></Link>. But here is some essential information you should know about `getStaticProps`.
 
 ### Fetch External API or Query Database
 
@@ -42,7 +42,7 @@ export async function getSortedPostsData() {
 
 This is possible because `getStaticProps` runs **only on the server-side**. It will never be run on the client-side. It won’t even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers.
 
-### Development v.s. Production
+### Development vs. Production
 
 - In **development** (`npm run dev` or `yarn dev`), `getStaticProps` runs on _every request_.
 - In **production**, `getStaticProps` runs at _build time_.

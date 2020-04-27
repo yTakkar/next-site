@@ -9,7 +9,7 @@ export const meta = {
   subtitle: 'Dynamic Routes Details'
 }
 
-You can get in-depth information about dynamic routes on our documentation:
+You can get in-depth information about dynamic routes in our documentation:
 
 - <Link href="/docs/[...slug]" as="/docs/basic-features/data-fetching">
     <a>Data Fetching</a>
@@ -18,7 +18,7 @@ You can get in-depth information about dynamic routes on our documentation:
     <a>Dynamic Routes</a>
   </Link>
 
-But here are some essential information you should know about dynamic routes.
+But here is some essential information you should know about dynamic routes.
 
 ### Fetch External API or Query Database
 
@@ -57,7 +57,7 @@ If `fallback` is `true`, then the behavior of `getStaticProps` changes:
 - The paths that have not been generated at build time will **not** result in a 404 page. Instead, Next.js will serve a “fallback” version of the page on the first request to such a path.
 - In the background, Next.js will statically generate the requested path. Subsequent requests to the same path will serve the generated page, just like other pages pre-rendered at build time.
 
-This is beyond the scope of our lessons, but you can learn more about `fallback: true` on <Link href="/docs/[...slug]" as="/docs/basic-features/data-fetching#fallback-pages"><a>our documentation</a></Link>.
+This is beyond the scope of our lessons, but you can learn more about `fallback: true` in <Link href="/docs/[...slug]" as="/docs/basic-features/data-fetching#fallback-pages"><a>our documentation</a></Link>.
 
 ### Catch-all Routes
 

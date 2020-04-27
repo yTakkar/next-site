@@ -19,7 +19,7 @@ Each generated HTML is associated with minimal JavaScript code necessary for tha
 
 You can check that pre-rendering is happening by taking the following steps:
 
-- Disable JavaScript on your browser (here’s how on [Chrome](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)) and…
+- Disable JavaScript in your browser (here’s how in [Chrome](https://developers.google.com/web/tools/chrome-devtools/javascript/disable)) and…
 - [Try accessing this page](https://next-learn-starter.now.sh/) (the final result of this tutorial).
 
 You should see that your app is rendered without JavaScript. That’s because Next.js has pre-rendered the app into static HTML, allowing you to see the app UI without running JavaScript.
@@ -28,7 +28,7 @@ You should see that your app is rendered without JavaScript. That’s because Ne
 
 If your app is a plain React.js app (without Next.js), there’s no pre-rendering, so you won’t be able to see the app if you disable JavaScript. For example:
 
-- Enable JavaScript on your browser and [check out this page](https://create-react-app.now-examples.now.sh/). This is a plain React.js app built with [Create React App](https://create-react-app.dev/).
+- Enable JavaScript in your browser and [check out this page](https://create-react-app.now-examples.now.sh/). This is a plain React.js app built with [Create React App](https://create-react-app.dev/).
 - Now, disable JavaScript and access [the same page](https://create-react-app.now-examples.now.sh/) again.
 - You won’t see the app anymore — instead, it’ll say “You need to enable JavaScript to run this app.” This is because the app is not pre-rendered into static HTML.
 

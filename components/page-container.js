@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Router from 'next/router';
 import { trackPageview } from '../lib/analytics';
 import { ORG_NAME } from '../lib/constants';
+import { FONT_FAMILY_SANS } from './css-config';
 
 Router.events.on('routeChangeComplete', url => {
   trackPageview(url);
@@ -38,8 +39,7 @@ export default function PageContainer({ title, description, children }) {
             min-height: 100%;
             margin: 0;
             line-height: 1.65;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-              'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            font-family: ${FONT_FAMILY_SANS};
             font-size: 16px;
             font-weight: 400;
             min-width: 320px;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FONT_FAMILY_SANS } from './css-config';
 
 export default function Window(props) {
   const {
@@ -81,8 +82,7 @@ export default function Window(props) {
           .title {
             color: #999;
             font-size: 12px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-              'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            font-family: ${FONT_FAMILY_SANS};
             position: absolute;
             top: 3px;
             left: 0;

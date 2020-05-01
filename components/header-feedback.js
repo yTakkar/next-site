@@ -6,6 +6,7 @@ import X from './icons/cross-no-fill';
 import Checkmark from './icons/checkmark';
 import EmojiIcon from './icons/emoji';
 import FeedbackContext from './feedback-context';
+import { FONT_FAMILY_SANS } from './css-config';
 
 const EMOJIS = new Map([
   ['🤩', 'f929'],
@@ -105,8 +106,9 @@ class HeaderFeedback extends Component {
           note: value,
           emotion: getEmoji(this.state.emoji),
           label: this.context?.label,
-          ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${navigator.language ||
-            'unknown language'})`
+          ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${
+            navigator.language || 'unknown language'
+          })`
         })
       })
         .then(() => {
@@ -293,7 +295,7 @@ class HeaderFeedback extends Component {
                   --open-height: 174px;
                   --closed-width: 90px;
                   --closed-height: 32px;
-                  --padding: 4px 12px;
+                  --padding: 4px 10px;
 
                   margin-right: 8px;
                   padding: 0;
@@ -301,8 +303,7 @@ class HeaderFeedback extends Component {
                   height: var(--closed-height);
                   width: var(--closed-width);
                   display: inline-block;
-                  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+                  font-family: ${FONT_FAMILY_SANS};
                   text-rendering: optimizeLegibility;
                   -webkit-font-smoothing: antialiased;
                 }
@@ -316,8 +317,7 @@ class HeaderFeedback extends Component {
                   line-height: 1.5;
                   font-size: 0.875rem;
                   border-radius: 5px;
-                  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+                  font-family: ${FONT_FAMILY_SANS};
                   width: var(--closed-width);
                   height: var(--closed-height);
                   resize: none;

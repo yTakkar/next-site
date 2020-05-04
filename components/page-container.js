@@ -28,6 +28,11 @@ export default function PageContainer({ title, description, children }) {
             -webkit-text-size-adjust: 100%;
             height: 100%;
             box-sizing: border-box;
+            touch-action: manipulation;
+            font-feature-settings: 'case' 1, 'rlig' 1, 'calt' 0;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
           }
           *,
           *:before,

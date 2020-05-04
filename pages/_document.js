@@ -16,6 +16,13 @@ class NextSite extends Document {
       <Html lang="en">
         <Head>
           <link
+            rel="preload"
+            href="https://assets.vercel.com/raw/upload/v1587415301/fonts/2/inter-var-latin.woff2"
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+          <link
             rel="apple-touch-icon"
             sizes="180x180"
             href="/static/favicon/apple-touch-icon.png"

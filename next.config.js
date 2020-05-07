@@ -171,6 +171,11 @@ const nextConfig = {
           source: '/docs/api{/}?',
           permanent: false,
           destination: '/docs/api-routes/introduction'
+        },
+        {
+          source: '/discussions',
+          destination: 'https://github.com/zeit/next.js/discussions',
+          permanent: false
         }
       ];
     }

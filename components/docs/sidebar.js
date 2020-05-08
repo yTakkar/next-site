@@ -235,11 +235,6 @@ export default function Sidebar({ headings, mobile, desktop }) {
           width: 288px;
           padding: 2rem 1rem 0 0;
         }
-        @media screen and (max-width: 1024px) {
-          .documentation__sidebar.desktop nav {
-            width: 33%;
-          }
-        }
         // CSS only media query for mobile + SSR
         @media screen and (max-width: 640px) {
           .documentation__sidebar.desktop {

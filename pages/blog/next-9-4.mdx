@@ -65,6 +65,9 @@ We recently put together an example showcasing how Next.js can statically pre-re
     conversation: 'none',
     align: 'center'
   }}
+  style={{
+    paddingTop: 'calc(500px - 100vw)'
+  }}
 />
 
 Today, we are also introducing **Incremental Static Regeneration (beta)**, which is a mechanism to **update existing pages**, by re-rendering them in the background as traffic comes in. Inspired by [stale-while-revalidate](https://tools.ietf.org/html/rfc5861), this ensures traffic is served uninterrupted, always statically, and the newly built page is pushed only after it's done generating.

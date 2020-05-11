@@ -43,6 +43,7 @@ class Image extends Component {
       float,
       lazy,
       shadow,
+      style,
       ...rest
     } = this.props;
 
@@ -57,7 +58,7 @@ class Image extends Component {
           })}
         >
           <div className="container" style={{ width }}>
-            <div style={isAmp ? undefined : { paddingBottom: aspectRatio }}>
+            <div style={isAmp ? undefined : { paddingBottom: aspectRatio, ...style }}>
               {isAmp ? (
                 videoSrc || video ? (
                   <>

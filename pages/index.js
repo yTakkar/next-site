@@ -27,8 +27,8 @@ export default () => {
       />
       <SkipNavContent />
       <Notification href="/blog/next-9-4" title="Next 9.4 is out!" titleMobile="Next 9.4 is out!">
-        <b>Next 9.4 is out!</b> — React Fast Refresh, Incremental Static Generation, New Environment
-        Support, Built-in Fetch, and more!
+        <b>Next 9.4 is out!</b> — React Fast Refresh, Incremental Static Regeneration, New
+        Environment Support, Built-in Fetch, and more!
         <span className="highlight">Learn More →</span>
       </Notification>
       <Intro isAmp={isAmp} />

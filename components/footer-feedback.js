@@ -628,6 +628,7 @@ const Emoji = memo(({ code }) => (
     height={code === 'f600' || code === 'f62d' || code === 'f615' ? 24.5 : 22}
     src={`https://assets.vercel.com/twemoji/1${code}.svg`}
     alt="emoji"
+    loading="lazy"
     style={{
       transform: code === 'f600' || code === 'f615' ? 'translateY(0.5px)' : 'none'
     }}

@@ -26,7 +26,7 @@ function Navbar() {
       <nav className="f-reset">
         <div className="mobile-top">
           <Link href="/">
-            <a className="mobile-logo">
+            <a className="mobile-logo" title="Go to the homepage">
               <NextLogo />
             </a>
           </Link>

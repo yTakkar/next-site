@@ -135,6 +135,7 @@ export default withPure(() => (
         <div className="copyright f6">
           <a
             href={`${PLATFORM_URL}?utm_source=next-site&utm_medium=footer&utm_campaign=next-website`}
+            title="Go to the Vercel website"
             rel="noopener noreferrer"
             target="_blank"
             aria-label={ORG_NAME}

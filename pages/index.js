@@ -26,8 +26,9 @@ export default () => {
         description={`Production grade React applications that scale. The world’s leading companies use Next.js by ${ORG_NAME} to build static and dynamic websites and web applications.`}
       />
       <SkipNavContent />
-      <Notification href="/blog/next-9-3" title="Next 9.3 is out!" titleMobile="Next 9.3 is out!">
-        <b>Next 9.3 is out!</b> — Next-gen SSG Support, Preview Mode, Sass Support, and more!
+      <Notification href="/blog/next-9-4" title="Next 9.4 is out!" titleMobile="Next 9.4 is out!">
+        <b>Next 9.4 is out!</b> — React Fast Refresh, Incremental Static Generation, New Environment
+        Support, Built-in Fetch, and more!
         <span className="highlight">Learn More →</span>
       </Notification>
       <Intro isAmp={isAmp} />

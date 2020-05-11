@@ -120,6 +120,99 @@ DatoCMS achieves impeccable results due to their built-in image optimization sup
 
 We also have collaborated with TinaCMS on an exciting new direction for CMS: **in-page editing of content**. [Check out their guide](https://tinacms.org/guides/nextjs/github-open-authoring/initial-setup) to learn how to implement it for your project.
 
+## New Environment Variables Support
+
+A common piece of feedback that we got from companies using Next.js is that it was unclear when an environment variable is inlined into the browser bundle and when it is only available in the Node.js environment.
+
+Today we're announcing two fully backward-compatible features that will help streamline this process.
+
+The first is to expose an environment variable to the browser you can prefix the environment variable with `NEXT_PUBLIC_`. When that environment variable is used it will then be inlined into the browser JavaScript bundle.
+
+You no longer have to add a `next.config.js` and add the `env` key to expose these variables.
+
+```jsx
+// pages/index.js
+
+// The environment variable will be exposed to the browser
+console.log('My Application Version', process.env.NEXT_PUBLIC_VERSION)
+
+export default function HomePage() {
+  return <h1>Hello World</h1>
+}
+```
+
+The second change is that Next.js now supports `.env` loading by default. Allowing you to easily define development and production environment variables.
+
+You can read more about the `.env` loading in the [Environment Variables documentation](https://nextjs.org/docs/basic-features/environment-variables).
+
+These new features will simplify using environment variables by following these conventions:
+
+- Environment variables are only available in the Node.js environment by default
+- Environment variables prefixed with `NEXT_PUBLIC_` are exposed to the browser
+
+## Improved Built-in Fetch Support
+
+In [Next.js 9.1.7](https://nextjs.org/blog/next-9-1-7#new-built-in-polyfills-fetch-url-and-objectassign) we announced polyfilling of the [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) API in the browser. Today this polyfilling has been extended to the Node.js environment too.
+
+In practice, you no longer have to use any type of server-side fetch polyfill (for example `isomorphic-unfetch` or `node-fetch`) as Next.js will automatically provide `fetch()` in all environments.
+
+For example, when using `getStaticProps`, which gets executed using Next.js at build time:
+
+```jsx
+export async function getStaticProps() {
+  // fetch no longer needs to be imported from isomorphic-unfetch
+  const res = await fetch('https://.../posts')
+  const posts = await res.json()
+
+  return {
+    props: {
+      posts
+    }
+  }
+}
+
+function Blog({ posts }) {
+  // Render posts...
+}
+
+export default Blog
+```
+
+## Integrated Web Vitals Reporting
+
+Last week the Google Chrome team introduced [Core Web Vitals](https://web.dev/vitals/). Core Web Vitals are the quality signals key to delivering great UX on the web, on top of which the [famous Lighthouse reports](https://twitter.com/rauchg/status/1259701306387656704) are built.
+
+Keeping track of these metrics is extremely useful if you want your website or web application to be as fast as possible, which is one of the core goals of Next.js.
+
+<Image
+  captionSpacing={30}
+  src="/static/blog/next-9-4/core-web-vitals.jpg"
+  width={3840 / 5}
+  height={2205 / 5}
+/>
+
+The Chrome team has released a [Core Web Vitals Chrome extension](https://twitter.com/addyosmani/status/1258416376433131520) that allows you as a developer to get visual feedback on how your pages are performing.
+
+When building production web applications you also want to know how your site is performing for your visitors and (potential) customers. You might even want to track the improvement or regression of these metrics over time in order to see if your changes have the intended impact on your audience.
+
+In order to aid reporting Core Web Vitals to your analytics service we have introduced, [in collaboration with Google](https://www.techrepublic.com/article/insiders-look-at-googles-web-framework-contributions-to-next-js-and-more/), a new method called `reportWebVitals` which can be exported from `pages/_app.js`:
+
+```jsx
+// Will be called once for every metric that has to be reported.
+export function reportWebVitals(metric) {
+  // These metrics can be sent to any analytics service
+  console.log(metric)
+}
+
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />
+}
+
+export default MyApp
+```
+
+To use this method in combination with your analytics service refer to the ["Sending result to Analytics"](https://nextjs.org/docs/advanced-features/measuring-performance#sending-results-to-analytics) section of the docs. If you want to learn more about Core Web Vitals you can refer to [web.dev/vitals](https://web.dev/vitals/).
+
 ## Absolute Imports and Aliases
 
 If you’re working on a large project, some of your `import` statements might suffer from the `../../../` spaghetti:
@@ -171,99 +264,6 @@ import Button from '@/design-system/button'
 ```
 
 You must specify `baseUrl` if you specify `paths`. You can learn more about the `paths` option [in the TypeScript documentation](https://www.typescriptlang.org/tsconfig#paths).
-
-## New Environment Variables Support
-
-A common piece of feedback that we got from companies using Next.js is that it was unclear when an environment variable is inlined into the browser bundle and when it is only available in the Node.js environment.
-
-Today we're announcing two fully backward-compatible features that will help streamline this process.
-
-The first is to expose an environment variable to the browser you can prefix the environment variable with `NEXT_PUBLIC_`. When that environment variable is used it will then be inlined into the browser JavaScript bundle.
-
-You no longer have to add a `next.config.js` and add the `env` key to expose these variables.
-
-```jsx
-// pages/index.js
-
-// The environment variable will be exposed to the browser
-console.log('My Application Version', process.env.NEXT_PUBLIC_VERSION)
-
-export default function HomePage() {
-  return <h1>Hello World</h1>
-}
-```
-
-The second change is that Next.js now supports `.env` loading by default. Allowing you to easily define development and production environment variables.
-
-You can read more about the `.env` loading in the [Environment Variables documentation](https://nextjs.org/docs/basic-features/environment-variables).
-
-These new features will simplify using environment variables by following these conventions:
-
-- Environment variables are only available in the Node.js environment by default
-- Environment variables prefixed with `NEXT_PUBLIC_` are exposed to the browser
-
-## Integrated Web Vitals Reporting
-
-Last week the Google Chrome team introduced [Core Web Vitals](https://web.dev/vitals/). Core Web Vitals are the quality signals key to delivering great UX on the web, on top of which the [famous Lighthouse reports](https://twitter.com/rauchg/status/1259701306387656704) are built.
-
-Keeping track of these metrics is extremely useful if you want your website or web application to be as fast as possible, which is one of the core goals of Next.js.
-
-<Image
-  captionSpacing={30}
-  src="/static/blog/next-9-4/core-web-vitals.jpg"
-  width={3840 / 5}
-  height={2205 / 5}
-/>
-
-The Chrome team has released a [Core Web Vitals Chrome extension](https://twitter.com/addyosmani/status/1258416376433131520) that allows you as a developer to get visual feedback on how your pages are performing.
-
-When building production web applications you also want to know how your site is performing for your visitors and (potential) customers. You might even want to track the improvement or regression of these metrics over time in order to see if your changes have the intended impact on your audience.
-
-In order to aid reporting Core Web Vitals to your analytics service we have introduced, [in collaboration with Google](https://www.techrepublic.com/article/insiders-look-at-googles-web-framework-contributions-to-next-js-and-more/), a new method called `reportWebVitals` which can be exported from `pages/_app.js`:
-
-```jsx
-// Will be called once for every metric that has to be reported.
-export function reportWebVitals(metric) {
-  // These metrics can be sent to any analytics service
-  console.log(metric)
-}
-
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
-
-export default MyApp
-```
-
-To use this method in combination with your analytics service refer to the ["Sending result to Analytics"](https://nextjs.org/docs/advanced-features/measuring-performance#sending-results-to-analytics) section of the docs. If you want to learn more about Core Web Vitals you can refer to [web.dev/vitals](https://web.dev/vitals/).
-
-## Improved Built-in Fetch Support
-
-In [Next.js 9.1.7](https://nextjs.org/blog/next-9-1-7#new-built-in-polyfills-fetch-url-and-objectassign) we announced polyfilling of the [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) API in the browser. Today this polyfilling has been extended to the Node.js environment too.
-
-In practice, you no longer have to use any type of server-side fetch polyfill (for example `isomorphic-unfetch` or `node-fetch`) as Next.js will automatically provide `fetch()` in all environments.
-
-For example, when using `getStaticProps`, which gets executed using Next.js at build time:
-
-```jsx
-export async function getStaticProps() {
-  // fetch no longer needs to be imported from isomorphic-unfetch
-  const res = await fetch('https://.../posts')
-  const posts = await res.json()
-
-  return {
-    props: {
-      posts
-    }
-  }
-}
-
-function Blog({ posts }) {
-  // Render posts...
-}
-
-export default Blog
-```
 
 ## Configurable Sass Support
 

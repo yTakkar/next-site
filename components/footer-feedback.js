@@ -74,8 +74,9 @@ export default class FooterFeedback extends Component {
           note: value,
           emotion: getEmoji(this.state.emoji),
           label: this.context?.label,
-          ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${navigator.language ||
-            'unknown language'})`
+          ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${
+            navigator.language || 'unknown language'
+          })`
         })
       })
         .then(() => {

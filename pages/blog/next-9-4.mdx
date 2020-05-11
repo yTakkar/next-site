@@ -11,7 +11,7 @@ export default withPost({ ...meta })
 
 We are excited today to introduce Next.js 9.4, featuring:
 
-- **[Fast Refresh](#fast-refresh)**: fast and reliable HMR, as proven [at Facebook scale](https://twitter.com/dan_abramov/status/1152689338553131008)
+- **[Fast Refresh](#fast-refresh)**: fast and reliable live-editing experience, as proven [at Facebook scale](https://twitter.com/dan_abramov/status/1152689338553131008)
 - **[Incremental Static Regeneration (beta)](#incremental-static-regeneration-beta)**: re-build static pages after you've deployed, in milliseconds
 - **[CMS Examples](#cms-examples)**: examples for [Contentful](https://github.com/zeit/next.js/tree/canary/examples/cms-contentful), [DatoCMS](https://github.com/zeit/next.js/tree/canary/examples/cms-datocms), [Prismic](https://github.com/zeit/next.js/tree/canary/examples/cms-prismic), [Sanity](https://github.com/zeit/next.js/tree/canary/examples/cms-sanity), and [TakeShape](https://github.com/zeit/next.js/tree/canary/examples/cms-takeshape) using our new [next-gen static site generation](/blog/next-9-3)
 - **[New Environment Variables Support](#new-environment-variables-support)**: built-in support for `.env` and a `NEXT_PUBLIC_` prefix, as seen in CRA
@@ -48,6 +48,8 @@ As part of this experience, we completely redesigned the error overlay to be mor
 - Contextually relevant **source code snippets**, with the ability **click-to-open in your editor**
 - Development **session resumption** after a syntax error is fixed, **without losing application state**
 - **Automatic dismissal** of unhandled runtime errors when you fix the error
+
+We would like to thank [Dan Abramov](https://twitter.com/dan_abramov) for his invaluable contributions and assistance implementing this feature.
 
 ## Incremental Static Regeneration (beta)
 

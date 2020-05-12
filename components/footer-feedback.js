@@ -1,25 +1,9 @@
 import { memo, Component } from 'react';
 import cn from 'classnames';
+import twemoji from 'twemoji';
 import ClickOutside from './click-outside';
 import Button from './button';
 import FeedbackContext from './feedback-context';
-
-const EMOJIS = new Map([
-  ['😭', 'f62d'],
-  ['😕', 'f615'],
-  ['🙂', 'f600'],
-  ['🤩', 'f929']
-]);
-let EMOJI_CODES = null;
-
-function getEmoji(code) {
-  if (code === null) return code;
-
-  if (EMOJI_CODES === null) {
-    EMOJI_CODES = new Map([...EMOJIS].map(([k, v]) => [v, k]));
-  }
-  return EMOJI_CODES.get(code);
-}
 
 export default class FooterFeedback extends Component {
   state = {
@@ -72,7 +56,7 @@ export default class FooterFeedback extends Component {
         body: JSON.stringify({
           url: window.location.toString(),
           note: value,
-          emotion: getEmoji(this.state.emoji),
+          emotion: twemoji.convert.fromCodePoint(this.state.emoji),
           label: this.context?.label,
           ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${
             navigator.language || 'unknown language'
@@ -503,28 +487,41 @@ export default class FooterFeedback extends Component {
 }
 
 class EmojiSelector extends Component {
+  static defaultProps = {
+    options: [
+      ['😭', 'useless'], // Loudly Crying Face
+      ['😕', 'no'], // Confused Face
+      ['😀', 'yes'], // Grinning Face
+      ['🤩', 'amazing'] // Star-Struck
+    ]
+  };
+
   render() {
+    const { options, current, loading, success, onSelect } = this.props;
     return (
       <main
         className={cn('geist-emoji-selector', 'shown', {
-          loading: this.props.loading || this.props.success
+          loading: loading || success
         })}
       >
-        {Array.from(EMOJIS.values()).map(emoji => (
-          <button
-            type="button"
-            className={cn('option', { active: this.props.current === emoji })}
-            key={emoji}
-            onMouseEnter={this.onMouseEnter}
-            onTouchStart={this.onMouseEnter}
-            onMouseLeave={this.onMouseLeave}
-            onClick={() => this.props.onSelect(emoji)}
-          >
-            <span className="inner">
-              <Emoji code={emoji} />
-            </span>
-          </button>
-        ))}
+        {options.map(([emoji, label]) => {
+          const hex = twemoji.convert.toCodePoint(emoji);
+          return (
+            <button
+              type="button"
+              className={cn('option', { active: current === hex })}
+              key={hex}
+              onMouseEnter={this.onMouseEnter}
+              onTouchStart={this.onMouseEnter}
+              onMouseLeave={this.onMouseLeave}
+              onClick={() => onSelect(hex)}
+            >
+              <span className="inner">
+                <Emoji hex={hex} alt={label} />
+              </span>
+            </button>
+          );
+        })}
 
         <style jsx>
           {`
@@ -622,16 +619,16 @@ class EmojiSelector extends Component {
 
 FooterFeedback.contextType = FeedbackContext;
 
-const Emoji = memo(({ code }) => (
+const Emoji = memo(({ hex, alt = 'emoji' }) => (
   <img
     decoding="async"
-    width={code === 'f600' || code === 'f62d' || code === 'f615' ? 24.5 : 22}
-    height={code === 'f600' || code === 'f62d' || code === 'f615' ? 24.5 : 22}
-    src={`https://assets.vercel.com/twemoji/1${code}.svg`}
-    alt="emoji"
+    width={['1f600', '1f62d', '1f615'].includes(hex) ? 24.5 : 22}
+    height={['1f600', '1f62d', '1f615'].includes(hex) ? 24.5 : 22}
+    src={`https://assets.vercel.com/twemoji/${hex}.svg`}
+    alt={alt}
     loading="lazy"
     style={{
-      transform: code === 'f600' || code === 'f615' ? 'translateY(0.5px)' : 'none'
+      transform: ['1f600', '1f615'].includes(hex) ? 'translateY(0.5px)' : 'none'
     }}
   />
 ));

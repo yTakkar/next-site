@@ -232,7 +232,7 @@ In such cases, instead of relative imports, we might want to use **absolute impo
 import Button from 'components/button'
 ```
 
-We're excited to announce that Next.js 9.4 makes setting up absolute imports super simple for both JavaScript and TypeScript projects. All you need to do is to add the `baseUrl` config to [`jsconfig.json` (JS projects)](https://code.visualstudio.com/docs/languages/jsconfig#_jsconfig-options) or [`tsconfig.json` (TS projects)](https://www.typescriptlang.org/tsconfig#baseUrl).
+We're excited to announce that Next.js 9.4 makes setting up absolute imports super simple for both JavaScript and TypeScript projects. All you need to do is to add the `baseUrl` config to [`jsconfig.json` (JS projects)](https://code.visualstudio.com/docs/languages/jsconfig#_jsconfig-options) or [`tsconfig.json` (TS projects)](https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url).
 
 ```jsx
 // jsconfig.json or tsconfig.json
@@ -268,7 +268,7 @@ You can then use your alias like so:
 import Button from '@/design-system/button'
 ```
 
-You must specify `baseUrl` if you specify `paths`. You can learn more about the `paths` option [in the TypeScript documentation](https://www.typescriptlang.org/tsconfig#paths).
+You must specify `baseUrl` if you specify `paths`. You can learn more about the `paths` option [in the TypeScript documentation](https://www.typescriptlang.org/docs/handbook/module-resolution.html#path-mapping).
 
 ## Configurable Sass Support
 

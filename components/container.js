@@ -4,6 +4,7 @@ export default function Container({
   dark,
   gray,
   wide,
+  wideOnMobile,
   small,
   padding,
   overflow,
@@ -54,13 +55,14 @@ export default function Container({
       // CSS only media query for tablet
       @media screen and (max-width: 960px) {
         div {
-          padding: ${padding ? '4rem' : '0'} ${wide ? '0' : '2rem'};
+          padding: ${padding ? '4rem' : '0'} ${wide || wideOnMobile ? '0' : '2rem'};
+          ${wideOnMobile && !overflow ? 'overflow: hidden;' : ''}
         }
       }
       // CSS only media query for mobile
       @media screen and (max-width: 640px) {
         div {
-          padding: ${padding ? '4rem' : '0'} ${wide ? '0' : '1rem'};
+          padding: ${padding ? '4rem' : '0'} ${wide || wideOnMobile ? '0' : '1rem'};
           ${mobileStyle || ''}
         }
       }

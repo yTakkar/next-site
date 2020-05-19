@@ -6,8 +6,6 @@ import { ellipsis } from 'polished';
 import { useRecord, useGetRecord } from '../../lib/learn/records';
 import courses from '../../lib/learn/courses';
 
-import { useIsMobile } from '../media-query';
-
 import Profile from './Profile';
 import CheckIcon from '../icons/check';
 import ArrowIcon from '../icons/arrow-right';
@@ -89,7 +87,7 @@ const Lesson = ({ course, lesson, selected }) => {
   );
 };
 
-const Course = ({ course, isMobile, meta }) => (
+const Course = ({ course, meta }) => (
   <div className="course" key={course.id}>
     <h3 className="f6 fw6">{course.name}</h3>
     <ul>
@@ -109,17 +107,18 @@ const Course = ({ course, isMobile, meta }) => (
       }
 
       .course {
-        ${isMobile
-          ? `
-        padding-top: 1rem;
-      `
-          : `
         padding-top: 3rem;
-      `}
         padding-left: 1.25rem;
         margin-left: 1rem;
         border-left: 1px solid #efefef;
       }
+
+      @media (max-width: 640px) {
+        .course {
+          padding-top: 1rem;
+        }
+      }
+
       :global(.course):last-of-type {
         padding-bottom: 3rem;
       }
@@ -132,11 +131,10 @@ const Course = ({ course, isMobile, meta }) => (
   </div>
 );
 
-const Navigation = ({ meta }) => {
+const Navigation = ({ meta, isMobile }) => {
   const [dropdown, setDropdown] = React.useState(false);
   const [record, dispatchRecord] = useRecord(meta);
   const effectDeps = [record.ready, !record.visited];
-  const isMobile = useIsMobile();
 
   React.useEffect(() => {
     if (effectDeps.every(dep => dep)) {
@@ -149,7 +147,7 @@ const Navigation = ({ meta }) => {
       <div className="fixed-navigation-container">
         <div className={`navigation-area dropdown${dropdown ? '' : ' courses-closed'}`}>
           {courses.map(course => (
-            <Course key={course.id} course={course} isMobile={isMobile} meta={meta} />
+            <Course key={course.id} course={course} meta={meta} />
           ))}
         </div>
         <div
@@ -169,7 +167,7 @@ const Navigation = ({ meta }) => {
           </span>
           <span style={ellipsis()}>{meta.title}</span>
         </div>
-        <Profile isMobile={isMobile} />
+        <Profile isMobile />
         <style jsx>{`
           .fixed-navigation-container {
             position: relative;
@@ -217,10 +215,10 @@ const Navigation = ({ meta }) => {
 
   return (
     <>
-      <Profile isMobile={isMobile} />
+      <Profile />
       <div className="navigation-area">
         {courses.map(course => (
-          <Course key={course.id} course={course} isMobile={isMobile} meta={meta} />
+          <Course key={course.id} course={course} meta={meta} />
         ))}
         <style jsx>{`
           .navigation-area {

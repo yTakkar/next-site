@@ -30,9 +30,12 @@ const Layout = ({ meta, children }) => {
         sticky={!isMobile}
       >
         <PageContent>
-          <Container wide={isMobile}>
+          <Container wideOnMobile>
             <div className="content">
               <RecordsProvider>
+                <div className="navigation-mobile">
+                  <Navigation isMobile meta={meta} />
+                </div>
                 <div className="navigation">
                   <Navigation meta={meta} />
                 </div>
@@ -59,8 +62,12 @@ const Layout = ({ meta, children }) => {
                 margin: 3rem 0 1.25rem 0;
               }
 
+              .navigation-mobile {
+                display: none;
+              }
+
               .navigation {
-                padding: ${isMobile ? '0' : '1rem 3rem 0 0'};
+                padding: 1rem 3rem 0 0;
               }
 
               .lesson {
@@ -68,6 +75,7 @@ const Layout = ({ meta, children }) => {
                 width: 100%;
                 min-width: 0;
               }
+
               // CSS only media query for mobile + SSR
               @media screen and (max-width: 640px) {
                 .content {
@@ -76,8 +84,12 @@ const Layout = ({ meta, children }) => {
                   padding: 0 1rem;
                   margin-bottom: 5rem;
                 }
-                .navigation {
+                .navigation-mobile {
+                  display: block;
                   margin: 0 -1rem;
+                }
+                .navigation {
+                  display: none;
                 }
               }
             `}</style>

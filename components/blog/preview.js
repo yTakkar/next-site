@@ -76,6 +76,7 @@ export default ({ type, thumbnail, detail, link, title, date, alt, children }) =
           }
           .preview-layout {
             flex-direction: column-reverse;
+            align-items: flex-start;
           }
           .thumbnail {
             width: 100%;

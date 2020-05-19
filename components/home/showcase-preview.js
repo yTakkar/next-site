@@ -51,7 +51,7 @@ export default () => {
           }
           @media screen and (max-width: 640px) {
             .slide {
-              flex: 1 1 50%;
+              flex: 1 1 100%;
             }
           }
           @media screen and (min-width: 960px) {
@@ -168,8 +168,9 @@ export default () => {
                   className="slide"
                   style={{
                     zIndex: DATA.length + z,
-                    transform: `scale(${1 + Math.sin(z / 9)}) translate3d(${-Math.sin(offset) *
-                      30}px, ${top}px, 0)`
+                    transform: `scale(${1 + Math.sin(z / 9)}) translate3d(${
+                      -Math.sin(offset) * 30
+                    }px, ${top}px, 0)`
                   }}
                 >
                   <Image

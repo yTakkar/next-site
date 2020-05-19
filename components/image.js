@@ -57,7 +57,7 @@ class Image extends Component {
             float: float && width < 520
           })}
         >
-          <div className="container" style={{ width }}>
+          <div className="container">
             <div style={isAmp ? undefined : { paddingBottom: aspectRatio, ...style }}>
               {isAmp ? (
                 videoSrc || video ? (
@@ -116,7 +116,13 @@ class Image extends Component {
               }
               .container {
                 margin: 0 auto;
+                ${width ? `width: ${width}px;`: ''}
                 max-width: 100%;
+              }
+              @media screen and (max-width: 320px) {
+                .container {
+                  width: 100%;
+                }
               }
               div {
                 transform: translate3d(0, 0, 0); /* Work around for Chrome bug */

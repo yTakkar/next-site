@@ -123,6 +123,13 @@ const Docs = ({ routes, route: _route, data, html }) => {
                   display: flex;
                   margin-top: 2rem;
                 }
+
+                @media (max-width: 950px) {
+                  .content {
+                    margin-top: 1rem;
+                  }
+                }
+
                 /* Remove the top margin of the first heading in the sidebar */
                 :global(.heading:first-child > h4) {
                   margin-top: 0;

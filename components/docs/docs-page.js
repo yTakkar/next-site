@@ -46,11 +46,6 @@ function DocsPage({ route, html, prevRoute, nextRoute }) {
 
   return (
     <div className="docs">
-      <Notification>
-        <strong>Note:</strong> You are viewing the new Next.js documentation. The old docs are still
-        available <a href="/docs/old">here</a>.
-      </Notification>
-
       {/* eslint-disable-next-line */}
       <div className="docs-content" dangerouslySetInnerHTML={{ __html: html }} />
 
@@ -117,6 +112,7 @@ function DocsPage({ route, html, prevRoute, nextRoute }) {
           font-size: 3rem;
           font-weight: 700;
           line-height: 1.35;
+          margin-top: 0.75rem;
         }
         .docs h2 {
           font-size: 2rem;

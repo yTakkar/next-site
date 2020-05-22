@@ -15,7 +15,7 @@ const DocumentationHeader = () => {
           <Nav />
         </div>
         <div className="header-children">
-          <Notification isFixed mobileWidth="640px">
+          <Notification>
             <strong>Note:</strong> You are viewing the old Next.js documentation. For the latest
             features and a better experience please see{' '}
             <a href="/docs/getting-started">the new docs</a>.
@@ -24,7 +24,7 @@ const DocumentationHeader = () => {
       </header>
 
       <div className="content-mobile">
-        <Notification isFixed mobileWidth="640px">
+        <Notification>
           <strong>Note:</strong> You are viewing the old Next.js documentation. For the latest
           features and a better experience please see{' '}
           <a href="/docs/getting-started">the new docs</a>.

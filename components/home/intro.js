@@ -160,7 +160,7 @@ export default class extends React.PureComponent {
                   </Button>
                 </div>
                 <div>
-                  <Button href="https://github.com/zeit/next.js">GitHub</Button>
+                  <Button href="https://github.com/vercel/next.js">GitHub</Button>
                 </div>
               </div>
             </div>

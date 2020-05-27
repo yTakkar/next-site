@@ -66,7 +66,7 @@ extensibility points for how these tools are configured. We didn't just
 want ease of use, we wanted to enable flexibility to extend the toolkit
 however you wanted.
 
-For example, you can [extend the Next.js webpack configuration](https://github.com/zeit/next.js#customizing-webpack-config) by
+For example, you can [extend the Next.js webpack configuration](https://github.com/vercel/next.js#customizing-webpack-config) by
 setting up a `webpack` property in your `next.config.js`.
 
 Because webpack executes differently for production and development,
@@ -153,13 +153,13 @@ module.exports = {
 </Caption>
 
 While our general recommendation is to use component-local styling solutions,
-like the [included `styled-jsx` babel plugin](https://github.com/zeit/next.js#built-in-css-support), we believe
+like the [included `styled-jsx` babel plugin](https://github.com/vercel/next.js#built-in-css-support), we believe
 CSS loaders have many important strengths, like making it easy
 to re-use existing CSS codebases and vastly simplifying migrating
 old codebases to Next.js.
 
 Instead of enabling every conceivable feature and loader by default,
-we are introducing [**Next.js plugins**](https://github.com/zeit/next-plugins), which are _simple functions
+we are introducing [**Next.js plugins**](https://github.com/vercel/next-plugins), which are _simple functions
 that decorate your configuration_. Instead of manually extending the
 configuration to set up the loaders like we did above, you can just do:
 
@@ -175,7 +175,7 @@ module.exports = withCss({
   bring in <Caption.Code>next-css</Caption.Code>
 </Caption>
 
-Read more on [CSS Loaders](https://github.com/zeit/next-plugins/tree/master/packages/next-css) usage with Next.JS, or refer to some of the packages
+Read more on [CSS Loaders](https://github.com/vercel/next-plugins/tree/master/packages/next-css) usage with Next.JS, or refer to some of the packages
 we have already created for you:
 
 <Table>
@@ -184,7 +184,7 @@ we have already created for you:
       <b>CSS</b>
     </Cell>
     <Cell>
-      <GenericLink href="https://github.com/zeit/next-plugins/tree/master/packages/next-css">
+      <GenericLink href="https://github.com/vercel/next-plugins/tree/master/packages/next-css">
         next-css
       </GenericLink>
     </Cell>
@@ -194,7 +194,7 @@ we have already created for you:
       <b>LESS</b>
     </Cell>
     <Cell>
-      <GenericLink href="https://github.com/zeit/next-plugins/tree/master/packages/next-less">
+      <GenericLink href="https://github.com/vercel/next-plugins/tree/master/packages/next-less">
         next-less
       </GenericLink>
     </Cell>
@@ -204,7 +204,7 @@ we have already created for you:
       <b>SASS</b>
     </Cell>
     <Cell>
-      <GenericLink href="https://github.com/zeit/next-plugins/tree/master/packages/next-sass">
+      <GenericLink href="https://github.com/vercel/next-plugins/tree/master/packages/next-sass">
         next-sass
       </GenericLink>
     </Cell>
@@ -212,14 +212,14 @@ we have already created for you:
 </Table>
 
 Our goal is to empower the community to develop and grow an ecosystem
-of practical simple extensions. To that end, we are opening the [next-plugins](https://github.com/zeit/next-plugins) monorepo
+of practical simple extensions. To that end, we are opening the [next-plugins](https://github.com/vercel/next-plugins) monorepo
 for the Next.js community to maintain. All PRs are welcome!
 
 ### TypeScript Support
 
 One of the [fastest growing technologies](https://stateofjs.com/2017/flavors/results) in the JavaScript ecosystem is TypeScript. So much so,
 that it is becoming [officially supported by Babel 7](https://github.com/babel/babel/tree/master/packages/babel-preset-typescript), which means it will naturally
-be supported by Next.js by just [customizing your .babelrc](https://github.com/zeit/next.js#customizing-babel-config).
+be supported by Next.js by just [customizing your .babelrc](https://github.com/vercel/next.js#customizing-babel-config).
 
 In the mean time, thanks to our new Universal Webpack support, you can
 already get full TypeScript support _today_!
@@ -285,7 +285,7 @@ module.exports = withPreact()
   Our new <Caption.Code>next.config.js</Caption.Code> ready for preact
 </Caption>
 
-Check out the very simple [@zeit/next-preact](https://github.com/zeit/next-plugins/tree/master/packages/next-preact) module or create your own!
+Check out the very simple [@zeit/next-preact](https://github.com/vercel/next-plugins/tree/master/packages/next-preact) module or create your own!
 
 ### Optional External Sourcemaps in Production
 
@@ -349,10 +349,10 @@ As an example, consider these two independent Next.js applications [deployed to 
 When we [revamped](/blog/better-documentation) our [docs](/blog/api-2),
 we wanted to make accepting a community contribution as easy as possible.
 
-We decided to split out the documentation "mini-website" into its [own repository](https://github.com/zeit/docs). Additionally,
+We decided to split out the documentation "mini-website" into its [own repository](https://github.com/vercel/docs). Additionally,
 whenever a pull-request is submitted and a change is proposed, we deploy it automatically, in isolation:
 
-<GenericLink href="https://github.com/zeit/docs/pull/113">
+<GenericLink href="https://github.com/vercel/docs/pull/113">
   <Image
     src={`${'https://assets.vercel.com/image/upload/front'}/blog/next5/github.png`}
     width={1632 / 2.5}
@@ -433,7 +433,7 @@ This means that across deployments, your users and customers won’t have to nee
 
 ## Fragments
 
-Next.js build a top-level `<Document>` component that gets server-rendered with each page. [Overloading this component](/) puts you in complete control over your markup, enabling many [advanced use cases](https://github.com/zeit/next.js/tree/canary/examples).
+Next.js build a top-level `<Document>` component that gets server-rendered with each page. [Overloading this component](/) puts you in complete control over your markup, enabling many [advanced use cases](https://github.com/vercel/next.js/tree/canary/examples).
 
 Part of that initial markup is the list of scripts that Next.js needs to evaluate on the client side. A custom `_document` looks like this:
 
@@ -485,7 +485,7 @@ even more future proof. By and large, there is no longer an artificial
 separation of what plugins or loaders are applicable to Next.js and which ones aren’t.
 
 In the spirit of _zero configuration_, we are excited
-to introduce [Next Plugins](https://github.com/zeit/next-plugins), the community
+to introduce [Next Plugins](https://github.com/vercel/next-plugins), the community
 repository for recipes that automatically expand the functionality
 of Next.js, without having to tweak specific knobs.
 
@@ -502,7 +502,7 @@ Next.js thus becomes a great candidate for large applications
 maintained by multiple teams. They can now deploy improvements
 concurrently, reducing error surfaces, increasing iteration speed
 and even trying out different technologies in addition to our
-core, like the [many different approaches](https://github.com/zeit/next.js/tree/canary/examples) to state management or data fetching.
+core, like the [many different approaches](https://github.com/vercel/next.js/tree/canary/examples) to state management or data fetching.
 
 We want to take this opportunity to thank Deep Varma and
 the [Trulia](https://trulia.com) engineering team for contributing key insights,

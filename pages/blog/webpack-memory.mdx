@@ -41,7 +41,7 @@ However by looking further up the function that calls the `source()` method you 
 
 So this meant that if there are for example 100 pages, and each page has to be written to disk, above code would try to write all 100 at the same time, including generating all 100 files at the same time.
 
-The solution for this issue is using a [semaphore](<https://en.wikipedia.org/wiki/Semaphore_(programming)>) to limit the amount of concurrent writes. Generally we use [async-sema](https://github.com/zeit/async-sema) for this, but in this case webpack already had a suitable method available on [neo-async](https://github.com/webpack/webpack/blob/v4.28.4/lib/Compiler.js#L8):
+The solution for this issue is using a [semaphore](<https://en.wikipedia.org/wiki/Semaphore_(programming)>) to limit the amount of concurrent writes. Generally we use [async-sema](https://github.com/vercel/async-sema) for this, but in this case webpack already had a suitable method available on [neo-async](https://github.com/webpack/webpack/blob/v4.28.4/lib/Compiler.js#L8):
 
 ```js
 asyncLib.forEach(compilation.assets, (source, file, callback) => {

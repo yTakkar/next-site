@@ -131,7 +131,7 @@ Among these we get:
 - Code splitting improvements
 - Better tree-shaking (removal of unused code) support
 
-Another new feature is WebAssembly support, Next.js can even server-render WebAssembly, here is an [example](https://github.com/zeit/next.js/tree/canary/examples/with-webassembly).
+Another new feature is WebAssembly support, Next.js can even server-render WebAssembly, here is an [example](https://github.com/vercel/next.js/tree/canary/examples/with-webassembly).
 
 **Note:** this upgrade is **fully backwards-compatible**. However, if you are using custom webpack loaders or plugins via [next.config.js](/docs#customizing-webpack-config), you might have to upgrade them.
 
@@ -139,7 +139,7 @@ Another new feature is WebAssembly support, Next.js can even server-render WebAs
 
 With webpack 4, a new way of extracting CSS from bundles was introduced, called [mini-extract-css-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin).
 
-[`@zeit/next-css`](https://github.com/zeit/next-plugins/tree/master/packages/next-css), [`@zeit/next-less`](https://github.com/zeit/next-plugins/tree/master/packages/next-less), [`@zeit/next-sass`](https://github.com/zeit/next-plugins/tree/master/packages/next-sass), and [`@zeit/next-stylus`](https://github.com/zeit/next-plugins/tree/master/packages/next-stylus) are now powered by `mini-extract-css-plugin`.
+[`@zeit/next-css`](https://github.com/vercel/next-plugins/tree/master/packages/next-css), [`@zeit/next-less`](https://github.com/vercel/next-plugins/tree/master/packages/next-less), [`@zeit/next-sass`](https://github.com/vercel/next-plugins/tree/master/packages/next-sass), and [`@zeit/next-stylus`](https://github.com/vercel/next-plugins/tree/master/packages/next-stylus) are now powered by `mini-extract-css-plugin`.
 
 The new version of these Next.js plugins **solves 20 existing issues related to CSS imports**; As an example, importing CSS in dynamic `import()`s is now supported:
 
@@ -237,7 +237,7 @@ For a full list of changes, you can refer to Babel its [release notes](http://ba
 
 Some of the main features are:
 
-- Typescript support, for Next.js you can use [`@zeit/next-typescript`](https://github.com/zeit/next-plugins/tree/master/packages/next-typescript)
+- Typescript support, for Next.js you can use [`@zeit/next-typescript`](https://github.com/vercel/next-plugins/tree/master/packages/next-typescript)
 - Fragment syntax `<>` support
 - `babel.config.js` support
 - `overrides` property to apply presets/plugins only to a subset of files or directories
@@ -248,7 +248,7 @@ If you do however have a custom Babel configuration, you have to upgrade the res
 
 In case you are upgrading from a version below Next.js 6 you can run the excellent [`babel-upgrade`](http://babeljs.io/blog/2018/08/27/7.0.0#babel-upgrade) tool.
 
-In addition to upgrading to Babel 7, the Next.js Babel preset ([`next/babel`](https://github.com/zeit/next.js#customizing-babel-config)) now defaults to setting the `modules` option to `commonjs` when `NODE_ENV` is set to `test`.
+In addition to upgrading to Babel 7, the Next.js Babel preset ([`next/babel`](https://github.com/vercel/next.js#customizing-babel-config)) now defaults to setting the `modules` option to `commonjs` when `NODE_ENV` is set to `test`.
 
 This configuration option was often the only reason for creating a custom `.babelrc` in a Next.js project:
 
@@ -412,7 +412,7 @@ In styled-jsx 2 we would generate a "scoped" and "global" version of external st
 
 With styled-jsx 3 global styles have to be tagged with `css.global` instead of `css`, so that styled-jsx can optimize bundle size.
 
-For all changes, please refer to the [release notes](https://github.com/zeit/styled-jsx/releases/tag/v3.0.0).
+For all changes, please refer to the [release notes](https://github.com/vercel/styled-jsx/releases/tag/v3.0.0).
 
 ## React Context with SSR between App and Pages
 
@@ -489,7 +489,7 @@ Ever since it's first release Next.js has been used in everything from fortune 5
 - On GitHub, the project has been starred over 29,000 times.
 - Almost 2200 pull requests were submitted since the first release.
 
-The Next.js community has nearly 2000 members. [Join us!](https://github.com/zeit/next.js/discussions)
+The Next.js community has nearly 2000 members. [Join us!](https://github.com/vercel/next.js/discussions)
 
 <style jsx>{`
   table {

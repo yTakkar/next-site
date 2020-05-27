@@ -33,7 +33,7 @@ function Navbar() {
 
           <div className="icons">
             <a
-              href="https://github.com/zeit/next.js"
+              href="https://github.com/vercel/next.js"
               aria-label="Next.js on GitHub"
               rel="noopener noreferrer"
               target="_blank"
@@ -111,7 +111,7 @@ function Navbar() {
             </div>
           )}
           <a
-            href="https://github.com/zeit/next.js"
+            href="https://github.com/vercel/next.js"
             aria-label="Next.js on GitHub"
             rel="noopener noreferrer"
             target="_blank"

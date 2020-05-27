@@ -7,7 +7,7 @@ import OrgText from '../../components/name/org-text'
 
 export default withPost({ ...meta })
 
-Next.js 9.0 was released approximately two months ago. Since then, we’ve been busy with 7 smaller but quite important releases: [9.0.1](https://github.com/zeit/next.js/releases/tag/v9.0.1), [9.0.2](https://github.com/zeit/next.js/releases/tag/v9.0.2), [9.0.3](https://github.com/zeit/next.js/releases/tag/v9.0.3), [9.0.4](https://github.com/zeit/next.js/releases/tag/v9.0.4), [9.0.5](https://github.com/zeit/next.js/releases/tag/v9.0.5), [9.0.6](https://github.com/zeit/next.js/releases/tag/v9.0.6), and [9.0.7](https://github.com/zeit/next.js/releases/tag/v9.0.7).
+Next.js 9.0 was released approximately two months ago. Since then, we’ve been busy with 7 smaller but quite important releases: [9.0.1](https://github.com/vercel/next.js/releases/tag/v9.0.1), [9.0.2](https://github.com/vercel/next.js/releases/tag/v9.0.2), [9.0.3](https://github.com/vercel/next.js/releases/tag/v9.0.3), [9.0.4](https://github.com/vercel/next.js/releases/tag/v9.0.4), [9.0.5](https://github.com/vercel/next.js/releases/tag/v9.0.5), [9.0.6](https://github.com/vercel/next.js/releases/tag/v9.0.6), and [9.0.7](https://github.com/vercel/next.js/releases/tag/v9.0.7).
 
 Let’s dive into what these releases have brought to your websites and applications, with absolutely no breaking changes.
 
@@ -155,7 +155,7 @@ This solution works well as every element that got injected through `next/head` 
 
 However, a small subset of users reported issues that the extra `class` attribute on the elements would sometimes make scripts being added from external services not validate.
 
-[Gerald Monaco](https://github.com/devknoll), from the Google Chrome team, [came up with a way](https://github.com/zeit/next.js/pull/8020) to preserve the cleanup behavior without the need for a class name on the elements.
+[Gerald Monaco](https://github.com/devknoll), from the Google Chrome team, [came up with a way](https://github.com/vercel/next.js/pull/8020) to preserve the cleanup behavior without the need for a class name on the elements.
 
 The new behavior is that Next.js will insert an additional `<meta>` tag holding the number of elements it (`next/head`) rendered. With this, Next.js can use the count to clean up the existing elements.
 
@@ -207,7 +207,7 @@ The way the `with-apollo` example used to render the React tree was through rend
 
 Starting from Next.js 9.0.4 a new property called `AppTree` was added to the context object in `getInitialProps`. It was specifically added for cases where external libraries have to traverse the whole React tree like with Apollo's `getDataFromTree`.
 
-The `with-apollo` example has been [updated to reflect the changes](https://github.com/zeit/next.js/blob/v9.0.4/examples/with-apollo/lib/with-apollo-client.js#L20-L34). If you already have Apollo implemented in your app it's recommended to update to the `AppTree` approach so that `useRouter` and other APIs added in the future will work correctly in your Next.js application.
+The `with-apollo` example has been [updated to reflect the changes](https://github.com/vercel/next.js/blob/v9.0.4/examples/with-apollo/lib/with-apollo-client.js#L20-L34). If you already have Apollo implemented in your app it's recommended to update to the `AppTree` approach so that `useRouter` and other APIs added in the future will work correctly in your Next.js application.
 
 If you're not using Apollo or a similar library we recommend to try and avoid using AppTree, as Next.js team does not recommend traversing the React tree in general. It adds quite a lot of performance overhead because the React tree is rendered multiple times instead of just once.
 
@@ -215,7 +215,7 @@ If you're not using Apollo or a similar library we recommend to try and avoid us
 
 When we started optimizing Next.js for serverless deployments over a year ago, we created a package called `next-server`. This package was experimental and published alongside the `next` package. It was never documented publicly but was an experiment to create the smallest possible Next.js server runtime.
 
-Eventually, the package was a success and did make the production server runtime smaller. However, we came up with an innovative new way to make the runtime even smaller with the Next.js compiler and [static analysis](https://github.com/zeit/node-file-trace).
+Eventually, the package was a success and did make the production server runtime smaller. However, we came up with an innovative new way to make the runtime even smaller with the Next.js compiler and [static analysis](https://github.com/vercel/node-file-trace).
 
 In doing so, the `next-server` became obsolete and was replaced by the [serverless target](https://nextjs.org/docs#serverless-deployment). This target has a far more optimized output than using the `next-server` package as a replacement for `next`.
 
@@ -229,7 +229,7 @@ This makes it easier for beginners and seasoned contributors alike to contribute
 
 If your project is running on an older version of Next.js, we recommend upgrading to Next.js 9.
 
-In most cases, no changes are required to upgrade. You can follow the [upgrade guide](https://github.com/zeit/next.js/blob/canary/UPGRADING.md#migrating-from-v8-to-v9) to ensure a smooth upgrade experience.
+In most cases, no changes are required to upgrade. You can follow the [upgrade guide](https://github.com/vercel/next.js/blob/canary/UPGRADING.md#migrating-from-v8-to-v9) to ensure a smooth upgrade experience.
 
 We'd like to thank all community contributors that updated the guide since it's release.
 
@@ -237,9 +237,9 @@ We'd like to thank all community contributors that updated the guide since it's 
 
 The new optimizations outlined in this blog post are just the start of broader optimizations and features we've been working on.
 
-We'll share an update on ongoing RFCs very soon. Until then, you can get a small sneak peek through the [RFC label on GitHub](https://github.com/zeit/next.js/labels/RFC).
+We'll share an update on ongoing RFCs very soon. Until then, you can get a small sneak peek through the [RFC label on GitHub](https://github.com/vercel/next.js/labels/RFC).
 
-This shows some of the features we've been investigating like [built-in CSS support](https://github.com/zeit/next.js/issues/8626), [public directory support](https://github.com/zeit/next.js/issues/7177), and [src directory support](https://github.com/zeit/next.js/issues/8451).
+This shows some of the features we've been investigating like [built-in CSS support](https://github.com/vercel/next.js/issues/8626), [public directory support](https://github.com/vercel/next.js/issues/7177), and [src directory support](https://github.com/vercel/next.js/issues/8451).
 
 ### Community
 
@@ -248,6 +248,6 @@ We're excited to see the continued growth of the Next.js community.
 - We've had over **800** contributors landing at least 1 commit.
 - On GitHub, the project has been starred over **41,100** times.
 
-The Next.js community has doubled since the last major release with over 10,900 members. [Join us!](https://github.com/zeit/next.js/discussions)
+The Next.js community has doubled since the last major release with over 10,900 members. [Join us!](https://github.com/vercel/next.js/discussions)
 
 We are excited about the continued community contributions and external feedback from companies and users that help shape releases.

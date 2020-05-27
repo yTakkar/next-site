@@ -86,13 +86,13 @@ export default withPure(() => (
           <div>
             <h4 className="fw5">More</h4>
             <p>
-              <a href="https://github.com/zeit/next.js" rel="noopener noreferrer" target="_blank">
+              <a href="https://github.com/vercel/next.js" rel="noopener noreferrer" target="_blank">
                 GitHub
               </a>
             </p>
             <p>
               <a
-                href="https://github.com/zeit/next.js/releases"
+                href="https://github.com/vercel/next.js/releases"
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -117,7 +117,7 @@ export default withPure(() => (
               </a>
             </p>
             <p>
-              <a href="https://github.com/zeit" rel="noopener noreferrer" target="_blank">
+              <a href="https://github.com/vercel" rel="noopener noreferrer" target="_blank">
                 GitHub
               </a>
             </p>

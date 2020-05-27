@@ -14,11 +14,11 @@ We're excited to announce the new Next.js documentation, featuring:
 In addition to the new and improved documentation, we've made some changes to [nextjs.org/learn](http://nextjs.org/learn), making it even easier to get started using Next.js:
 
 - [**Login is no longer required**](#nextjsorglearn-improvements): We've removed the login with GitHub, so you can start learning right away. You can still earn points!
-- [**New API Routes lesson**](#new-api-routes-lesson): A new lesson explains the basics of creating an API endpoint with Next.js and how to fetch it with [SWR](https://github.com/zeit/swr).
+- [**New API Routes lesson**](#new-api-routes-lesson): A new lesson explains the basics of creating an API endpoint with Next.js and how to fetch it with [SWR](https://github.com/vercel/swr).
 
 ## Improved Content
 
-Previously, the Next.js documentation lived in a single [`readme.md`](https://github.com/zeit/next.js/blob/canary/packages/next/README.md) document. Over the past 3 years the documentation consistently improved, growing in size to cover all areas of the framework.
+Previously, the Next.js documentation lived in a single [`readme.md`](https://github.com/vercel/next.js/blob/canary/packages/next/README.md) document. Over the past 3 years the documentation consistently improved, growing in size to cover all areas of the framework.
 
 Over time the documentation page became quite long and we started getting community feedback that it would be preferable for the documentation to be split into smaller chunks so that they could be independently consumed and searched for.
 
@@ -76,13 +76,13 @@ Previously these references were interleaved with the explanation of the feature
 
 ## Part of the Next.js GitHub repository
 
-Since the beginning of the project, the single location for Next.js documentation has been the [`readme.md`](https://github.com/zeit/next.js/blob/canary/packages/next/README.md) living in the GitHub repository.
+Since the beginning of the project, the single location for Next.js documentation has been the [`readme.md`](https://github.com/vercel/next.js/blob/canary/packages/next/README.md) living in the GitHub repository.
 
 When the [nextjs.org](http://nextjs.org) website launched, we would manually keep the documentation changes up to date by periodically copying the content from the Next.js GitHub repository to the website GitHub repository. The reason we had to do this was that page on the website was powered by [MDX](http://mdxjs.com/).
 
 Manually copying is not ideal and we started investigating better solutions to the problem. We wanted the new way of contributing to the documentation to be as low-friction as the current way, updating markdown files in the Next.js GitHub repository without needing knowledge about how the website works.
 
-By using Next.js' new support for static generation on a per-page basis ([proposal](https://github.com/zeit/next.js/issues/9524)) we were able to keep the documentation in the Next.js repository.
+By using Next.js' new support for static generation on a per-page basis ([proposal](https://github.com/vercel/next.js/issues/9524)) we were able to keep the documentation in the Next.js repository.
 
 The markdown from the raw GitHub file url gets fetched and rendered to HTML in `getStaticProps`. Resulting in less JavaScript being sent to the browser, as MDX was no longer needed.
 
@@ -111,7 +111,7 @@ Recently we've lifted this limitation and all lessons are now available without 
 
 ### New API routes lesson
 
-A new lesson was added that explains the basics of creating an API endpoint with Next.js and how to fetch it with [SWR](https://github.com/zeit/swr).
+A new lesson was added that explains the basics of creating an API endpoint with Next.js and how to fetch it with [SWR](https://github.com/vercel/swr).
 
 <Image
   caption={'API Routes lesson in nextjs.org/learn.'}
@@ -130,4 +130,4 @@ We'll keep improving and iterating on the documentation based on user feedback. 
 
 If you have any feedback about the new documentation you can use the feedback input at the bottom of each page on [nextjs.org/docs](https://nextjs.org/docs)
 
-We welcome any community contributions to the documentation. A good place to get started is the ["Good first issue label"](https://github.com/zeit/next.js/issues?q=is%3Aopen+label%3A%22good+first+issue%22+sort%3Aupdated-desc) on GitHub.
+We welcome any community contributions to the documentation. A good place to get started is the ["Good first issue label"](https://github.com/vercel/next.js/issues?q=is%3Aopen+label%3A%22good+first+issue%22+sort%3Aupdated-desc) on GitHub.

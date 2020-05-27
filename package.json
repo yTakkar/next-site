@@ -2,7 +2,7 @@
   "name": "next-site",
   "description": "Next.js by Vercel: Official Homepage",
   "version": "1.0.0",
-  "repository": "zeit/next-site",
+  "repository": "vercel/next-site",
   "author": "Vercel",
   "homepage": "https://nextjs.org",
   "license": "MIT",

@@ -23,7 +23,7 @@ For most Next.js applications, all you need to do is run:
 >{`npm i next@latest react@latest react-dom@latest`}</TerminalInput>
 
 There are very few cases where your codebase might require changes. See the
-[upgrade guide](https://github.com/zeit/next.js/blob/canary/UPGRADING.md) for more information.
+[upgrade guide](https://github.com/vercel/next.js/blob/canary/UPGRADING.md) for more information.
 
 Since our last release, we’re happy to have seen companies like
 [IGN](https://ign.com/),
@@ -191,7 +191,7 @@ The `[param]` syntax is supported for directory names and file names, meaning th
 ./pages/posts/[pid]/index.js
 ```
 
-You can [read more about this feature in the Next.js Documentation](https://github.com/zeit/next.js#dynamic-routing) or [Next.js Learn section](https://nextjs.org/learn/basics/clean-urls-with-dynamic-routing).
+You can [read more about this feature in the Next.js Documentation](https://github.com/vercel/next.js#dynamic-routing) or [Next.js Learn section](https://nextjs.org/learn/basics/clean-urls-with-dynamic-routing).
 
 ## Automatic Static Optimization
 
@@ -231,7 +231,7 @@ A heuristic was introduced to automatically determine if a page can be prerender
 static HTML.
 
 This determination is made by whether or not the page has blocking data requirements
-through using [`getInitialProps`](https://github.com/zeit/next.js#fetching-data-and-component-lifecycle).
+through using [`getInitialProps`](https://github.com/vercel/next.js#fetching-data-and-component-lifecycle).
 
 This heuristic allows Next.js to emit hybrid applications that contain
 **both server-rendered and statically generated pages**.
@@ -311,8 +311,8 @@ export default function handle(req, res) {
 }
 ```
 
-- `req` refers to [NextApiRequest](https://github.com/zeit/next.js/blob/v9.0.0/packages/next-server/lib/utils.ts#L143-L158) which extends [http.IncomingMessage](https://nodejs.org/api/http.html#http_class_http_incomingmessage)
-- `res` refers to [NextApiResponse](https://github.com/zeit/next.js/blob/v9.0.0/packages/next-server/lib/utils.ts#L168-L178) which extends [http.ServerResponse](https://nodejs.org/api/http.html#http_class_http_serverresponse)
+- `req` refers to [NextApiRequest](https://github.com/vercel/next.js/blob/v9.0.0/packages/next-server/lib/utils.ts#L143-L158) which extends [http.IncomingMessage](https://nodejs.org/api/http.html#http_class_http_incomingmessage)
+- `res` refers to [NextApiResponse](https://github.com/vercel/next.js/blob/v9.0.0/packages/next-server/lib/utils.ts#L168-L178) which extends [http.ServerResponse](https://nodejs.org/api/http.html#http_class_http_serverresponse)
 
 Generally API endpoints take in some incoming data, for example the querystring,
 request body, or cookies and respond with other data.
@@ -414,7 +414,7 @@ to know if Next.js is still doing compilation work or not.
 For example you might be making changes to styles on the page that are subtle and you
 wouldn't immediately know if they were updated.
 
-For this reason we created a [RFC / "good first issue"](https://github.com/zeit/next.js/issues/4626)
+For this reason we created a [RFC / "good first issue"](https://github.com/vercel/next.js/issues/4626)
 to discuss potential solutions for the problem of indicating that work is being done.
 
 We received feedback from many designers and engineers on the RFC, for example what
@@ -536,9 +536,9 @@ export default function AboutPage(props) {
 
 The `withAmp` higher order component was removed in favor of this new configuration.
 
-We've provided a [codemod](https://github.com/zeit/next-codemod#withamp-to-config)
+We've provided a [codemod](https://github.com/vercel/next-codemod#withamp-to-config)
 that automatically converts usage of `withAmp` to the new configuration object.
-You can read more about this in the [upgrade guide](https://github.com/zeit/next.js/blob/canary/UPGRADING.md).
+You can read more about this in the [upgrade guide](https://github.com/vercel/next.js/blob/canary/UPGRADING.md).
 
 ## Codebase Improvements
 
@@ -609,7 +609,7 @@ The module/nomodule pattern provides a reliable mechanism for serving modern
 JavaScript to modern browsers while still allowing older browsers to fall back to
 polyfilled ES5.
 
-The RFC for module/nomodule in Next.js can be [found here](https://github.com/zeit/next.js/issues/7563).
+The RFC for module/nomodule in Next.js can be [found here](https://github.com/vercel/next.js/issues/7563).
 
 #### Improved Bundle Splitting
 
@@ -628,7 +628,7 @@ page bundles.
   captionSpacing={30}
 />
 
-The RFC for improved bundle splitting can be [found here](https://github.com/zeit/next.js/issues/7631).
+The RFC for improved bundle splitting can be [found here](https://github.com/vercel/next.js/issues/7631).
 
 #### Other Improvements
 
@@ -636,7 +636,7 @@ The Chrome team is also working on many other optimizations and changes that wil
 improve Next.js.
 RFCs for these will be shared soon.
 
-These RFCs and pull-requests are [labeled "Collaboration"](https://github.com/zeit/next.js/labels/Type%3A%20Collaboration)
+These RFCs and pull-requests are [labeled "Collaboration"](https://github.com/vercel/next.js/labels/Type%3A%20Collaboration)
 so that they can be easily found in the Next.js issue tracker.
 
 ## Community
@@ -654,7 +654,7 @@ Including most css-in-js and data-fetching libraries.
 - On GitHub, the project has been starred over **38,600 times**.
 - Over **3,400 pull requests** were submitted since the first release, that is **over 800** since the last major release!
 
-The Next.js community has doubled since the last major release with over **8,600 members**. [Join us!](https://github.com/zeit/next.js/discussions)
+The Next.js community has doubled since the last major release with over **8,600 members**. [Join us!](https://github.com/vercel/next.js/discussions)
 
 We are thankful to our community and all the external feedback and contributions that
 helped shape this release.

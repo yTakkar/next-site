@@ -13,13 +13,13 @@ export default withPost({ ...meta })
 These two releases added very powerful new features to Next.js, without increasing our baseline client runtime size.
 
 Since then, we've focused heavily on refining and improving the framework as a whole:
-[9.1.1](https://github.com/zeit/next.js/releases/tag/v9.1.1),
-[9.1.2](https://github.com/zeit/next.js/releases/tag/v9.1.2),
-[9.1.3](https://github.com/zeit/next.js/releases/tag/v9.1.3),
-[9.1.4](https://github.com/zeit/next.js/releases/tag/v9.1.4),
-[9.1.5](https://github.com/zeit/next.js/releases/tag/v9.1.5),
-[9.1.6](https://github.com/zeit/next.js/releases/tag/v9.1.6),
-and [9.1.7](https://github.com/zeit/next.js/releases/tag/v9.1.7).
+[9.1.1](https://github.com/vercel/next.js/releases/tag/v9.1.1),
+[9.1.2](https://github.com/vercel/next.js/releases/tag/v9.1.2),
+[9.1.3](https://github.com/vercel/next.js/releases/tag/v9.1.3),
+[9.1.4](https://github.com/vercel/next.js/releases/tag/v9.1.4),
+[9.1.5](https://github.com/vercel/next.js/releases/tag/v9.1.5),
+[9.1.6](https://github.com/vercel/next.js/releases/tag/v9.1.6),
+and [9.1.7](https://github.com/vercel/next.js/releases/tag/v9.1.7).
 Let's dive into what these releases have improved!
 
 - **[3% – 8%+ Smaller Client-Side JavaScript Size](#3--8-smaller-client-side-javascript-size)**: We've optimized application output even futher, shaving 7.5kB off hello world applications. More complex applications will show a savings up to 8% or more.
@@ -92,9 +92,9 @@ characteristics.
 
 The new output classifies each page as one of the following:
 
-- **Server-Side Rendered (Server)**: the page server-side renders at runtime, meaning it uses `getInitialProps` or [`getServerProps` (proposal)](https://github.com/zeit/next.js/issues/9524)
+- **Server-Side Rendered (Server)**: the page server-side renders at runtime, meaning it uses `getInitialProps` or [`getServerProps` (proposal)](https://github.com/vercel/next.js/issues/9524)
 - **Automatically Statically Optimized (Static)**: the page was rendered as static HTML at build time, and will be served as a static file (uses no initial props)
-- **Statically Generated Using Computed Data (SSG)**: the page was generated as static HTML/JSON at build time, and will be served as static files (uses [`getStaticProps` (proposal)](https://github.com/zeit/next.js/issues/9524))
+- **Statically Generated Using Computed Data (SSG)**: the page was generated as static HTML/JSON at build time, and will be served as static files (uses [`getStaticProps` (proposal)](https://github.com/vercel/next.js/issues/9524))
 
 Furthermore, the new output displays the Gzipped size of each page — these
 sizes exclude files that are shared by all pages (displayed separately).
@@ -270,8 +270,8 @@ Because of this, we suggest you look into it sooner rather than later!
 
 ### Automated Testing against Nightly React Builds
 
-In [close collaboration](https://github.com/zeit/next.js/pull/9165) with the React Core Team, we're now
-[testing](https://github.com/zeit/next.js/pull/9151) Next.js against React's next channel every 12 hours.
+In [close collaboration](https://github.com/vercel/next.js/pull/9165) with the React Core Team, we're now
+[testing](https://github.com/vercel/next.js/pull/9151) Next.js against React's next channel every 12 hours.
 
 These tests help ensure we're prepared and compatible with the future releases of React.
 Compatibility is something Next.js takes very seriously, and we're committed to the long-term
@@ -288,9 +288,9 @@ Furthermore, the Next.js community is still expanding:
 
 - We have had over **865** independent contributors.
 - On GitHub, the project has been starred over **43,700** times.
-- The [examples directory](https://github.com/zeit/next.js/tree/canary/examples) has over **220 examples.**
+- The [examples directory](https://github.com/vercel/next.js/tree/canary/examples) has over **220 examples.**
 
-The Next.js community now has over **13,600** members. [Join us!](https://github.com/zeit/next.js/discussions)
+The Next.js community now has over **13,600** members. [Join us!](https://github.com/vercel/next.js/discussions)
 
 We are thankful to our community and all the external feedback and contributions that helped shape this release.
 

@@ -16,7 +16,7 @@ const withGitHubMDX = nextMDX({
       [
         rehypeReadme,
         {
-          repo: 'zeit/next.js',
+          repo: 'vercel/next.js',
           branch: 'master',
           level: 4
         }
@@ -174,7 +174,7 @@ const nextConfig = {
         },
         {
           source: '/discussions',
-          destination: 'https://github.com/zeit/next.js/discussions',
+          destination: 'https://github.com/vercel/next.js/discussions',
           permanent: false
         }
       ];

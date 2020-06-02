@@ -74,7 +74,7 @@ const Docs = ({ routes, route: _route, data, html }) => {
   const { route, prevRoute, nextRoute } = _route ? getRouteContext(_route, routes) : {};
 
   useEffect(() => {
-    if (asPath.startsWith('/docs#')) {
+    if (asPath.startsWith('/docs/getting-started#')) {
       const hash = asPath.split('#')[1];
 
       // excluded hashes don't need to be redirected to the olds docs because they are covered
@@ -86,6 +86,7 @@ const Docs = ({ routes, route: _route, data, html }) => {
         router.push(`/docs${to || `/old#${hash}`}`);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [asPath]);
 
   if (!route && !isFallback) {

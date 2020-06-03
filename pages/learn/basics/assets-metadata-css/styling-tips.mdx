@@ -60,32 +60,46 @@ Out of the box, with no configuration, Next.js compiles CSS using [PostCSS](http
 
 To customize PostCSS config, you can create a top-level file called `postcss.config.js`. This is useful if you’re using libraries like [Tailwind CSS](https://tailwindcss.com/).
 
-Here’s an example `postcss.config.js` for using [Tailwind CSS](https://tailwindcss.com/) with [`purgecss`](https://github.com/FullHuman/purgecss) which removes unused CSS.
+Here’s an instruction for using [Tailwind CSS](https://tailwindcss.com/). We recommend using `postcss-preset-env` and `postcss-flexbugs-fixes` to match <Link href="/docs/[...slug]" as="/docs/advanced-features/customizing-postcss-config#default-behavior"><a>Next.js’s default behavior</a></Link>. First, install the packages:
 
-- You need to install `tailwindcss`, `@fullhuman/postcss-purgecss`, and `postcss-preset-env`.
-- You don’t need `autoprefixer` because Next.js includes it by default.
+```shell
+npm install tailwindcss postcss-preset-env postcss-flexbugs-fixes
+```
+
+Then write the following for `postcss.config.js`:
 
 ```js
 module.exports = {
   plugins: [
     'tailwindcss',
-    ...(process.env.NODE_ENV === 'production'
-      ? [
-          [
-            '@fullhuman/postcss-purgecss',
-            {
-              content: [
-                './pages/**/*.{js,jsx,ts,tsx}',
-                './components/**/*.{js,jsx,ts,tsx}'
-              ],
-              defaultExtractor: content =>
-                content.match(/[\w-/:]+(?<!:)/g) || []
-            }
-          ]
-        ]
-      : []),
-    'postcss-preset-env'
+    'postcss-flexbugs-fixes',
+    [
+      'postcss-preset-env',
+      {
+        autoprefixer: {
+          flexbox: 'no-2009'
+        },
+        stage: 3,
+        features: {
+          'custom-properties': false
+        }
+      }
+    ]
   ]
+}
+```
+
+We also recommend [removing unused CSS](https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css) by specifying the `purge` option on `tailwind.config.js`:
+
+```js
+// tailwind.config.js
+module.exports = {
+  purge: [
+    // Use *.tsx if using TypeScript
+    './pages/**/*.js',
+    './components/**/*.js'
+  ]
+  // ...
 }
 ```
 

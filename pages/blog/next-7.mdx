@@ -1,5 +1,6 @@
 import withPost from '../../components/blog/with-post'
 import Image from '../../components/image'
+import PlatformLink from '../../components/name/platform-link'
 
 export const meta = {
   title: 'Next.js 7',
@@ -328,7 +329,7 @@ https://cdn.example.com/_next/static/<buildid>/pages/index.js
 
 Typically, the CDN checks if it has the file in its cache, or otherwise requests it directly from the origin.
 
-Proxying assets is precisely how the [Now CDN](https://zeit.co/cdn) works.
+Proxying assets is precisely how the <PlatformLink href="/edge-network">Edge Network</PlatformLink> works.
 
 However, some solutions require pre-uploading a directory directly into the CDN. The problem in doing this is that Next.js its URL structure did not match the folder structure inside the `.next` folder. For example our earlier example
 

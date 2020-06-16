@@ -116,7 +116,7 @@ class Image extends Component {
               }
               .container {
                 margin: 0 auto;
-                ${width ? `width: ${width}px;`: ''}
+                ${width ? `width: ${width}px;` : ''}
                 max-width: 100%;
               }
               @media screen and (max-width: 320px) {

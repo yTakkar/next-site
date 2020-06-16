@@ -114,15 +114,12 @@ const nextConfig = {
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx'],
   experimental: {
     modern: true,
+    optionalCatchAll: true,
     rewrites() {
       return [
         {
           source: '/feed.xml',
           destination: '/_next/static/feed.xml'
-        },
-        {
-          source: '/docs/tag/:tag{/}?',
-          destination: '/docs/tag/:tag/getting-started'
         }
       ];
     },
@@ -132,11 +129,6 @@ const nextConfig = {
           source: '/learn{/}?',
           permanent: true,
           destination: '/learn/basics/create-nextjs-app'
-        },
-        {
-          source: '/docs{/}?',
-          permanent: false,
-          destination: '/docs/getting-started'
         },
         ...navigateBetweenPagesLessonsRedirect,
         ...apiRoutesLessonsRedirect,

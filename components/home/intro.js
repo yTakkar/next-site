@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Link from 'next/link';
+import { useAmp } from 'next/amp';
 
 import Logo from '../logo';
 import Container from '../container';
@@ -9,11 +10,6 @@ import Popover from '../popover';
 import Campaign from './campaign';
 
 import { links } from '../../site-manifest';
-
-function easing(t) {
-  // eslint-disable-next-line
-  return 1 + --t * t * t * t * t;
-}
 
 class LogoContainer extends React.PureComponent {
   state = {
@@ -107,137 +103,124 @@ class LogoContainer extends React.PureComponent {
 }
 
 // eslint-disable-next-line react/no-multi-comp
-export default class extends React.PureComponent {
-  render() {
-    const { isAmp } = this.props;
-    return (
-      <Container
-        role="main"
-        wide
-        center
-        overflow
-        dotBackground
-        minHeight={564}
-        mobileStyle="min-height: 460px;"
-        style={{
-          display: 'flex',
-          alignItems: 'flex-end'
-        }}
-      >
-        <Container>
-          <div className="intro-container">
-            <LogoContainer isAmp={isAmp} />
-            <div className="campaign no-drag no-tap-highlight">
-              <h1 className={classNames('title-1', 'fw6')}>The React Framework for</h1>
-              <h2 className={classNames('title-2', 'fw7')}>
-                <Campaign />
-              </h2>
-              <div className="main-button">
-                <div className="button-spacer">
-                  <Button
-                    href="/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website"
-                    invert
-                  >
-                    Start Learning
-                  </Button>
-                </div>
+export default function Intro() {
+  const isAmp = useAmp();
 
-                <div className="button-spacer">
-                  <Button href="#showcases" invert outline>
-                    View Showcase
-                  </Button>
-                </div>
+  return (
+    <Container role="main" wide center overflow dotBackground>
+      <Container>
+        <div className="intro-container">
+          <LogoContainer isAmp={isAmp} />
+          <div className="campaign no-drag no-tap-highlight">
+            <h1 className={classNames('title-1', 'fw6')}>The React Framework for</h1>
+            <h2 className={classNames('title-2', 'fw7')}>
+              <Campaign />
+            </h2>
+            <div className="main-button">
+              <div className="button-spacer">
+                <Button
+                  href="/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website"
+                  invert
+                >
+                  Start Learning
+                </Button>
               </div>
-            </div>
-            <div>
-              <div className="links">
-                <a href={links.license} rel="noopener noreferrer" target="_blank">
-                  <span className="mute">License: MIT</span>
-                </a>
-                <div>
-                  <Button href="/docs" amp>
-                    View Docs
-                  </Button>
-                </div>
-                <div>
-                  <Button href="https://github.com/vercel/next.js">GitHub</Button>
-                </div>
+
+              <div className="button-spacer">
+                <Button href="#showcases" invert outline>
+                  View Showcase
+                </Button>
               </div>
             </div>
           </div>
-        </Container>
+          <div>
+            <div className="links">
+              <a href={links.license} rel="noopener noreferrer" target="_blank">
+                <span className="mute">License: MIT</span>
+              </a>
+              <div>
+                <Button href="/docs" amp>
+                  View Docs
+                </Button>
+              </div>
+              <div>
+                <Button href="https://github.com/vercel/next.js">GitHub</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Container>
 
-        <style jsx>{`
-          .button-spacer {
-            display: inline-block;
-            padding: 10px;
-          }
-          .intro-container {
-            margin: 0 0 2rem 0;
-            overflow: visible;
-          }
-          h2 {
-            margin-top: 1rem;
-            margin-bottom: 2rem;
-          }
-          .main-button {
-            margin-bottom: 2rem;
-          }
-          .links {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          .links > * {
-            padding: 0 0.5rem;
-          }
-          .campaign {
-            width: 100%;
-            letter-spacing: -0.02rem;
-            overflow: hidden;
-            cursor: default;
-            z-index: -1;
-            margin: 1rem 0 5rem;
-          }
-          .f-xs-0 {
-            font-size: 2.887rem; /* 2.566rem; /* 2.281rem; */
-          }
-          .f-xs-1 {
-            font-size: 2.027rem; //.566rem;
-          }
-          .logo-main {
-            display: flex;
-            justify-content: center;
-            color: #0070f3;
-            margin: auto;
-            margin-bottom: 2rem;
-          }
+      <style jsx>{`
+        .button-spacer {
+          display: inline-block;
+          padding: 10px;
+        }
+        .intro-container {
+          padding: 3rem 0 2rem 0;
+          overflow: visible;
+        }
+        h2 {
+          margin-top: 1rem;
+          margin-bottom: 2rem;
+        }
+        .main-button {
+          margin-bottom: 2rem;
+        }
+        .links {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .links > * {
+          padding: 0 0.5rem;
+        }
+        .campaign {
+          width: 100%;
+          letter-spacing: -0.02rem;
+          overflow: hidden;
+          cursor: default;
+          z-index: -1;
+          margin: 1rem 0 5rem;
+        }
+        .f-xs-0 {
+          font-size: 2.887rem; /* 2.566rem; /* 2.281rem; */
+        }
+        .f-xs-1 {
+          font-size: 2.027rem; //.566rem;
+        }
+        .logo-main {
+          display: flex;
+          justify-content: center;
+          color: #0070f3;
+          margin: auto;
+          margin-bottom: 2rem;
+        }
+        .title-1 {
+          font-size: 1.5rem;
+        }
+        .title-2 {
+          font-size: 4rem;
+          margin-top: -5rem;
+          margin-bottom: 0;
+        }
+        /* CSS only media query for mobile */
+        @media screen and (max-width: 640px) {
           .title-1 {
-            font-size: 1.5rem;
+            font-size: 22px;
           }
           .title-2 {
-            font-size: 4rem;
-            margin-top: -5rem;
-            margin-bottom: 0;
+            font-size: 30px;
+            margin-top: -2.4rem;
           }
-          /* CSS only media query for mobile */
-          @media screen and (max-width: 640px) {
-            .title-1 {
-              font-size: 22px;
-            }
-            .title-2 {
-              font-size: 30px;
-              margin-top: -2.4rem;
-            }
-            .campaign {
-              margin: 0 0 2rem;
-            }
-            .main-button {
-              margin-top: 2rem;
-            }
+          .campaign {
+            margin: 0 0 2rem;
           }
-        `}</style>
-      </Container>
-    );
-  }
+          .main-button {
+            margin-top: 2rem;
+          }
+        }
+      `}</style>
+    </Container>
+  );
 }

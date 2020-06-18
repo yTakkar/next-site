@@ -14,7 +14,7 @@ const Banner = () => {
         </a>
 
         <a
-          href={`${PLATFORM_URL}/solutions/nextjs?filter=next.js&utm_source=next-site&utm_medium=banner&utm_campaign=next-website`}
+          href={`${PLATFORM_URL}/solutions/nextjs?utm_source=next-site&utm_medium=banner&utm_campaign=next-website`}
           target="_blank"
           rel="noopener noreferrer"
         >

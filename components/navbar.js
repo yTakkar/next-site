@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useAmp } from 'next/amp';
@@ -7,15 +7,15 @@ import { SkipNavLink } from '@reach/skip-nav';
 
 import NextLogo from './logo';
 import Container from './container';
-
 import GitHubLogo from './icons/github';
+import FeedbackContext from './feedback-context';
 import HeaderFeedback from './header-feedback';
-
-import { links } from '../site-manifest';
+import Button from './button';
 
 function Navbar() {
   const { route } = useRouter();
   const isAmp = useAmp();
+  const feedback = useContext(FeedbackContext);
 
   return (
     <Container center>
@@ -31,16 +31,10 @@ function Navbar() {
             </a>
           </Link>
 
-          <div className="icons">
-            <a
-              href="https://github.com/vercel/next.js"
-              aria-label="Next.js on GitHub"
-              rel="noopener noreferrer"
-              target="_blank"
-              className="icon mute"
-            >
-              <GitHubLogo color="currentColor" />
-            </a>
+          <div className="learn">
+            <Button href="/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website">
+              Learn
+            </Button>
           </div>
         </div>
 
@@ -48,39 +42,6 @@ function Navbar() {
           <Link href="/">
             <a className="logo">
               <NextLogo />
-            </a>
-          </Link>
-
-          <Link href="/#features">
-            <a
-              className={cn('mute', {
-                selected: route.startsWith('/features')
-              })}
-              title="Features"
-            >
-              Features
-            </a>
-          </Link>
-
-          <Link href="/learn/basics/create-nextjs-app">
-            <a
-              className={cn('mute', {
-                selected: route.startsWith('/learn')
-              })}
-              title="Learn"
-            >
-              Learn
-            </a>
-          </Link>
-
-          <Link href="/docs/[...slug]" as="/docs/getting-started">
-            <a
-              className={cn('mute', {
-                selected: route.startsWith('/docs')
-              })}
-              title="Documentation"
-            >
-              Docs
             </a>
           </Link>
 
@@ -95,6 +56,17 @@ function Navbar() {
             </a>
           </Link>
 
+          <Link href="/docs/[...slug]" as="/docs/getting-started">
+            <a
+              className={cn('mute', {
+                selected: route.startsWith('/docs')
+              })}
+              title="Documentation"
+            >
+              Docs
+            </a>
+          </Link>
+
           <Link href="/blog">
             <a
               className={cn('mute', {
@@ -105,11 +77,21 @@ function Navbar() {
             </a>
           </Link>
 
-          {!isAmp && (
+          <a
+            className="mute"
+            href="https://vercel.com/solutions/nextjs?utm_source=next-site&utm_medium=navbar&utm_campaign=next-website"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Enterprise
+          </a>
+
+          {!isAmp && feedback && (
             <div className="header-feedback">
               <HeaderFeedback />
             </div>
           )}
+
           <a
             href="https://github.com/vercel/next.js"
             aria-label="Next.js on GitHub"
@@ -119,6 +101,12 @@ function Navbar() {
           >
             <GitHubLogo color="currentColor" />
           </a>
+
+          <div className="learn">
+            <Button href="/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website">
+              Learn
+            </Button>
+          </div>
         </div>
       </nav>
 
@@ -150,7 +138,7 @@ function Navbar() {
 
         .links a.selected {
           color: #0070f3;
-          font-weight: 600;
+          text-shadow: 0px 0px 1px #0070f3;
         }
 
         .links a:first-child,
@@ -178,6 +166,19 @@ function Navbar() {
           display: inline-flex;
         }
 
+        .learn :global(a) {
+          background-color: rgba(0, 118, 255, 0.9);
+          color: #fff;
+          border: 1px solid rgba(0, 118, 255, 0.9);
+          padding: 0.25rem 1rem;
+          margin: 0;
+        }
+        .learn :global(a:focus),
+        .learn :global(a:hover) {
+          background-color: transparent;
+          color: rgba(0, 118, 255, 0.9);
+        }
+
         /* Mobile */
 
         @media (max-width: 640px) {
@@ -194,7 +195,7 @@ function Navbar() {
           }
 
           nav .links .logo,
-          nav .links .icon {
+          nav .links .learn {
             display: none;
           }
 
@@ -210,13 +211,8 @@ function Navbar() {
             margin-bottom: 0.5rem;
           }
 
-          .mobile-top > .icons {
-            display: flex;
-            align-items: center;
-          }
-
-          .mobile-top > .icons a:nth-child(2) {
-            margin-left: 2rem;
+          .learn {
+            margin-left: 0.5rem;
           }
         }
 

@@ -1,5 +1,4 @@
 import { SkipNavContent } from '@reach/skip-nav';
-import { useAmp } from 'next/amp';
 
 import Page from '../components/page';
 import Footer from '../components/footer';
@@ -14,9 +13,7 @@ import Learn from '../components/home/learn';
 import SocialMeta from '../components/social-meta';
 import { ORG_NAME } from '../lib/constants';
 
-export default () => {
-  const isAmp = useAmp();
-
+export default function Index() {
   return (
     <Page title={`Next.js by ${ORG_NAME} - The React Framework`}>
       <SocialMeta
@@ -31,7 +28,7 @@ export default () => {
         Environment Support, Built-in Fetch, and more!
         <span className="highlight">Learn More →</span>
       </Notification>
-      <Intro isAmp={isAmp} />
+      <Intro />
       <Demo />
       <Features />
       <Customers />
@@ -40,7 +37,7 @@ export default () => {
       <Footer />
     </Page>
   );
-};
+}
 
 export const config = {
   amp: 'hybrid'

@@ -4,7 +4,6 @@ import { SkipNavContent } from '@reach/skip-nav'
 import Footer from '../../components/footer'
 import Screen from '../../components/screen'
 import Page from '../../components/page'
-import FeedbackContext from '../../components/feedback-context'
 
 import Container from '../../components/container'
 import SectionHeader from '../../components/section-header'
@@ -59,24 +58,22 @@ const items = previewItems
   })
 
 export default () => (
-  <FeedbackContext.Provider value={{ label: 'next-blog' }}>
-    <Page title="Blog | Next.js">
-      <Screen offset={64 + 400}>
-        <Container padding wide>
-          <SectionHeader
-            title="Blog"
-            description={
-              <span>
-                The latest news about Next.js <br className="display-mobile" />
-                from the {ORG_NAME} team
-              </span>
-            }
-          />
-          <SkipNavContent />
-          {items}
-        </Container>
-      </Screen>
-      <Footer />
-    </Page>
-  </FeedbackContext.Provider>
+  <Page title="Blog | Next.js">
+    <Screen offset={64 + 400}>
+      <Container padding wide>
+        <SectionHeader
+          title="Blog"
+          description={
+            <span>
+              The latest news about Next.js <br className="display-mobile" />
+              from the {ORG_NAME} team
+            </span>
+          }
+        />
+        <SkipNavContent />
+        {items}
+      </Container>
+    </Screen>
+    <Footer />
+  </Page>
 )

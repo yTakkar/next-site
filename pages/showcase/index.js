@@ -12,8 +12,6 @@ import SocialMeta from '../../components/social-meta';
 import { ORG_NAME } from '../../lib/constants';
 import { categories, mapping } from '../../showcase-manifest';
 
-const HEADER_HEIGHT = 16 * 12;
-
 function Showcase({ item }) {
   return (
     <Page title="Showcase | Next.js">
@@ -26,12 +24,7 @@ function Showcase({ item }) {
       <Tabs data={categories} anchor>
         {(onSelect, selectedId) => (
           <>
-            <Title
-              height={{
-                desktop: HEADER_HEIGHT + 64,
-                mobile: HEADER_HEIGHT + 64 + 32
-              }}
-            />
+            <Title />
             <Filter onSelect={onSelect} selectedId={selectedId} />
 
             <div className="wrapList">
@@ -40,11 +33,11 @@ function Showcase({ item }) {
 
             <style jsx>{`
               .wrapList {
-                margin-top: 96px;
+                margin-top: 4rem;
               }
               @media screen and (max-width: 640px) {
                 .wrapList {
-                  margin-top: 128px;
+                  margin-top: 2rem;
                 }
               }
             `}</style>

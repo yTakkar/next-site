@@ -171,7 +171,7 @@ export const mapping = {
     link: 'https://m.twitch.tv',
     src: '/static/images/showcases/twitch.jpg',
     srcFallback: true,
-    alexa: 36,
+    alexa: 32,
     highlighted: 1,
     internalUrl: 'twitch',
     tags: ['entertainment']
@@ -504,9 +504,9 @@ export const mapping = {
     title: 'Tencent News',
     link: 'https://xw.qq.com',
     src: '/static/images/showcases/tencentnews.jpg',
-    alexa: 6,
+    alexa: 5,
+    factor: 0.01,
     internalUrl: 'tencent-news',
-    highlighted: 2,
     tags: ['news']
   },
   jet: {
@@ -703,6 +703,7 @@ export const mapping = {
     srcFallback: true,
     alexa: 234,
     internalUrl: 'hulu',
+    highlighted: 1,
     tags: ['entertainment']
   },
   'design-better': {
@@ -923,8 +924,10 @@ export const mapping = {
     link: 'https://www.tiktok.com/en',
     src: '/static/images/showcases/tiktok.jpg',
     srcFallback: true,
-    alexa: 1163,
+    alexa: 217,
+    factor: 70,
     internalUrl: 'tiktok',
+    highlighted: 2,
     tags: ['entertainment', 'creative']
   },
   hilton: {
@@ -965,4 +968,6 @@ export const mapping = {
   }
 };
 
-export const sortedByAlexa = Object.values(mapping).sort((a, b) => a.alexa - b.alexa);
+const calcScore = ({ alexa, factor = 1 }) => alexa / factor;
+
+export const sortedByAlexa = Object.values(mapping).sort((a, b) => calcScore(a) - calcScore(b));

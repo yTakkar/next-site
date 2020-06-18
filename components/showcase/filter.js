@@ -65,11 +65,6 @@ function Filter({ onSelect, selectedId }) {
           align-items: baseline;
           justify-content: center;
           font-weight: 500;
-        }
-        .categories {
-          border-top: 1px solid transparent;
-        }
-        :global(.fixed) .categories {
           border-top: 1px solid transparent;
         }
         .categories *::selection {
@@ -79,6 +74,7 @@ function Filter({ onSelect, selectedId }) {
         .tab {
           background-color: transparent;
           border: none;
+          outline: none;
           font-weight: inherit;
           display: inline-block;
           height: 100%;
@@ -87,10 +83,13 @@ function Filter({ onSelect, selectedId }) {
           text-align: center;
           padding: 0 1.25rem;
           cursor: pointer;
-          transition: color 0.5s ease;
           white-space: nowrap;
           text-transform: uppercase;
           border-radius: 7px;
+          color: #696969;
+        }
+        .tab:hover {
+          color: #000;
         }
         .tab.selected {
           background: rgba(0, 118, 255, 0.1);
@@ -103,13 +102,9 @@ function Filter({ onSelect, selectedId }) {
         @media screen and (max-width: 640px) {
           .categories {
             align-items: center;
-            justify-content: space-around;
-          }
-          :global(.fixed) .categories {
-            border-top: 1px solid #f5f5f5;
           }
           .tab {
-            padding: 0 3px;
+            padding: 0 0.5rem;
             text-transform: unset;
           }
           .not-mobile,
@@ -118,6 +113,13 @@ function Filter({ onSelect, selectedId }) {
           }
           .short {
             display: unset;
+            margin: 0 auto;
+          }
+        }
+
+        @media screen and (max-width: 380px) {
+          .tab {
+            padding: 0 3px;
           }
         }
       `}</style>

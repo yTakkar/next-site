@@ -56,7 +56,7 @@ function Navbar() {
             </a>
           </Link>
 
-          <Link href="/docs/[...slug]" as="/docs/getting-started">
+          <Link href="/docs/[[...slug]]" as="/docs/getting-started">
             <a
               className={cn('mute', {
                 selected: route.startsWith('/docs')

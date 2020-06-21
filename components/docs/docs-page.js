@@ -18,7 +18,7 @@ function areEqual(prevProps, props) {
 function DocsPage({ route, html, prevRoute, nextRoute }) {
   const { query } = useRouter();
   const { tag, slug } = getSlug(query);
-  const href = '/docs/[...slug]';
+  const href = '/docs/[[...slug]]';
   const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/canary${route.path}`;
 
   useEffect(() => {
@@ -76,7 +76,7 @@ function DocsPage({ route, html, prevRoute, nextRoute }) {
 
       <footer>
         {tag ? (
-          <Link href="/docs/[...slug]" as={slug}>
+          <Link href="/docs/[[...slug]]" as={slug}>
             <a>Go to the live version of this page</a>
           </Link>
         ) : (

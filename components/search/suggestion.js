@@ -3,7 +3,7 @@ import { Highlight, Snippet } from 'react-instantsearch-dom';
 
 export function getHitLinkProps(hit) {
   const hash = hit.anchor ? `#${hit.anchor}` : '';
-  return { href: '/docs/[...slug]', as: hit.path + hash };
+  return { href: '/docs/[[...slug]]', as: hit.path + hash };
 }
 
 export default function Suggestion({ hit }) {

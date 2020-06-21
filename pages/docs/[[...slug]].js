@@ -57,7 +57,7 @@ function SidebarRoutes({ isMobile, routes: currentRoutes, level = 1 }) {
       );
     }
 
-    const href = '/docs/[...slug]';
+    const href = '/docs/[[...slug]]';
     const pagePath = removeFromLast(path, '.');
     const pathname = addTagToSlug(pagePath, tag);
     const selected = slug.startsWith(pagePath);

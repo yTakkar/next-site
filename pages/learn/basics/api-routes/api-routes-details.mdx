@@ -9,7 +9,7 @@ export const meta = {
   subtitle: 'API Routes Details'
 }
 
-You can get in-depth information about API Routes in <Link href="/docs/[...slug]" as="/docs/api-routes/dynamic-api-routes"><a>our documentation</a></Link>. But here is some essential information you should know about API Routes.
+You can get in-depth information about API Routes in <Link href="/docs/[[...slug]]" as="/docs/api-routes/dynamic-api-routes"><a>our documentation</a></Link>. But here is some essential information you should know about API Routes.
 
 ### Do Not Fetch an API Route from `getStaticProps` or `getStaticPaths`
 
@@ -32,11 +32,11 @@ export default (req, res) => {
 
 Static Generation is useful when your pages fetch data from a headless CMS. However, it’s not ideal when you’re writing a draft on your headless CMS and want to **preview** the draft immediately on your page. You’d want Next.js to render these pages at **request time** instead of build time and fetch the draft content instead of the published content. You’d want Next.js to bypass Static Generation only for this specific case.
 
-Next.js has the feature called **Preview Mode** which solves this problem, and it utilizes API Routes. To learn more, take a look at our <Link href="/docs/[...slug]" as="/docs/advanced-features/preview-mode"><a>Preview Mode</a></Link> documentation.
+Next.js has the feature called **Preview Mode** which solves this problem, and it utilizes API Routes. To learn more, take a look at our <Link href="/docs/[[...slug]]" as="/docs/advanced-features/preview-mode"><a>Preview Mode</a></Link> documentation.
 
 ### Dynamic API Routes
 
-API Routes can be dynamic, just like regular pages. Take a look at our <Link href="/docs/[...slug]" as="/docs/api-routes/dynamic-api-routes"><a>Dynamic API Routes</a></Link> documentation to learn more.
+API Routes can be dynamic, just like regular pages. Take a look at our <Link href="/docs/[[...slug]]" as="/docs/api-routes/dynamic-api-routes"><a>Dynamic API Routes</a></Link> documentation to learn more.
 
 ### That’s It!
 

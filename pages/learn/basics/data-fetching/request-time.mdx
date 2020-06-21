@@ -37,7 +37,7 @@ export async function getServerSideProps(context) {
 }
 ```
 
-Because `getServerSideProps` is called at request time, its parameter (`context`) contains request specific parameters. You can learn more in <Link href="/docs/[...slug]" as="/docs/basic-features/data-fetching#getserversideprops-server-side-rendering"><a>our documentation</a></Link>.
+Because `getServerSideProps` is called at request time, its parameter (`context`) contains request specific parameters. You can learn more in <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getserversideprops-server-side-rendering"><a>our documentation</a></Link>.
 
 You should use `getServerSideProps` only if you need to pre-render a page whose data must be fetched at request time. Time to first byte (TTFB) will be slower than `getStaticProps` because the server must compute the result on every request, and the result cannot be cached by a CDN without extra configuration.
 
@@ -81,6 +81,6 @@ function Profile() {
 
 In the next lesson, we’ll create pages for each blog post using **dynamic routes**.
 
-> Again, you can get in-depth information about `getStaticProps` and `getServerSideProps` in <Link href="/docs/[...slug]" as="/docs/basic-features/data-fetching"><a>our documentation</a></Link>.
+> Again, you can get in-depth information about `getStaticProps` and `getServerSideProps` in <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching"><a>our documentation</a></Link>.
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

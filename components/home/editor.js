@@ -2,14 +2,10 @@ import classNames from 'classnames';
 import { useAmp } from 'next/amp';
 import Tabs from '../tabs';
 
-export default ({
-  uniqueId = 'a'.concat(
-    Math.random()
-      .toString(36)
-      .substring(2, 15)
-  ),
+export default function Editor({
+  uniqueId = 'a'.concat(Math.random().toString(36).substring(2, 15)),
   data
-}) => {
+}) {
   const isAmp = useAmp();
   return (
     <div className="editor">
@@ -19,8 +15,7 @@ export default ({
           flex-direction: column;
           background: #0c0c0c;
           border: 1px solid #535353;
-          box-shadow: 0 14px 50px 0 rgba(0, 0, 0, 0.38),
-            0 2px 10px 0 rgba(0, 0, 0, 0.48);
+          box-shadow: 0 14px 50px 0 rgba(0, 0, 0, 0.38), 0 2px 10px 0 rgba(0, 0, 0, 0.48);
           border-radius: 7px;
           width: 100%;
           height: 352px;
@@ -103,9 +98,7 @@ export default ({
                     onClick={isAmp ? undefined : () => onSelect(file)}
                     on={
                       isAmp
-                        ? `tap:AMP.setState({ ${uniqueId}: { selected: ${JSON.stringify(
-                            file
-                          )} } })`
+                        ? `tap:AMP.setState({ ${uniqueId}: { selected: ${JSON.stringify(file)} } })`
                         : undefined
                     }
                   >
@@ -125,4 +118,4 @@ export default ({
       </Tabs>
     </div>
   );
-};
+}

@@ -12,7 +12,7 @@ const campaignWords = [
   'Electron'
 ];
 
-export default () => {
+export default function Campaign() {
   const animationDuration = 1.8;
   const animationLength = animationDuration * campaignWords.length;
   const endOfAnimation = 100 / campaignWords.length;
@@ -88,4 +88,4 @@ export default () => {
       `}</style>
     </div>
   );
-};
+}

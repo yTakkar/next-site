@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { useAmp } from 'next/amp';
 import { sortedByAlexa } from '../../showcase-manifest';
 import Image from '../image';
 
@@ -10,7 +9,7 @@ const imgWidth = 330;
 const imgHeight = 185;
 const margin = 30;
 
-export default () => {
+export default function ShowcasePreview() {
   return (
     <>
       <div className="showcase-container tablet">
@@ -195,4 +194,4 @@ export default () => {
       </div>
     </>
   );
-};
+}

@@ -1,9 +1,14 @@
+/* eslint-disable max-classes-per-file */
 import { memo, Component } from 'react';
 import cn from 'classnames';
 import twemoji from 'twemoji';
+import FeedbackContext from './feedback-context';
+
+// Components
 import ClickOutside from './click-outside';
 import Button from './button';
-import FeedbackContext from './feedback-context';
+import Input from './input';
+import Textarea from './textarea';
 
 export default class FooterFeedback extends Component {
   state = {
@@ -13,14 +18,26 @@ export default class FooterFeedback extends Component {
     success: false,
     emojiShown: false,
     errorMessage: null,
-    value: ''
+    value: '',
+    emailValue: null,
+    dryRun: false,
+    inputFocused: null
   };
 
   clearSuccessTimer = null;
   textAreaRef = null;
+  emailInputRef = null;
 
   handleTextAreaRef = node => {
     this.textAreaRef = node;
+  };
+
+  handleEmailRef = node => {
+    this.emailInputRef = node;
+  };
+
+  setError = error => {
+    this.setState({ errorMessage: error });
   };
 
   onFocus = () => {
@@ -31,7 +48,27 @@ export default class FooterFeedback extends Component {
     this.setState({ errorMessage: null });
   };
 
-  onSubmit = () => {
+  setSuccessState = state => {
+    this.setState({ success: state });
+  };
+
+  onKeyDown = e => {
+    if (e.keyCode === 27) {
+      this.setState({ focused: false });
+    }
+  };
+
+  done = errorMessage => {
+    if (!errorMessage) {
+      this.setState({ loading: false, success: true });
+    } else {
+      this.setState({ errorMessage, loading: false, emoji: null });
+    }
+  };
+
+  onSubmit = event => {
+    event.preventDefault();
+
     const value = this.textAreaRef?.value.trim();
 
     if (!value.length) {
@@ -48,17 +85,26 @@ export default class FooterFeedback extends Component {
     }
 
     this.setState({ loading: true }, () => {
+      if (this.state.dryRun) {
+        this.setState({ loading: false, success: true, value: '' });
+        return;
+      }
+
       fetch('https://api.nextjs.org/api/feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          url: window.location.toString(),
+          url:
+            window.location.hostname === 'localhost'
+              ? `https://nextjs.org/dev-mode${window.location.pathname}`
+              : window.location.toString(),
           note: value,
+          email: this.state.emailValue || '',
           emotion: twemoji.convert.fromCodePoint(this.state.emoji),
           label: this.context?.label,
-          ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${
+          ua: `next ${process.env.NEXT_PUBLIC_VERSION} + ${navigator.userAgent} (${
             navigator.language || 'unknown language'
           })`
         })
@@ -81,15 +127,28 @@ export default class FooterFeedback extends Component {
 
   onEmojiSelect = emoji => {
     this.setState({ emoji, focused: true });
-    if (this.textAreaRef) {
-      this.textAreaRef.focus();
-    }
   };
 
   handleChange = e => {
     if (this.state.focused) {
       this.setState({
-        value: e.target.value
+        value: e
+      });
+    }
+  };
+
+  handleEmailChange = e => {
+    if (this.state.focused) {
+      this.setState({
+        emailValue: e
+      });
+    }
+  };
+
+  handleFocusedInput = inputRef => {
+    if (this.state.focused) {
+      this.setState({
+        inputFocused: inputRef
       });
     }
   };
@@ -98,34 +157,31 @@ export default class FooterFeedback extends Component {
     if (this.state.focused) {
       // textarea was hidden if we were showing an error message and
       // now we hide it
-      if (prevState.errorMessage != null && this.state.errorMessage == null && this.textAreaRef) {
-        this.textAreaRef.focus();
+      if (
+        prevState.errorMessage !== null &&
+        this.state.errorMessage == null &&
+        this.state.inputFocused
+      ) {
+        this.state.inputFocused.focus({ preventScroll: true });
       }
 
       if (!prevState.focused) {
-        window.addEventListener('keypress', this.onKeyPress);
+        window.addEventListener('keydown', this.onKeyDown);
+
+        if (this.emailInputRef) {
+          // this.emailInputRef.focus({ preventScroll: true })
+          // Wait for CSS appear transition to end before focusing.
+          // Without this, iOS keyboard will cover the text input
+          const listener = () => {
+            this.emailInputRef.removeEventListener('transitionend', listener);
+          };
+          this.emailInputRef.focus({ preventScroll: true });
+          this.emailInputRef.addEventListener('transitionend', listener);
+        }
       }
 
       // If a value exists, add it back to the textarea when focused
       this.textAreaRef.value = this.state.value;
-
-      if (this.props.hideHeader !== prevProps.hideHeader) {
-        this.textAreaRef.blur();
-
-        if (prevState.errorMessage && this.textAreaRef) {
-          this.setState({ errorMessage: null }); // eslint-disable-line react/no-did-update-set-state
-        }
-
-        // if we had a success message
-        // clear it
-        if (prevState.success) {
-          this.setState({ success: false }); // eslint-disable-line react/no-did-update-set-state
-        }
-
-        this.setState({ focused: false }); // eslint-disable-line react/no-did-update-set-state
-
-        window.removeEventListener('keypress', this.onKeyPress);
-      }
     } else if (prevState.focused && this.textAreaRef) {
       // needed for when we e.g.: unfocus based on pressing escape
       this.textAreaRef.blur();
@@ -142,7 +198,7 @@ export default class FooterFeedback extends Component {
         this.setState({ success: false }); // eslint-disable-line react/no-did-update-set-state
       }
 
-      window.removeEventListener('keypress', this.onKeyPress);
+      window.removeEventListener('keydown', this.onKeyDown);
     }
 
     if (this.state.success && this.textAreaRef) {
@@ -173,7 +229,7 @@ export default class FooterFeedback extends Component {
       this.clearSuccessTimer = null;
     }
 
-    window.removeEventListener('keypress', this.onKeyPress);
+    window.removeEventListener('keydown', this.onKeyDown);
   }
 
   render() {
@@ -187,9 +243,10 @@ export default class FooterFeedback extends Component {
           active={focused}
           onClick={this.handleClickOutside}
           render={({ innerRef }) => (
-            <div
+            <form
               ref={innerRef}
               title="Share any feedback about our products and services"
+              onSubmit={this.onSubmit}
               className={cn(
                 'geist-feedback-input',
                 {
@@ -210,21 +267,32 @@ export default class FooterFeedback extends Component {
                 />
               </span>
               <div className="textarea-wrapper">
-                <textarea
-                  style={textAreaStyle}
-                  ref={this.handleTextAreaRef}
-                  value={value}
-                  placeholder="Please enter your feedback..."
-                  onFocus={this.onFocus}
-                  onKeyDown={e => {
-                    if (e.key === 'Enter' && e.metaKey) {
-                      this.onSubmit();
-                    }
-                  }}
-                  onChange={this.handleChange}
-                  aria-label="Feedback input"
-                  disabled={this.state.loading === true || this.state.errorMessage != null}
-                />
+                <div className="input">
+                  <label>Email</label>
+                  <Input
+                    innerRef={this.handleEmailRef}
+                    onFocus={() => this.handleFocusedInput(this.emailInputRef)}
+                    type="email"
+                    placeholder="Your email address..."
+                    width="100%"
+                    disabled={this.state.loading === true || this.state.errorMessage != null}
+                    onChange={this.handleEmailChange}
+                  />
+                </div>
+                <div className="input">
+                  <label>Feedback</label>
+                  <Textarea
+                    style={textAreaStyle}
+                    innerRef={this.handleTextAreaRef}
+                    onFocus={() => this.handleFocusedInput(this.textAreaRef)}
+                    value={value}
+                    width="100%"
+                    placeholder="Your feedback..."
+                    onChange={this.handleChange}
+                    aria-label="Feedback input"
+                    disabled={this.state.loading === true || this.state.errorMessage != null}
+                  />
+                </div>
 
                 {this.state.errorMessage != null && (
                   <div className="error-message">
@@ -252,14 +320,14 @@ export default class FooterFeedback extends Component {
                 {this.state.errorMessage == null && !this.state.success && (
                   <div className="controls">
                     <span className={`buttons ${this.state.emojiShown ? 'hidden' : ''}`}>
-                      <Button invert small loading={this.state.loading} onClick={this.onSubmit}>
+                      <Button type="submit" invert small loading={this.state.loading}>
                         Send
                       </Button>
                     </span>
                   </div>
                 )}
               </div>
-            </div>
+            </form>
           )}
         />
         {learn && (
@@ -300,27 +368,27 @@ export default class FooterFeedback extends Component {
               position: relative;
               display: inline-block;
               transition: all 150ms ease-out;
+              font-family: var(--font-sans);
               text-rendering: optimizeLegibility;
               -webkit-font-smoothing: antialiased;
               max-width: 86vw;
               width: 408px;
             }
 
-            textarea {
+            .textarea-wrapper {
               appearance: none;
               border-width: 0;
               background: #f9f9f9;
-              padding: 0.75rem;
+              padding: var(--geist-gap-half);
               height: 0px;
               width: 100%;
               opacity: 0;
               line-height: 24px;
               font-size: 16px;
-              font-family: inherit;
               border-radius: 4px;
+              font-family: var(--font-sans);
               resize: none;
               vertical-align: top;
-              transition: all 150ms ease-out;
               /* fixes a bug in ff where the animation of the chat
                     * counter appears on top of our input during its transition */
               z-index: 100;
@@ -329,54 +397,59 @@ export default class FooterFeedback extends Component {
               overflow-y: hidden;
               text-rendering: optimizeLegibility;
               -webkit-font-smoothing: antialiased;
-            }
-
-            .geist-feedback-input.error.focused .textarea-wrapper textarea,
-            .geist-feedback-input.loading.focused .textarea-wrapper textarea,
-            .geist-feedback-input.success.focused .textarea-wrapper textarea {
-              pointer-events: none;
-              opacity: 0;
-            }
-
-            .geist-feedback-input.error textarea,
-            .geist-feedback-input.success textarea {
-              color: transparent;
-              user-select: none;
-            }
-
-            .geist-feedback-input.loading textarea {
-              color: #ccc;
-            }
-
-            textarea::placeholder {
-              color: #666;
-            }
-
-            .textarea-wrapper {
-              height: 100%;
               margin-top: 16px;
               transition: all 150ms ease-out, border-radius 150ms step-start;
             }
 
+            .geist-feedback-input .input {
+              margin-bottom: var(--geist-gap-half);
+            }
+
+            .geist-feedback-input .input label {
+              margin: 0;
+              display: block;
+              text-align: left;
+              font-weight: 500;
+              font-size: 12px;
+              text-transform: uppercase;
+              margin-top: 0px;
+              margin-bottom: var(--geist-gap-half);
+              line-height: normal;
+              color: var(--accents-5);
+            }
+
+            .geist-feedback-input.error.focused .textarea-wrapper .input,
+            .geist-feedback-input.success.focused .textarea-wrapper .input {
+              pointer-events: none;
+              opacity: 0;
+            }
+
+            .geist-feedback-input.error .input,
+            .geist-feedback-input.success .input {
+              color: transparent;
+              user-select: none;
+            }
+
+            .geist-feedback-input.loading .input {
+              color: #ccc;
+            }
+
+            .geist-feedback-input .input > *::placeholder {
+              color: var(--accents-5);
+              transition: color 0.2s ease-in-out;
+            }
+
             .geist-feedback-input.focused .textarea-wrapper {
               display: block;
-              height: 140px;
               width: 100%;
-              background: #fff;
               padding-bottom: 40px;
-              box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
               border-radius: 4px;
               overflow: hidden;
               position: relative;
               transition: all 150ms ease-out, border-radius 150ms step-end;
-              z-index: 1000;
-              margin-bottom: 2rem;
-            }
-
-            .geist-feedback-input.focused .textarea-wrapper textarea {
+              z-index: 999;
               background: #fff;
-              overflow-y: visible;
-              height: 100px;
+              height: 272px;
               opacity: 1;
             }
 
@@ -405,7 +478,7 @@ export default class FooterFeedback extends Component {
             }
 
             .success-message p:first-of-type {
-              margin-bottom: 0.75rem;
+              margin-bottom: var(--geist-gap-half);
               animation-delay: 100ms;
             }
 
@@ -429,9 +502,7 @@ export default class FooterFeedback extends Component {
 
             .controls {
               pointer-events: none;
-              position: absolute;
               visibility: hidden;
-              top: -2000px;
               opacity: 0;
               width: 100%;
               background-color: white;
@@ -465,10 +536,7 @@ export default class FooterFeedback extends Component {
               animation-fill-mode: forwards;
               pointer-events: inherit;
               z-index: 1001;
-              padding: 8px;
               visibility: visible;
-              bottom: 0;
-              top: auto;
             }
 
             @keyframes appear {
@@ -596,12 +664,14 @@ class EmojiSelector extends Component {
             .geist-emoji-selector > button.option {
               opacity: 0;
               transition: all ease 100ms;
+              transform-origin: center center;
               pointer-events: none;
+              will-change: transform, filter;
             }
 
             .geist-emoji-selector > button:hover,
             .geist-emoji-selector > button.active {
-              transform: scale(1.3);
+              transform: scale(1.35);
               filter: grayscale(0);
               -webkit-filter: grayscale(0);
             }
@@ -622,8 +692,8 @@ FooterFeedback.contextType = FeedbackContext;
 const Emoji = memo(({ hex, alt = 'emoji' }) => (
   <img
     decoding="async"
-    width={['1f600', '1f62d', '1f615'].includes(hex) ? 24.5 : 22}
-    height={['1f600', '1f62d', '1f615'].includes(hex) ? 24.5 : 22}
+    width={['1f600', '1f62d', '1f615'].includes(hex) ? 24 : 22}
+    height={['1f600', '1f62d', '1f615'].includes(hex) ? 24 : 22}
     src={`https://assets.vercel.com/twemoji/${hex}.svg`}
     alt={alt}
     loading="lazy"

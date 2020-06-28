@@ -1,12 +1,17 @@
-import { memo, Component } from 'react';
+// Packages
+import { memo, useState, useEffect, useRef, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
+
+// Components
 import ClickOutside from './click-outside';
 import Button from './button';
-import X from './icons/cross-no-fill';
+import Input from './input';
+import Textarea from './textarea';
 import Checkmark from './icons/checkmark';
-import EmojiIcon from './icons/emoji';
-import FeedbackContext from './feedback-context';
-import { FONT_FAMILY_SANS } from './css-config';
+
+import styles from './header-feedback.module.css';
+import { useFeedback } from './feedback-context';
 
 const EMOJIS = new Map([
   ['🤩', 'f929'],
@@ -26,690 +31,445 @@ function getEmoji(code) {
   return EMOJI_CODES.get(code);
 }
 
-class HeaderFeedback extends Component {
-  state = {
-    emoji: null,
-    loading: false,
-    focused: false,
-    success: false,
-    emojiShown: false,
-    errorMessage: null,
-    value: null
-  };
+const HeaderFeedback = ({ dryRun, className, open, onClick, email, ...props }) => {
+  const [emoji, setEmoji] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [emojiShown, setEmojiShown] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [emailValue, setEmailValue] = useState(null);
+  const [inputFocused, setInputFocused] = useState(null);
+  const [value, setValue] = useState(null);
+  const textAreaRef = useRef();
+  const emailInputRef = useRef();
+  const containerRef = useRef();
+  const feedback = useFeedback();
 
-  clearSuccessTimer = null;
+  const onErrorDismiss = useCallback(() => {
+    setErrorMessage(null);
+  }, []);
 
-  textAreaRef = null;
+  const onSuccessDismiss = useCallback(() => {
+    setSuccess(false);
+  }, []);
 
-  handleTextAreaRef = node => {
-    this.textAreaRef = node;
-  };
+  const handleClickOutside = useCallback(() => {
+    setFocused(false);
+    onErrorDismiss();
+    onSuccessDismiss();
 
-  onFocus = () => {
-    this.setState({ focused: true });
-  };
-
-  onEmojiShown = () => {
-    this.setState({ emojiShown: true });
-  };
-
-  onEmojiHidden = () => {
-    this.setState({ emojiShown: false });
-  };
-
-  onEmojiSelect = emoji => {
-    this.setState({ emoji });
-    if (this.textAreaRef) {
-      this.textAreaRef.focus();
-    }
-  };
-
-  onErrorDismiss = () => {
-    this.setState({ errorMessage: null });
-  };
-
-  handleClickOutside = () => {
-    this.setState({ focused: false });
-    this.textAreaRef.value = '';
-  };
-
-  onKeyDown = e => {
-    if (e.keyCode === 27) {
-      this.setState({ focused: false });
-    }
-  };
-
-  onSubmit = () => {
-    const value = this.textAreaRef?.value.trim();
-
-    if (!value.length) {
-      this.setState({
-        errorMessage: "Your feedback can't be empty"
-      });
-      return;
-    }
-    if (value.split(' ').length < 2) {
-      this.setState({
-        errorMessage: 'Please use at least 2 words'
-      });
-      return;
+    if (textAreaRef.current) {
+      textAreaRef.current.value = '';
     }
 
-    this.setState({ loading: true }, () => {
+    if (emailInputRef.current) {
+      emailInputRef.current.value = '';
+    }
+  }, [onErrorDismiss, onSuccessDismiss]);
+
+  const onSubmit = useCallback(
+    event => {
+      event.preventDefault();
+      containerRef.current.focus();
+
+      if (!value || value.trim() === '') {
+        setErrorMessage("Your feedback can't be empty");
+        return;
+      }
+      if (value.trim().split(' ').length < 2) {
+        setErrorMessage('Please use at least 2 words');
+        return;
+      }
+
+      setLoading(true);
+
+      if (dryRun) {
+        setLoading(false);
+        setSuccess(true);
+        setValue('');
+        return;
+      }
+
       fetch('https://api.nextjs.org/api/feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          url: window.location.toString(),
-          note: value,
-          emotion: getEmoji(this.state.emoji),
-          label: this.context?.label,
-          ua: `${this.props.uaPrefix || ''} + ${navigator.userAgent} (${
+          url:
+            window.location.hostname === 'localhost'
+              ? `https://nextjs.org/dev-mode${window.location.pathname}`
+              : window.location.toString(),
+          note: textAreaRef.current.value,
+          email: emailValue || '',
+          emotion: getEmoji(emoji),
+          label: feedback.label,
+          ua: `next ${process.env.NEXT_PUBLIC_VERSION} + ${navigator.userAgent} (${
             navigator.language || 'unknown language'
           })`
         })
       })
         .then(() => {
-          this.setState({ loading: false, success: true });
+          // Reset the textarea value on success
+          setLoading(false);
+          setSuccess(true);
+          setValue('');
         })
         .catch(err => {
-          this.setState({
-            loading: false,
-            errorMessage: err?.message || 'An error ocurred. Try again in a few minutes.'
-          });
+          setLoading(false);
+          setErrorMessage(err?.message || 'An error ocurred. Try again in a few minutes.');
         });
-    });
-  };
+    },
+    [dryRun, emoji, value, emailValue, feedback.label]
+  );
 
-  handleChange = e => {
-    if (this.state.focused) {
-      this.setState({
-        value: e.target.value
-      });
+  const onKeyDown = useCallback(
+    e => {
+      if (e.keyCode === 27) {
+        handleClickOutside();
+        // we still need to make the container's DOM focused programmatically
+        // to keep the current tab position
+        if (containerRef.current) {
+          containerRef.current.focus();
+        }
+      } else if (e.key === 'Enter' && e.metaKey) {
+        onSubmit(e);
+      }
+    },
+    [handleClickOutside, onSubmit]
+  );
+
+  useEffect(() => {
+    // Inputs were hidden if we were showing an error message and
+    // now we hide it
+    if (focused && inputFocused.current && errorMessage === null) {
+      inputFocused.current.focus({ preventScroll: true });
     }
-  };
+  }, [errorMessage, focused, inputFocused]);
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.focused) {
-      // textarea was hidden if we were showing an error message and
-      // now we hide it
-      if (prevState.errorMessage != null && this.state.errorMessage == null && this.textAreaRef) {
-        this.textAreaRef.focus();
+  useEffect(() => {
+    if (focused) {
+      if (textAreaRef && textAreaRef.current) {
+        textAreaRef.current.value = value;
       }
 
-      if (!prevState.focused) {
-        window.addEventListener('keydown', this.onKeyDown);
+      if (emailInputRef && emailInputRef.current) {
+        emailInputRef.current.value = emailValue;
       }
 
-      // If a value exists, add it back to the textarea when focused
-      this.textAreaRef.value = this.state.value;
-    } else if (prevState.focused && this.textAreaRef) {
-      // needed for when we e.g.: unfocus based on pressing escape
-      this.textAreaRef.blur();
+      window.addEventListener('keydown', onKeyDown);
+    } else if (!focused && inputFocused && inputFocused.current) {
+      inputFocused.current.blur();
 
       // Remove value visibly from textarea while it's unfocused
-      this.textAreaRef.value = '';
+      textAreaRef.current.value = '';
 
-      // if we unfocused and there was an error before,
-      // clear it
-      if (prevState.errorMessage && this.textAreaRef) {
-        this.setState({ errorMessage: null }); // eslint-disable-line react/no-did-update-set-state
+      if (email) {
+        emailInputRef.current.value = '';
       }
 
-      // if we had a success message
-      // clear it
-      if (prevState.success) {
-        this.setState({ success: false }); // eslint-disable-line react/no-did-update-set-state
-      }
-
-      window.removeEventListener('keydown', this.onKeyDown);
+      window.removeEventListener('keydown', onKeyDown);
     }
 
-    if (this.state.success && this.textAreaRef) {
-      // forget about input state
-      this.textAreaRef.value = '';
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [focused, inputFocused, handleClickOutside, emailValue, value, email, onSubmit, onKeyDown]);
 
+  useEffect(() => {
+    let clearSuccessTimer;
+    if (success) {
       // collapse in 5s
-      this.clearSuccessTimer = window.setTimeout(() => {
+      clearSuccessTimer = setTimeout(() => {
         if (!document.hidden) {
-          this.setState({ success: false });
+          setSuccess(false);
+          handleClickOutside();
         }
       }, 5000);
-    } else {
-      if (prevState.success) {
-        window.clearTimeout(this.clearSuccessTimer);
-        this.clearSuccessTimer = null;
-      }
-
-      if (prevState.success && this.state.focused) {
-        this.setState({ focused: false }); // eslint-disable-line react/no-did-update-set-state
-      }
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.clearSuccessTimer !== null) {
-      clearTimeout(this.clearSuccessTimer);
-      this.clearSuccessTimer = null;
     }
 
-    window.removeEventListener('keydown', this.onKeyDown);
-  }
+    return () => {
+      if (clearSuccessTimer !== null) {
+        clearTimeout(clearSuccessTimer);
+        clearSuccessTimer = null;
+      }
+    };
+  }, [success, handleClickOutside]);
 
-  render() {
-    const { className, open, ...props } = this.props;
-    const { focused } = this.state;
-    delete props.onFeedback;
+  const focusEmailInput = useCallback(() => {
+    if (inputFocused !== emailInputRef) {
+      setInputFocused(emailInputRef);
+      emailInputRef.current.focus({ preventScroll: true });
+    }
+  }, [inputFocused]);
 
-    return (
-      <ClickOutside
-        active={focused}
-        onClick={this.handleClickOutside}
-        render={({ innerRef }) => (
-          <div
-            ref={innerRef}
-            title="Share any feedback about our products and services"
-            className={cn(
-              'geist-feedback-input',
-              {
-                focused: focused || open,
-                error: this.state.errorMessage,
-                loading: this.state.loading,
-                success: this.state.success
-              },
-              className
-            )}
-            {...props}
-          >
-            <div className="textarea-wrapper">
-              <textarea
-                ref={this.handleTextAreaRef}
-                placeholder={focused ? '' : 'Feedback'}
-                onFocus={this.onFocus}
-                onKeyDown={e => {
-                  if (e.key === 'Enter' && e.metaKey) {
-                    this.onSubmit();
-                  }
-                }}
-                onChange={this.handleChange}
-                aria-label="Feedback input"
-                disabled={this.state.loading === true || this.state.errorMessage != null}
-              />
+  const focusTextArea = useCallback(() => {
+    if (inputFocused !== textAreaRef) {
+      setInputFocused(textAreaRef);
+      textAreaRef.current.focus({ preventScroll: true });
+    }
+  }, [inputFocused]);
 
-              {this.state.errorMessage != null && (
-                <div className="error-message">
-                  <span>{this.state.errorMessage}</span>
-                  <Button
-                    invert
-                    small
-                    onClick={e => {
-                      e.preventDefault();
-                      this.onErrorDismiss();
-                    }}
-                  >
-                    GO BACK
-                  </Button>
-                </div>
-              )}
+  const onFocus = useCallback(() => {
+    if (email && emailInputRef.current && !focused) {
+      focusEmailInput();
+    } else if (textAreaRef.current && !focused) {
+      focusTextArea();
+    }
 
-              {this.state.success && (
-                <div className="success-message">
-                  <Checkmark size="2rem" className="checkmark" />
-                  <p>Your feedback has been received!</p>
-                  <p>Thank you for your help.</p>
-                </div>
-              )}
+    setFocused(true);
+  }, [email, emailInputRef, textAreaRef, focused, focusEmailInput, focusTextArea]);
 
-              {this.state.errorMessage == null && !this.state.success && (
-                <div className="controls">
-                  <span className="emojis">
-                    {focused ? (
-                      <EmojiSelector
-                        onShow={this.onEmojiShown}
-                        onHide={this.onEmojiHidden}
-                        onSelect={this.onEmojiSelect}
-                        loading={this.state.loading}
-                      />
-                    ) : null}
-                  </span>
-                  <span className={`buttons ${this.state.emojiShown ? 'hidden' : ''}`}>
-                    <Button
-                      invert
-                      small
-                      loading={this.state.loading}
-                      onClick={this.onSubmit}
-                      width={60}
-                    >
-                      Send
-                    </Button>
-                  </span>
-                </div>
-              )}
-            </div>
-            <style jsx>
-              {`
-                .geist-feedback-input {
-                  --open-width: 310px;
-                  --open-height: 174px;
-                  --closed-width: 90px;
-                  --closed-height: 32px;
-                  --padding: 4px 10px;
+  const onEmojiShown = useCallback(() => {
+    setEmojiShown(true);
+  }, []);
 
-                  margin-right: 8px;
-                  padding: 0;
-                  position: relative;
-                  height: var(--closed-height);
-                  width: var(--closed-width);
-                  display: inline-block;
-                  font-family: ${FONT_FAMILY_SANS};
-                  text-rendering: optimizeLegibility;
-                  -webkit-font-smoothing: antialiased;
-                }
+  const onEmojiHidden = useCallback(() => {
+    setEmojiShown(false);
+  }, []);
 
-                textarea {
-                  appearance: none;
-                  border-width: 0;
-                  background: #fff;
-                  border: 1px solid #eaeaea;
-                  padding: var(--padding);
-                  line-height: 1.5;
-                  font-size: 0.875rem;
-                  border-radius: 5px;
-                  font-family: ${FONT_FAMILY_SANS};
-                  width: var(--closed-width);
-                  height: var(--closed-height);
-                  resize: none;
-                  height: 100%;
-                  /* fixes a bug in ff where the animation of the chat
-                * counter appears on top of our input during its transition */
-                  z-index: 100;
-                  outline: 0;
-                  color: #000;
-                  overflow-y: hidden;
-                  transition: border-color 0.2s ease-in-out;
-                }
+  const onEmojiSelect = useCallback(emoji => {
+    setEmoji(emoji);
+  }, []);
 
-                .geist-feedback-input:hover textarea {
-                  border-color: #000;
-                }
+  const handleChange = useCallback(
+    e => {
+      if (focused) {
+        setValue(e);
+      }
+    },
+    [focused]
+  );
 
-                .geist-feedback-input:hover textarea::placeholder {
-                  color: #000;
-                }
+  const handleEmailChange = useCallback(
+    e => {
+      if (focused) {
+        setEmailValue(e);
+      }
+    },
+    [focused]
+  );
 
-                .geist-feedback-input.error textarea,
-                .geist-feedback-input.loading textarea,
-                .geist-feedback-input.success textarea {
-                  pointer-events: none;
-                }
-
-                .geist-feedback-input.error textarea,
-                .geist-feedback-input.success textarea {
-                  color: transparent;
-                  user-select: none;
-                }
-
-                .geist-feedback-input.loading textarea {
-                  color: #999999;
-                }
-
-                textarea::placeholder {
-                  color: #666666;
-                  transition: color 0.2s ease-in-out;
-                }
-
-                .textarea-wrapper {
-                  height: var(--closed-height);
-                  width: var(--closed-width);
-                  transition: all 150ms ease-in-out, border-radius 150ms step-start;
-                }
-
-                .geist-feedback-input.focused .textarea-wrapper {
-                  transform: translateX(calc((var(--closed-width) - var(--open-width)) / 2));
-                  display: flex;
-                  flex-direction: column;
-                  border: none;
-                  width: var(--open-width);
-                  height: var(--open-height);
-                  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-                  background: #fff;
-                  border-radius: 4px;
-                  overflow: hidden;
-                  position: relative;
-                  z-index: 1000;
-                  transition: all 150ms ease-in-out, border-radius 150ms step-end;
-                }
-
-                .geist-feedback-input.focused .textarea-wrapper textarea {
-                  width: var(--open-width);
-                  border-color: #fff;
-                  border-radius: 5px 5px 0 0;
-                  background: #fff;
-                  padding: var(--padding);
-                  overflow-y: visible;
-                  transition: none;
-                }
-
-                .error-message,
-                .success-message {
-                  z-index: 1001;
-                  position: absolute;
-                  left: 0;
-                  top: 0;
-                  width: var(--open-width);
-                  font-size: 0.875rem;
-                  height: 100%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  text-align: center;
-                  padding: 20px;
-                  flex-direction: column;
-                }
-
-                .success-message p {
-                  margin: 0;
-                  opacity: 0;
-                  white-space: nowrap;
-                  animation: appear 500ms ease forwards;
-                }
-
-                .success-message :global(.checkmark) {
-                  opacity: 0;
-                  animation: appear 200ms 100ms ease forwards;
-                }
-
-                .success-message p:first-of-type {
-                  margin-top: 8pt;
-                  margin-bottom: 4pt;
-                  animation-delay: 300ms;
-                }
-
-                .success-message p:nth-of-type(2) {
-                  animation-delay: 500ms;
-                }
-
-                .error-message span {
-                  color: #ee0000;
-                  margin-bottom: 8pt;
-                }
-
-                .error-message a {
-                  color: #000;
-                  text-decoration: none;
-                }
-
-                .geist-feedback-input.focused .controls {
-                  display: flex;
-                }
-
-                .controls {
-                  pointer-events: none;
-                  visibility: hidden;
-                  width: var(--closed-width);
-                  background-color: #fff;
-                  display: flex;
-                  align-items: center;
-                  border-bottom-left-radius: 5px;
-                  border-bottom-right-radius: 5px;
-                }
-
-                .controls .emojis {
-                  width: 160px;
-                }
-
-                .controls .buttons {
-                  flex: 1;
-                  text-align: right;
-                  transition: opacity 200ms ease;
-                }
-
-                .emojis,
-                .buttons {
-                  opacity: 0;
-                }
-
-                .geist-feedback-input.focused .emojis,
-                .geist-feedback-input.focused .buttons {
-                  animation: appear 150ms 250ms ease-in-out forwards;
-                }
-
-                .buttons.hidden {
-                  opacity: 0;
-                }
-
-                .geist-feedback-input.focused .controls {
-                  padding: 8pt;
-                  pointer-events: inherit;
-                  visibility: visible;
-                  width: var(--open-width);
-                }
-
-                @keyframes appear {
-                  from {
-                    opacity: 0;
-                  }
-                  to {
-                    opacity: 1;
-                  }
-                }
-              `}
-            </style>
-          </div>
-        )}
-      />
-    );
-  }
-}
-
-class EmojiSelector extends Component {
-  state = {
-    shown: false,
-    current: null,
-    currentSetAt: null
+  const eventListeners = useRef();
+  eventListeners.current = {
+    focus: onFocus,
+    blur: handleClickOutside
   };
 
-  onMouseEnter = () => {
-    this.setState(prevState => {
-      if (!prevState.shown && Date.now() - (prevState.currentSetAt || 0) > 100) {
-        return { shown: true };
-      }
-      return prevState;
-    });
-  };
+  useEffect(() => {
+    if (!containerRef || !containerRef.current) return;
 
-  onMouseLeave = () => {
-    this.setState(prevState => {
-      if (prevState.shown) {
-        return { shown: false };
-      }
-
-      return prevState;
-    });
-  };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.onShow && !prevState.shown && this.state.shown) {
-      this.props.onShow();
-    }
-
-    if (this.props.onHide && prevState.shown && !this.state.shown) {
-      this.props.onHide();
-    }
-
-    if (this.props.onSelect && prevState.current !== this.state.current) {
-      this.props.onSelect(this.state.current);
-    }
-  }
-
-  onSelect = current => {
-    this.setState({
-      current,
-      currentSetAt: Date.now(),
-      shown: false
-    });
-  };
-
-  render() {
-    return (
-      <main
-        className={cn('geist-emoji-selector', {
-          shown: this.state.shown,
-          loading: this.props.loading
-        })}
-      >
-        <button
-          className={this.state.current !== null ? 'active' : ''}
-          onMouseEnter={this.onMouseEnter}
-          onTouchStart={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
-          type="button"
-          onClick={
-            this.state.current !== null && this.state.shown
-              ? () => this.onSelect(null)
-              : this.state.shown
-              ? this.onMouseLeave
-              : this.onMouseEnter
+    let isFocusedInside = false;
+    let lastState = false;
+    const checkFinalState = () => {
+      setTimeout(() => {
+        if (isFocusedInside !== lastState) {
+          if (isFocusedInside) {
+            eventListeners.current.focus();
+          } else {
+            eventListeners.current.blur();
           }
+          lastState = isFocusedInside;
+        }
+      }, 0);
+    };
+
+    // when hitting tab, there might be 2 things happening:
+    //   1. an element inside is focused
+    //   2. an element inside is unfocused
+    // and they can happen in any order inside one tick:
+    //   1 -> needs to stay open (outside -> inside)
+    //   2 -> needs to be closed (inside -> outside)
+    //   2 -> 1 needs to stay open (inside -> inside)
+    const focusIn = () => {
+      isFocusedInside = true;
+      checkFinalState();
+    };
+    const blurIn = () => {
+      isFocusedInside = false;
+      checkFinalState();
+    };
+
+    // we add these 2 events manually because react doesn't yet support them as props
+    containerRef.current.addEventListener('focusout', blurIn);
+    containerRef.current.addEventListener('focusin', focusIn);
+    return () => {
+      containerRef.current.addEventListener('focusout', blurIn);
+      containerRef.current.removeEventListener('focusin', focusIn);
+    };
+  }, []);
+
+  return (
+    <ClickOutside
+      active={focused}
+      onClick={handleClickOutside}
+      render={({ innerRef }) => (
+        <div
+          ref={node => {
+            containerRef.current = node;
+            innerRef(node);
+          }}
+          title="Share any feedback about our products and services"
+          onClick={onFocus}
+          tabIndex={0}
+          className={cn(
+            styles['geist-feedback-input'],
+            {
+              [styles.focused]: focused || open,
+              [styles.error]: errorMessage,
+              [styles.loading]: loading,
+              [styles.success]: success,
+              [styles.email]: email
+            },
+            className
+          )}
+          {...props}
         >
-          <span className="inner icon">
-            {this.state.current === null ? (
-              <EmojiIcon width="16px" height="16px" />
-            ) : this.state.shown ? (
-              <X />
-            ) : (
-              <Emoji code={this.state.current} />
+          <form
+            className={cn(styles['feedback-wrapper'], focused ? '' : styles.blur)}
+            onSubmit={onSubmit}
+          >
+            <div className={styles.placeholder}>Feedback</div>
+            {!errorMessage && !success && (
+              <div className={styles['input-wrapper']}>
+                {email && (
+                  <div className={styles.input}>
+                    <h5>Email</h5>
+                    <Input
+                      innerRef={ref => (emailInputRef.current = ref)}
+                      onFocus={() => setInputFocused(emailInputRef)}
+                      type="email"
+                      placeholder="Your email address..."
+                      width="100%"
+                      disabled={loading === true || errorMessage != null}
+                      onChange={handleEmailChange}
+                    />
+                  </div>
+                )}
+
+                <div className={styles.input}>
+                  <h5>Feedback</h5>
+                  <Textarea
+                    innerRef={ref => (textAreaRef.current = ref)}
+                    placeholder="Your feedback..."
+                    width="100%"
+                    onFocus={() => setInputFocused(textAreaRef)}
+                    onChange={handleChange}
+                    aria-label="Feedback input"
+                    disabled={loading === true || errorMessage != null}
+                    // Disable the Grammarly extension on this textarea
+                    data-gramm-editor="false"
+                  />
+                </div>
+              </div>
             )}
+
+            {errorMessage != null && (
+              <div className={styles['error-message']}>
+                <span>{errorMessage}</span>
+                <Button
+                  invert
+                  small
+                  autoFocus
+                  onClick={e => {
+                    e.preventDefault();
+                    onErrorDismiss();
+                  }}
+                >
+                  GO BACK
+                </Button>
+              </div>
+            )}
+
+            {success && (
+              <div className={styles['success-message']}>
+                <Checkmark color="var(--geist-success)" fill size="2rem" className="checkmark" />
+                <p>Your feedback has been received!</p>
+                <p>Thank you for your help.</p>
+              </div>
+            )}
+
+            {!success && !errorMessage && (
+              <div className={styles.controls}>
+                <span className={styles.emojis}>
+                  <EmojiSelector
+                    onShow={onEmojiShown}
+                    onHide={onEmojiHidden}
+                    onEmojiSelect={onEmojiSelect}
+                    loading={loading}
+                  />
+                </span>
+                <span
+                  className={cn(styles.buttons, {
+                    [styles.hidden]: emojiShown
+                  })}
+                >
+                  <Button type="submit" invert small loading={loading} width={60}>
+                    Send
+                  </Button>
+                </span>
+              </div>
+            )}
+          </form>
+        </div>
+      )}
+    />
+  );
+};
+
+HeaderFeedback.propTypes = {
+  dryRun: PropTypes.bool,
+  open: PropTypes.bool,
+  className: PropTypes.string
+};
+
+const EmojiSelector = ({ onShow, onHide, onEmojiSelect, loading }) => {
+  const [current, setCurrent] = useState(null);
+
+  useEffect(() => {
+    if (onEmojiSelect) {
+      onEmojiSelect(current);
+    }
+  }, [current, onEmojiSelect]);
+
+  const onSelect = emoji => {
+    if (emoji !== current) {
+      setCurrent(emoji);
+    }
+  };
+
+  return (
+    <div
+      className={cn(styles['geist-emoji-selector'], {
+        loading
+      })}
+    >
+      {Array.from(EMOJIS.values()).map(emoji => (
+        <button
+          type="button"
+          className={cn(styles.option, {
+            [styles.active]: emoji === current
+          })}
+          key={emoji}
+          onClick={() => onSelect(emoji)}
+        >
+          <span className={cn(styles.inner)}>
+            <Emoji code={emoji} />
           </span>
         </button>
-
-        {Array.from(EMOJIS.values()).map(emoji => (
-          <button
-            type="button"
-            className="option"
-            key={emoji}
-            onMouseEnter={this.onMouseEnter}
-            onTouchStart={this.onMouseEnter}
-            onMouseLeave={this.onMouseLeave}
-            onClick={this.onSelect.bind(this, emoji)}
-          >
-            <span className="inner">
-              <Emoji code={emoji} />
-            </span>
-          </button>
-        ))}
-
-        <style jsx>
-          {`
-            .geist-emoji-selector {
-              display: flex;
-              width: 210px;
-              pointer-events: none;
-            }
-
-            .geist-emoji-selector.loading {
-              filter: grayscale(100%);
-              -webkit-filter: grayscale(100%);
-              cursor: default;
-              pointer-events: none;
-            }
-
-            .geist-emoji-selector > button {
-              outline: none;
-              background: transparent;
-              border: 0;
-              padding: 0;
-              margin: 0;
-            }
-
-            .geist-emoji-selector > button,
-            .geist-emoji-selector > button .inner {
-              display: inline-flex;
-            }
-
-            .geist-emoji-selector > button {
-              cursor: pointer;
-              text-align: center;
-            }
-
-            .geist-emoji-selector > button:not(:last-child) {
-              padding-right: 2px;
-            }
-
-            .geist-emoji-selector > button:not(:first-child) {
-              padding-left: 2px;
-            }
-
-            .geist-emoji-selector.loading > button {
-              cursor: default;
-            }
-
-            .geist-emoji-selector > button:first-child {
-              outline: none;
-              pointer-events: all;
-            }
-
-            .geist-emoji-selector.loading > button:first-child {
-              outline: none;
-              pointer-events: none;
-            }
-
-            .geist-emoji-selector > button .inner {
-              height: 24px;
-              width: 24px;
-              border-radius: 4px;
-              border: 1px solid #eaeaea;
-              justify-content: center;
-              align-items: center;
-              padding: 3px;
-            }
-
-            .geist-emoji-selector > button .inner.icon {
-              padding: 3px 2px 2px 2px;
-            }
-
-            .geist-emoji-selector > button.active .inner,
-            .geist-emoji-selector > button:hover .inner {
-              border-color: #f7b955;
-            }
-
-            .geist-emoji-selector > button.option {
-              opacity: 0;
-              transform: translate3d(-10px, 0px, 0px);
-              transition: all ease 100ms;
-              pointer-events: none;
-            }
-
-            .geist-emoji-selector.shown > button.option {
-              pointer-events: all;
-            }
-
-            .geist-emoji-selector.shown > button.option {
-              opacity: 1;
-              transform: translate3d(0, 0px, 0px);
-            }
-          `}
-        </style>
-      </main>
-    );
-  }
-}
-
-HeaderFeedback.contextType = FeedbackContext;
+      ))}
+    </div>
+  );
+};
 
 const Emoji = memo(({ code }) => (
   <img
     decoding="async"
-    width={code === 'f600' || code === 'f62d' || code === 'f615' ? 18.5 : 16}
-    height={code === 'f600' || code === 'f62d' || code === 'f615' ? 18.5 : 16}
+    width={20}
+    height={20}
     src={`https://assets.vercel.com/twemoji/1${code}.svg`}
     alt="emoji"
-    loading="lazy"
-    style={{
-      transform: code === 'f600' || code === 'f615' ? 'translateY(0.5px)' : 'none'
-    }}
   />
 ));
 

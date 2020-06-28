@@ -86,6 +86,15 @@ export default withPure(() => (
           <div>
             <h4 className="fw5">More</h4>
             <p>
+              <a
+                href="https://vercel.com/contact/sales?utm_source=next-site&utm_medium=footer&utm_campaign=next-website"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Contact Sales
+              </a>
+            </p>
+            <p>
               <a href="https://github.com/vercel/next.js" rel="noopener noreferrer" target="_blank">
                 GitHub
               </a>

@@ -127,7 +127,7 @@ export default function Intro() {
               </div>
 
               <div className="button-spacer">
-                <Button href="#showcases" invert outline>
+                <Button href="/showcase" invert outline>
                   View Showcase
                 </Button>
               </div>

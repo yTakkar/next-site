@@ -86,10 +86,12 @@ function Navbar() {
             Enterprise
           </a>
 
-          {!isAmp && feedback && (
+          {!isAmp && feedback ? (
             <div className="header-feedback">
-              <HeaderFeedback />
+              <HeaderFeedback email />
             </div>
+          ) : (
+            <div className="no-feedback" />
           )}
 
           <a
@@ -166,6 +168,11 @@ function Navbar() {
           display: inline-flex;
         }
 
+        .no-feedback {
+          visibility: hidden;
+          width: 90px;
+        }
+
         .learn :global(a) {
           background-color: rgba(0, 118, 255, 0.9);
           color: #fff;
@@ -216,7 +223,7 @@ function Navbar() {
           }
         }
 
-        @media (max-width: 950px) {
+        @media (max-width: 1020px) {
           .header-feedback {
             display: none;
           }

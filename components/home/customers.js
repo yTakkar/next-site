@@ -25,7 +25,7 @@ export default function Customers() {
       />
       <ShowcasePreview />
       <Button href="/showcase" invert>
-        View Gallery
+        View Showcase
       </Button>
     </Container>
   );

@@ -43,7 +43,7 @@ export default withPure(() => (
               margin-top: 0;
               margin-bottom: 0.25rem;
             }
-            @media screen and (max-width: 700px) {
+            @media screen and (max-width: 800px) {
               .grid {
                 grid-template-columns: 1fr 1fr;
               }
@@ -137,6 +137,18 @@ export default withPure(() => (
                 target="_blank"
               >
                 Twitter
+              </a>
+            </p>
+          </div>
+          <div>
+            <h4 className="fw5">Legal</h4>
+            <p>
+              <a
+                href={`${PLATFORM_URL}/legal/privacy-policy`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Privacy Policy
               </a>
             </p>
           </div>

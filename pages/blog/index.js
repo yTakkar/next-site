@@ -57,7 +57,7 @@ const items = previewItems
     )
   })
 
-export default () => (
+const Index = () => (
   <Page title="Blog | Next.js">
     <Screen offset={64 + 400}>
       <Container padding wide>
@@ -77,3 +77,5 @@ export default () => (
     <Footer />
   </Page>
 )
+
+export default Index

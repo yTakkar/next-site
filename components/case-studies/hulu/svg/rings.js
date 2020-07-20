@@ -1,4 +1,4 @@
-export default () => (
+const Rings = () => (
   <svg
     width="703"
     height="703"
@@ -12,3 +12,5 @@ export default () => (
     <circle opacity="0.3" cx="351.5" cy="351.5" r="351" stroke="white" strokeDasharray="3 3" />
   </svg>
 );
+
+export default Rings;

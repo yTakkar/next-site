@@ -1,4 +1,4 @@
-export default ({ color = '#111' }) => (
+const Hulu = ({ color = '#111' }) => (
   <svg viewBox="0 0 400 136.76" height="36">
     <g transform="matrix(6.4378 0 0 6.4378 4 4)">
       <g>
@@ -12,3 +12,5 @@ export default ({ color = '#111' }) => (
     </g>
   </svg>
 );
+
+export default Hulu;

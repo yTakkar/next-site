@@ -1,11 +1,5 @@
-export default () => (
-  <svg
-    width={152}
-    height={36}
-    viewBox="0 0 152 36"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+const Audiense = () => (
+  <svg width={152} height={36} viewBox="0 0 152 36" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -14,3 +8,5 @@ export default () => (
     />
   </svg>
 );
+
+export default Audiense;

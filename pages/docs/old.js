@@ -8,7 +8,7 @@ import Documentation, { components } from '../../components/docs/documentation';
 
 const Content = withPure(() => <Markdown components={components} />);
 
-export default () => (
+const Old = () => (
   <PageContainer shouldIndex={false}>
     <DocumentationHeader />
     <Container>
@@ -19,6 +19,8 @@ export default () => (
     </Container>
   </PageContainer>
 );
+
+export default Old;
 
 export const config = {
   amp: true

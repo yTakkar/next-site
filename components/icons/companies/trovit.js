@@ -1,4 +1,4 @@
-export default () => (
+const Trovit = () => (
   <svg height="46" viewBox="0 0 2121.2 885.1">
     <path
       fill="#000"
@@ -6,3 +6,5 @@ export default () => (
     />
   </svg>
 );
+
+export default Trovit;

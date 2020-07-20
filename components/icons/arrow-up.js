@@ -1,4 +1,4 @@
-export default ({ color }) => (
+const ArrowUp = ({ color }) => (
   <svg width="12px" height="8px" viewBox="0 0 12 8">
     <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g
@@ -13,3 +13,5 @@ export default ({ color }) => (
     </g>
   </svg>
 );
+
+export default ArrowUp;

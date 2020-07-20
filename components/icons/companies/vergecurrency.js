@@ -1,4 +1,4 @@
-export default () => (
+const Vergecurrency = () => (
   <svg
     width="210px"
     height="36px"
@@ -44,3 +44,5 @@ export default () => (
     </style>
   </svg>
 );
+
+export default Vergecurrency;

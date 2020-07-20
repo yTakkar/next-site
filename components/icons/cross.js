@@ -1,4 +1,4 @@
-export default ({ color }) => (
+const Cross = ({ color }) => (
   <svg viewBox="0 0 24 24" width="16" height="16">
     <g fill={color || '#111111'}>
       <path
@@ -8,3 +8,5 @@ export default ({ color }) => (
     </g>
   </svg>
 );
+
+export default Cross;

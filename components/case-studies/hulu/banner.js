@@ -1,4 +1,4 @@
-export default () => (
+const Banner = () => (
   <div className="container">
     <amp-img
       width={1442 / 427}
@@ -58,3 +58,5 @@ export default () => (
     `}</style>
   </div>
 );
+
+export default Banner;

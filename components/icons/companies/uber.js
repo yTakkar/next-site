@@ -1,4 +1,4 @@
-export default () => (
+const Uber = () => (
   <svg height="35" viewBox="0 0 926.906 321.777">
     <path
       fill="#000"
@@ -6,3 +6,5 @@ export default () => (
     />
   </svg>
 );
+
+export default Uber;

@@ -175,7 +175,9 @@ export const Video = props => {
   return <Image {...props} video isAmp={isAmp} />;
 };
 
-export default props => {
+const ImageComponent = props => {
   const isAmp = useAmp();
   return <Image {...props} isAmp={isAmp} />;
 };
+
+export default ImageComponent;

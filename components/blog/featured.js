@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Container from '../container';
 import Button from '../button';
 
-export default ({ type, link, title, featuredImage, subtitle }) => (
+const Featured = ({ type, link, title, featuredImage, subtitle }) => (
   <div className="case-study">
     <style jsx>{`
       .case-study {
@@ -66,3 +66,5 @@ export default ({ type, link, title, featuredImage, subtitle }) => (
     </Container>
   </div>
 );
+
+export default Featured;

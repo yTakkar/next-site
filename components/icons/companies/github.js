@@ -1,4 +1,4 @@
-export default () => (
+const Github = () => (
   <svg
     width="113px"
     height="31px"
@@ -17,3 +17,5 @@ export default () => (
     </g>
   </svg>
 );
+
+export default Github;

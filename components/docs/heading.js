@@ -36,7 +36,7 @@ function Heading(props) {
   );
 }
 
-export default props => {
+const HeadingComponent = props => {
   const { offsetTop } = props;
   const component = props.children;
   const children = component.props.children || '';
@@ -140,3 +140,5 @@ export default props => {
     </Heading>
   );
 };
+
+export default HeadingComponent;

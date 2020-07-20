@@ -1,4 +1,4 @@
-export default ({ inverse, dark }) => (
+const Checkmark = ({ inverse, dark }) => (
   <svg width="36" height="36" viewBox="0 -3 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g>
       <path
@@ -14,3 +14,5 @@ export default ({ inverse, dark }) => (
     </g>
   </svg>
 );
+
+export default Checkmark;

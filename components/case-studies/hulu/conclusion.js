@@ -1,4 +1,4 @@
-export default () => (
+const Conclusion = () => (
   <section id="conclusion">
     <div className="content">
       <h4>The benefits of Next.js</h4>
@@ -44,3 +44,5 @@ export default () => (
     `}</style>
   </section>
 );
+
+export default Conclusion;

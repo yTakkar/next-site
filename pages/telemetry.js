@@ -8,7 +8,7 @@ import { components } from '../components/blog/post-components';
 
 const Content = React.memo(() => <Markdown components={components} />);
 
-export default () => (
+const Telemetry = () => (
   <Page title="Next.js - Telemetry">
     <SkipNavContent />
     <Container>
@@ -17,6 +17,8 @@ export default () => (
     <Footer />
   </Page>
 );
+
+export default Telemetry;
 
 export const config = {
   amp: true

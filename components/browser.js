@@ -3,12 +3,8 @@ import { ellipsis } from 'polished';
 import Tabs from './tabs';
 import { useAmp } from 'next/amp';
 
-export default ({
-  uniqueId = 'a'.concat(
-    Math.random()
-      .toString(36)
-      .substring(2, 15)
-  ),
+const Browser = ({
+  uniqueId = 'a'.concat(Math.random().toString(36).substring(2, 15)),
   data,
   height = '352px'
 }) => {
@@ -109,3 +105,5 @@ export default ({
     </>
   );
 };
+
+export default Browser;

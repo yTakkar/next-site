@@ -18,7 +18,7 @@ import { ORG_NAME } from '../../lib/constants';
 
 const title = 'Case Study - Hulu | Next.js';
 
-export default () => {
+const Hulu = () => {
   const isAmp = useAmp();
 
   return (
@@ -166,6 +166,8 @@ export default () => {
     </Page>
   );
 };
+
+export default Hulu;
 
 export const config = {
   amp: true

@@ -1,4 +1,4 @@
-export default () => (
+const NotificationIndicator = () => (
   <svg
     width="12px"
     height="12px"
@@ -18,3 +18,5 @@ export default () => (
     />
   </svg>
 );
+
+export default NotificationIndicator;

@@ -1,4 +1,4 @@
-export default () => (
+const Ticketmaster = () => (
   <svg
     width="225px"
     height="30px"
@@ -13,3 +13,5 @@ export default () => (
     />
   </svg>
 );
+
+export default Ticketmaster;

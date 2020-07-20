@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { TWITTER_USER_NAME } from '../../lib/constants';
 
-export default ({ children, ...props }) => (
+const HeadComponent = ({ children, ...props }) => (
   <Head>
     <title>{`Documentation - ${props.title} | Next.js`}</title>
     <meta name="twitter:card" content={props.image ? 'summary_large_image' : 'summary'} />
@@ -24,3 +24,5 @@ export default ({ children, ...props }) => (
     {children}
   </Head>
 );
+
+export default HeadComponent;

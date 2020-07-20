@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default () => (
+const Cta = () => (
   <div className="container">
     <div>
       <h2>
@@ -62,3 +62,5 @@ export default () => (
     </style>
   </div>
 );
+
+export default Cta;

@@ -1,4 +1,4 @@
-export default () => (
+const Staples = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     height="30"
@@ -14,3 +14,5 @@ export default () => (
     </g>
   </svg>
 );
+
+export default Staples;

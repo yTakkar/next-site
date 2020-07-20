@@ -1,4 +1,4 @@
-export default () => (
+const Binance = () => (
   <svg height="44" viewBox="0 0 632.014 126.611">
     <g>
       <path d="m38.171 53.203 24.588-24.587 24.601 24.6 14.307-14.307-38.908-38.909-38.895 38.896z" />
@@ -22,3 +22,5 @@ export default () => (
     </g>
   </svg>
 );
+
+export default Binance;

@@ -7,7 +7,7 @@ import cn from 'classnames';
 import Container from '../container';
 import Button from '../button';
 
-export default ({ type, thumbnail, detail, link, title, date, alt, children }) => {
+const Preview = ({ type, thumbnail, detail, link, title, date, alt, children }) => {
   const [dateDistance, setDateDistance] = useState('');
   useEffect(() => {
     setDateDistance(distanceInWordsToNow(date));
@@ -119,3 +119,5 @@ export default ({ type, thumbnail, detail, link, title, date, alt, children }) =
     </div>
   );
 };
+
+export default Preview;

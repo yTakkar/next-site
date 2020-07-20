@@ -17,6 +17,8 @@ const GAP_Y = 48;
 const ROW_HEIGHT = 220 + GAP_Y;
 
 function getData(category) {
+  // For the moment marketing is a clone of e-commerce
+  if (category === 'marketing') category = 'e-commerce';
   if (category === 'all') return sortedByAlexa;
   return sortedByAlexa.filter(item => item.tags && item.tags.includes(category));
 }

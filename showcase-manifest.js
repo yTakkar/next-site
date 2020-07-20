@@ -1,7 +1,26 @@
 import { PLATFORM_NAME, PLATFORM_LOWERCASE, PLATFORM_URL } from './lib/constants';
 
-export const categories = ['All', 'Finance', 'News', 'E-commerce', 'Creative', 'Entertainment'];
-export const categoriesShort = ['All', 'Finance', 'News', 'E-comm', 'Creative', 'Entertainment'];
+export const categories = [
+  'All',
+  'Finance',
+  'News',
+  'E-commerce',
+  'Travel',
+  'Creative',
+  'Entertainment',
+  'Marketing'
+];
+
+export const categoriesShort = [
+  'All',
+  'Finance',
+  'News',
+  'E-comm',
+  'Travel',
+  'Creative',
+  'Entertainment',
+  'Marketing'
+];
 
 // src is added to the sites that don't look good with a screenshot from https://microlink.io/screenshot
 export const mapping = {
@@ -84,7 +103,7 @@ export const mapping = {
     srcFallback: true,
     alexa: 353790,
     internalUrl: 'ticketswap',
-    tags: ['e-commerce']
+    tags: ['e-commerce', 'travel']
   },
   ign: {
     title: 'IGN',
@@ -155,7 +174,7 @@ export const mapping = {
     srcFallback: true,
     alexa: 2797,
     internalUrl: 'theculturetrip',
-    tags: ['entertainment']
+    tags: ['travel', 'entertainment']
   },
   supervielle: {
     title: 'Supervielle',
@@ -238,7 +257,7 @@ export const mapping = {
     srcFallback: true,
     alexa: 2123,
     internalUrl: 'trip',
-    tags: ['e-commerce']
+    tags: ['travel', 'e-commerce']
   },
   colorbox: {
     title: 'ColorBox',
@@ -308,7 +327,8 @@ export const mapping = {
     src: '/static/images/showcases/ticketmaster-1.jpg',
     alexa: 773,
     internalUrl: 'ticketmaster',
-    tags: ['e-commerce']
+    highlighted: 2,
+    tags: ['e-commerce', 'entertainment', 'travel']
   },
   verge: {
     title: 'Verge',
@@ -840,15 +860,6 @@ export const mapping = {
     internalUrl: 'shakeshack',
     tags: ['e-commerce']
   },
-  coop: {
-    title: 'Co-op Shop',
-    link: 'https://shop.coop.co.uk',
-    src: '/static/images/showcases/coop.png',
-    srcFallback: true,
-    alexa: 77995,
-    internalUrl: 'coop',
-    tags: ['e-commerce']
-  },
   mprnews: {
     title: 'MPR News',
     link: 'https://www.mprnews.org',
@@ -937,7 +948,7 @@ export const mapping = {
     srcFallback: true,
     alexa: 1220,
     internalUrl: 'hilton',
-    tags: ['e-commerce']
+    tags: ['travel', 'e-commerce']
   },
   ftd: {
     title: 'FTD',

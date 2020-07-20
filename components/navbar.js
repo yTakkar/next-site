@@ -132,6 +132,7 @@ function Navbar() {
         .links a {
           text-decoration: none;
           transition: color 0.2s ease;
+          margin-left: 1rem;
         }
 
         .links a:hover {
@@ -143,9 +144,9 @@ function Navbar() {
           text-shadow: 0px 0px 1px #0070f3;
         }
 
-        .links a:first-child,
-        .links a:last-child {
+        .links a:first-child {
           display: flex;
+          margin: 0;
         }
 
         a.icon,
@@ -208,6 +209,10 @@ function Navbar() {
 
           nav .links a {
             font-size: 14px;
+          }
+
+          nav .links a:nth-child(2) {
+            margin: 0;
           }
 
           .mobile-top {

@@ -30,7 +30,6 @@ function Showcase({ item }) {
             <div className="wrapList">
               <List category={selectedId} />
             </div>
-
             <style jsx>{`
               .wrapList {
                 margin-top: 4rem;

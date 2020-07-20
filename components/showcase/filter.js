@@ -60,10 +60,11 @@ function Filter({ onSelect, selectedId }) {
 
       <style jsx>{`
         .categories {
-          display: flex;
-          padding: 0.5rem 1rem;
-          align-items: baseline;
+          display: grid;
+          grid-template-columns: repeat(9, max-content);
           justify-content: center;
+          justify-items: center;
+          padding: 0.5rem 1rem;
           font-weight: 500;
           border-top: 1px solid transparent;
         }
@@ -99,9 +100,15 @@ function Filter({ onSelect, selectedId }) {
           display: none;
         }
 
+        @media screen and (max-width: 960px) {
+          .categories {
+            grid-template-columns: repeat(5, max-content);
+          }
+        }
+
         @media screen and (max-width: 640px) {
           .categories {
-            align-items: center;
+            grid-template-columns: repeat(4, max-content);
           }
           .tab {
             padding: 0 0.5rem;
@@ -114,12 +121,6 @@ function Filter({ onSelect, selectedId }) {
           .short {
             display: unset;
             margin: 0 auto;
-          }
-        }
-
-        @media screen and (max-width: 380px) {
-          .tab {
-            padding: 0 3px;
           }
         }
       `}</style>

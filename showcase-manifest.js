@@ -575,15 +575,6 @@ export const mapping = {
     alexa: 480,
     internalUrl: 'nike'
   },
-  'boosted-boards': {
-    title: 'Boosted',
-    link: 'https://boostedboards.com',
-    src: '/static/images/showcases/boosted.jpg',
-    srcFallback: true,
-    alexa: 40796,
-    internalUrl: 'boosted-boards',
-    tags: ['e-commerce']
-  },
   eaze: {
     title: 'Eaze',
     link: 'https://www.eaze.com',

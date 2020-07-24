@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import AutoSuggest from 'react-autosuggest';
 import { connectAutoComplete } from 'react-instantsearch-dom';
 import { useRouter } from 'next/router';
@@ -25,6 +25,7 @@ function AutoComplete({
 }) {
   const [inputValue, setValue] = useState('');
   const [hasFocus, setFocus] = useState(false);
+  const textInput = useRef(null);
   const router = useRouter();
   const onFocus = () => {
     setFocus(!hasFocus);
@@ -59,6 +60,32 @@ function AutoComplete({
     },
     [containerRef, isMobile]
   );
+  const focusSearch = useCallback(event => {
+    if (event.keyCode === 191) {
+      //ignore input text
+      const el = document.activeElement;
+      if (
+        el.contentEditable === 'true' ||
+        el.tagName == 'INPUT' ||
+        el.tagName == 'TEXTAREA' ||
+        el.tagName == 'SELECT'
+      )
+        return;
+      // focus input on pressing the slash key
+      textInput.current.focus();
+      event.preventDefault();
+    } else if (event.key === 'Escape') {
+      document.activeElement.blur();
+      event.preventDefault();
+    }
+  }, [textInput.current]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', focusSearch, false);
+    return () => {
+      document.removeEventListener('keydown', focusSearch, false);
+    };
+  }, [focusSearch]);
 
   useEffect(() => {
     if (isMobile) {
@@ -73,7 +100,7 @@ function AutoComplete({
   }, [router.asPath]);
 
   return (
-    <label className={cn('input-container', { focused: hasFocus })}>
+    <label ref={textInput} className={cn('input-container', { focused: hasFocus })}>
       <span className="icon">
         <SearchIcon />
       </span>

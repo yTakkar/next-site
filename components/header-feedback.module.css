@@ -20,7 +20,6 @@
 
 .geist-feedback-input .feedback-wrapper {
   appearance: none;
-  border-width: 0;
   background: var(--geist-background);
   border: 1px solid var(--accents-2);
   display: flex;

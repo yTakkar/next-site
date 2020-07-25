@@ -92,13 +92,13 @@ const Preview = ({ type, thumbnail, detail, link, title, date, alt, children }) 
         <div className="preview-layout">
           <div className="preview-content">
             {type && <span className="post-type mute fw6">{type}</span>}
-            <h3 className="f2 fw6 post-title">
+            <h3 className="f2 fw7 post-title">
               <Link href={link}>
                 <a>{title}</a>
               </Link>
             </h3>
             <p
-              className={cn('f6 date mute', {
+              className={cn('f5 date mute', {
                 'date-visible': dateDistance
               })}
             >

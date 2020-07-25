@@ -24,7 +24,7 @@ export default function Container({
         margin: 0 auto;
         padding: ${padding ? '6.25rem' : '0'} ${wide ? '0' : '1rem'};
         ${wide && !small ? '' : 'max-width: 1024px;'}
-        ${small ? 'max-width: 682px;' : ''}
+        ${small ? 'max-width: 768px;' : ''}
         ${center ? 'text-align: center;' : ''}
         ${dark ? 'background: #111;' : ''}
         ${dark ? 'color: #f1f1f1;' : ''}

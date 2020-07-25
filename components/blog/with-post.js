@@ -19,7 +19,7 @@ const Author = meta => {
     <div className="author">
       <img src={meta.avatar} alt={meta.name} />
       <span className="name f5">
-        <span className="real-name">{meta.name}</span>
+        <span className="real-name fw6">{meta.name}</span>
         <a
           href={`https://twitter.com/${meta.twitter}`}
           className="twitter"
@@ -117,11 +117,11 @@ export default meta => ({ children }) => {
         <Page title={`Blog - ${meta.title} | Next.js`}>
           <SocialMeta image={`/static${meta.link}/twitter-card.png`} {...meta} />
           <HeaderImage {...meta} />
-          <Container padding>
-            <h1 className="title fw6 f0">{meta.title}</h1>
+          <Container>
+            <h1 className="title fw7">{meta.title}</h1>
             {meta.type && <span className="post-type mute fw7">{meta.type}</span>}
             <div
-              className={cn('date mute f6', {
+              className={cn('date mute f5', {
                 'date-visible': dateDistance
               })}
             >
@@ -129,11 +129,13 @@ export default meta => ({ children }) => {
                 {formatDate(date, 'dddd, MMMM Do YYYY')} ({dateDistance} ago)
               </time>
             </div>
-            <div className="authors">
-              {meta.authors.map(data => (
-                <Author key={data.name} {...data} />
-              ))}
-            </div>
+          </Container>
+          <div className="authors">
+            {meta.authors.map(data => (
+              <Author key={data.name} {...data} />
+            ))}
+          </div>
+          <Container>
             <Container small wide overflow>
               <main>{children}</main>
               <div className="back-button">
@@ -149,9 +151,12 @@ export default meta => ({ children }) => {
           <style jsx>{`
             .title {
               text-align: center;
+              letter-spacing: -0.05em;
+              font-size: 2.5rem;
+              padding-top: 2.25rem;
             }
             .date {
-              margin-top: 2rem;
+              margin: 1rem 0 1rem;
               text-align: center;
               opacity: 0;
               transition: opacity 0.2s ease;
@@ -160,8 +165,10 @@ export default meta => ({ children }) => {
               opacity: 1;
             }
             .authors {
-              margin: 1.5rem 0 4rem;
+              margin: 1.5rem 0 3rem;
               text-align: center;
+              border-bottom: 1px solid #eaeaea;
+              padding-bottom: 3rem;
             }
             .back-button {
               margin-top: 8rem;

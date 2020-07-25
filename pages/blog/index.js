@@ -60,21 +60,32 @@ const items = previewItems
 const Index = () => (
   <Page title="Blog | Next.js">
     <Screen offset={64 + 400}>
-      <Container padding wide>
-        <SectionHeader
-          title="Blog"
-          description={
-            <span>
-              The latest news about Next.js <br className="display-mobile" />
-              from the {ORG_NAME} team
-            </span>
-          }
-        />
+      <Container wide>
+        <header>
+          <h2 className="fw7">Blog</h2>
+          <h3 className="f-reset subtitle fw4">
+            The latest news about Next.js <br className="display-mobile" />
+            from the {ORG_NAME} team
+          </h3>
+        </header>
         <SkipNavContent />
         {items}
       </Container>
     </Screen>
     <Footer />
+    <style jsx>
+      {`
+        h2 {
+          font-size: 2.5rem;
+          letter-spacing: -0.05em;
+          margin-bottom: 1rem;
+        }
+        header {
+          text-align: center;
+          margin: 2.25rem 0 3rem;
+        }
+      `}
+    </style>
   </Page>
 )
 

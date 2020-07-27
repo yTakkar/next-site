@@ -190,8 +190,6 @@ export default meta => ({ children }) => {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                margin-left: -1rem;
-                margin-right: -1rem;
               }
               .title {
                 text-align: center;

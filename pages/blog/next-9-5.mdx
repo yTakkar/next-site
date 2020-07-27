@@ -220,7 +220,7 @@ module.exports = {
       },
       {
         source: '/:path*',
-        destination: `https://legacy.com/:path*`
+        destination: `https://example.com/:path*`
       }
     ]
   }
@@ -228,7 +228,7 @@ module.exports = {
 ```
 
 In this case, we first match all paths. If none match we proxy to
-[example.com](http://example.com) which would be the previous project.
+`example.com` which would be the previous project.
 
 To learn more about `rewrites` feature check out the
 [rewrites documentation](https://nextjs.org/docs/api-reference/next.config.js/rewrites).

@@ -3,7 +3,7 @@ import PackageFile from './file-system-routing/package-file.mdx';
 import IndexFile from './file-system-routing/index-file.mdx';
 import AboutFile from './file-system-routing/about-file.mdx';
 
-const IndexPage = withSlot(({ A }) => (
+const IndexPage = ({ A }) => (
   <div>
     <h1>
       Hello Next.js{' '}
@@ -13,14 +13,14 @@ const IndexPage = withSlot(({ A }) => (
     </h1>
     <A tab="http://localhost:3000/about">About</A>
   </div>
-));
+);
 
-const AboutPage = withSlot(({ A }) => (
+const AboutPage = ({ A }) => (
   <div>
     <p>This is the about page</p>
     <A tab="http://localhost:3000">Go home</A>
   </div>
-));
+);
 
 export default {
   type: ['editor', 'browser'],
@@ -36,8 +36,8 @@ export default {
   browser2: {
     browserTabs: ['http://localhost:3000', 'http://localhost:3000/about'],
     browserMapping: {
-      'http://localhost:3000': IndexPage,
-      'http://localhost:3000/about': AboutPage
+      'http://localhost:3000': withSlot(IndexPage),
+      'http://localhost:3000/about': withSlot(AboutPage)
     }
   },
   note: (

@@ -2,15 +2,15 @@ import withSlot from './slot';
 import IndexFile from './code-splitting/index-file.mdx';
 import AboutFile from './code-splitting/cowsay-file.mdx';
 
-const IndexPage = withSlot(({ A }) => (
+const IndexPage = ({ A }) => (
   <div>
     <h1>Hello, this is the homepage</h1>
-    <p>{`I'm only 0.59 KB after gzip.`}</p>
+    <p>I'm only 0.59 KB after gzip.</p>
     <A tab="http://localhost:3000/cowsay">Cowsay</A>
   </div>
-));
+);
 
-const AboutPage = withSlot(({ A }) => (
+const AboutPage = ({ A }) => (
   <div>
     <p>This page costs 29.8 KB after gzip!</p>
     <pre>{` _____________________
@@ -23,7 +23,7 @@ const AboutPage = withSlot(({ A }) => (
                ||     ||`}</pre>
     <A tab="http://localhost:3000">Go home</A>
   </div>
-));
+);
 
 export default {
   type: ['editor', 'browser'],
@@ -38,8 +38,8 @@ export default {
   browser2: {
     browserTabs: ['http://localhost:3000', 'http://localhost:3000/cowsay'],
     browserMapping: {
-      'http://localhost:3000': IndexPage,
-      'http://localhost:3000/cowsay': AboutPage
+      'http://localhost:3000': withSlot(IndexPage),
+      'http://localhost:3000/cowsay': withSlot(AboutPage)
     }
   },
   note: (

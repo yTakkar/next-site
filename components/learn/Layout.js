@@ -76,8 +76,8 @@ const Layout = ({ meta, children }) => {
                 min-width: 0;
               }
 
-              // CSS only media query for mobile + SSR
-              @media screen and (max-width: 640px) {
+              // CSS only media query for tablet + SSR
+              @media screen and (max-width: 960px) {
                 .content {
                   display: flex;
                   flex-direction: column;

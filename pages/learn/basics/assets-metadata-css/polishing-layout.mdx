@@ -9,17 +9,17 @@ export const meta = {
   subtitle: 'Polishing Layout'
 }
 
-So far, we’ve only added minimal React and CSS code just to illustrate concepts such as CSS Modules. Before we move on to our next lesson (data fetching), let’s polish our page styling and code.
+So far, we’ve only added minimal React and CSS code just to illustrate concepts such as [CSS Modules](/docs/basic-features/built-in-css-support#adding-component-level-css). Before we move on to our next lesson about [data fetching](/docs/basic-features/data-fetching), let’s polish our page styling and code.
 
 ### Download Your Profile Picture
 
 First, we’ll be using your profile picture for the final design.
 
 - **Download** your profile picture from GitHub, Twitter, LinkedIn or elsewhere (or [use this file](https://github.com/vercel/next-learn-starter/blob/master/basics-final/public/images/profile.jpg)).
-- Create an `images` directory inside of the `public` directory.
+- Create an `images` directory inside of the [`public` directory](/docs/basic-features/static-file-serving).
 - Save the picture as `profile.jpg` in the `public/images` directory.
 - The image size can be around 400px by 400px.
-- You may remove the unused SVG logo file directly under the `public` directory.
+- You may remove the unused SVG logo file directly under the [`public` directory](/docs/basic-features/static-file-serving).
 
 ### Update `components/layout.module.css`
 
@@ -57,7 +57,7 @@ Second, we’ll use the following for `components/layout.module.css` — simply 
 
 Third, let’s create a set of utility CSS classes for typography and others that will be useful across multiple components.
 
-Let’s add it as a CSS Module at `styles/utils.module.css`.
+Let’s add it as a [CSS Module](/docs/basic-features/built-in-css-support#adding-component-level-css) at `styles/utils.module.css`.
 
 ```css
 .heading2Xl {

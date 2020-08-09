@@ -1,5 +1,4 @@
 import Layout from '../../../../components/learn/Layout'
-import Link from 'next/link'
 import Image from '../../../../components/image'
 
 export const meta = {
@@ -10,7 +9,7 @@ export const meta = {
   subtitle: 'Fetching Data at Request Time'
 }
 
-If you need to fetch data at **request time** instead of at build time, you can try **Server-side Rendering**:
+If you need to fetch data at **request time** instead of at build time, you can try [**Server-side Rendering**](/docs/basic-features/pages#server-side-rendering):
 
 <Image
   shadow
@@ -21,11 +20,11 @@ If you need to fetch data at **request time** instead of at build time, you can 
   height={1050 / 2}
 />
 
-To use Server-side Rendering, you need to export `getServerSideProps` instead of `getStaticProps` from your page.
+To use [Server-side Rendering](/docs/basic-features/pages#server-side-rendering), you need to export [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) instead of [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) from your page.
 
 ### Using `getServerSideProps`
 
-Here’s the starter code for `getServerSideProps`. It’s not necessary for our blog example, so we won’t be implementing it.
+Here’s the starter code for [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering). It’s not necessary for our blog example, so we won’t be implementing it.
 
 ```jsx
 export async function getServerSideProps(context) {
@@ -37,13 +36,13 @@ export async function getServerSideProps(context) {
 }
 ```
 
-Because `getServerSideProps` is called at request time, its parameter (`context`) contains request specific parameters. You can learn more in <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching#getserversideprops-server-side-rendering"><a>our documentation</a></Link>.
+Because [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) is called at request time, its parameter (`context`) contains request specific parameters.
 
-You should use `getServerSideProps` only if you need to pre-render a page whose data must be fetched at request time. Time to first byte (TTFB) will be slower than `getStaticProps` because the server must compute the result on every request, and the result cannot be cached by a CDN without extra configuration.
+You should use [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) only if you need to pre-render a page whose data must be fetched at request time. Time to first byte (TTFB) will be slower than [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) because the server must compute the result on every request, and the result cannot be cached by a CDN without extra configuration.
 
 ### Client-side Rendering
 
-If you **do not** need to pre-render the data, you can also use the following strategy (called **Client-side Rendering**):
+If you **do not** need to pre-render the data, you can also use the following strategy (called [**Client-side Rendering**](/docs/basic-features/data-fetching#fetching-data-on-the-client-side)):
 
 - Statically generate (pre-render) parts of the page that do not require external data.
 - When the page loads, fetch external data from the client using JavaScript and populate the remaining parts.
@@ -57,11 +56,11 @@ If you **do not** need to pre-render the data, you can also use the following st
   height={1896 / 2}
 />
 
-This approach works well for user dashboard pages, for example. Because a dashboard is a private, user-specific page, SEO is not relevant, and the page doesn’t need to be pre-rendered. The data is frequently updated, which requires request-time data fetching.
+This approach works well for user dashboard pages, for example. Because a dashboard is a private, user-specific page, SEO is not relevant, and the page doesn’t need to be [pre-rendered](/docs/basic-features/pages#pre-rendering). The data is frequently updated, which requires request-time data fetching.
 
 ### SWR
 
-The team behind Next.js has created a React hook for data fetching called [**SWR**](https://swr.now.sh/). We highly recommend it if you’re fetching data on the client side. It handles caching, revalidation, focus tracking, refetching on interval, and more. We won’t cover the details here, but here’s an example usage:
+The team behind Next.js has created a React hook for data fetching called [**SWR**](https://swr.vercel.app/). We highly recommend it if you’re fetching data on the client side. It handles caching, revalidation, focus tracking, refetching on interval, and more. We won’t cover the details here, but here’s an example usage:
 
 ```jsx
 import useSWR from 'swr'
@@ -75,12 +74,12 @@ function Profile() {
 }
 ```
 
-[Check out the SWR documentation to learn more](https://swr.now.sh/).
+Check out the [SWR documentation](https://swr.vercel.app/) to learn more.
 
 ### That’s It!
 
-In the next lesson, we’ll create pages for each blog post using **dynamic routes**.
+In the next lesson, we’ll create pages for each blog post using [**dynamic routes**](/docs/routing/dynamic-routes).
 
-> Again, you can get in-depth information about `getStaticProps` and `getServerSideProps` in <Link href="/docs/[[...slug]]" as="/docs/basic-features/data-fetching"><a>our documentation</a></Link>.
+> Again, you can get in-depth information about [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) and [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) in the [Data Fetching documentation](/docs/basic-features/data-fetching).
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

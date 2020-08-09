@@ -1,5 +1,4 @@
 import Layout from '../../../../components/learn/Layout'
-import Link from 'next/link'
 
 export const meta = {
   title: 'TypeScript',
@@ -13,7 +12,7 @@ Here are some Next.js specific types you can use.
 
 ### Static Generation and Server-side Rendering
 
-For `getStaticProps`, `getStaticPaths`, and `getServerSideProps`, you can use the `GetStaticProps`, `GetStaticPaths`, and `GetServerSideProps` types respectively:
+For [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation), [`getStaticPaths`](/docs/basic-features/data-fetching#getstaticpaths-static-generation), and [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering), you can use the `GetStaticProps`, `GetStaticPaths`, and `GetServerSideProps` types respectively:
 
 ```ts
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
@@ -33,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
 
 ## API Routes
 
-The following is an example of how to use the built-in types for API routes:
+The following is an example of how to use the built-in types for [API routes](/docs/api-routes/introduction):
 
 ```ts
 import { NextApiRequest, NextApiResponse } from 'next'
@@ -80,6 +79,6 @@ declare module 'remark-html' {
 
 That’s it! Your app is now powered by TypeScript.
 
-> To learn more about using Next.js in TypeScript, take a look at <Link href="/docs/[[...slug]]" as="/docs/basic-features/typescript"><a>our documentation</a></Link>.
+> To learn more about using Next.js in TypeScript, take a look at [our TypeScript documentation](/docs/basic-features/typescript).
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

@@ -9,9 +9,9 @@ export const meta = {
   subtitle: 'Global Styles'
 }
 
-CSS Modules are useful for component-level styles. But if you want to load some CSS to be loaded by **every page**, Next.js has support for that as well.
+[CSS Modules](/docs/basic-features/built-in-css-support#adding-component-level-css) are useful for component-level styles. But if you want some CSS to be loaded by **every page**, Next.js has support for that as well.
 
-To load global CSS files, **create a file called `_app.js`** under `pages` and add the following content:
+To load [global CSS](/docs/basic-features/built-in-css-support#adding-a-global-stylesheet) files, **create a file called [`_app.js`](/docs/advanced-features/custom-app)** under `pages` and add the following content:
 
 ```jsx
 export default function App({ Component, pageProps }) {
@@ -23,7 +23,7 @@ This `App` component is the top-level component which will be common across all 
 
 ### Restart the Development Server
 
-**Important:** You need to restart the development server when you add `_app.js`. Press <kbd>Ctrl + c</kbd> to stop the server and run:
+**Important:** You need to restart the development server when you add [`pages/_app.js`](/docs/advanced-features/custom-app). Press <kbd>Ctrl + c</kbd> to stop the server and run:
 
 ```shell
 npm run dev
@@ -31,11 +31,11 @@ npm run dev
 
 ### Adding Global CSS
 
-In Next.js, you can add global CSS files by importing them from `_app.js`. You **cannot** import global CSS anywhere else.
+In Next.js, you can add [global CSS](/docs/basic-features/built-in-css-support#adding-a-global-stylesheet) files by importing them from [`pages/_app.js`](/docs/advanced-features/custom-app). You **cannot** import global CSS anywhere else.
 
-The reason that global CSS can't be imported outside of `_app.js` is that global CSS affects all elements on the page.
+The reason that [global CSS](/docs/basic-features/built-in-css-support#adding-a-global-stylesheet) can't be imported outside of `pages/_app.js` is that global CSS affects all elements on the page.
 
-If you would navigate from the homepage to the `/posts/first-post` page, global styles from the homepage would affect `/posts/first-post` unintentionally.
+If you were to navigate from the homepage to the `/posts/first-post` page, global styles from the homepage would affect `/posts/first-post` unintentionally.
 
 You can place the global CSS file anywhere and use any name. So let’s do the following:
 
@@ -72,7 +72,7 @@ img {
 }
 ```
 
-Finally, import it from `_app.js`:
+Finally, import it in [`pages/_app.js`](/docs/advanced-features/custom-app):
 
 ```jsx
 import '../styles/global.css'
@@ -93,11 +93,11 @@ Now, if you access [http://localhost:3000/posts/first-post](http://localhost:300
   height={316 / 2}
 />
 
-> **If it didn’t work**: Make sure you restart the development server when you add `_app.js`.
+> **If it didn’t work**: Make sure you restart the development server when you add `pages/_app.js`.
 
 To summarize what we’ve learned so far:
 
-- To use CSS Modules, import a CSS file named `*.module.css` from any component.
-- To use global CSS, import a CSS file in `pages/_app.js`.
+- To use CSS Modules, import a CSS file named [`*.module.css`](/docs/basic-features/built-in-css-support#adding-component-level-css) in any component.
+- To use global CSS, import a CSS file in [`pages/_app.js`](/docs/advanced-features/custom-app).
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

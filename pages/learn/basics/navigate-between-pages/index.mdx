@@ -1,5 +1,4 @@
 import Layout from '../../../../components/learn/Layout'
-import Link from 'next/link'
 
 export const meta = {
   title: 'Navigate Between Pages',
@@ -15,10 +14,10 @@ Let's explore how to add more pages to our application.
 
 In this lesson, you will:
 
-- Create a new page using the file system routing feature.
-- Learn how to use the `Link` component to enable client-side navigation between pages.
+- Create a new page using the integrated [file system routing](/docs/routing/introduction).
+- Learn how to use the [`Link`](https://nextjs.org/docs/api-reference/next/link) component to enable client-side navigation between pages.
 - Learn about built-in support for code splitting and prefetching.
 
-> If you’re looking for detailed documentation on Next.js routing, take a look at the <Link href="/docs/[[...slug]]" as="/docs/routing/introduction"><a>routing documentation</a></Link>.
+> If you’re looking for detailed documentation on Next.js routing, take a look at the [routing documentation](/docs/routing/introduction).
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

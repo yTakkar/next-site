@@ -1,6 +1,5 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
-import Link from 'next/link'
 
 export const meta = {
   title: 'Navigate Between Pages',
@@ -11,7 +10,7 @@ export const meta = {
 
 ## Client-Side Navigation
 
-The `Link` component enables **client-side navigation** between two pages in the same Next.js app.
+The [`Link`](/docs/api-reference/next/link) component enables **client-side navigation** between two pages in the same Next.js app.
 
 Client-side navigation means that the page transition happens _using JavaScript_, which is faster than the default navigation done by the browser.
 
@@ -42,15 +41,15 @@ This ensures that the homepage loads quickly even if you add hundreds of pages.
 
 Only loading the code for the page you request also means that pages become isolated. If a certain page throws an error, the rest of the application would still work.
 
-Furthermore, in a production build of Next.js, whenever `Link` components appear in the browser’s viewport, Next.js automatically **prefetches** the code for the linked page in the background. By the time you click the link, the code for the destination page will already be loaded in the background, and the page transition will be near-instant!
+Furthermore, in a production build of Next.js, whenever [`Link`](/docs/api-reference/next/link) components appear in the browser’s viewport, Next.js automatically **prefetches** the code for the linked page in the background. By the time you click the link, the code for the destination page will already be loaded in the background, and the page transition will be near-instant!
 
 ### Summary
 
 Next.js automatically optimizes your application for the best performance by code splitting, client-side navigation, and prefetching (in production).
 
-You create routes as files under `pages` and use the built-in `Link` component. No routing libraries are required.
+You create routes as files under [`pages`](/docs/basic-features/pages) and use the built-in [`Link`](/docs/api-reference/next/link) component. No routing libraries are required.
 
-You can learn more about the `Link` component <Link href="/docs/[[...slug]]" as="/docs/api-reference/next/link"><a>in the API reference documentation</a></Link> and routing in general <Link href="/docs/[[...slug]]" as="/docs/routing/introduction"><a>in the routing documentation</a></Link>.
+You can learn more about the `Link` component [in the API reference for `next/link`](/docs/api-reference/next/link) and routing in general [in the routing documentation](/docs/routing/introduction).
 
 > **Note:** If you need to link to an <em>external</em> page outside the Next.js app, just use an `<a>` tag without `Link`.
 >

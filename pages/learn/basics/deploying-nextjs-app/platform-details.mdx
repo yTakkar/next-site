@@ -1,6 +1,5 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
-import Link from 'next/link'
 import PlatformLink from '../../../../components/name/platform-link'
 import PlatformCdnLink from '../../../../components/name/platform-cdn-link'
 import PlatformText from '../../../../components/name/platform-text'
@@ -14,18 +13,24 @@ export const meta = {
   subtitle: `Next.js and ${PLATFORM_NAME}`
 }
 
-&#8203;<PlatformLink /> is made by the creators of Next.js and has first-class support for Next.js. When you deploy your Next.js app to <PlatformText />, the following happens by default:
+<p>
+  <PlatformLink /> is made by the creators of Next.js and has first-class
+  support for Next.js. When you deploy your Next.js app to <PlatformText />, the
+  following happens by default:
+</p>
 
-- Pages that use Static Generation and assets (JS, CSS, images, fonts, etc) will automatically be served from the <PlatformCdnLink />, which is blazingly fast.
-- Pages that use Server-Side Rendering and API routes will automatically become isolated <PlatformLink href="/docs/v2/serverless-functions/introduction">Serverless Functions</PlatformLink>. This allows page rendering and API requests to scale infinitely.
+- Pages that use [Static Generation](/docs/basic-features/pages#static-generation-recommended) and assets (JS, CSS, images, fonts, etc) will automatically be served from the <PlatformCdnLink />, which is blazingly fast.
+- Pages that use [Server-Side Rendering](/docs/basic-features/pages#server-side-rendering) and [API routes](/docs/api-routes/introduction) will automatically become isolated <PlatformLink href="/docs/serverless-functions/introduction">Serverless Functions</PlatformLink>. This allows page rendering and API requests to scale infinitely.
 
-&#8203;<PlatformText /> has many more features, such as:
+<p>
+  <PlatformText /> has many more features, such as:
+</p>
 
-- **Custom Domains:** Once deployed on <PlatformText />, you can assign a custom domain to your Next.js app. Take a look at <PlatformLink href="/docs/v2/custom-domains">our documentation</PlatformLink> here.
-- **Environment Variables:** You can also set environment variables on <PlatformText />. Take a look at <PlatformLink href="/docs/v2/build-step#environment-variables">our documentation</PlatformLink> here. You can then <Link href="/docs/[[...slug]]" as="/docs/api-reference/next.config.js/environment-variables"><a>use those environment variables</a></Link> in your Next.js app.
+- **Custom Domains:** Once deployed on <PlatformText />, you can assign a custom domain to your Next.js app. Take a look at <PlatformLink href="/docs/custom-domains">our documentation</PlatformLink> here.
+- **Environment Variables:** You can also set environment variables on <PlatformText />. Take a look at <PlatformLink href="/docs/build-step#environment-variables">our documentation</PlatformLink> here. You can then [use those environment variables](/docs/basic-features/environment-variables#loading-environment-variables) in your Next.js app.
 - **Automatic HTTPS:** HTTPS is enabled by default (including custom domains) and doesn't require extra configuration. We auto-renew SSL certificates.
 
-Read <PlatformLink href="/docs">our documentation</PlatformLink> to learn more about the <PlatformText /> platform.
+You can learn more about the platform in the <PlatformLink href="/docs"><PlatformText /> documentation</PlatformLink>.
 
 ### Preview Deployment for Every Push
 

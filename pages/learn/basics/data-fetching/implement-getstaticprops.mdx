@@ -64,7 +64,7 @@ And in `pages/index.js`, import this function:
 import { getSortedPostsData } from '../lib/posts'
 ```
 
-Then call this function in `getStaticProps`. You need to return the result inside the `props` key:
+Then call this function in [`getStaticProps`](docs/basic-features/data-fetching#getstaticprops-static-generation). You need to return the result inside the `props` key:
 
 ```js
 export async function getStaticProps() {
@@ -132,6 +132,6 @@ Congratulations! We’ve successfully fetched external data (from the file syste
   height={948 / 2}
 />
 
-Let’s talk about some tips for using `getStaticProps` on the next page.
+Let’s talk about some tips for using [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) on the next page.
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

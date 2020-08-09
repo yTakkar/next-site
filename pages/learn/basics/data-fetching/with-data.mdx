@@ -9,7 +9,7 @@ export const meta = {
   subtitle: 'Static Generation with and without Data'
 }
 
-Static Generation can be done with and without **data**.
+[Static Generation](/docs/basic-features/pages#static-generation-recommended) can be done with and without **data**.
 
 So far, all the pages we’ve created do not require fetching external data. Those pages will automatically be statically generated when the app is built for production.
 
@@ -22,7 +22,7 @@ So far, all the pages we’ve created do not require fetching external data. Tho
   height={784 / 2}
 />
 
-However, for some pages, you might not be able to render the HTML without first fetching some external data. Maybe you need to access the file system, fetch external API, or query your database at build time. Next.js supports this case — Static Generation **with data** — out of the box.
+However, for some pages, you might not be able to render the HTML without first fetching some external data. Maybe you need to access the file system, fetch external API, or query your database at build time. Next.js supports this case — [Static Generation **with data**](https://nextjs.org/docs/basic-features/pages#static-generation-with-data) — out of the box.
 
 <Image
   shadow
@@ -35,10 +35,10 @@ However, for some pages, you might not be able to render the HTML without first 
 
 ### Static Generation with Data using `getStaticProps`
 
-How does it work? Well, in Next.js, when you export a page component, you can also export an `async` function called `getStaticProps`. If you do this, then:
+How does it work? Well, in Next.js, when you export a page component, you can also export an `async` function called [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation). If you do this, then:
 
-- `getStaticProps` runs at build time in production, and…
-- Inside the function, you can fetch external data and pass that as the props of the page.
+- [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) runs at build time in production, and…
+- Inside the function, you can fetch external data and send it as props to the page.
 
 ```jsx
 export default function Home(props) { ... }
@@ -55,12 +55,12 @@ export async function getStaticProps() {
 }
 ```
 
-Essentially, `getStaticProps` allows you to tell Next.js: _“Hey, this page has some data dependencies — so when you pre-render this page at build time, make sure to resolve them first!”_
+Essentially, [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) allows you to tell Next.js: _“Hey, this page has some data dependencies — so when you pre-render this page at build time, make sure to resolve them first!”_
 
-> **Note**: In development mode, `getStaticProps` runs on each request instead.
+> **Note**: In development mode, [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) runs on each request instead.
 
 ### Let’s Use `getStaticProps`
 
-It’s easier to learn by doing, so starting from the next page, we’ll use `getStaticProps` to implement our blog.
+It’s easier to learn by doing, so starting from the next page, we’ll use [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) to implement our blog.
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

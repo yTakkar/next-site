@@ -1,7 +1,7 @@
 import Head from 'next/head';
+import { useAmp } from 'next/amp';
 import { ellipsis } from 'polished';
 import Tabs from './tabs';
-import { useAmp } from 'next/amp';
 
 const Browser = ({
   uniqueId = 'a'.concat(Math.random().toString(36).substring(2, 15)),
@@ -52,11 +52,20 @@ const Browser = ({
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.2);
           }
           .button:not(:last-of-type) {
             margin-right: 5px;
           }
+          .close {
+            background-color: #ff605c;
+          }
+          .resize {
+            background-color: #ffbd44;
+          }
+          .minimize {
+            background-color: #00ca4e;
+          }
+
           .title {
             position: absolute;
             max-width: calc(100% - 80px);
@@ -84,9 +93,9 @@ const Browser = ({
             <>
               <div className="header" title={selectedTab}>
                 <div className="button-group">
-                  <span className="button" />
-                  <span className="button" />
-                  <span className="button" />
+                  <span className="button close" />
+                  <span className="button resize" />
+                  <span className="button minimize" />
                 </div>
                 <div className="title f6" style={ellipsis()}>
                   {selectedTab}

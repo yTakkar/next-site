@@ -38,10 +38,18 @@ export default function Editor({
           width: 10px;
           height: 10px;
           border-radius: 50%;
-          background-color: rgba(0, 0, 0, 0.5);
         }
         .button:not(:last-of-type) {
           margin-right: 5px;
+        }
+        .close {
+          background-color: #ff605c;
+        }
+        .resize {
+          background-color: #ffbd44;
+        }
+        .minimize {
+          background-color: #00ca4e;
         }
         .title {
           display: inline-block;
@@ -83,9 +91,9 @@ export default function Editor({
           <>
             <div className="header">
               <div className="button-group">
-                <span className="button" />
-                <span className="button" />
-                <span className="button" />
+                <span className="button close" />
+                <span className="button resize" />
+                <span className="button minimize" />
               </div>
               <div className="title f6 no-drag">
                 {data.editorTabs.map(file => (

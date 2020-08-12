@@ -10,33 +10,20 @@ import Profile from './Profile';
 import CheckIcon from '../icons/check';
 import ArrowIcon from '../icons/arrow-right';
 
-const Lesson = ({ course, lesson, selected }) => {
-  const getRecord = useGetRecord();
-
-  const steps = lesson.steps || [];
-  const finishedSteps = (
-    steps.filter(
-      step =>
-        getRecord({
-          courseId: course.id,
-          lessonId: lesson.id,
-          stepId: step.id
-        }).visited
-    ) || []
-  ).length;
-  const totalSteps = steps.length;
-  const finished = totalSteps && finishedSteps === totalSteps;
-
+const Step = ({ href, children, selected, finished, title, label }) => {
   return (
     <li>
-      <Link href={`/learn/${course.id}/${lesson.id}`}>
+      <Link href={href}>
         <a className={classNames('f5', { fw7: selected, selected, finished })}>
-          <span className="step" title={`${finishedSteps} / ${totalSteps} finished`}>
+          <span className="step" title={title}>
             {finished && <CheckIcon color="#0070F3" />}
           </span>
-          <span className="label">{lesson.name}</span>
+          <span className="label">{label}</span>
         </a>
       </Link>
+
+      {children}
+
       <style jsx>{`
         li {
           list-style: none;
@@ -80,10 +67,60 @@ const Lesson = ({ course, lesson, selected }) => {
           transform: translateX(-8px);
         }
         .label {
+          width: 100%;
           margin-left: 1.25rem;
         }
       `}</style>
     </li>
+  );
+};
+
+const Lesson = ({ course, lesson, selected, meta }) => {
+  const getRecord = useGetRecord();
+  const href = `/learn/${course.id}/${lesson.id}`;
+  const steps = lesson.steps || [];
+  const finishedSteps = steps.filter(
+    step =>
+      getRecord({
+        courseId: course.id,
+        lessonId: lesson.id,
+        stepId: step.id
+      }).visited
+  );
+  const totalSteps = steps.length;
+  const finished = totalSteps && finishedSteps.length === totalSteps;
+
+  return (
+    <Step
+      href={href}
+      selected={selected}
+      finished={finished}
+      title={`${finishedSteps.length} / ${totalSteps} finished`}
+      label={lesson.name}
+    >
+      {selected && (
+        <ul>
+          {lesson.steps.map(step => (
+            <Step
+              key={step.id}
+              href={`${href}/${step.id}`}
+              selected={meta.stepId === step.id}
+              finished={finishedSteps.some(({ id }) => id === step.id)}
+              title={step.name}
+              label={step.name}
+            />
+          ))}
+        </ul>
+      )}
+
+      <style jsx>{`
+        ul {
+          padding: 0;
+          padding-left: 1.5rem;
+          margin: 0;
+        }
+      `}</style>
+    </Step>
   );
 };
 
@@ -96,6 +133,7 @@ const Course = ({ course, meta }) => (
           key={lesson.id}
           course={course}
           lesson={lesson}
+          meta={meta}
           selected={meta.lessonId === lesson.id && meta.courseId === course.id}
         />
       ))}
@@ -222,6 +260,7 @@ const Navigation = ({ meta, isMobile }) => {
         ))}
         <style jsx>{`
           .navigation-area {
+            width: 264px;
             display: flex;
             flex-direction: column;
           }

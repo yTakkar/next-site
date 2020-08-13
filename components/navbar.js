@@ -40,7 +40,7 @@ function Navbar() {
 
         <div className="links">
           <Link href="/">
-            <a className="logo">
+            <a className="logo" title="Go to the homepage">
               <NextLogo />
             </a>
           </Link>

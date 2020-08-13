@@ -17,8 +17,8 @@ export const GenericLink = props => {
   return <ExternalLink {...props} />;
 };
 
-export const InternalLink = ({ href, as, children, error = false, underlineOnHover = true }) => (
-  <NativeLink href={href} as={as}>
+export const InternalLink = ({ href, children, error = false, underlineOnHover = true }) => (
+  <NativeLink href={href}>
     <a
       className={`
       ${underlineOnHover ? '' : 'no-underline'}

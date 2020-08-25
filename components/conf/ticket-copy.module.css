@@ -55,7 +55,8 @@
 
 .mobile-copy {
   margin-bottom: 10px;
-  display: flex;
+  /* display: flex; */
+  display: none;
 }
 
 .mobile-copy * {

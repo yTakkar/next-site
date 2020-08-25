@@ -79,7 +79,7 @@
 }
 
 .url {
-  max-width: calc(100vw - 36px);
+  width: calc(100vw - 36px);
   user-select: all;
   overflow-x: scroll;
   white-space: nowrap;
@@ -92,13 +92,13 @@
 
 @media (min-width: 436px) {
   .url {
-    max-width: 400px;
+    width: 400px;
   }
 }
 
 @media (min-width: 768px) {
   .url {
-    max-width: 400px;
+    width: 400px;
   }
   .mobile-copy {
     margin-bottom: 0;

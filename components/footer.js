@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { TWITTER_USER_NAME, ORG_NAME, PLATFORM_URL } from '../lib/constants';
 import Container from './container';
 import withPure from './hoc/pure';
-import Logo from './icons/platform-logotype-black';
+import Logo from './icons/platform-logotype';
 
 export default withPure(() => (
   <Container wide gray>
@@ -82,6 +82,11 @@ export default withPure(() => (
                 <a>Blog</a>
               </Link>
             </p>
+            {/* <p>
+              <Link href="/conf" prefetch={false}>
+                <a>Next.js Conf</a>
+              </Link>
+            </p> */}
           </div>
           <div>
             <h4 className="fw5">More</h4>
@@ -161,7 +166,7 @@ export default withPure(() => (
             target="_blank"
             aria-label={ORG_NAME}
           >
-            <Logo />
+            <Logo color="#000" />
           </a>
           <div>
             Copyright © {`${new Date().getFullYear()}`} {ORG_NAME}, Inc. All rights reserved.

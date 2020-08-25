@@ -42,6 +42,10 @@
   display: block;
 }
 
+.input-label.focused {
+  background-color: #33373c;
+}
+
 .input-label.error {
   background: red;
 }

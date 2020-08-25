@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import cn from 'classnames';
 import { SITE_URL } from '@lib/constants';
-import ClipboardJS from 'clipboard';
 import styleUtils from './utils.module.css';
 import IconCopy from './icon-copy';
 import styles from './ticket-copy.module.css';
@@ -13,19 +12,15 @@ type Props = {
 export default function TicketCopy({ username }: Props) {
   const [fadeOpacity, setFadeOpacity] = useState(1);
   const [scrolling, setScrolling] = useState(false);
+  const [copyEnabled, setCopyEnabled] = useState(false);
   const [copied, setCopied] = useState(false);
   const scrollRef = useRef<HTMLSpanElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const url = `${SITE_URL}/conf/tickets/${username}`;
   useEffect(() => {
-    let clipboard: ClipboardJS;
-    if (buttonRef.current) {
-      clipboard = new ClipboardJS(buttonRef.current);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      setCopyEnabled(true);
     }
-
-    return () => {
-      clipboard.destroy();
-    };
   }, []);
 
   const copiedText = (
@@ -42,13 +37,14 @@ export default function TicketCopy({ username }: Props) {
     <button
       type="button"
       className={styles['copy-button']}
-      data-clipboard-text={url}
       ref={buttonRef}
       onClick={() => {
-        setCopied(true);
-        setTimeout(() => {
-          setCopied(false);
-        }, 2000);
+        navigator.clipboard.writeText(url).then(() => {
+          setCopied(true);
+          setTimeout(() => {
+            setCopied(false);
+          }, 2000);
+        });
       }}
     >
       <IconCopy />
@@ -59,12 +55,20 @@ export default function TicketCopy({ username }: Props) {
     <div className={cn(styles.wrapper, styleUtils.appear)}>
       <div className={styles['label-wrapper']}>
         <div className={styles.label}>Your ticket URL:</div>
-        <div className={cn(styles['mobile-copy'])}>
+        <div
+          className={cn(styles['mobile-copy'], {
+            [styles['mobile-copy-disabled']]: !copyEnabled
+          })}
+        >
           {copiedText}
           {copyButton}
         </div>
       </div>
-      <div className={styles.field}>
+      <div
+        className={cn(styles.field, {
+          [styles['desktop-copy-disabled']]: !copyEnabled
+        })}
+      >
         <span
           className={styles.url}
           ref={scrollRef}
@@ -85,8 +89,17 @@ export default function TicketCopy({ username }: Props) {
         >
           {url}
         </span>
-        <span className={styles.fade} style={{ opacity: fadeOpacity }} />
-        <div className={styleUtils['hide-on-mobile']}>
+        <span
+          className={cn(styles.fade, {
+            [styles['desktop-copy-disabled']]: !copyEnabled
+          })}
+          style={{ opacity: fadeOpacity }}
+        />
+        <div
+          className={cn(styles['desktop-copy'], styleUtils['hide-on-mobile'], {
+            [styles['desktop-copy-disabled']]: !copyEnabled
+          })}
+        >
           {copiedText}
           {copyButton}
         </div>

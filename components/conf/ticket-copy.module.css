@@ -51,11 +51,17 @@
   .field {
     padding-right: 50px;
   }
+  .field.desktop-copy-disabled {
+    padding-right: 0px;
+  }
 }
 
 .mobile-copy {
   margin-bottom: 10px;
-  /* display: flex; */
+  display: flex;
+}
+
+.mobile-copy-disabled.mobile-copy-disabled {
   display: none;
 }
 
@@ -124,9 +130,16 @@
   pointer-events: none;
 }
 
+.desktop-copy.desktop-copy-disabled {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .fade {
     right: 50px;
+  }
+  .fade.desktop-copy-disabled {
+    right: 0px;
   }
 }
 

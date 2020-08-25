@@ -139,6 +139,7 @@
   border-color: #252729;
   color: #fff;
   justify-content: flex-start;
+  overflow: hidden;
 }
 
 .submit.default.generate-with-github:disabled path,

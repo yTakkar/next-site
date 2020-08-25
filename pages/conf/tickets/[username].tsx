@@ -1,6 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { SkipNavContent } from '@reach/skip-nav';
 import Error from 'next/error';
+import Head from 'next/head';
 import { SITE_URL, API_URL, TICKET_IMAGE_URL } from '@lib/constants';
 import Page from '@components/page';
 import SocialMeta from '@components/social-meta';
@@ -20,6 +21,10 @@ export default function TicketShare({ username, ticketNumber, name }: Props) {
 
   return (
     <Page title={title} hideHeader>
+      <Head>
+        <meta name="robots" content="noindex" />
+      </Head>
+
       <SocialMeta
         image={
           username

@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import Head from 'next/head';
 import VercelLogo from '@components/icons/platform-logotype';
 import { useEffect } from 'react';
 import styles from './layout.module.css';
@@ -22,7 +21,7 @@ function HostedByVercel({ linkEnabled }: { linkEnabled: boolean }) {
     <div className={styles['secondary-text']}>
       {linkEnabled ? (
         <a
-          href="https://vercel.com?utm_source=next-site&utm_medium=logo&utm_campaign=next-conf"
+          href="https://vercel.com/home?utm_source=next-site&utm_medium=logo&utm_campaign=next-conf"
           className={cn(styles['footer-link'], styles['footer-logo'])}
           target="_blank"
           rel="noopener noreferrer"
@@ -45,6 +44,7 @@ export default function Layout({ children, inner, confLogoLink }: Props) {
       document.body.style.background = '#fff';
     };
   }, []);
+  const linkEnabled = !!confLogoLink;
   return (
     <div className={styles.background}>
       <div className={styles.page}>
@@ -69,7 +69,7 @@ export default function Layout({ children, inner, confLogoLink }: Props) {
               [styleUtils['appear-second']]: !inner
             })}
           >
-            <HostedByVercel linkEnabled={!!confLogoLink} />
+            <HostedByVercel linkEnabled={linkEnabled} />
           </div>
         </header>
         <main className={styles.main}>
@@ -84,11 +84,24 @@ export default function Layout({ children, inner, confLogoLink }: Props) {
         >
           <div className={styles['footer-legal']}>
             <div className={styles['footer-hostedby']}>
-              <HostedByVercel linkEnabled={!!confLogoLink} />
+              <HostedByVercel linkEnabled={linkEnabled} />
               <div className={styles['footer-separator']} />
             </div>
             <div className={styles['footer-copyright']}>
-              Copyright © 2020 Vercel, Inc. All rights reserved.
+              Copyright © 2020{' '}
+              {linkEnabled ? (
+                <a
+                  href="https://vercel.com/home?utm_source=next-site&utm_medium=footer&utm_campaign=next-conf"
+                  className={cn(styles['footer-link'], styles['footer-logo'])}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Vercel
+                </a>
+              ) : (
+                <>Vercel</>
+              )}
+              , Inc. All rights reserved.
             </div>
             <div className={styles['footer-separator']} />
             <p className={styles['footer-paragraph']}>

@@ -6,6 +6,7 @@ import { SITE_URL, API_URL, TICKET_IMAGE_URL } from '@lib/constants';
 import Page from '@components/page';
 import SocialMeta from '@components/social-meta';
 import ConfContent from '@components/conf';
+import fetch from '@lib/server-fetch';
 
 type Props = {
   username: string | null;

@@ -1,6 +1,6 @@
 import { FONT_FAMILY_SANS } from './css-config';
 
-export default function GlobalStyles() {
+export default function GlobalStyles({ fontFamily = FONT_FAMILY_SANS }) {
   return (
     <>
       <style jsx global>
@@ -26,7 +26,7 @@ export default function GlobalStyles() {
             min-height: 100%;
             margin: 0;
             line-height: 1.65;
-            font-family: ${FONT_FAMILY_SANS};
+            font-family: ${fontFamily};
             font-size: 16px;
             font-weight: 400;
             min-width: 320px;

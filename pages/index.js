@@ -14,7 +14,7 @@ import SocialMeta from '../components/social-meta';
 
 export default function Index() {
   return (
-    <Page title={`Next.js by ${ORG_NAME} - The React Framework`}>
+    <Page title={`Next.js by ${ORG_NAME} - The React Framework`} hideHeaderBorder>
       <SocialMeta
         image="/static/twitter-cards/home.jpg"
         title={`Next.js by ${ORG_NAME} - The React Framework`}
@@ -22,7 +22,7 @@ export default function Index() {
         description={`Production grade React applications that scale. The world’s leading companies use Next.js by ${ORG_NAME} to build static and dynamic websites and web applications.`}
       />
       <SkipNavContent />
-      <Notification href="/conf" title="Next.js Conf" titleMobile="Next.js Conf">
+      <Notification href="/conf">
         <b>Next.js Conf</b> — An interactive online experience by the community, free for everyone.{' '}
         <span className="highlight">Register →</span>
       </Notification>

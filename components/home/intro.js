@@ -125,7 +125,7 @@ export default function Intro() {
           }
 
           .intro-container {
-            padding: 140px 0 30px;
+            padding: 120px 0 30px;
           }
         }
 

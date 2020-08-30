@@ -6,11 +6,12 @@ export default function Page({
   description = undefined,
   sticky = undefined,
   children,
-  hideHeader
+  hideHeader,
+  hideHeaderBorder = false
 }) {
   return (
     <PageContainer title={title} description={description}>
-      {!hideHeader && <Header sticky={sticky} />}
+      {!hideHeader && <Header sticky={sticky} hideHeaderBorder={hideHeaderBorder} />}
       {children}
     </PageContainer>
   );

@@ -1,4 +1,4 @@
-export default () => (
+const Netflix = () => (
   <svg
     width="112px"
     height="31px"
@@ -13,3 +13,5 @@ export default () => (
     />
   </svg>
 );
+
+export default Netflix;

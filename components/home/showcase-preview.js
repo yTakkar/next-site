@@ -1,8 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { useAmp } from 'next/amp';
 import { sortedByAlexa } from '../../showcase-manifest';
-import Image from './../image';
+import Image from '../image';
 
 // length should be odd numbers
 const DATA = sortedByAlexa.slice(0, 7);
@@ -10,7 +9,7 @@ const imgWidth = 330;
 const imgHeight = 185;
 const margin = 30;
 
-export default () => {
+export default function ShowcasePreview() {
   return (
     <>
       <div className="showcase-container tablet">
@@ -42,11 +41,16 @@ export default () => {
             right: 0;
             z-index: 2;
             bottom: -2rem;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 30%, #f6f6f6 85%);
+            background: linear-gradient(
+              to bottom,
+              rgba(250, 250, 250, 0) 30%,
+              rgba(250, 250, 250, 0.7) 90%,
+              rgba(250, 250, 250, 1) 100%
+            );
           }
           @media screen and (max-width: 640px) {
             .slide {
-              flex: 1 1 50%;
+              flex: 1 1 100%;
             }
           }
           @media screen and (min-width: 960px) {
@@ -163,8 +167,9 @@ export default () => {
                   className="slide"
                   style={{
                     zIndex: DATA.length + z,
-                    transform: `scale(${1 + Math.sin(z / 9)}) translate3d(${-Math.sin(offset) *
-                      30}px, ${top}px, 0)`
+                    transform: `scale(${1 + Math.sin(z / 9)}) translate3d(${
+                      -Math.sin(offset) * 30
+                    }px, ${top}px, 0)`
                   }}
                 >
                   <Image
@@ -189,4 +194,4 @@ export default () => {
       </div>
     </>
   );
-};
+}

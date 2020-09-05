@@ -1,4 +1,4 @@
-export default () => (
+const Auth0 = () => (
   <svg
     width="122px"
     height="44px"
@@ -24,3 +24,5 @@ export default () => (
     </g>
   </svg>
 );
+
+export default Auth0;

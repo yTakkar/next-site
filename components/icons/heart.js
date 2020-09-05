@@ -1,4 +1,4 @@
-export default ({ color }) => (
+const Heart = ({ color }) => (
   <svg
     width="14px"
     height="14px"
@@ -21,3 +21,5 @@ export default ({ color }) => (
     </g>
   </svg>
 );
+
+export default Heart;

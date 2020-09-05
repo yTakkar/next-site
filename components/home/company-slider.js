@@ -59,6 +59,9 @@ export default function CompanySlider() {
           <div>
             <Sesame />
           </div>
+          <div>
+            <Pling />
+          </div>
         </div>
       </BackgroundSlider>
       <div style={{ marginBottom: '1rem' }} />
@@ -97,9 +100,6 @@ export default function CompanySlider() {
             </div>
             <div>
               <Binance />
-            </div>
-            <div>
-              <Pling />
             </div>
           </div>
         )}

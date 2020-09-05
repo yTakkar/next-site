@@ -11,6 +11,7 @@ const Step = ({ selected, href, disabled, children }) => (
       disabled={disabled}
       invert={selected}
       light
+      wide
     >
       {children}
     </Button>
@@ -36,17 +37,17 @@ const StepBar = ({ steps, meta: { courseId, lessonId, stepId } }) => {
       {// hide when not start
       steps.length ? (
         <Step selected={!stepId} href={`/learn/${courseId}/${lessonId}`}>
-          Introduction
+          1
         </Step>
       ) : null}
-      {steps.map(step => (
+      {steps.map((step, index) => (
         <Step
           key={step.id}
           selected={step.id === stepId}
           href={`/learn/${courseId}/${lessonId}/${step.id}`}
           disabled={!getRecord({ courseId, lessonId, stepId: step.id }).visited}
         >
-          {step.points} {step.id === stepId && 'points'}
+          {index + 2}
         </Step>
       ))}
     </div>

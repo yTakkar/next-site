@@ -1,16 +1,50 @@
 import { components as docsComponents } from '../docs/documentation';
+import HeadingComponent from '../docs/heading';
 
-const H1 = ({ children }) => (
-  <h1 className="fw6">
-    {children}
+const H1 = ({ children, id }) => {
+  return (
+    <>
+      <HeadingComponent lean id={id}>
+        <h1 className="fw7">{children}</h1>
+      </HeadingComponent>
+      <style jsx>{`
+        text-align: center;
+        margin-top: 0;
+        font-size: 2rem;
+      `}</style>
+    </>
+  );
+};
 
-    <style jsx>{`
-      text-align: center;
-      margin-top: 0;
-      font-size: 2rem;
-    `}</style>
-  </h1>
-);
+const H2 = ({ children, id }) => {
+  return (
+    <>
+      <HeadingComponent lean id={id}>
+        <h2 className="fw7">{children}</h2>
+      </HeadingComponent>
+      <style jsx>{`
+        h2 {
+          margin-top: 2.5rem;
+        }
+      `}</style>
+    </>
+  );
+};
+
+const H3 = ({ children, id }) => {
+  return (
+    <>
+      <HeadingComponent lean id={id}>
+        <h3 className="fw7">{children}</h3>
+      </HeadingComponent>
+      <style jsx>{`
+        h3 {
+          margin-top: 2rem;
+        }
+      `}</style>
+    </>
+  );
+};
 
 const Ul = ({ children }) => (
   <ul>
@@ -74,7 +108,7 @@ const P = ({ children }) => {
       <style jsx>{`
         p {
           line-height: 1.8;
-          margin-bottom: 2rem;
+          margin-bottom: 1.5rem;
         }
       `}</style>
     </p>
@@ -97,6 +131,8 @@ const Hr = () => (
 export const components = {
   ...docsComponents,
   h1: H1,
+  h2: H2,
+  h3: H3,
   li: Li,
   ul: Ul,
   code: Code,

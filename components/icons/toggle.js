@@ -1,4 +1,4 @@
-export default () => (
+const Toggle = () => (
   <svg
     width="28px"
     height="12px"
@@ -18,3 +18,5 @@ export default () => (
     </g>
   </svg>
 );
+
+export default Toggle;

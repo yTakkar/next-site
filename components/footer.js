@@ -1,14 +1,11 @@
 import Link from 'next/link';
-
+import { TWITTER_USER_NAME, ORG_NAME, PLATFORM_URL } from '../lib/constants';
 import Container from './container';
 import withPure from './hoc/pure';
-
-import { links } from '../site-manifest';
-
-import ZEITLogo from './icons/zeit-white-full-logo';
+import Logo from './icons/platform-logotype';
 
 export default withPure(() => (
-  <Container wide dark>
+  <Container wide gray>
     <Container>
       <footer>
         <style jsx>
@@ -31,7 +28,7 @@ export default withPure(() => (
               color: inherit;
             }
             a:hover {
-              color: #efefef;
+              color: #111;
             }
             .copyright {
               margin-top: 3rem;
@@ -46,7 +43,7 @@ export default withPure(() => (
               margin-top: 0;
               margin-bottom: 0.25rem;
             }
-            @media screen and (max-width: 700px) {
+            @media screen and (max-width: 800px) {
               .grid {
                 grid-template-columns: 1fr 1fr;
               }
@@ -71,7 +68,7 @@ export default withPure(() => (
               <a href="/docs">Docs</a>
             </p>
             <p>
-              <Link href="/learn/basics/getting-started" prefetch={false}>
+              <Link href="/learn/basics/create-nextjs-app" prefetch={false}>
                 <a>Learn</a>
               </Link>
             </p>
@@ -85,41 +82,35 @@ export default withPure(() => (
                 <a>Blog</a>
               </Link>
             </p>
-          </div>
-          <div>
-            <h4 className="fw5">Features</h4>
             <p>
-              <a href="/features/server-side-rendering">SSR</a>
-            </p>
-            <p>
-              <a href="/features/static-exporting">Static Exporting</a>
-            </p>
-            <p>
-              <a href="/features/css-in-js">CSS-in-JS</a>
-            </p>
-            <p>
-              <a href="/features/progressive-web-apps">PWA</a>
+              <Link href="/conf" prefetch={false}>
+                <a>Next.js Conf</a>
+              </Link>
             </p>
           </div>
           <div>
             <h4 className="fw5">More</h4>
             <p>
-              <a href="https://github.com/zeit/next.js" rel="noopener noreferrer" target="_blank">
+              <a
+                href="https://vercel.com/contact/sales?utm_source=next-site&utm_medium=footer&utm_campaign=next-website"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Contact Sales
+              </a>
+            </p>
+            <p>
+              <a href="https://github.com/vercel/next.js" rel="noopener noreferrer" target="_blank">
                 GitHub
               </a>
             </p>
             <p>
               <a
-                href="https://github.com/zeit/next.js/releases"
+                href="https://github.com/vercel/next.js/releases"
                 rel="noopener noreferrer"
                 target="_blank"
               >
                 Releases
-              </a>
-            </p>
-            <p>
-              <a href={links.spectrum} rel="noopener noreferrer" target="_blank">
-                Spectrum
               </a>
             </p>
             <p>
@@ -129,29 +120,57 @@ export default withPure(() => (
             </p>
           </div>
           <div>
-            <h4 className="fw5">About ZEIT</h4>
+            <h4 className="fw5">About {ORG_NAME}</h4>
             <p>
-              <a href="https://zeit.co/oss" rel="noopener noreferrer" target="_blank">
+              <a
+                href={`${PLATFORM_URL}/oss?utm_source=next-site&utm_medium=footer&utm_campaign=next-website`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 Open Source Software
               </a>
             </p>
             <p>
-              <a href="https://github.com/zeit" rel="noopener noreferrer" target="_blank">
+              <a href="https://github.com/vercel" rel="noopener noreferrer" target="_blank">
                 GitHub
               </a>
             </p>
             <p>
-              <a href="https://twitter.com/zeithq" rel="noopener noreferrer" target="_blank">
+              <a
+                href={`https://twitter.com/${TWITTER_USER_NAME}`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
                 Twitter
+              </a>
+            </p>
+          </div>
+          <div>
+            <h4 className="fw5">Legal</h4>
+            <p>
+              <a
+                href={`${PLATFORM_URL}/legal/privacy-policy`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Privacy Policy
               </a>
             </p>
           </div>
         </div>
         <div className="copyright f6">
-          <a href="https://zeit.co" rel="noopener noreferrer" target="_blank" aria-label="ZEIT">
-            <ZEITLogo />
+          <a
+            href={`${PLATFORM_URL}/home?utm_source=next-site&utm_medium=footer&utm_campaign=next-website`}
+            title="Go to the Vercel website"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label={ORG_NAME}
+          >
+            <Logo color="#000" />
           </a>
-          <div> Copyright © 2019 ZEIT, Inc. All rights reserved.</div>
+          <div>
+            Copyright © {`${new Date().getFullYear()}`} {ORG_NAME}, Inc. All rights reserved.
+          </div>
         </div>
       </footer>
     </Container>

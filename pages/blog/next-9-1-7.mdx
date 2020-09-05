@@ -3,8 +3,9 @@ import Image from '../../components/image'
 import { meta } from '../../blog/next-9-1-7-preview.mdx'
 import { TerminalInput } from '../../components/text/terminal'
 import Caption from '../../components/text/caption'
-
-export const config = { amp: true }
+import PlatformLink from '../../components/name/platform-link'
+import PlatformText from '../../components/name/platform-text'
+import PlatformCliLink from '../../components/name/platform-cli-link'
 
 export default withPost({ ...meta })
 
@@ -12,13 +13,13 @@ export default withPost({ ...meta })
 These two releases added very powerful new features to Next.js, without increasing our baseline client runtime size.
 
 Since then, we've focused heavily on refining and improving the framework as a whole:
-[9.1.1](https://github.com/zeit/next.js/releases/tag/v9.1.1),
-[9.1.2](https://github.com/zeit/next.js/releases/tag/v9.1.2),
-[9.1.3](https://github.com/zeit/next.js/releases/tag/v9.1.3),
-[9.1.4](https://github.com/zeit/next.js/releases/tag/v9.1.4),
-[9.1.5](https://github.com/zeit/next.js/releases/tag/v9.1.5),
-[9.1.6](https://github.com/zeit/next.js/releases/tag/v9.1.6),
-and [9.1.7](https://github.com/zeit/next.js/releases/tag/v9.1.7).
+[9.1.1](https://github.com/vercel/next.js/releases/tag/v9.1.1),
+[9.1.2](https://github.com/vercel/next.js/releases/tag/v9.1.2),
+[9.1.3](https://github.com/vercel/next.js/releases/tag/v9.1.3),
+[9.1.4](https://github.com/vercel/next.js/releases/tag/v9.1.4),
+[9.1.5](https://github.com/vercel/next.js/releases/tag/v9.1.5),
+[9.1.6](https://github.com/vercel/next.js/releases/tag/v9.1.6),
+and [9.1.7](https://github.com/vercel/next.js/releases/tag/v9.1.7).
 Let's dive into what these releases have improved!
 
 - **[3% – 8%+ Smaller Client-Side JavaScript Size](#3--8-smaller-client-side-javascript-size)**: We've optimized application output even futher, shaving 7.5kB off hello world applications. More complex applications will show a savings up to 8% or more.
@@ -26,7 +27,7 @@ Let's dive into what these releases have improved!
 - **[New Built-In Polyfills: fetch(), URL, and Object.assign](#new-built-in-polyfills-fetch-url-and-objectassign)**: Applications can leverage the `fetch()` API, `URL`, and `Object.assign` in legacy browsers without compatibility concerns.
 - **[Optimized Page Loading: Better FCP and TTI](#optimized-page-loading-better-fcp-and-tti)**: We've collaborated closely with the Google Chrome team to maximize page loading performance. This results in a much better end-user experience.
 - **[Support for the Latest JavaScript Features](#support-for-the-latest-javascript-features)**: We're committed to ensuring you can always use the latest JavaScript features, including [Optional Chaining](https://github.com/tc39/proposal-optional-chaining), [Nullish Coalescing](https://github.com/tc39/proposal-nullish-coalescing), and other stable ES2020 features.
-- **[Zero-Config Deployment Support for `next export` Applications](#zero-config-deployment-support-for-next-export-applications)**: `next export` powered applications can now be deployed to [ZEIT Now](https://zeit.co/home) with zero configuration.
+- **[Zero-Config Deployment Support for `next export` Applications](#zero-config-deployment-support-for-next-export-applications)**: `next export` powered applications can now be deployed to <PlatformLink /> with zero configuration.
 - **[React Strict Mode Compliance and Opt-In](#react-strict-mode-compliance-and-opt-in)**: All of Next.js' client-side runtime is now compatible with React's Strict Mode. We've also added a configuration option to enable this mode for your whole application.
 - **[Automated Testing against Nightly React Builds](#automated-testing-against-nightly-react-builds)**: Next.js is automatically tested against [React's next channel](https://reactjs.org/blog/2019/10/22/react-release-channels.html), ensuring compatibility with future releases.
 
@@ -91,9 +92,9 @@ characteristics.
 
 The new output classifies each page as one of the following:
 
-- **Server-Side Rendered (Server)**: the page server-side renders at runtime, meaning it uses `getInitialProps` or [`getServerProps` (proposal)](https://github.com/zeit/next.js/issues/9524)
+- **Server-Side Rendered (Server)**: the page server-side renders at runtime, meaning it uses `getInitialProps` or [`getServerProps` (proposal)](https://github.com/vercel/next.js/issues/9524)
 - **Automatically Statically Optimized (Static)**: the page was rendered as static HTML at build time, and will be served as a static file (uses no initial props)
-- **Statically Generated Using Computed Data (SSG)**: the page was generated as static HTML/JSON at build time, and will be served as static files (uses [`getStaticProps` (proposal)](https://github.com/zeit/next.js/issues/9524))
+- **Statically Generated Using Computed Data (SSG)**: the page was generated as static HTML/JSON at build time, and will be served as static files (uses [`getStaticProps` (proposal)](https://github.com/vercel/next.js/issues/9524))
 
 Furthermore, the new output displays the Gzipped size of each page — these
 sizes exclude files that are shared by all pages (displayed separately).
@@ -222,10 +223,10 @@ In the future, we plan to output even more optimized bundles via automatic
 
 ### Zero-Config Deployment Support for `next export` Applications
 
-Next.js' `next export` command now works with [ZEIT Now's Zero Configuration](https://zeit.co/zero-config) out-of-the-box.
+Next.js' `next export` command now works with <PlatformText />’s <PlatformLink href="/blog/zero-config">Zero Configuration</PlatformLink> out-of-the-box.
 Prior to this change, users who leveraged `next export` were required to create a custom `now.json`.
 
-Leveraging Next.js' export-mode on [ZEIT Now](https://zeit.co/home) is as simple as having the following `build` script in `package.json`:
+Leveraging Next.js' export-mode on <PlatformLink /> is as simple as having the following `build` script in `package.json`:
 
 ```json
 {
@@ -235,8 +236,8 @@ Leveraging Next.js' export-mode on [ZEIT Now](https://zeit.co/home) is as simple
 }
 ```
 
-Then, you can deploy your Next.js application to [ZEIT Now](https://zeit.co/home) with **only a single command**.<br/>
-If you have not yet installed Now, you can do so by [installing Now CLI](https://zeit.co/download).
+Then, you can deploy your Next.js application to <PlatformLink /> with **only a single command**.<br/>
+If you have not yet installed <PlatformLink />, you can do so by installing <PlatformCliLink />.
 
 <TerminalInput prefix>{`now`}</TerminalInput>
 
@@ -269,8 +270,8 @@ Because of this, we suggest you look into it sooner rather than later!
 
 ### Automated Testing against Nightly React Builds
 
-In [close collaboration](https://github.com/zeit/next.js/pull/9165) with the React Core Team, we're now
-[testing](https://github.com/zeit/next.js/pull/9151) Next.js against React's next channel every 12 hours.
+In [close collaboration](https://github.com/vercel/next.js/pull/9165) with the React Core Team, we're now
+[testing](https://github.com/vercel/next.js/pull/9151) Next.js against React's next channel every 12 hours.
 
 These tests help ensure we're prepared and compatible with the future releases of React.
 Compatibility is something Next.js takes very seriously, and we're committed to the long-term
@@ -287,16 +288,13 @@ Furthermore, the Next.js community is still expanding:
 
 - We have had over **865** independent contributors.
 - On GitHub, the project has been starred over **43,700** times.
-- The [examples directory](https://github.com/zeit/next.js/tree/canary/examples) has over **220 examples.**
+- The [examples directory](https://github.com/vercel/next.js/tree/canary/examples) has over **220 examples.**
 
-The Next.js community on [spectrum.chat/next-js](https://spectrum.chat/next-js) now has over **13,600** members. [Join us](https://spectrum.chat/next-js)!
+The Next.js community now has over **13,600** members. [Join us!](https://github.com/vercel/next.js/discussions)
 
 We are thankful to our community and all the external feedback and contributions that helped shape this release.
 
 <style jsx>{`
-  :global(.twitter-tweet) {
-    margin: 0 auto;
-  }
   table {
     margin: 0 auto 30px;
   }

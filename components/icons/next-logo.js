@@ -1,4 +1,4 @@
-export default ({ color = '#000' }) => (
+const NextLogo = ({ color = '#000' }) => (
   <svg
     width="82"
     height="50"
@@ -13,3 +13,5 @@ export default ({ color = '#000' }) => (
     />
   </svg>
 );
+
+export default NextLogo;

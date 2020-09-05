@@ -1,4 +1,4 @@
-export default ({ color = '#fff' } = {}) => (
+const ArrowPrevious = ({ color = '#fff' } = {}) => (
   <svg
     width="13px"
     height="23px"
@@ -19,3 +19,5 @@ export default ({ color = '#fff' } = {}) => (
     </g>
   </svg>
 );
+
+export default ArrowPrevious;

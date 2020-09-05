@@ -1,24 +1,22 @@
 import React from 'react'
 import { SkipNavContent } from '@reach/skip-nav'
 
-import Header from '../../components/header'
 import Footer from '../../components/footer'
-import Navbar from '../../components/navbar'
 import Screen from '../../components/screen'
 import Page from '../../components/page'
 
 import Container from '../../components/container'
-import SectionHeader from '../../components/section-header'
 
 import Preview from '../../components/blog/preview'
 import { components } from '../../components/blog/post-components'
+import { ORG_NAME } from '../../lib/constants'
 
 function importAll(r) {
   return r.keys().map(r)
 }
 
 const previewItems = importAll(
-  require.context('../../blog', false, /\-preview\.mdx$/)
+  require.context('../../blog', false, /^\.\/(.*)-preview\.mdx$/)
 )
 
 function dateSortDesc(a, b) {
@@ -32,6 +30,10 @@ function dateSortDesc(a, b) {
 const Li = components.li
 
 const getLi = path => ({ children }) => {
+  if (!children?.props?.props) {
+    return <Li>{children}</Li>
+  }
+
   const { props } = children.props
   const { href } = props
   const isHash = href && href.startsWith('#')
@@ -54,24 +56,36 @@ const items = previewItems
     )
   })
 
-export default () => (
-  <>
-    <Header height={{ desktop: 64, mobile: 64 + 32 }} shadow defaultActive>
-      <Navbar />
-    </Header>
-    <Page title="Blog | Next.js">
-      <Screen offset={64 + 400}>
-        <Container padding wide>
-          <SectionHeader title="Blog" />
-          <SkipNavContent />
-          {items}
-        </Container>
-      </Screen>
-      <Footer />
-    </Page>
-  </>
+const Index = () => (
+  <Page title="Blog | Next.js">
+    <Screen offset={64 + 400}>
+      <Container wide>
+        <header>
+          <h2 className="fw7">Blog</h2>
+          <h3 className="f-reset subtitle fw4">
+            The latest news about Next.js <br className="display-mobile" />
+            from the {ORG_NAME} team
+          </h3>
+        </header>
+        <SkipNavContent />
+        {items}
+      </Container>
+    </Screen>
+    <Footer />
+    <style jsx>
+      {`
+        h2 {
+          font-size: 2.5rem;
+          letter-spacing: -0.05em;
+          margin-bottom: 1rem;
+        }
+        header {
+          text-align: center;
+          margin: 2.25rem 0 3rem;
+        }
+      `}
+    </style>
+  </Page>
 )
 
-export const config = {
-  amp: true
-}
+export default Index

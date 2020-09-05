@@ -1,4 +1,4 @@
-export default () => (
+const Pling = () => (
   <svg width="80" height="42" xmlns="http://www.w3.org/2000/svg">
     <g>
       <polygon points="26.5 28.62 26.5 0 21.29 0 21.29 28.62 26.5 28.62 26.5 28.62" />
@@ -10,3 +10,5 @@ export default () => (
     </g>
   </svg>
 );
+
+export default Pling;

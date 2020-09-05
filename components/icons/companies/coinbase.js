@@ -1,4 +1,4 @@
-export default () => (
+const Coinbase = () => (
   <svg height="36" viewBox="0 0 122 28">
     <path
       fillRule="evenodd"
@@ -6,3 +6,5 @@ export default () => (
     />
   </svg>
 );
+
+export default Coinbase;

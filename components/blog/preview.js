@@ -1,11 +1,18 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Head from 'next/head';
 import formatDate from 'date-fns/format';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import cn from 'classnames';
 
 import Container from '../container';
 import Button from '../button';
 
-export default ({ type, thumbnail, detail, link, title, date, alt, children }) => {
+const Preview = ({ type, thumbnail, detail, link, title, date, alt, children }) => {
+  const [dateDistance, setDateDistance] = useState('');
+  useEffect(() => {
+    setDateDistance(distanceInWordsToNow(date));
+  }, [date]);
+
   return (
     <div className="post-preview">
       <style jsx>{`
@@ -31,9 +38,11 @@ export default ({ type, thumbnail, detail, link, title, date, alt, children }) =
         .date {
           margin-top: 0.4rem;
           margin-bottom: 1rem;
+          opacity: 0;
+          transition: opacity 0.2s ease;
         }
-        amp-timeago {
-          display: inline;
+        .date-visible {
+          opacity: 1;
         }
         .icon {
           line-height: 0;
@@ -67,6 +76,7 @@ export default ({ type, thumbnail, detail, link, title, date, alt, children }) =
           }
           .preview-layout {
             flex-direction: column-reverse;
+            align-items: flex-start;
           }
           .thumbnail {
             width: 100%;
@@ -78,29 +88,21 @@ export default ({ type, thumbnail, detail, link, title, date, alt, children }) =
           }
         }
       `}</style>
-      <Head>
-        <script
-          async
-          key="amp-timeago"
-          custom-element="amp-timeago"
-          src="https://cdn.ampproject.org/v0/amp-timeago-0.1.js"
-        />
-      </Head>
       <Container small>
         <div className="preview-layout">
           <div className="preview-content">
             {type && <span className="post-type mute fw6">{type}</span>}
-            <h3 className="f2 fw6 post-title">
+            <h3 className="f2 fw7 post-title">
               <Link href={link}>
                 <a>{title}</a>
               </Link>
             </h3>
-            <p className="f6 date mute">
-              {formatDate(date, 'dddd, MMMM Do YYYY')} (
-              <amp-timeago width="0" height="15" datetime={date} layout="responsive">
-                .
-              </amp-timeago>
-              )
+            <p
+              className={cn('f5 date mute', {
+                'date-visible': dateDistance
+              })}
+            >
+              {formatDate(date, 'dddd, MMMM Do YYYY')} ({dateDistance} ago)
             </p>
             {detail && <section className="description f5">{children}</section>}
             <div className="read-more">
@@ -117,3 +119,5 @@ export default ({ type, thumbnail, detail, link, title, date, alt, children }) =
     </div>
   );
 };
+
+export default Preview;

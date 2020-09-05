@@ -1,8 +1,29 @@
-const categories = ['All', 'Finance', 'News', 'E-commerce', 'Creative', 'Entertainment'];
-const categoriesShort = ['All', 'Finance', 'News', 'E-comm', 'Creative', 'Entertainment'];
+import { PLATFORM_NAME, PLATFORM_LOWERCASE, PLATFORM_URL } from './lib/constants';
+
+export const categories = [
+  'All',
+  'Finance',
+  'News',
+  'E-commerce',
+  'Travel',
+  'Creative',
+  'Entertainment',
+  'Marketing'
+];
+
+export const categoriesShort = [
+  'All',
+  'Finance',
+  'News',
+  'E-comm',
+  'Travel',
+  'Creative',
+  'Entertainment',
+  'Marketing'
+];
 
 // src is added to the sites that don't look good with a screenshot from https://microlink.io/screenshot
-const mapping = {
+export const mapping = {
   typeform: {
     title: 'Typeform',
     link: 'https://www.typeform.com',
@@ -82,7 +103,7 @@ const mapping = {
     srcFallback: true,
     alexa: 353790,
     internalUrl: 'ticketswap',
-    tags: ['e-commerce']
+    tags: ['e-commerce', 'travel']
   },
   ign: {
     title: 'IGN',
@@ -153,7 +174,7 @@ const mapping = {
     srcFallback: true,
     alexa: 2797,
     internalUrl: 'theculturetrip',
-    tags: ['entertainment']
+    tags: ['travel', 'entertainment']
   },
   supervielle: {
     title: 'Supervielle',
@@ -169,7 +190,7 @@ const mapping = {
     link: 'https://m.twitch.tv',
     src: '/static/images/showcases/twitch.jpg',
     srcFallback: true,
-    alexa: 36,
+    alexa: 32,
     highlighted: 1,
     internalUrl: 'twitch',
     tags: ['entertainment']
@@ -236,7 +257,7 @@ const mapping = {
     srcFallback: true,
     alexa: 2123,
     internalUrl: 'trip',
-    tags: ['e-commerce']
+    tags: ['travel', 'e-commerce']
   },
   colorbox: {
     title: 'ColorBox',
@@ -306,7 +327,8 @@ const mapping = {
     src: '/static/images/showcases/ticketmaster-1.jpg',
     alexa: 773,
     internalUrl: 'ticketmaster',
-    tags: ['e-commerce']
+    highlighted: 2,
+    tags: ['e-commerce', 'entertainment', 'travel']
   },
   verge: {
     title: 'Verge',
@@ -347,7 +369,7 @@ const mapping = {
   },
   worldpopulationreview: {
     title: 'World Population Review',
-    link: 'http://worldpopulationreview.com',
+    link: 'https://worldpopulationreview.com',
     src: '/static/images/showcases/worldpopulationreview.jpg',
     srcFallback: true,
     alexa: 6881,
@@ -502,9 +524,9 @@ const mapping = {
     title: 'Tencent News',
     link: 'https://xw.qq.com',
     src: '/static/images/showcases/tencentnews.jpg',
-    alexa: 6,
+    alexa: 5,
+    factor: 0.01,
     internalUrl: 'tencent-news',
-    highlighted: 2,
     tags: ['news']
   },
   jet: {
@@ -550,17 +572,8 @@ const mapping = {
     link: 'https://www.nike.com/help',
     src: '/static/images/showcases/nike.jpg',
     srcFallback: true,
-    alexa: 480,
+    alexa: 364,
     internalUrl: 'nike'
-  },
-  'boosted-boards': {
-    title: 'Boosted',
-    link: 'http://boostedboards.com',
-    src: '/static/images/showcases/boosted.jpg',
-    srcFallback: true,
-    alexa: 40796,
-    internalUrl: 'boosted-boards',
-    tags: ['e-commerce']
   },
   eaze: {
     title: 'Eaze',
@@ -632,13 +645,13 @@ const mapping = {
     internalUrl: 'hyper',
     tags: ['dev']
   },
-  zeit: {
-    title: 'ZEIT',
-    link: 'https://zeit.co',
+  [PLATFORM_LOWERCASE]: {
+    title: PLATFORM_NAME,
+    link: `${PLATFORM_URL}/home?utm_source=next-site&utm_medium=showcase&utm_campaign=next-website`,
     src: '/static/images/showcases/showcases-09.jpg',
     srcFallback: true,
     alexa: 34585,
-    internalUrl: 'zeit',
+    internalUrl: PLATFORM_LOWERCASE,
     tags: ['dev', 'creative']
   },
   avocode: {
@@ -701,6 +714,7 @@ const mapping = {
     srcFallback: true,
     alexa: 234,
     internalUrl: 'hulu',
+    highlighted: 1,
     tags: ['entertainment']
   },
   'design-better': {
@@ -837,15 +851,6 @@ const mapping = {
     internalUrl: 'shakeshack',
     tags: ['e-commerce']
   },
-  coop: {
-    title: 'Co-op Shop',
-    link: 'https://shop.coop.co.uk',
-    src: '/static/images/showcases/coop.png',
-    srcFallback: true,
-    alexa: 77995,
-    internalUrl: 'coop',
-    tags: ['e-commerce']
-  },
   mprnews: {
     title: 'MPR News',
     link: 'https://www.mprnews.org',
@@ -921,8 +926,10 @@ const mapping = {
     link: 'https://www.tiktok.com/en',
     src: '/static/images/showcases/tiktok.jpg',
     srcFallback: true,
-    alexa: 1163,
+    alexa: 217,
+    factor: 70,
     internalUrl: 'tiktok',
+    highlighted: 2,
     tags: ['entertainment', 'creative']
   },
   hilton: {
@@ -932,7 +939,7 @@ const mapping = {
     srcFallback: true,
     alexa: 1220,
     internalUrl: 'hilton',
-    tags: ['e-commerce']
+    tags: ['travel', 'e-commerce']
   },
   ftd: {
     title: 'FTD',
@@ -963,11 +970,6 @@ const mapping = {
   }
 };
 
-const sortedByAlexa = Object.values(mapping).sort((a, b) => a.alexa - b.alexa);
+const calcScore = ({ alexa, factor = 1 }) => alexa / factor;
 
-module.exports = {
-  categories,
-  categoriesShort,
-  mapping,
-  sortedByAlexa
-};
+export const sortedByAlexa = Object.values(mapping).sort((a, b) => calcScore(a) - calcScore(b));

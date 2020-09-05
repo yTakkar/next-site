@@ -1,11 +1,5 @@
-export default () => (
-  <svg
-    width="100"
-    height="45"
-    viewBox="0 0 75 32"
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+const Kap = () => (
+  <svg width="100" height="45" viewBox="0 0 75 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <g
       stroke="none"
       strokeWidth="1"
@@ -26,3 +20,5 @@ export default () => (
     </g>
   </svg>
 );
+
+export default Kap;

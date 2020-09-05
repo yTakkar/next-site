@@ -42,6 +42,8 @@ class Image extends Component {
       oversize = true,
       float,
       lazy,
+      shadow,
+      style,
       ...rest
     } = this.props;
 
@@ -55,8 +57,8 @@ class Image extends Component {
             float: float && width < 520
           })}
         >
-          <div className="container" style={{ width }}>
-            <div style={isAmp ? undefined : { paddingBottom: aspectRatio }}>
+          <div className="container">
+            <div style={isAmp ? undefined : { paddingBottom: aspectRatio, ...style }}>
               {isAmp ? (
                 videoSrc || video ? (
                   <>
@@ -114,7 +116,13 @@ class Image extends Component {
               }
               .container {
                 margin: 0 auto;
+                ${width ? `width: ${width}px;` : ''}
                 max-width: 100%;
+              }
+              @media screen and (max-width: 320px) {
+                .container {
+                  width: 100%;
+                }
               }
               div {
                 transform: translate3d(0, 0, 0); /* Work around for Chrome bug */
@@ -133,6 +141,7 @@ class Image extends Component {
                       width: 100%;
                       `
                 };
+                ${shadow ? 'box-shadow: 0 8px 30px rgba(0,0,0,0.12)' : ''}
               }
               figcaption {
                 color: #999;
@@ -166,7 +175,9 @@ export const Video = props => {
   return <Image {...props} video isAmp={isAmp} />;
 };
 
-export default props => {
+const ImageComponent = props => {
   const isAmp = useAmp();
   return <Image {...props} isAmp={isAmp} />;
 };
+
+export default ImageComponent;

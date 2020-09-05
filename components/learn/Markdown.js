@@ -7,7 +7,7 @@ const A = ({ children, ...props }) => (
   </a>
 );
 
-const H2 = ({ children }) => (
+export const H2 = ({ children }) => (
   <h2>
     {children}
     <style jsx>{`
@@ -17,6 +17,18 @@ const H2 = ({ children }) => (
       }
     `}</style>
   </h2>
+);
+
+const H3 = ({ children }) => (
+  <h3>
+    {children}
+    <style jsx>{`
+      h3 {
+        margin-top: 2rem;
+        font-size: 1.125rem;
+      }
+    `}</style>
+  </h3>
 );
 
 const Hr = () => (
@@ -52,8 +64,11 @@ const Blockquote = ({ children }) => (
         padding: 1rem 1.25rem;
         background: #f7f7f7;
       }
-      blockquote p {
-        margin: 0;
+      blockquote :global(p:first-child) {
+        margin-top: 0;
+      }
+      blockquote :global(p:last-child) {
+        margin-bottom: 0;
       }
     `}</style>
   </blockquote>
@@ -80,8 +95,19 @@ const Code = ({ children }) => (
       pre code::before {
         content: '';
       }
-      pre code::after {
-        content: '';
+      /* Allow selecting all text for easy copy-pasting.
+         Right now, only enable it for CSS / Markdown because
+         for JS code, you might not want to copy
+         all the lines in a snippet.
+
+         Workaround: For shell scripts,
+         - Use "shell" for one-liners to allow users to copy easily
+         - Use "bash" for multi-liners so they can select each line
+         */
+      :global(.language-css) pre,
+      :global(.language-shell) pre,
+      :global(.language-md) pre {
+        user-select: all;
       }
     `}</style>
   </pre>
@@ -93,7 +119,7 @@ const InlineCode = ({ children }) => (
     <style jsx>{`
       code {
         color: rgb(212, 0, 255);
-        font-size: 14px;
+        font-size: 0.875em;
         white-space: pre-wrap;
       }
       code::before {
@@ -101,6 +127,10 @@ const InlineCode = ({ children }) => (
       }
       code::after {
         content: '\`';
+      }
+
+      :global(a) code {
+        color: inherit;
       }
     `}</style>
   </code>
@@ -111,6 +141,7 @@ const components = {
   blockquote: Blockquote,
   code: Code,
   h2: H2,
+  h3: H3,
   img: Img,
   hr: Hr,
   inlineCode: InlineCode

@@ -1,4 +1,4 @@
-export default ({ color }) => (
+const ArrowLeft = ({ color }) => (
   <svg viewBox="0 0 24 24" width="24" height="24">
     <g fill={color || '#111111'}>
       <path
@@ -8,3 +8,5 @@ export default ({ color }) => (
     </g>
   </svg>
 );
+
+export default ArrowLeft;

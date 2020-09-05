@@ -1,51 +1,110 @@
-import { memo } from 'react';
-import { GITHUB_URL, REPO_NAME, REPO_BRANCH } from '../../lib/github-constants';
-import Notification from './notification';
-import Feedback from './feedback';
+import { memo, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { getSlug, removeFromLast, addTagToSlug } from '../../lib/docs/utils';
+import { GITHUB_URL, REPO_NAME } from '../../lib/github/constants';
+import addRouterEvents from '../../lib/add-router-events';
+import FooterFeedback from '../footer-feedback';
+import Button from '../button';
+import ArrowIcon from '../arrow-icon';
+import RightArrow from '../icons/arrow-right';
+import LeftArrow from '../icons/arrow-left';
 
 function areEqual(prevProps, props) {
-  return prevProps.path === props.path;
+  return prevProps.route.path === props.route.path;
 }
 
-function DocsPage({ path, html }) {
-  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/${REPO_BRANCH}${path}`;
+function DocsPage({ route, html, prevRoute, nextRoute }) {
+  const router = useRouter();
+  const { tag, slug } = getSlug(router.query);
+  const editUrl = `${GITHUB_URL}/${REPO_NAME}/edit/canary${route.path}`;
+
+  useEffect(() => {
+    const listeners = [];
+
+    document.querySelectorAll('.docs-content a.relative').forEach(node => {
+      const nodeHref = node.getAttribute('href');
+      // Exclude paths like #setup and hashes that have the same current path
+      if (nodeHref && nodeHref[0] !== '#' && !nodeHref.startsWith(slug)) {
+        if (nodeHref.startsWith('/docs')) {
+          // Handle relative documentation paths
+          const href = addTagToSlug(nodeHref, tag);
+
+          router.prefetch(href);
+          listeners.push(addRouterEvents(node, router, { href }));
+        } else {
+          // Handle any other relative path
+          router.prefetch(nodeHref);
+          listeners.push(addRouterEvents(node, router, { href: nodeHref }));
+        }
+      }
+    });
+
+    return () => {
+      listeners.forEach(cleanUpListener => cleanUpListener());
+    };
+  }, [slug]);
 
   return (
     <div className="docs">
-      <Notification>
-        <strong>Note:</strong> You are viewing the new Next.js documentation. The old docs are still
-        available <a href="/docs/old">here</a>.
-      </Notification>
       {/* eslint-disable-next-line */}
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="docs-content" dangerouslySetInnerHTML={{ __html: html }} />
+
+      <div className="page-nav">
+        {prevRoute ? (
+          <Button href={addTagToSlug(removeFromLast(prevRoute.path, '.'), tag)}>
+            <ArrowIcon left flex>
+              <LeftArrow color="#0070f3" />
+            </ArrowIcon>
+            {prevRoute.title}
+          </Button>
+        ) : (
+          <span />
+        )}
+        {nextRoute && (
+          <Button href={addTagToSlug(removeFromLast(nextRoute.path, '.'), tag)}>
+            {nextRoute.title}
+            <ArrowIcon right flex>
+              <RightArrow color="#0070f3" />
+            </ArrowIcon>
+          </Button>
+        )}
+      </div>
+
       <hr />
-      <Feedback />
+
+      <FooterFeedback />
+
       <footer>
-        <a href={editUrl} target="_blank" rel="noopener noreferrer">
-          Edit this page on GitHub
-        </a>
+        {tag ? (
+          <Link href={slug}>
+            <a>Go to the live version of this page</a>
+          </Link>
+        ) : (
+          <a href={editUrl} target="_blank" rel="noopener noreferrer">
+            Edit this page on GitHub
+          </a>
+        )}
       </footer>
+
       <style jsx>{`
         .docs {
-          max-width: calc(100% - 300px); /* Exclude size of the sidebar */
-          margin-left: calc(300px + 1rem); /* Fixed sidebar width + margin */
+          /* 300px is the sidebar width and its margin */
+          min-width: calc(100% - 300px - 1rem);
         }
-        @media screen and (max-width: 950px) {
-          .docs {
-            max-width: 100%;
-            margin: 0;
-          }
-        }
-        hr {
+        .page-nav {
+          display: flex;
+          justify-content: space-between;
           margin-top: 3rem;
         }
         footer {
           display: flex;
           font-size: 0.875rem;
           justify-content: flex-end;
-          border-top: 1px solid #f3f3f3;
-          margin-top: 2.5rem;
-          padding: 1.5rem 0;
+          border-top: 1px solid #eaeaea;
+          padding: 1.25rem 0;
+          margin-top: 2rem;
+          margin-bottom: 5rem;
         }
       `}</style>
       <style jsx global>{`
@@ -53,12 +112,16 @@ function DocsPage({ path, html }) {
         .docs h1 {
           font-size: 3rem;
           font-weight: 700;
+          line-height: 1.35;
+          margin-top: 0.75rem;
         }
         .docs h2 {
           font-size: 2rem;
+          line-height: 1.5;
         }
         .docs h3 {
           font-size: 1.5rem;
+          line-height: 1.6;
         }
         .docs h4 {
           font-size: 1.2rem;
@@ -172,11 +235,8 @@ function DocsPage({ path, html }) {
           background: #fafafa;
           border: 1px solid #eaeaea;
           border-radius: 3px;
-          padding: 1rem 1.25rem;
+          padding: 0 1.25rem;
           margin: 1.5rem 0;
-        }
-        .docs blockquote p {
-          margin: 0;
         }
 
         /* Card */
@@ -231,7 +291,7 @@ function DocsPage({ path, html }) {
         .docs li {
           margin-bottom: 0.625rem;
         }
-        ul :global(li:before) {
+        .docs ul li:before {
           content: '-';
           color: #999999;
           position: absolute;

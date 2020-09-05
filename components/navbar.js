@@ -1,265 +1,64 @@
-import { useEffect, useState } from 'react';
+import { memo, useContext } from 'react';
 import Link from 'next/link';
-import { withRouter } from 'next/router';
-import classNames from 'classnames';
+import { useRouter } from 'next/router';
+import { useAmp } from 'next/amp';
+import cn from 'classnames';
 import { SkipNavLink } from '@reach/skip-nav';
-
+import RainbowButton from './rainbow-button';
 import NextLogo from './logo';
 import Container from './container';
-import Popover from './popover';
-
 import GitHubLogo from './icons/github';
-import SpectrumLogo from './icons/spectrum';
+import FeedbackContext from './feedback-context';
+import HeaderFeedback from './header-feedback';
+import Button from './button';
 
-import { links } from '../site-manifest';
-
-function Navbar({ className, hideLogo, route, isMobile }) {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const LOGO_TOP = 170;
-
-  const handleScroll = () => {
-    if (window.scrollY !== 0) {
-      setScrollPosition(window.scrollY);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  if (isMobile) {
-    return (
-      <Container className={className} center>
-        <h1 className="visually-hidden" aria-hidden="true">
-          Next.js
-        </h1>
-        <nav className="expand f5">
-          <div className={scrollPosition >= LOGO_TOP || !hideLogo ? 'logo visible' : 'logo'}>
-            <Link href="/">
-              <a aria-label="Next.js">
-                <NextLogo />
-              </a>
-            </Link>
-          </div>
-          <div className="links">
-            <div className="icons">
-              <a
-                href="https://github.com/zeit/next.js"
-                aria-label="Next.js on GitHub"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <GitHubLogo id="githublogofooter" />
-              </a>
-              <a
-                href={links.spectrum}
-                aria-label="Next.js on Spectrum"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="no-margin"
-              >
-                <SpectrumLogo />
-                <span className="badge" />
-              </a>
-            </div>
-          </div>
-          <div className="links mute dropdown">
-            <Link href="/#features">
-              <a
-                className={classNames({
-                  selected: route.startsWith('/features')
-                })}
-                title="Features"
-              >
-                Features
-              </a>
-            </Link>
-            <Link href="/learn/basics/getting-started">
-              <a
-                className={classNames({
-                  selected: route.startsWith('/learn')
-                })}
-                title="Learn"
-              >
-                Learn
-              </a>
-            </Link>
-            <a
-              href="/docs"
-              className={classNames({
-                selected: route.startsWith('/docs')
-              })}
-              title="Documentation"
-            >
-              Docs
-            </a>
-            <Link href="/showcase">
-              <a
-                className={classNames({
-                  selected: route.startsWith('/showcase')
-                })}
-                title="Showcase"
-              >
-                Showcase
-              </a>
-            </Link>
-            <a
-              href="/blog"
-              className={classNames({
-                selected: route.startsWith('/blog')
-              })}
-              title="Blog"
-            >
-              Blog
-            </a>
-            {
-              // <Link href="/enterprise"><a className={classNames({ selected: route.startsWith('/enterprise') })} title='Enterprise'>Enterprise</a></Link>
-            }
-          </div>
-        </nav>
-
-        <style jsx>
-          {`
-            nav {
-              position: relative;
-              flex: 1;
-              height: 114px;
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              flex-wrap: wrap;
-            }
-            nav .links {
-              display: flex;
-              align-items: center;
-              z-index: 1;
-            }
-            nav .dropdown {
-              flex: 1 0 100%;
-              display: flex;
-              margin: 0 -5px;
-              text-align: left;
-              justify-content: space-around;
-            }
-            nav .links a {
-              display: inline-block;
-              // enlarge the clickable area
-              padding: 5px 8px;
-              color: inherit;
-              text-decoration: none;
-            }
-            nav .links a.active {
-              color: #0070f3;
-            }
-            nav .links a.selected {
-              color: #0070f3;
-              font-weight: 600;
-            }
-            nav .logo {
-              font-size: 0;
-              text-align: center;
-              overflow: hidden;
-              transition: all 0.2s ease;
-              visibility: hidden;
-              pointer-events: none;
-              transform: translate3d(0, 30%, 0);
-              opacity: 0;
-            }
-            nav .logo.visible {
-              pointer-events: auto;
-              transform: translate3d(0, 0, 0);
-              visibility: visible;
-              opacity: 1;
-            }
-            nav .logo a {
-              display: inline-block;
-              padding-right: 4px;
-            }
-            nav .links .icons {
-              display: flex;
-              position: relative;
-              align-items: center;
-            }
-            nav .links .icons a {
-              position: relative;
-              padding: 5px;
-              line-height: 1;
-              margin-right: 1rem;
-            }
-            nav .links .icons a .badge {
-              position: absolute;
-              display: inline-block;
-              right: 0px;
-              bottom: 4px;
-              width: 8px;
-              height: 8px;
-              border-radius: 4px;
-              background-color: #2bdb66;
-              pointer-events: none;
-            }
-            nav .links .icons a.no-margin {
-              margin-right: 0;
-            }
-          `}
-        </style>
-      </Container>
-    );
-  }
+function Navbar() {
+  const { route } = useRouter();
+  const isAmp = useAmp();
+  const feedback = useContext(FeedbackContext);
 
   return (
-    <Container className={className} center>
+    <Container center>
       <SkipNavLink tabIndex="0" />
       <h1 className="visually-hidden" aria-hidden="true">
         Next.js
       </h1>
       <nav className="f-reset">
-        <div className="links">
-          <Link href="/#features">
-            <a
-              className={classNames('mute', {
-                selected: route.startsWith('/features')
-              })}
-              title="Features"
-            >
-              Features
-            </a>
-          </Link>
-          <Link href="/learn/basics/getting-started">
-            <a
-              className={classNames('mute', {
-                selected: route.startsWith('/learn')
-              })}
-              title="Learn"
-            >
-              Learn
-            </a>
-          </Link>
-          <Link href="/docs/[...slug]" as="/docs/getting-started">
-            <a
-              className={classNames('mute', {
-                selected: route.startsWith('/docs')
-              })}
-              title="Documentation"
-              style={{ marginRight: 0 }}
-            >
-              Docs
-            </a>
-          </Link>
-        </div>
-        <div className={scrollPosition >= LOGO_TOP || !hideLogo ? 'logo visible' : 'logo'}>
+        <div className="mobile-top">
           <Link href="/">
-            <a aria-label="Next.js">
+            <a className="mobile-logo" title="Go to the homepage">
               <NextLogo />
             </a>
           </Link>
+
+          <div className="mobile-top-right">
+            <div className="learn">
+              <Button href="/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website">
+                Learn
+              </Button>
+            </div>
+
+            <Link href="/conf?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=nav-cta">
+              <a className="conf">
+                <span className="conf-button">
+                  <RainbowButton idPrefix="mobile" />
+                </span>
+                <span className="conf-text">Next.js Conf</span>
+              </a>
+            </Link>
+          </div>
         </div>
+
         <div className="links">
+          <Link href="/">
+            <a className="logo" title="Go to the homepage">
+              <NextLogo />
+            </a>
+          </Link>
+
           <Link href="/showcase">
             <a
-              className={classNames('mute', {
+              className={cn('mute', {
                 selected: route.startsWith('/showcase')
               })}
               title="Showcase"
@@ -267,175 +66,238 @@ function Navbar({ className, hideLogo, route, isMobile }) {
               Showcase
             </a>
           </Link>
-          <a
-            href="/blog"
-            className={classNames('mute', {
-              selected: route.startsWith('/blog')
-            })}
-          >
-            Blog
-          </a>
-          {
-            // <Link href="/enterprise"><a className={classNames('mute', { selected: route.startsWith('/enterprise') })}>Enterprise</a></Link>
-          }
-          <div className="icons">
+
+          <Link href="/docs/getting-started">
             <a
-              href="https://github.com/zeit/next.js"
-              aria-label="Next.js on GitHub"
-              rel="noopener noreferrer"
-              target="_blank"
+              className={cn('mute', {
+                selected: route.startsWith('/docs')
+              })}
+              title="Documentation"
             >
-              <GitHubLogo />
+              Docs
             </a>
-            <Popover
-              content={
-                <div style={{ whiteSpace: 'nowrap' }}>
-                  Join <strong className="fw6">Next.js</strong> on{' '}
-                  <strong className="fw6">Spectrum</strong>
-                </div>
-              }
+          </Link>
+
+          <Link href="/blog">
+            <a
+              className={cn('mute', {
+                selected: route.startsWith('/blog')
+              })}
             >
-              <a
-                href={links.spectrum}
-                aria-label="Next.js on Spectrum"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="no-margin"
-              >
-                <SpectrumLogo />
-                <span className="badge" />
-              </a>
-            </Popover>
+              Blog
+            </a>
+          </Link>
+
+          <a
+            className="mute"
+            href="https://vercel.com/solutions/nextjs?utm_source=next-site&utm_medium=navbar&utm_campaign=next-website"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Enterprise
+          </a>
+
+          {!isAmp && feedback ? (
+            <div className="header-feedback">
+              <HeaderFeedback email />
+            </div>
+          ) : (
+            <div className="no-feedback" />
+          )}
+
+          <div className="learn">
+            <Button href="/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=nav-cta&utm_campaign=next-website">
+              Learn
+            </Button>
           </div>
+
+          <Link href="/conf?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=nav-cta">
+            <a className="conf">
+              <span className="conf-button">
+                <RainbowButton idPrefix="desktop" />
+              </span>
+              <span className="conf-text">Next.js Conf</span>
+            </a>
+          </Link>
+
+          <a
+            href="https://github.com/vercel/next.js"
+            aria-label="Next.js on GitHub"
+            rel="noopener noreferrer"
+            target="_blank"
+            className="icon mute"
+          >
+            <GitHubLogo color="currentColor" />
+          </a>
         </div>
       </nav>
 
-      <style jsx>
-        {`
+      <style jsx>{`
+        nav {
+          position: relative;
+          flex: 1;
+          height: 80px;
+          display: flex;
+          align-items: center;
+        }
+
+        .links {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          z-index: 1;
+        }
+
+        .links a {
+          text-decoration: none;
+          transition: color 0.2s ease;
+          margin-left: 1rem;
+        }
+
+        .links a:hover {
+          color: #000;
+        }
+
+        .links a.selected {
+          color: #0070f3;
+          text-shadow: 0px 0px 1px #0070f3;
+        }
+
+        .links a:first-child {
+          display: flex;
+          margin: 0;
+        }
+
+        a.icon,
+        a.icon > :global(div.container) {
+          /* Remove additional space from SVG */
+          display: inline-flex;
+          justify-content: center;
+        }
+
+        a.icon > :global(div.container) {
+          overflow: visible;
+        }
+
+        .mobile-logo,
+        .mobile-top {
+          display: none;
+        }
+
+        .header-feedback {
+          display: inline-flex;
+        }
+
+        .no-feedback {
+          visibility: hidden;
+          width: 90px;
+        }
+
+        a.icon.icon {
+          margin-left: 0;
+        }
+
+        .learn :global(a) {
+          background-color: rgba(0, 118, 255, 0.9);
+          color: #fff;
+          border: 1px solid rgba(0, 118, 255, 0.9);
+          padding: 0.25rem 1rem;
+          margin: 0;
+          font-weight: 500;
+        }
+        .learn :global(a:focus),
+        .learn :global(a:hover) {
+          background-color: transparent;
+          color: rgba(0, 118, 255, 0.9);
+        }
+
+        /* Can’t use !important, so increase specificity */
+        .conf.conf.conf {
+          position: relative;
+          width: 132px;
+          height: 36px;
+          margin: 0;
+        }
+
+        .conf-button {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 2;
+        }
+
+        .conf-text {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #000;
+          font-weight: 500;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 800px) {
+          .mobile-logo {
+            display: block;
+          }
+
           nav {
-            position: relative;
-            flex: 1;
-            height: 64px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            height: unset;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 1rem 0;
           }
-          nav .links {
-            display: flex;
-            align-items: center;
-            z-index: 1;
-            pointer-events: auto;
+
+          nav .links .logo,
+          nav .links .learn,
+          nav .links .conf {
+            display: none;
           }
+
           nav .links a {
-            display: inline-block;
-            // enlarge the clickable area
-            padding: 5px;
-            margin-left: -5px;
-            margin-right: 2rem;
-            text-decoration: none;
-            transition: color 0.2s ease;
+            font-size: 14px;
           }
-          nav .links a:hover {
-            color: #111;
+
+          nav .links a:nth-child(2) {
+            margin: 0;
           }
-          nav .links a.selected {
-            color: #0070f3;
-            font-weight: 600;
-          }
-          nav .logo {
+
+          .mobile-top {
             width: 100%;
-            font-size: 0;
-            text-align: center;
-            overflow: hidden;
-            transition: all 0.2s ease;
-            visibility: hidden;
-            pointer-events: none;
-            transform: translate3d(-1.5%, 30%, 0);
-            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
           }
-          nav .logo.visible {
-            pointer-events: auto;
-            transform: translate3d(-1.5%, 0, 0);
-            visibility: visible;
-            opacity: 1;
-          }
-          nav .logo a {
-            display: inline-block;
-          }
-          nav .links .icons {
+
+          .mobile-top-right {
             display: flex;
             align-items: center;
           }
-          nav .links .icons a {
-            position: relative;
-            line-height: 1;
-            margin-right: 1rem;
+
+          .learn {
+            margin-right: 0.5rem;
           }
-          nav .links .icons a .badge {
-            position: absolute;
-            display: inline-block;
-            right: 0px;
-            bottom: 4px;
-            width: 8px;
-            height: 8px;
-            border-radius: 4px;
-            background-color: #2bdb66;
-            pointer-events: none;
+        }
+
+        @media (max-width: 1020px) {
+          .header-feedback {
+            display: none;
           }
-          nav .links .icons a.no-margin {
-            margin-right: 0;
-          }
-          // CSS only media query for mobile + SSR
-          @media screen and (max-width: 640px) {
-            .logo {
-              display: none;
-            }
-          }
-        `}
-      </style>
+        }
+      `}</style>
     </Container>
   );
 }
 
-export default withRouter(({ router, hideLogo = false }) => {
-  const { route } = router;
-
-  const hideLogoDesktop =
-    typeof hideLogo.desktop === 'boolean'
-      ? hideLogo.desktop
-      : typeof hideLogo === 'boolean'
-      ? hideLogo
-      : false;
-  const hideLogoMobile =
-    typeof hideLogo.mobile === 'boolean'
-      ? hideLogo.mobile
-      : typeof hideLogo === 'boolean'
-      ? hideLogo
-      : false;
-
-  return (
-    <>
-      <Navbar
-        className="navbar-desktop"
-        route={route}
-        hideLogo={hideLogoDesktop}
-        isMobile={false}
-      />
-      <Navbar className="navbar-mobile" route={route} hideLogo={hideLogoMobile} isMobile />
-      <style jsx global>
-        {`
-          @media screen and (max-width: 640px) {
-            .navbar-desktop {
-              display: none;
-            }
-          }
-          @media screen and (min-width: 641px) {
-            .navbar-mobile {
-              display: none;
-            }
-          }
-        `}
-      </style>
-    </>
-  );
-});
+export default memo(Navbar);

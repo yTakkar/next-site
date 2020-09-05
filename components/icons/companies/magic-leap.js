@@ -1,4 +1,4 @@
-export default () => (
+const MagicLeap = () => (
   <svg
     width="116px"
     height="40px"
@@ -20,3 +20,5 @@ export default () => (
     </g>
   </svg>
 );
+
+export default MagicLeap;

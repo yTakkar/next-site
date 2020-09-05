@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
-export default () => (
+const Cta = () => (
   <div className="container">
     <div>
       <h2>
         Find Out How Next.js Can <br /> Empower Your Team Today
       </h2>
-      <Link href="/learn/basics/getting-started">
+      <Link href="/learn/basics/create-nextjs-app">
         <a>
           <button type="button">Learn More</button>
         </a>
@@ -62,3 +62,5 @@ export default () => (
     </style>
   </div>
 );
+
+export default Cta;

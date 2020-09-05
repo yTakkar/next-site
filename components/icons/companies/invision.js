@@ -1,4 +1,4 @@
-export default () => (
+const Invision = () => (
   <svg height="48" viewBox="0 0 106 32">
     <g fillRule="evenodd">
       <path d="M0 2v28a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2z" />
@@ -11,3 +11,5 @@ export default () => (
     </g>
   </svg>
 );
+
+export default Invision;

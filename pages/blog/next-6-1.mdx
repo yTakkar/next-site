@@ -6,8 +6,6 @@ import Caption from '../../components/text/caption'
 import Container from '../../components/container'
 import { GenericLink } from '../../components/text/link'
 
-export const config = { amp: true }
-
 export const meta = {
   title: 'Next.js 6.1',
   description:
@@ -23,7 +21,7 @@ export const meta = {
     }
   ],
   twitterCard:
-    'https://assets.zeit.co/image/upload/front' +
+    'https://assets.vercel.com/image/upload/front' +
     '/blog/next6-1/twitter-card.png'
 }
 
@@ -35,7 +33,7 @@ We are proud today to introduce the production-ready **Next.js 6.1**, featuring:
 - Codebase improvements
 - Next.js codemods
 
-In addition to the Next.js 6.1 release, we're excited to announce that [nextjs.org](https://nextjs.org) is now [open source](https://github.com/zeit/next-site)
+In addition to the Next.js 6.1 release, we're excited to announce that [nextjs.org](https://nextjs.org) is now [open source](https://github.com/vercel/next-site)
 
 ## Improved hot reloading reliability
 
@@ -51,7 +49,7 @@ By default, Next.js automatically looks for any `.js` or `.jsx` file inside the 
 
 With the introduction of universal webpack in Next.js 5 came the possibility to have compile-to-js top-level pages. A good example is Typescript, which uses `.ts` and `.tsx`.
 
-`pageExtensions` is a configuration key in `next.config.js` aimed at allowing Next.js plugins to define extensions that should be considered pages. For example [`@zeit/next-typescript`](https://github.com/zeit/next-plugins/tree/master/packages/next-typescript) defines `.ts` and `.tsx` or [`@zeit/next-mdx`](https://github.com/zeit/next-plugins/tree/master/packages/next-mdx) which [documents](https://github.com/zeit/next-plugins/tree/master/packages/next-mdx#top-level-mdx-pages) how to have top level `.mdx` pages.
+`pageExtensions` is a configuration key in `next.config.js` aimed at allowing Next.js plugins to define extensions that should be considered pages. For example [`@zeit/next-typescript`](https://github.com/vercel/next-plugins/tree/master/packages/next-typescript) defines `.ts` and `.tsx` or [`@zeit/next-mdx`](https://github.com/vercel/next-plugins/tree/master/packages/next-mdx) which [documents](https://github.com/vercel/next-plugins/tree/master/packages/next-mdx#top-level-mdx-pages) how to have top level `.mdx` pages.
 
 Previously when implementing `pageExtensions` Next.js plugins were required to implement the `hot-self-accept-loader` that is used for hot reloading. This is no longer required, when adding an extension to `pageExtensions` the `hot-self-accept-loader` is automatically applied.
 
@@ -65,10 +63,13 @@ We have also been focusing on adding [Flow](https://flow.org/) types throughout 
 
 A change we've made that is more visible to users is that `.next/dist` has been renamed to `.next/server`. The `.next` directory that holds build output. For example when you run `next build` the result will be stored in `.next`.
 
-<Image src={'https://assets.zeit.co/image/upload/front' + '/blog/next6-1/server-dist.png'} width={1574/3} height={754/3} />
-<Caption>The pre-rendering files are now in the <Caption.Code>server</Caption.Code> directory</Caption>
+<Image src={'https://assets.vercel.com/image/upload/front' + '/blog/next6-1/server-dist.png'} width={1574/3} height={754/3} />
+<Caption>
+  The pre-rendering files are now in the <Caption.Code>server</Caption.Code>{' '}
+  directory
+</Caption>
 
-Occurrences of the same constants have been moved into a common file: [`constants.js`](https://github.com/zeit/next.js/blob/canary/lib/constants.js)
+Occurrences of the same constants have been moved into a common file: [`constants.js`](https://github.com/vercel/next.js/blob/canary/lib/constants.js)
 
 ## Next.js codemods
 
@@ -112,14 +113,20 @@ export default withRouter(Page)
 
 As we are committed to keeping the upgrade path for Next.js applications simple, so we set out to create an easy way of upgrading usages of `url` to `withRouter`.
 
-The result of this effort is [next&#8209;codemod](https://github.com/zeit/next-codemod), a library of codemods that make upgrading specific deprecated features to their new usage as easy as running one command.
+The result of this effort is [next&#8209;codemod](https://github.com/vercel/next-codemod), a library of codemods that make upgrading specific deprecated features to their new usage as easy as running one command.
 
 The first codemod we're providing is `url-to-withrouter` which automatically transforms many cases where `url` was used to `withRouter`.
 
 <TerminalInput>
-jscodeshift -t ./url-to-withrouter.js pages/**/*.js
+  jscodeshift -t ./url-to-withrouter.js pages/**/*.js
 </TerminalInput>
-<Caption>This will transform uses of <Caption.Code>url</Caption.Code> to <Caption.Code>withRouter</Caption.Code>. <GenericLink href="https://github.com/zeit/next-codemod#url-to-withrouter">Read more here</GenericLink></Caption>
+<Caption>
+  This will transform uses of <Caption.Code>url</Caption.Code> to{' '}
+  <Caption.Code>withRouter</Caption.Code>.{' '}
+  <GenericLink href="https://github.com/vercel/next-codemod#url-to-withrouter">
+    Read more here
+  </GenericLink>
+</Caption>
 
 ## Contributing to Next.js
 
@@ -127,16 +134,22 @@ The Next.js community is growing, with more than 450 contributors that already l
 
 There's many ways to contribute back to Next.js:
 
-- Joining the community and giving advice on [spectrum.chat/next-js](https://spectrum.chat/next-js)
-- Contributing examples of common use cases: [examples directory](https://github.com/zeit/next.js/tree/canary/examples)
-- Checking the [good first issue](https://github.com/zeit/next.js/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22) and [help wanted](https://github.com/zeit/next.js/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22help+wanted%22) labels on [GitHub](https://github.com/zeit/next.js)
+- Joining the community and giving advice on [GitHub](https://github.com/vercel/next.js/discussions)
+- Contributing examples of common use cases: [examples directory](https://github.com/vercel/next.js/tree/canary/examples)
+- Checking the [good first issue](https://github.com/vercel/next.js/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22) and [help wanted](https://github.com/vercel/next.js/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22help+wanted%22) labels on [GitHub](https://github.com/vercel/next.js)
 
-<Image src={'https://assets.zeit.co/image/upload/front' + '/blog/next6-1/good-first-issue.png'} width={1968/3} height={1468/3} />
-<Caption>There's 30 open issues with the <GenericLink href="https://github.com/zeit/next.js/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22">good first issue</GenericLink> label. Giving new contributors the opportunity to contribute.</Caption>
+  <Image src={'https://assets.vercel.com/image/upload/front' + '/blog/next6-1/good-first-issue.png'} width={1968/3} height={1468/3} />
+  <Caption>
+    There's 30 open issues with the{' '}
+    <GenericLink href="https://github.com/vercel/next.js/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A%22good+first+issue%22">
+      good first issue
+    </GenericLink>{' '}
+    label. Giving new contributors the opportunity to contribute.
+  </Caption>
 
 ## nextjs.org open source
 
-We're excited to announce that [nextjs.org](https://nextjs.org) is now [open source](https://github.com/zeit/next-site) so that it can serve as a reference Nextjs implementation and issues/improvements can be filed directly on the project.
+We're excited to announce that [nextjs.org](https://nextjs.org) is now [open source](https://github.com/vercel/next-site) so that it can serve as a reference Nextjs implementation and issues/improvements can be filed directly on the project.
 
 ## Future
 

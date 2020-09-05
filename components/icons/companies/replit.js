@@ -1,10 +1,5 @@
-export default () => (
-  <svg
-    width="120"
-    height="50"
-    viewBox="0 0 625 250"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+const Replit = () => (
+  <svg width="120" height="50" viewBox="0 0 625 250" xmlns="http://www.w3.org/2000/svg">
     <path
       fill="#777"
       d="M226.574 76.155c7.614 115.444-114.02 99.593-114.02 99.593C196.088 176.93 231.315 18.622 95.78 2.013 102.78.7 109.882.027 117 0c50.276 0 93.02 31.718 109.574 76.155z"
@@ -35,3 +30,5 @@ export default () => (
     </g>
   </svg>
 );
+
+export default Replit;

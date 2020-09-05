@@ -1,4 +1,4 @@
-export default () => (
+const Opencollective = () => (
   <svg
     width="328px"
     height="40px"
@@ -21,3 +21,5 @@ export default () => (
     </g>
   </svg>
 );
+
+export default Opencollective;

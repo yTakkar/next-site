@@ -1,11 +1,5 @@
-export default () => (
-  <svg
-    width="114"
-    height="40"
-    viewBox="0 0 126 40"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+const Plotly = () => (
+  <svg width="114" height="40" viewBox="0 0 126 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M38.1818 0H1.81818C0.814028 0 0 0.814028 0 1.81818V38.1818C0 39.186 0.814028 40 1.81818 40H38.1818C39.186 40 40 39.186 40 38.1818V1.81818C40 0.814028 39.186 0 38.1818 0Z"
       fill="black"
@@ -76,3 +70,5 @@ export default () => (
     />
   </svg>
 );
+
+export default Plotly;

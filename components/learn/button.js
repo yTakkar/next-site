@@ -19,19 +19,19 @@ export default withPure(
     light,
     large,
     href,
-    as,
     color,
     shadowColor,
     noHover,
     flat,
     full,
+    wide,
     className,
     ...props
   }) => {
     const isExternal = href && href.startsWith('http');
     const a = (
       <a
-        href={isExternal ? href : undefined}
+        href={href}
         className={classNames(className, 'fw4 no-drag', { invert, disabled })}
         role="button"
         tabIndex="0"
@@ -56,6 +56,7 @@ export default withPure(
             line-height: 2.5rem;
           `
               : ''}
+            ${wide ? `padding: 0.25rem 0.8rem; margin: -0.25rem -0.3rem;` : ''}
           }
           a:hover {
             color: ${color || '#0070f3'};
@@ -63,6 +64,7 @@ export default withPure(
           }
           a.invert {
             margin: 0;
+            ${wide ? `margin: -0.25rem -0.3rem;` : ''}
             border-radius: 7px;
             color: white;
             background: ${color || '#0070f3'};
@@ -105,11 +107,7 @@ export default withPure(
     );
 
     if (href && !isExternal) {
-      return (
-        <Link href={href} as={as}>
-          {a}
-        </Link>
-      );
+      return <Link href={href}>{a}</Link>;
     }
     return a;
   }

@@ -1,17 +1,18 @@
 export default function Container({
-  center,
-  vCenter,
-  dark,
-  gray,
-  wide,
-  small,
-  padding,
-  overflow,
-  minHeight,
-  dotBackground,
+  center = false,
+  vCenter = false,
+  dark = false,
+  gray = false,
+  wide = false,
+  wideOnMobile = false,
+  small = false,
+  padding = false,
+  overflow = false,
+  minHeight = null,
+  dotBackground = false,
   children,
-  mobileStyle,
-  divider,
+  mobileStyle = null,
+  divider = false,
   ...props
 }) {
   return (
@@ -23,11 +24,13 @@ export default function Container({
         margin: 0 auto;
         padding: ${padding ? '6.25rem' : '0'} ${wide ? '0' : '1rem'};
         ${wide && !small ? '' : 'max-width: 1024px;'}
-        ${small ? 'max-width: 682px;' : ''}
+        ${small ? 'max-width: 768px;' : ''}
         ${center ? 'text-align: center;' : ''}
-        ${dark ? 'background-image: linear-gradient(to bottom, #121212 0%, #323232 100%);' : ''}
+        ${dark ? 'background: #111;' : ''}
         ${dark ? 'color: #f1f1f1;' : ''}
-        ${gray ? 'background-color: #f6f6f6;' : ''}
+        ${gray ? 'background-color: #fafafa;' : ''}
+        ${gray ? 'border-top: 1px solid #eaeaea;' : ''}
+        ${gray ? 'border-bottom: 1px solid #eaeaea;' : ''}
         ${wide && !overflow ? 'overflow: hidden;' : ''}
         ${minHeight ? `min-height: ${minHeight}px;` : ''}
         ${vCenter ? 'display: flex; align-items: center;' : ''}
@@ -52,13 +55,14 @@ export default function Container({
       // CSS only media query for tablet
       @media screen and (max-width: 960px) {
         div {
-          padding: ${padding ? '4rem' : '0'} ${wide ? '0' : '2rem'};
+          padding: ${padding ? '4rem' : '0'} ${wide || wideOnMobile ? '0' : '2rem'};
+          ${wideOnMobile && !overflow ? 'overflow: hidden;' : ''}
         }
       }
       // CSS only media query for mobile
       @media screen and (max-width: 640px) {
         div {
-          padding: ${padding ? '4rem' : '0'} ${wide ? '0' : '1rem'};
+          padding: ${padding ? '4rem' : '0'} ${wide || wideOnMobile ? '0' : '1rem'};
           ${mobileStyle || ''}
         }
       }

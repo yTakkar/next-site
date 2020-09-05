@@ -1,4 +1,4 @@
-export default () => (
+const Eaze = () => (
   <svg
     width="96px"
     height="36px"
@@ -13,3 +13,5 @@ export default () => (
     />
   </svg>
 );
+
+export default Eaze;

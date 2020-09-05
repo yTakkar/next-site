@@ -18,12 +18,10 @@ const Improvements = () => (
       <h2>Supercharged Applications</h2>
 
       <p>
-        A critical requirement for Hulu was{' '}
-        <a href="https://nextjs.org/features/server-side-rendering">server-side rendering</a>. With
-        data coming from many sources and a fundamental need for SEO, server-side rendering was a
-        must. With other frameworks, server-rendering pages with complex data dependencies is
-        difficult and error prone, if not impossible. Next.js however made the process
-        straightforward.
+        A critical requirement for Hulu was server-side rendering. With data coming from many
+        sources and a fundamental need for SEO, server-side rendering was a must. With other
+        frameworks, server-rendering pages with complex data dependencies is difficult and error
+        prone, if not impossible. Next.js however made the process straightforward.
       </p>
 
       <div className="quote">

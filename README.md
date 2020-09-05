@@ -1,4 +1,4 @@
-# Next.js website
+# [Next.js website](https://nextjs.org/)
 
 The official website for Next.js.
 
@@ -22,5 +22,10 @@ We really appreciate any contribution.
 
 ## Related Repositories
 
-- [Next.js](https://github.com/zeit/next.js)
-- [Next.js Plugins](https://github.com/zeit/next-plugins)
+- [Next.js GitHub repository](https://github.com/vercel/next.js)
+
+## License
+
+The Next.js site is an open source project released under the [MIT License](https://github.com/vercel/next-site/blob/master/README.md).
+
+The Next.js site uses the emojis from [Twemoji](https://twemoji.twitter.com).

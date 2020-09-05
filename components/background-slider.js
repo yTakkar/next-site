@@ -1,4 +1,4 @@
-export default ({ duration, children }) => {
+export default function BackgroundSilder({ duration, children }) {
   const isF = typeof children === 'function';
   const child = num => (isF ? children(num) : children);
   return (
@@ -32,4 +32,4 @@ export default ({ duration, children }) => {
       </div>
     </div>
   );
-};
+}

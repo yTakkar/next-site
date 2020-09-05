@@ -1,4 +1,4 @@
-export default ({ color = '#111111', id = 'githublogo' }) => (
+const Github = ({ color = '#111111', id = 'githublogo', size = 22 }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 16" fill="none">
     <g clipPath={`url(${id})`}>
       <path
@@ -15,9 +15,11 @@ export default ({ color = '#111111', id = 'githublogo' }) => (
     </defs>
     <style jsx>{`
       svg {
-        width: 22px;
-        height: 22px;
+        width: ${size}px;
+        height: ${size}px;
       }
     `}</style>
   </svg>
 );
+
+export default Github;
